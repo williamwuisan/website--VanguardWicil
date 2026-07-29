@@ -61,6 +61,7 @@ function showDeckDetail(deckId) {
         <div class="card-item__name">${card.name}</div>
         ${card.nameJp ? `<div class="card-item__name-jp">${card.nameJp}</div>` : ''}
         ${card.grade ? `<span class="card-item__grade">${card.grade}</span>` : ''}
+        ${card.qty ? `<span class="card-item__qty">×${card.qty}</span>` : ''}
         <div class="card-item__effect">${card.effect || ''}</div>
       </div>
     </div>
