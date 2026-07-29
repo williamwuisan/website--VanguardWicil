@@ -15,7 +15,7 @@ const DECKS = [
     id: "chronojet-deck",
     name: "Chronojet Deck",
     clan: "Dark States",
-    image: "assets/cards/chronoscommand-dragon.png",
+    image: "assets/cards/chronojet-dragon.png",
     cards: [
       {
         name: "Chronodragon Nextage",

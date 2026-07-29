@@ -129,6 +129,20 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
 .view-head h2 { font-size: 1.8rem; font-weight: 700; margin-bottom: 6px; }
 .view-head p { color: var(--text-muted); }
 
+.clan-tabs { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 28px; }
+.clan-tab {
+  padding: 10px 22px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  background: var(--black-card);
+  border: 1px solid var(--border);
+  transition: all 0.2s ease;
+}
+.clan-tab:hover { color: var(--text); border-color: var(--orange); }
+.clan-tab.is-active { background: var(--orange); color: #150a02; border-color: var(--orange); }
+
 .deck-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -159,17 +173,28 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
 .deck-detail__head h2 { font-size: 1.9rem; font-weight: 700; margin-bottom: 6px; }
 .deck-detail__head p { color: var(--orange); font-weight: 600; font-size: 0.9rem; }
 
-.card-list { display: flex; flex-direction: column; gap: 20px; }
+.card-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  align-items: start;
+}
 .card-item {
   display: grid;
-  grid-template-columns: 160px 1fr;
-  gap: 24px;
+  grid-template-columns: 140px 1fr;
+  gap: 20px;
   background: var(--black-card);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 20px;
 }
-.card-item__image { width: 100%; border-radius: 8px; border: 1px solid var(--border); }
+.card-item__image {
+  width: 100%;
+  aspect-ratio: 63/88;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
 .card-item__name { font-size: 1.1rem; font-weight: 700; margin-bottom: 2px; }
 .card-item__name-jp { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 10px; }
 .card-item__grade {
@@ -183,6 +208,10 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
   margin-bottom: 10px;
 }
 .card-item__effect { color: var(--text); font-size: 0.95rem; white-space: pre-line; }
+
+@media (min-width: 860px) {
+  .card-list { grid-template-columns: 1fr 1fr; }
+}
 
 /* ===== Footer ===== */
 .footer { text-align: center; padding: 32px 24px; color: var(--text-muted); font-size: 0.82rem; border-top: 1px solid var(--border); }

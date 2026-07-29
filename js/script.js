@@ -4,6 +4,8 @@ const views = {
   detail: document.getElementById('view-detail'),
 };
 
+let selectedClan = null;
+
 function showView(name) {
   Object.values(views).forEach(v => v.classList.add('view--hidden'));
   views[name].classList.remove('view--hidden');
@@ -20,6 +22,37 @@ document.querySelectorAll('[data-nav]').forEach(el => {
   });
 });
 
+function getClans() {
+  const clans = [];
+  DECKS.forEach(deck => {
+    const clan = deck.clan || 'Lainnya';
+    if (!clans.includes(clan)) clans.push(clan);
+  });
+  return clans;
+}
+
+function renderClanTabs() {
+  const container = document.getElementById('clanTabs');
+  const clans = getClans();
+
+  if (clans.length <= 1) {
+    container.innerHTML = '';
+    return;
+  }
+
+  container.innerHTML = clans.map(clan => `
+    <button class="clan-tab${clan === selectedClan ? ' is-active' : ''}" data-clan="${clan}">${clan}</button>
+  `).join('');
+
+  container.querySelectorAll('.clan-tab').forEach(btn => {
+    btn.addEventListener('click', () => {
+      selectedClan = btn.dataset.clan;
+      renderClanTabs();
+      renderDeckGrid();
+    });
+  });
+}
+
 function renderDeckGrid() {
   const grid = document.getElementById('deckGrid');
   const empty = document.getElementById('emptyState');
@@ -31,7 +64,9 @@ function renderDeckGrid() {
   }
   empty.classList.remove('is-visible');
 
-  DECKS.forEach(deck => {
+  const filtered = DECKS.filter(deck => (deck.clan || 'Lainnya') === selectedClan);
+
+  filtered.forEach(deck => {
     const card = document.createElement('button');
     card.className = 'deck-card';
     card.innerHTML = `
@@ -74,5 +109,8 @@ function renderStats() {
   document.getElementById('cardCount').textContent = DECKS.reduce((sum, d) => sum + d.cards.length, 0);
 }
 
+const initialClans = getClans();
+selectedClan = initialClans[0] || null;
+renderClanTabs();
 renderDeckGrid();
 renderStats();
