@@ -186,5 +186,181 @@ const DECKS = [
         effect: "[CONT](GC): If your opponent's vanguard is grade 3 or greater, this unit gets [Shield]+5000.\n(Deck contains 3 total copies of this card across two different print rarities, shown as separate entries in the source decklist.)"
       }
     ]
+  },
+  {
+    id: "nightrose-deck",
+    name: "Nightrose Deck",
+    clan: "Stoicheia",
+    image: "assets/cards/mist-phantasm-pirate-king-nightrose.png",
+    cards: [
+      {
+        name: "Pirate King of Redemption, Dragut",
+        nameJp: "贖いの海賊王 ドラクート",
+        image: "assets/cards/pirate-king-of-redemption-dragut.png",
+        grade: "G (Stride/G unit)",
+        effect: "(This card cannot be in your main deck)\n[Stride]-Stride Step-COST[Choose one or more cards with the sum of their grades being 3 or greater from your hand, and discard them], and Stride this card on your (VC) from face down. (When you Stride, your original vanguard becomes a heart card, and this unit gets that card's [Power] and card name. At the end of the turn, return this unit face up)\n[ACT](VC) 1/Turn: COST[Counter Blast (1) & turn a card with the same card name as this card from G zone face up], choose a card from your drop, call it to (RC), and it gets \"[AUTO](RC): When your vanguard attacks, if this unit is hollowed, [Stand] this unit.\" until end of turn. If you called a card with the Hollow ability, your opponent chooses one of their rear-guards, and retires it."
+      },
+      {
+        name: "Mist Phantasm Pirate King, Nightrose",
+        nameJp: "霧幻の海賊王 ナイトローゼ",
+        image: "assets/cards/mist-phantasm-pirate-king-nightrose.png",
+        grade: "G (Stride/G unit)",
+        effect: "(This card cannot be in your main deck)\n[Stride]-Stride Step-COST[Discard a grade 3 card with \"Nightrose\" in its card name from your hand], and Stride this card on your (VC) from face down. (When you Stride, your original vanguard becomes a heart card, and this unit gets that card's [Power] and card name. At the end of the turn, return this unit face up)\n[AUTO](VC) Generation Break 2: When this unit attacks a vanguard, COST[Counter Blast (1) & retire two rear-guards], choose up to two grade 2 or greater cards with different card names from your drop, and call them to (RC). If your drop has ten or more cards, this unit gets [Critical]+1 until end of that battle, and if your drop has fifteen or more cards, all of those called units get [Power]+10000 until end of turn."
+      },
+      {
+        name: "Ghostie Great King, Obadiah",
+        nameJp: "お化け大王 おばだいあ",
+        image: "assets/cards/ghostie-great-king-obadiah.png",
+        grade: "G (Stride/G unit)",
+        effect: "(This card cannot be in your main deck)\n[Stride]-Stride Step-COST[Choose one or more cards with the sum of their grades being 3 or greater from your hand, and discard them], and Stride this card on your (VC) from face down. (When you Stride, your original vanguard becomes a heart card, and this unit gets that card's [Power] and card name. At the end of the turn, return this unit face up)\n[ACT](VC) 1/Turn: COST[Turn a card from G zone face up], look at the top five cards of your deck, choose up to one card from among them, discard it, and shuffle the deck. Choose up to one card from your drop, and call it to (RC). If you called a unit with the Hollow ability, that unit gets [Power]+5000 until end of turn."
+      },
+      {
+        name: "Vampire Princess of Night Fog, Nightrose",
+        nameJp: "夜霧の吸血姫 ナイトローゼ",
+        image: "assets/cards/vampire-princess-of-night-fog-nightrose.png",
+        grade: "G3",
+        effect: "[AUTO](VC) 1/Turn Generation Break 2: When your rear-guard is retired, COST[discard the top three cards of the deck], and you may call that retired card to (RC).\n[AUTO](VC): When your G unit Strides during your turn, COST[Counter Blast (1)], choose up to one card from your drop, call it to (RC), and that unit gets [Power]+2000 until end of turn."
+      },
+      {
+        name: "Emperor Fang Dragon, Growleon",
+        nameJp: "皇牙竜 グラウリオン",
+        image: "assets/cards/emperor-fang-dragon-growleon.png",
+        grade: "G3",
+        effect: "[CONT](RC/GC): This unit gets \"Intercept\", and [Shield]+5000.\n[AUTO]: When this unit is placed on (RC), if your vanguard is grade 3 or greater, COST[Energy Blast (3)], until end of turn, this unit gets [Power]+5000, and your opponent cannot intercept for the battles this unit attacked. If your damage zone has four or more cards, or you persona rode this turn, it also gets [Power]+5000, choose up to one order card from your drop, and put it into hand."
+      },
+      {
+        name: "Sea Strike Dragon, Enlargulv",
+        nameJp: "海撃竜 インラージガルヴ",
+        image: "assets/cards/sea-strike-dragon-enlargulv.png",
+        grade: "G3",
+        effect: "[AUTO]: When this unit is placed on (RC) or put on (GC), choose up to one grade 4 card from your hand, and reveal it. If you revealed a card, or your vanguard is grade 4, perform one of the following according to the circle this unit is on.\n•(RC) - COST[Soul Blast (1)], choose a grade 2 or greater card with a different card name from this unit from your drop, and put it into hand.\n•(GC) - This unit gets [Shield]+15000 until end of that battle.\n[AUTO]: When this card is discarded from hand while riding a grade 3 from the ride deck or paying the cost for Stride, draw a card."
+      },
+      {
+        name: "A Roseate Twilight That Dances in the Nether Hour",
+        nameJp: "冥刻に舞う夜薔薇",
+        image: "assets/cards/a-roseate-twilight-that-dances-in-the-nether-hour.png",
+        grade: "G3",
+        effect: "This card can be played from drop, and play this if you have a \"Vampire Princess of Night Fog, Nightrose\" crest.\nBind this card, and perform one of the following.\n•Look at the top seven cards of your deck, choose up to one card from among them, discard it, shuffle the deck, and your vanguard gets [Power]+5000 until end of turn.\n•Choose a card from your drop, call it to (RC), and it gets [Power]+5000 until end of turn.\n[AUTO]: When this card is discarded from hand while paying the cost for Stride, choose one of your vanguards or hearts, and until end of turn, reduce the next Counter Blast cost you pay for that card's ability by (1).\n(Deck contains 2 total copies of this card across two different print rarities, shown as one entry here.)"
+      },
+      {
+        name: "Pirate Swordsman, Colombard",
+        nameJp: "海賊剣士 コロンバール",
+        image: "assets/cards/pirate-swordsman-colombard.png",
+        grade: "G2",
+        effect: "[AUTO]: Hollow (When placed on (RC), you may have it become hollowed. If you do, retire it at the end of turn)\n[AUTO]: When this unit is rode upon by a grade 3 with \"Nightrose\" in its card name, COST[Soul Blast (1)], look at the top seven cards of your deck, choose up to two normal units without sentinel from among them, reveal them, choose one of the revealed cards, put it into hand, discard the rest of the revealed cards, and shuffle the deck.\n[AUTO](RC): When this unit attacks, if this unit is hollowed, this unit gets [Power]+5000 until end of that battle."
+      },
+      {
+        name: "Ransack Shade",
+        nameJp: "ランサック・シェイド",
+        image: "assets/cards/ransack-shade.png",
+        grade: "G2",
+        effect: "[AUTO]: Hollow (When placed on (RC), you may have it become hollowed. If you do, retire it at the end of turn)\n[AUTO]: If this unit was placed by the ability of your heart with \"Nightrose\" in its card name, this cost can be paid with Energy Blast (3) instead. When this unit is placed on (RC) during the ride phase or main phase, if you have a vanguard with only «Granblue» for its clan, COST[Counter Blast (1)], and perform one of the following.\n•Draw a card.\n•If your vanguard is grade 3 or greater, choose a card from your drop, and call it to (RC).\n[AUTO](RC): When this unit becomes hollowed, if you have a \"Vampire Princess of Night Fog, Nightrose\" crest, this unit gets [Power]+5000 until end of turn."
+      },
+      {
+        name: "Corpse Hunting Rend Cataclysm, Roveena & Zuin",
+        nameJp: "屍猟裂災 ロヴィーナ＆ズウィン",
+        image: "assets/cards/corpse-hunting-rend-cataclysm-roveena-and-zuin.png",
+        grade: "G2",
+        effect: "[AUTO]: When this unit is placed on (RC) from hand other than during the battle phase, perform one of the following.\n•COST[Counter Blast (1)], look at the top card of your deck, and put it on the bottom of the deck, or discard it. Choose a grade 2 or less card from your drop, and call it to (RC).\n•COST[Energy Blast (2)], look at the top card of your deck, put it on the bottom of the deck or into soul, choose one of your opponent's rear-guards, and put it into soul.\n[AUTO](RC): When this unit attacks, if your opponent's vanguard is grade 3 or greater, this unit gets [Power]+5000 until end of that battle. If you have a vanguard with only one clan, it gets [Power]+5000 until end of that battle if your opponent's vanguard is grade 2 or greater instead of grade 3 or greater."
+      },
+      {
+        name: "Mutual Feelings Maiden, Pense",
+        nameJp: "相思の乙女 パンセ",
+        image: "assets/cards/mutual-feelings-maiden-pense.png",
+        grade: "G2",
+        effect: "[Ace Unit] (You may only have one Ace Unit in a deck)\n[Unique Skill]-[AUTO]: When this unit is placed on (RC) other than during the battle phase, this unit gets [Power]+5000 until end of turn. COST[Energy Blast (3)], look at the top seven cards of your deck, choose up to one card from among them, discard it, and shuffle the deck. Choose up to one card with grade less than or equal to your vanguard from your drop, and call it to (RC). (You may only use Unique Skills a total of once per fight among all your cards)\n[AUTO](RC): When this unit attacks, if your opponent's vanguard is grade 3 or greater, until end of that battle, this unit gets [Power]+5000, and if your drop has ten or more cards, it also gets [Power]+5000."
+      },
+      {
+        name: "Marauding Shade",
+        nameJp: "マローディング・シェイド",
+        image: "assets/cards/marauding-shade.png",
+        grade: "G2",
+        effect: "[AUTO]: Hollow (When placed on (RC), you may have it become hollowed. If you do, retire it at the end of turn)\n[AUTO](RC): When this unit becomes hollowed, if you have a \"Vampire Princess of Night Fog, Nightrose\" crest, this unit gets [Power]+5000 until end of turn. If your drop has ten or more cards, it gets [Power]+10000 instead of +5000.\n[AUTO]: When this unit is put on (GC), if you have a \"Vampire Princess of Night Fog, Nightrose\" crest, this unit gets [Shield]+5000 until end of turn. If your drop has ten or more cards, it gets [Shield]+10000 instead of +5000."
+      },
+      {
+        name: "Protection: Twincast",
+        nameJp: "双つに連なる守護の法陣",
+        image: "assets/cards/protection-twincast.png",
+        grade: "G2",
+        effect: "[Regalis Piece] (You may only have one Regalis Piece in your deck, and use it a total of one time in a fight.)\nChoose one of your units being attacked, and it gets [Power]+10000 until end of that battle.\n[CONT]: This card's [AUTO] ability can be resolved even if you have resolved a [Regalis Piece] ability this fight.\n[AUTO](Drop): When your unit is attacked, COST[remove this card from drop], choose one of your units being attacked, and it gets [Power]+5000 until end of that battle for each grade of that unit."
+      },
+      {
+        name: "Ghost Chase",
+        nameJp: "ゴースト・チェイス",
+        image: "assets/cards/ghost-chase.png",
+        grade: "G2",
+        effect: "Choose one of your units, and it gets [Power]+5000 until end of that battle. Choose one of your rear-guards not being attacked, and return it to your hand."
+      },
+      {
+        name: "Parting Shade",
+        nameJp: "パーティング・シェイド",
+        image: "assets/cards/parting-shade.png",
+        grade: "G1",
+        effect: "[AUTO]: When this unit is placed by riding from \"Undying Departed, Grenache\", draw a card, and you get a \"Vampire Princess of Night Fog, Nightrose\" crest."
+      },
+      {
+        name: "Graeme the Ghostie",
+        nameJp: "お化けのぐれーむ",
+        image: "assets/cards/graeme-the-ghostie.png",
+        grade: "G1",
+        effect: "[AUTO](Drop): When your vanguard with \"Ghostie\" in its card name is placed, if all of your rear-guards have a different name from this card, you may call this card to (RC).\n[AUTO](RC/Hand): At the beginning of the guard step of the battle your unit with only «Granblue» for its clan was attacked, COST[put this card into drop], choose a unit being attacked, and it gets [Power]+10000 until end of that battle. (Performed before calling guardians and intercepting)"
+      },
+      {
+        name: "Witch Doctor of Powdered Bone, Negrobone",
+        nameJp: "粉骨の呪術師 ネグロボーン",
+        image: "assets/cards/witch-doctor-of-powdered-bone-negrobone.png",
+        grade: "G1",
+        effect: "[AUTO](RC): At the end of the battle this unit boosted and it was placed from drop this turn, if you have a \"Vampire Princess of Night Fog, Nightrose\" crest, COST[retire this unit], and draw a card."
+      },
+      {
+        name: "Waterspout Djinn",
+        nameJp: "竜巻のジン",
+        image: "assets/cards/waterspout-djinn.png",
+        grade: "G1",
+        effect: "Sentinel.\n[AUTO]: When this unit is put on (GC), choose one of your units, and it cannot be hit until end of that battle. If your hand has two or more cards, choose a card from your hand, and discard it."
+      },
+      {
+        name: "Undying Departed, Grenache",
+        nameJp: "死せざる死者 グルナッシュ",
+        image: "assets/cards/undying-departed-grenache.png",
+        grade: "G0",
+        effect: "[AUTO]: When this unit is rode upon, if you went second, draw a card."
+      },
+      {
+        name: "Ancestral Dragon King of Zenith Colors, Founaherdio",
+        nameJp: "極彩の祖竜王 ファウナヘルディオ",
+        image: "assets/cards/ancestral-dragon-king-of-zenith-colors-founaherdio.png",
+        grade: "G0",
+        effect: "Over Trigger: [Power]+100 Million (you may only have one Over Trigger in a deck; when revealed as a trigger, remove this card from the game, draw a card, and choose one of your units to get the power boost until end of turn; if revealed during a drive check, its Additional Effect activates instead).\n[CONT]: This card is regarded as \"Spiritual King of Ignition, Valnout\".\nAdditional Effect: Choose one of your [Stand] rear-guards, and it gets \"[AUTO](RC) 1/Turn: At the end of the battle this unit attacked, [Stand] this unit.\" until end of turn. If you did not choose a card, draw a card, choose up to one unit card from your hand, and call it to (RC)."
+      },
+      {
+        name: "Zypsophilia Fairy, Asher",
+        nameJp: "ジプソフィラの妖精 アシェル",
+        image: "assets/cards/zypsophilia-fairy-asher.png",
+        grade: "G0",
+        effect: "Heal Trigger: [Power]+10000.\n[AUTO]: When this unit is put on (GC), if your opponent's attacking unit has attacked two or more times this turn, this unit gets [Shield]+15000 until end of that battle. (Active if this battle is its second attack this turn or more)"
+      },
+      {
+        name: "Aspiring Maiden, Alana",
+        nameJp: "憧憬の乙女 アラナ",
+        image: "assets/cards/aspiring-maiden-alana.png",
+        grade: "G0",
+        effect: "Critical Trigger: [Power]+10000, [Critical]+1.\n[AUTO](RC): At the end of the battle this unit boosted, COST[put this unit into your soul], choose one of your units, and it gets [Power]+2000 until end of turn."
+      },
+      {
+        name: "Frenzied Heiress",
+        nameJp: "狂乱の令嬢",
+        image: "assets/cards/frenzied-heiress.png",
+        grade: "G0",
+        effect: "Front Trigger: [Power]+10000 to all your front row units.\n[CONT](GC): If your opponent's vanguard is grade 3 or greater, this unit gets [Shield]+5000."
+      },
+      {
+        name: "Abyss Temptation",
+        nameJp: "深淵誘い",
+        image: "assets/cards/abyss-temptation.png",
+        grade: "G0",
+        effect: "Critical Trigger: [Power]+10000, [Critical]+1.\nA grade 0 critical trigger unit for the Nightrose ride line, with no additional abilities beyond its trigger effect, printed at 5000 power / 15000 shield."
+      }
+    ]
   }
 ];
