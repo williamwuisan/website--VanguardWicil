@@ -81,15 +81,8 @@ function renderDeckGrid() {
   });
 }
 
-function showDeckDetail(deckId) {
-  const deck = DECKS.find(d => d.id === deckId);
-  if (!deck) return;
-
-  document.getElementById('detailDeckName').textContent = deck.name;
-  document.getElementById('detailDeckMeta').textContent = `${deck.clan ? deck.clan + ' · ' : ''}${deck.cards.length} kartu`;
-
-  const list = document.getElementById('cardList');
-  list.innerHTML = deck.cards.map(card => `
+function renderCardItem(card) {
+  return `
     <div class="card-item">
       ${card.image ? `<img class="card-item__image" src="${card.image}" alt="${card.name}" loading="lazy">` : ''}
       <div class="card-item__body">
@@ -99,7 +92,39 @@ function showDeckDetail(deckId) {
         <div class="card-item__effect">${card.effect || ''}</div>
       </div>
     </div>
-  `).join('');
+  `;
+}
+
+const SECTION_ORDER = ['Ride Line', 'Main Deck', 'Stride'];
+
+function showDeckDetail(deckId) {
+  const deck = DECKS.find(d => d.id === deckId);
+  if (!deck) return;
+
+  document.getElementById('detailDeckName').textContent = deck.name;
+  document.getElementById('detailDeckMeta').textContent = `${deck.clan ? deck.clan + ' · ' : ''}${deck.cards.length} kartu`;
+
+  const list = document.getElementById('cardList');
+  const hasSections = deck.cards.some(card => card.section);
+
+  if (!hasSections) {
+    list.innerHTML = `<div class="card-list">${deck.cards.map(renderCardItem).join('')}</div>`;
+  } else {
+    const sections = SECTION_ORDER.filter(name => deck.cards.some(c => c.section === name));
+    deck.cards.forEach(c => {
+      if (c.section && !sections.includes(c.section)) sections.push(c.section);
+    });
+
+    list.innerHTML = sections.map(sectionName => {
+      const cardsInSection = deck.cards.filter(c => c.section === sectionName);
+      return `
+        <div class="card-section">
+          <h3 class="card-section__title">${sectionName}</h3>
+          <div class="card-list">${cardsInSection.map(renderCardItem).join('')}</div>
+        </div>
+      `;
+    }).join('');
+  }
 
   showView('detail');
 }
