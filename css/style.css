@@ -213,19 +213,6 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
 .deck-detail__head h2 { font-size: 1.9rem; font-weight: 700; margin-bottom: 6px; }
 .deck-detail__head p { color: var(--orange); font-weight: 600; font-size: 0.9rem; }
 
-.card-section { margin-bottom: 40px; }
-.card-section:last-child { margin-bottom: 0; }
-.card-section__title {
-  font-family: 'Russo One', 'Rajdhani', sans-serif;
-  font-size: 1.15rem;
-  color: var(--orange);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  margin-bottom: 18px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid var(--border);
-}
-
 .card-list {
   display: grid;
   grid-template-columns: 1fr;
