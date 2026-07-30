@@ -92,7 +92,7 @@ function showDeckDetail(deckId) {
   list.innerHTML = deck.cards.map(card => `
     <div class="card-item">
       ${card.image ? `<img class="card-item__image" src="${card.image}" alt="${card.name}" loading="lazy">` : ''}
-      <div>
+      <div class="card-item__body">
         <div class="card-item__name">${card.name}</div>
         ${card.nameJp ? `<div class="card-item__name-jp">${card.nameJp}</div>` : ''}
         ${card.grade ? `<span class="card-item__grade">${card.grade}</span>` : ''}

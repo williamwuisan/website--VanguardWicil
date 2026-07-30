@@ -227,6 +227,8 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 20px;
+  height: 400px;
+  overflow: hidden;
 }
 .card-item__image {
   width: 100%;
@@ -235,8 +237,14 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
   border-radius: 8px;
   border: 1px solid var(--border);
 }
-.card-item__name { font-size: 1.1rem; font-weight: 700; margin-bottom: 2px; }
-.card-item__name-jp { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 10px; }
+.card-item__body {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  height: 100%;
+}
+.card-item__name { font-size: 1.1rem; font-weight: 700; margin-bottom: 2px; flex-shrink: 0; }
+.card-item__name-jp { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 10px; flex-shrink: 0; }
 .card-item__grade {
   display: inline-block;
   background: var(--orange-dim);
@@ -246,8 +254,22 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
   padding: 3px 10px;
   border-radius: 999px;
   margin-bottom: 10px;
+  flex-shrink: 0;
+  align-self: flex-start;
 }
-.card-item__effect { color: var(--text); font-size: 0.95rem; white-space: pre-line; }
+.card-item__effect {
+  color: var(--text);
+  font-size: 0.95rem;
+  white-space: pre-line;
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding-right: 6px;
+}
+.card-item__effect::-webkit-scrollbar { width: 6px; }
+.card-item__effect::-webkit-scrollbar-track { background: transparent; }
+.card-item__effect::-webkit-scrollbar-thumb { background: var(--border); border-radius: 999px; }
+.card-item__effect::-webkit-scrollbar-thumb:hover { background: var(--orange-dim); }
 
 @media (min-width: 860px) {
   .card-list { grid-template-columns: 1fr 1fr; }
@@ -259,7 +281,7 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
 /* ===== Responsive ===== */
 @media (max-width: 600px) {
   .header__inner { flex-direction: column; gap: 14px; }
-  .card-item { grid-template-columns: 1fr; }
+  .card-item { grid-template-columns: 1fr; height: 520px; }
   .card-item__image { max-width: 200px; margin: 0 auto; }
   .stats { gap: 32px; }
 }
