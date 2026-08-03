@@ -166,3 +166,10 @@ selectedClan = initialClans[0] || null;
 renderClanTabs();
 renderDeckGrid();
 renderStats();
+
+const heroFlipCard = document.getElementById('heroFlipCard');
+if (heroFlipCard) {
+  heroFlipCard.addEventListener('click', () => {
+    heroFlipCard.classList.toggle('is-flipped');
+  });
+}
