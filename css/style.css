@@ -139,10 +139,53 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
   0%, 100% { opacity: 0.75; transform: translate(-50%, -50%) scale(1); }
   50% { opacity: 1; transform: translate(-50%, -50%) scale(1.1); }
 }
+
+.hero-carousel { position: relative; width: 100%; }
+.hero-carousel__viewport { overflow: hidden; border-radius: var(--radius); }
+.hero-carousel__track {
+  display: flex;
+  transition: transform 0.4s ease;
+}
+.hero-carousel__slide { flex: 0 0 100%; min-width: 0; }
+.hero-carousel__arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(10, 10, 12, 0.6);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-size: 1.3rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 20;
+  transition: all 0.2s ease;
+}
+.hero-carousel__arrow:hover { background: var(--orange); color: #150a02; border-color: var(--orange); }
+.hero-carousel__arrow--prev { left: 8px; }
+.hero-carousel__arrow--next { right: 8px; }
+.hero-carousel__dots { display: flex; justify-content: center; gap: 8px; margin-top: 18px; }
+.hero-carousel__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--border);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+.hero-carousel__dot.is-active { background: var(--orange); width: 24px; }
+
 .flip-card {
   display: block;
   width: 100%;
-  aspect-ratio: 469 / 600;
+  aspect-ratio: 3 / 4;
   perspective: 1400px;
   background: none;
   border: none;

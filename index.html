@@ -62,17 +62,44 @@
     </div>
 
     <div class="hero-art">
-      <button class="flip-card" id="heroFlipCard" aria-label="Klik untuk lihat cerita singkat Chronojet Dragon">
-        <div class="flip-card__inner">
-          <div class="flip-card__face flip-card__face--front">
-            <img src="assets/hero-chronojet-dragon.webp" alt="Chronojet Dragon" class="hero-art__image">
-          </div>
-          <div class="flip-card__face flip-card__face--back">
-            <p class="flip-card__eyebrow">Lore</p>
-            <p class="flip-card__story">Long before it bore the name Chronojet, it was a lone hatchling lost between two ticking seconds, neither past nor future. The Dark States found it there, flickering in and out of the timeline, and gave it a name so it would have somewhere to return to.<br><br>Now it rides the gears of every clock at once. Each battle is just another tick it refuses to let pass — one more turn stolen back from a future that hasn't decided yet whether it wants a dragon in it.</p>
+      <div class="hero-carousel" id="heroCarousel">
+        <button class="hero-carousel__arrow hero-carousel__arrow--prev" id="heroPrev" aria-label="Sebelumnya">‹</button>
+        <button class="hero-carousel__arrow hero-carousel__arrow--next" id="heroNext" aria-label="Berikutnya">›</button>
+        <div class="hero-carousel__viewport">
+          <div class="hero-carousel__track" id="heroTrack">
+
+            <div class="hero-carousel__slide">
+              <button class="flip-card" data-flip-card aria-label="Klik untuk lihat cerita singkat Chronojet Dragon">
+                <div class="flip-card__inner">
+                  <div class="flip-card__face flip-card__face--front">
+                    <img src="assets/hero-chronojet-dragon.webp" alt="Chronojet Dragon" class="hero-art__image">
+                  </div>
+                  <div class="flip-card__face flip-card__face--back">
+                    <p class="flip-card__eyebrow">Lore</p>
+                    <p class="flip-card__story">Long before it bore the name Chronojet, it was a lone hatchling lost between two ticking seconds, neither past nor future. The Dark States found it there, flickering in and out of the timeline, and gave it a name so it would have somewhere to return to.<br><br>Now it rides the gears of every clock at once. Each battle is just another tick it refuses to let pass — one more turn stolen back from a future that hasn't decided yet whether it wants a dragon in it.</p>
+                  </div>
+                </div>
+              </button>
+            </div>
+
+            <div class="hero-carousel__slide">
+              <button class="flip-card" data-flip-card aria-label="Klik untuk lihat cerita singkat Harri">
+                <div class="flip-card__inner">
+                  <div class="flip-card__face flip-card__face--front">
+                    <img src="assets/hero-harri.jpg" alt="Masked Magician, Harri" class="hero-art__image">
+                  </div>
+                  <div class="flip-card__face flip-card__face--back">
+                    <p class="flip-card__eyebrow">Lore</p>
+                    <p class="flip-card__story">Nobody remembers booking Harri for the show. He simply appears once the lights dim, mask already on, bird already perched, as if the checkered stage had been waiting for him longer than anyone else in the room.<br><br>His tricks never repeat the same way twice — cards vanish into the wrong pocket, doves land as something else entirely. The one thing that never changes is the mask, and the quiet rule everyone in the circus knows better than to ask about: never wonder what it's hiding.</p>
+                  </div>
+                </div>
+              </button>
+            </div>
+
           </div>
         </div>
-      </button>
+        <div class="hero-carousel__dots" id="heroDots"></div>
+      </div>
       <p class="hero-art__caption">Lets BURN our money to the future</p>
     </div>
   </section>

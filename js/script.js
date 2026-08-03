@@ -167,9 +167,71 @@ renderClanTabs();
 renderDeckGrid();
 renderStats();
 
-const heroFlipCard = document.getElementById('heroFlipCard');
-if (heroFlipCard) {
-  heroFlipCard.addEventListener('click', () => {
-    heroFlipCard.classList.toggle('is-flipped');
+const heroCarousel = document.getElementById('heroCarousel');
+if (heroCarousel) {
+  const heroTrack = document.getElementById('heroTrack');
+  const heroSlides = Array.from(heroTrack.children);
+  const heroDotsContainer = document.getElementById('heroDots');
+  const heroPrevBtn = document.getElementById('heroPrev');
+  const heroNextBtn = document.getElementById('heroNext');
+
+  let heroIndex = 0;
+  let heroDragStartX = 0;
+  let heroDragDeltaX = 0;
+  let heroIsDragging = false;
+  let heroWasDragged = false;
+
+  function updateHeroCarousel() {
+    heroTrack.style.transform = `translateX(-${heroIndex * 100}%)`;
+    heroDotsContainer.querySelectorAll('.hero-carousel__dot').forEach((dot, i) => {
+      dot.classList.toggle('is-active', i === heroIndex);
+    });
+    heroPrevBtn.style.visibility = heroIndex === 0 ? 'hidden' : 'visible';
+    heroNextBtn.style.visibility = heroIndex === heroSlides.length - 1 ? 'hidden' : 'visible';
+  }
+
+  function goToHeroSlide(i) {
+    heroIndex = Math.max(0, Math.min(heroSlides.length - 1, i));
+    updateHeroCarousel();
+  }
+
+  heroSlides.forEach((_, i) => {
+    const dot = document.createElement('button');
+    dot.className = 'hero-carousel__dot' + (i === 0 ? ' is-active' : '');
+    dot.setAttribute('aria-label', `Slide ${i + 1}`);
+    dot.addEventListener('click', () => goToHeroSlide(i));
+    heroDotsContainer.appendChild(dot);
   });
+
+  heroPrevBtn.addEventListener('click', () => goToHeroSlide(heroIndex - 1));
+  heroNextBtn.addEventListener('click', () => goToHeroSlide(heroIndex + 1));
+
+  heroCarousel.addEventListener('pointerdown', (e) => {
+    heroIsDragging = true;
+    heroWasDragged = false;
+    heroDragStartX = e.clientX;
+    heroDragDeltaX = 0;
+  });
+  heroCarousel.addEventListener('pointermove', (e) => {
+    if (!heroIsDragging) return;
+    heroDragDeltaX = e.clientX - heroDragStartX;
+  });
+  heroCarousel.addEventListener('pointerup', () => {
+    if (!heroIsDragging) return;
+    heroIsDragging = false;
+    if (Math.abs(heroDragDeltaX) > 40) {
+      heroWasDragged = true;
+      goToHeroSlide(heroIndex + (heroDragDeltaX < 0 ? 1 : -1));
+    }
+  });
+  heroCarousel.addEventListener('pointerleave', () => { heroIsDragging = false; });
+
+  document.querySelectorAll('[data-flip-card]').forEach(card => {
+    card.addEventListener('click', () => {
+      if (heroWasDragged) { heroWasDragged = false; return; }
+      card.classList.toggle('is-flipped');
+    });
+  });
+
+  updateHeroCarousel();
 }
