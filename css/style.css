@@ -215,46 +215,36 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
 
 .section-tabs {
   display: flex;
-  justify-content: center;
-  margin: 8px 0 44px;
-  padding-top: 16px;
+  gap: 36px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 32px;
 }
 .section-tab {
   position: relative;
-  width: 160px;
-  padding: 22px 18px 18px;
-  margin-left: -34px;
-  background: var(--black-card);
-  border: 1px solid var(--border);
-  border-radius: 16px;
+  background: none;
+  border: none;
+  padding: 4px 2px 16px;
   color: var(--text-muted);
-  font-family: 'Russo One', 'Rajdhani', sans-serif;
-  font-size: 0.85rem;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  text-align: center;
+  font-family: 'Rajdhani', 'Inter', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 600;
   cursor: pointer;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.45);
-  transition: transform 0.35s cubic-bezier(.2,.8,.3,1.2), box-shadow 0.35s ease, background 0.35s ease, color 0.35s ease, border-color 0.35s ease;
+  transition: color 0.2s ease;
 }
-.section-tab:first-child { margin-left: 0; }
-.section-tab:nth-child(1) { transform: rotate(-7deg) translateY(14px); z-index: 1; }
-.section-tab:nth-child(2) { transform: rotate(0deg) translateY(0); z-index: 2; }
-.section-tab:nth-child(3) { transform: rotate(7deg) translateY(14px); z-index: 1; }
-.section-tab:hover { color: var(--text); border-color: var(--orange-dim); }
-.section-tab.is-active {
-  background: linear-gradient(160deg, var(--orange-bright) 0%, var(--orange) 55%, #ff4d00 100%);
-  color: #150a02;
-  border-color: transparent;
-  z-index: 5;
-  box-shadow: 0 20px 40px rgba(255,122,26,0.5);
+.section-tab:hover { color: var(--text); }
+.section-tab.is-active { color: var(--orange); }
+.section-tab.is-active::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: -1px;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--orange);
 }
-.section-tab:nth-child(1).is-active { transform: rotate(-3deg) translateY(-14px) scale(1.08); }
-.section-tab:nth-child(2).is-active { transform: rotate(0deg) translateY(-18px) scale(1.1); }
-.section-tab:nth-child(3).is-active { transform: rotate(3deg) translateY(-14px) scale(1.08); }
 
 @media (max-width: 600px) {
-  .section-tab { width: 110px; padding: 16px 10px 14px; font-size: 0.72rem; margin-left: -22px; }
+  .section-tabs { gap: 20px; }
+  .section-tab { font-size: 0.9rem; }
 }
 
 .card-list {
