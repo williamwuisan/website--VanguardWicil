@@ -117,10 +117,10 @@ function renderSectionTabs(sections) {
   }
 
   container.innerHTML = sections.map(sectionName => `
-    <button class="clan-tab${sectionName === selectedSection ? ' is-active' : ''}" data-section="${sectionName}">${sectionName}</button>
+    <button class="section-tab${sectionName === selectedSection ? ' is-active' : ''}" data-section="${sectionName}">${sectionName}</button>
   `).join('');
 
-  container.querySelectorAll('.clan-tab').forEach(btn => {
+  container.querySelectorAll('.section-tab').forEach(btn => {
     btn.addEventListener('click', () => {
       selectedSection = btn.dataset.section;
       renderSectionTabs(sections);
