@@ -375,12 +375,12 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
 
 .section-tabs {
   display: flex;
-  gap: 36px;
   border-bottom: 1px solid var(--border);
   margin-bottom: 32px;
 }
 .section-tab {
   position: relative;
+  flex: 1;
   background: none;
   border: none;
   padding: 4px 2px 16px;
@@ -388,6 +388,7 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
   font-family: 'Rajdhani', 'Inter', sans-serif;
   font-size: 1.05rem;
   font-weight: 600;
+  text-align: center;
   cursor: pointer;
   transition: color 0.2s ease;
 }
@@ -403,7 +404,6 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
 }
 
 @media (max-width: 600px) {
-  .section-tabs { gap: 20px; }
   .section-tab { font-size: 0.9rem; }
 }
 
