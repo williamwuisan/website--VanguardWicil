@@ -175,10 +175,10 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
   padding: 0;
   cursor: pointer;
   border-radius: var(--radius);
-  box-shadow: 0 0 70px rgba(255,122,26,0.35), 0 20px 50px rgba(0,0,0,0.6);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.6);
   transition: transform 0.35s ease, box-shadow 0.35s ease;
 }
-.flip-card:hover { transform: translateY(-4px); box-shadow: 0 0 90px rgba(255,122,26,0.5), 0 25px 60px rgba(0,0,0,0.6); }
+.flip-card:hover { transform: translateY(-4px); box-shadow: 0 25px 60px rgba(0,0,0,0.6); }
 .flip-card__inner {
   position: relative;
   width: 100%;
