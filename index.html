@@ -15,6 +15,9 @@
 
 <header class="header">
   <div class="header__inner">
+    <button class="menu-toggle" id="menuToggle" aria-label="Buka menu">
+      <span></span><span></span><span></span>
+    </button>
     <a href="#" class="logo" data-nav="home">
       <svg class="logo__mark" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <defs>
@@ -31,12 +34,36 @@
       </svg>
       <span class="logo__text">Wicil<span class="logo__accent">TCG</span></span>
     </a>
-    <nav class="nav">
-      <button class="nav__link is-active" data-nav="home">Home</button>
-      <button class="nav__link" data-nav="decks">Decklist</button>
-    </nav>
+    <div class="header__spacer"></div>
   </div>
 </header>
+
+<div class="drawer-overlay" id="drawerOverlay"></div>
+<nav class="drawer" id="drawer">
+  <div class="drawer__brand">
+    <svg class="logo__mark" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <polygon points="50,3 90,25 90,75 50,97 10,75 10,25" fill="#0a0a0c" stroke="url(#logoGrad)" stroke-width="5"/>
+      <polygon points="50,11 83,29 83,71 50,89 17,71 17,29" fill="none" stroke="url(#logoGrad)" stroke-width="1" opacity="0.45"/>
+      <text x="50" y="68" text-anchor="middle" font-family="'Russo One', Arial, sans-serif" font-size="46" fill="url(#logoGrad)">W</text>
+      <polygon points="50,2 57,13 50,24 43,13" fill="url(#logoGrad)"/>
+    </svg>
+    <div>
+      <div class="drawer__brand-name">Wicil<span class="logo__accent">TCG</span></div>
+      <div class="drawer__brand-sub">Personal Card Reference</div>
+    </div>
+    <button class="drawer__close" id="drawerClose" aria-label="Tutup menu">✕</button>
+  </div>
+  <div class="drawer__menu">
+    <button class="drawer__item is-active" data-nav="home">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>
+      Home
+    </button>
+    <button class="drawer__item" data-nav="decks">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="12" height="16" rx="2"/><path d="M9 21h9a2 2 0 0 0 2-2V7"/></svg>
+      Decklist
+    </button>
+  </div>
+</nav>
 
 <main>
 

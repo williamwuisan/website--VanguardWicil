@@ -47,11 +47,11 @@ img { max-width: 100%; display: block; }
   max-width: 1080px;
   margin: 0 auto;
   padding: 16px 24px;
-  display: flex;
+  display: grid;
+  grid-template-columns: 44px 1fr 44px;
   align-items: center;
-  justify-content: space-between;
 }
-.logo { display: flex; align-items: center; gap: 10px; }
+.logo { display: flex; align-items: center; gap: 10px; justify-self: center; }
 .logo__mark {
   width: 38px; height: 38px;
   flex-shrink: 0;
@@ -59,18 +59,97 @@ img { max-width: 100%; display: block; }
 }
 .logo__text { font-family: 'Russo One', 'Rajdhani', sans-serif; font-weight: 400; font-size: 1.3rem; letter-spacing: 0.01em; color: var(--text); }
 .logo__accent { color: var(--orange); }
+.header__spacer { width: 44px; }
 
-.nav { display: flex; gap: 4px; background: var(--black-soft); padding: 4px; border-radius: 999px; border: 1px solid var(--border); }
-.nav__link {
-  padding: 8px 18px;
-  border-radius: 999px;
-  font-weight: 600;
-  font-size: 0.9rem;
+/* ===== Hamburger menu toggle ===== */
+.menu-toggle {
+  width: 42px; height: 42px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  background: var(--black-soft);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+}
+.menu-toggle:hover { border-color: var(--orange-dim); }
+.menu-toggle span { width: 18px; height: 2px; background: var(--text); border-radius: 2px; }
+
+/* ===== Drawer navigation ===== */
+.drawer-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 90;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+.drawer-overlay.is-open { opacity: 1; visibility: visible; }
+
+.drawer {
+  position: fixed;
+  top: 0; left: 0; bottom: 0;
+  width: 280px;
+  max-width: 82vw;
+  background: var(--black-card);
+  border-right: 1px solid var(--border);
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  padding: 26px 20px;
+  transform: translateX(-100%);
+  transition: transform 0.35s cubic-bezier(.3, .8, .3, 1);
+  box-shadow: 30px 0 60px rgba(0, 0, 0, 0.5);
+}
+.drawer.is-open { transform: translateX(0); }
+
+.drawer__brand {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 32px;
+  padding-right: 28px;
+}
+.drawer__brand .logo__mark { width: 40px; height: 40px; }
+.drawer__brand-name { font-family: 'Russo One', 'Rajdhani', sans-serif; font-size: 1.05rem; color: var(--text); }
+.drawer__brand-sub { font-size: 0.72rem; color: var(--text-muted); margin-top: 2px; }
+.drawer__close {
+  position: absolute;
+  right: 0; top: 4px;
+  width: 28px; height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
   color: var(--text-muted);
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+.drawer__close:hover { color: var(--orange); }
+
+.drawer__menu { display: flex; flex-direction: column; gap: 6px; }
+.drawer__item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 13px 16px;
+  border-radius: 12px;
+  color: var(--text-muted);
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-align: left;
   transition: all 0.2s ease;
 }
-.nav__link:hover { color: var(--text); }
-.nav__link.is-active { background: var(--orange); color: #150a02; }
+.drawer__item svg { width: 20px; height: 20px; flex-shrink: 0; }
+.drawer__item:hover { background: var(--black-soft); color: var(--text); }
+.drawer__item.is-active { background: var(--orange); color: #150a02; }
 
 /* ===== Buttons ===== */
 .btn {
@@ -395,7 +474,6 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
 
 /* ===== Responsive ===== */
 @media (max-width: 600px) {
-  .header__inner { flex-direction: column; gap: 14px; }
   .card-item { grid-template-columns: 1fr; height: 520px; }
   .card-item__image { max-width: 200px; margin: 0 auto; }
   .stats { gap: 32px; }

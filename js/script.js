@@ -9,7 +9,7 @@ let selectedClan = null;
 function showView(name) {
   Object.values(views).forEach(v => v.classList.add('view--hidden'));
   views[name].classList.remove('view--hidden');
-  document.querySelectorAll('.nav__link').forEach(link => {
+  document.querySelectorAll('.drawer__item').forEach(link => {
     link.classList.toggle('is-active', link.dataset.nav === name);
   });
   window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -19,7 +19,29 @@ document.querySelectorAll('[data-nav]').forEach(el => {
   el.addEventListener('click', () => {
     const target = el.dataset.nav;
     if (target === 'home' || target === 'decks') showView(target);
+    closeDrawer();
   });
+});
+
+const menuToggle = document.getElementById('menuToggle');
+const drawer = document.getElementById('drawer');
+const drawerOverlay = document.getElementById('drawerOverlay');
+const drawerClose = document.getElementById('drawerClose');
+
+function openDrawer() {
+  drawer.classList.add('is-open');
+  drawerOverlay.classList.add('is-open');
+}
+function closeDrawer() {
+  drawer.classList.remove('is-open');
+  drawerOverlay.classList.remove('is-open');
+}
+
+menuToggle.addEventListener('click', openDrawer);
+drawerOverlay.addEventListener('click', closeDrawer);
+drawerClose.addEventListener('click', closeDrawer);
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeDrawer();
 });
 
 function getClans() {
