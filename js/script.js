@@ -92,7 +92,7 @@ function renderDeckGrid() {
     const card = document.createElement('button');
     card.className = 'deck-card';
     card.innerHTML = `
-      ${deck.image ? `<img class="deck-card__image" src="${deck.image}" alt="${deck.name}" loading="lazy">` : ''}
+      ${deck.image ? `<div class="deck-card__image-wrap"><img class="deck-card__image" src="${deck.image}" alt="${deck.name}" loading="lazy"></div>` : ''}
       <div class="deck-card__body">
         <div class="deck-card__name">${deck.name}</div>
         <div class="deck-card__meta">${deck.clan ? deck.clan + ' · ' : ''}${deck.cards.length} kartu</div>
@@ -106,7 +106,7 @@ function renderDeckGrid() {
 function renderCardItem(card) {
   return `
     <div class="card-item">
-      ${card.image ? `<img class="card-item__image" src="${card.image}" alt="${card.name}" loading="lazy">` : ''}
+      ${card.image ? `<div class="card-item__image-wrap"><img class="card-item__image" src="${card.image}" alt="${card.name}" loading="lazy"></div>` : ''}
       <div class="card-item__body">
         <div class="card-item__name">${card.name}</div>
         ${card.nameJp ? `<div class="card-item__name-jp">${card.nameJp}</div>` : ''}
