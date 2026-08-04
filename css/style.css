@@ -15,7 +15,7 @@ a { text-decoration: none; color: inherit; }
   --ease: cubic-bezier(.22, 1, .36, 1);
 }
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; overflow-x: hidden; width: 100%; }
 
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -26,6 +26,7 @@ body {
   line-height: 1.6;
   min-height: 100vh;
   overflow-x: hidden;
+  width: 100%;
 }
 
 h1, h2, h3 { font-family: 'Inter', sans-serif; letter-spacing: -0.02em; line-height: 1.1; }
@@ -212,6 +213,22 @@ img { max-width: 100%; display: block; }
 main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
 .view { padding: 56px 0 80px; }
 .view--hidden { display: none; }
+.view--flush { padding: 0; }
+
+/* ===== Home page section bands ===== */
+.home-band {
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}
+.home-band--hero { padding-top: 56px; padding-bottom: 72px; }
+.home-band--art {
+  padding-top: 72px;
+  padding-bottom: 80px;
+  background: var(--black-card);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.home-band__inner { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
 
 /* ===== Home / Hero ===== */
 .hero { position: relative; text-align: center; max-width: 680px; margin: 0 auto 64px; padding-top: 24px; }
@@ -510,10 +527,10 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
   transition: border-color 0.25s ease, box-shadow 0.25s ease;
 }
 .card-item:hover { border-color: var(--orange-dim); box-shadow: 0 10px 24px rgba(17,17,16,0.1); }
-.card-item__image-wrap { overflow: hidden; border-radius: 8px; border: 1px solid var(--border); }
+.card-item__image-wrap { height: 100%; overflow: hidden; border-radius: 8px; border: 1px solid var(--border); }
 .card-item__image {
   width: 100%;
-  aspect-ratio: 63/88;
+  height: 100%;
   object-fit: cover;
   transition: transform 0.6s var(--ease);
 }
@@ -562,7 +579,7 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
 /* ===== Responsive ===== */
 @media (max-width: 600px) {
   .card-item { grid-template-columns: 1fr; height: 520px; }
-  .card-item__image-wrap { max-width: 200px; margin: 0 auto; }
+  .card-item__image-wrap { max-width: 200px; height: 220px; margin: 0 auto; }
   .stats { gap: 32px; }
   .btn { padding: 13px 22px; font-size: 0.9rem; }
 }

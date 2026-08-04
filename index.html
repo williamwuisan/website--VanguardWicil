@@ -68,27 +68,33 @@
 <main>
 
   <!-- ===== HOME VIEW ===== -->
-  <section id="view-home" class="view">
-    <div class="hero reveal">
-      <div class="hero__glow"></div>
-      <span class="hero__accent-square" aria-hidden="true"></span>
-      <p class="eyebrow">Personal Card Reference</p>
-      <h1 class="hero__title">Semua deck &amp; skill kartu,<br><span class="text-accent">langsung dalam Bahasa Inggris.</span></h1>
-      <p class="hero__subtitle">Gak perlu buka banyak tab lagi buat cari efek kartu Jepang. Semua deck koleksi Wicil ada di sini.</p>
-      <button class="btn btn--primary" data-nav="decks"><span class="btn__label">Lihat Decklist</span><span class="btn__arrow">→</span></button>
+  <section id="view-home" class="view view--flush">
+    <div class="home-band home-band--hero">
+      <div class="home-band__inner">
+        <div class="hero reveal">
+          <div class="hero__glow"></div>
+          <span class="hero__accent-square" aria-hidden="true"></span>
+          <p class="eyebrow">Personal Card Reference</p>
+          <h1 class="hero__title">Semua deck &amp; skill kartu,<br><span class="text-accent">langsung dalam Bahasa Inggris.</span></h1>
+          <p class="hero__subtitle">Gak perlu buka banyak tab lagi buat cari efek kartu Jepang. Semua deck koleksi Wicil ada di sini.</p>
+          <button class="btn btn--primary" data-nav="decks"><span class="btn__label">Lihat Decklist</span><span class="btn__arrow">→</span></button>
+        </div>
+
+        <div class="stats reveal" style="transition-delay: 0.1s">
+          <div class="stat">
+            <span class="stat__num" id="deckCount">0</span>
+            <span class="stat__label">Deck</span>
+          </div>
+          <div class="stat">
+            <span class="stat__num" id="cardCount">0</span>
+            <span class="stat__label">Kartu</span>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <div class="stats reveal" style="transition-delay: 0.1s">
-      <div class="stat">
-        <span class="stat__num" id="deckCount">0</span>
-        <span class="stat__label">Deck</span>
-      </div>
-      <div class="stat">
-        <span class="stat__num" id="cardCount">0</span>
-        <span class="stat__label">Kartu</span>
-      </div>
-    </div>
-
+    <div class="home-band home-band--art">
+      <div class="home-band__inner">
     <div class="hero-art reveal" style="transition-delay: 0.2s">
       <div class="hero-carousel" id="heroCarousel">
         <div class="hero-carousel__viewport">
@@ -169,6 +175,8 @@
         <div class="hero-carousel__dots" id="heroDots"></div>
       </div>
       <p class="hero-art__caption">Lets BURN our money to the future</p>
+    </div>
+      </div>
     </div>
   </section>
 
