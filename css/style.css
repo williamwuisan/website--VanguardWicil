@@ -565,7 +565,7 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
   box-shadow: 0 20px 40px rgba(17,17,16,0.14);
 }
 .deck-card__image-wrap { overflow: hidden; }
-.deck-card__image { width: 100%; aspect-ratio: 4/3; object-fit: cover; background: var(--black-soft); transition: transform 0.6s var(--ease); }
+.deck-card__image { width: 100%; aspect-ratio: 63/88; object-fit: cover; background: var(--black-soft); transition: transform 0.6s var(--ease); }
 .deck-card:hover .deck-card__image { transform: scale(1.08); }
 .deck-card__body { padding: 16px 18px; }
 .deck-card__name { font-weight: 700; font-size: 1.05rem; margin-bottom: 4px; }

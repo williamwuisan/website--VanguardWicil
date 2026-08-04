@@ -388,139 +388,161 @@ const DECKS = [
     id: "heartluru-deck",
     name: "Heartluru Deck",
     clan: "Dark States",
-    image: "assets/cards/sugary-and-scary-land-heartluru.png",
+    image: "assets/cards/sugary-and-scary-land-heartluru.webp",
     cards: [
       {
         name: "Sugary and Scary Land, Heartluru",
-        image: "assets/cards/sugary-and-scary-land-heartluru.png",
+        image: "assets/cards/sugary-and-scary-land-heartluru.webp",
         grade: "G3",
+        section: "Ride Line",
         effect: "[CONT](VC): During your turn, if your order zone has three or more \"Toys Are Made for Children\", all of your front row units get [Power]+5000.\n[ACT](VC)[1/Turn]: [COST][Energy-Blast 3], choose up to the same number of [Happy Toys] from your soul as the number of \"Toys Are Made for Children\" in your order zone, and call them to (RC).\n[AUTO](VC)[1/Turn]: When this unit attacks, [COST][Counter-Blast 1], and perform all of the following according to the number of \"Toys Are Made for Children\" in your order zone.\n・Two or more - Choose one of your front row [Happy Toys], [Stand] it, and it gets [Power]+10000 until end of turn.\n・Three or more - Until end of turn, this unit gets [Power]+5000, and if your opponent's vanguard is grade 3 or greater, it also gets drive +1.\n・Four or more - Choose one of your front row [Happy Toys], [Stand] it, and it gets [Power]+10000 until end of turn."
       },
       {
-        name: "Fire Regalis",
-        image: "assets/cards/fire-regalis.png",
-        grade: "G3",
-        effect: "Regalis Piece (You may only have one Regalis Piece in your deck, and use it a total of one time in a fight)\n[CONT]: This card cannot be played.\n[ACT](Hand)/(Drop): [COST][Remove this card], look at the top five cards of your deck, choose up to one card from among them, and reveal it. If you did not reveal a card, shuffle the deck, and draw a card. If you revealed a card, perform one of the following, and shuffle the deck.\n・If the revealed card is a [Glitter], put it into hand.\n・If the revealed card is less than or equal to your vanguard's grade, call it to (RC)."
-      },
-      {
         name: "Coaster Shark",
-        image: "assets/cards/coaster-shark.png",
+        image: "assets/cards/coaster-shark.webp",
         grade: "G2",
+        section: "Ride Line",
         effect: "[AUTO]: When this unit is placed by riding from \"Nutcracker Soldier, Nutcrumbs\", [COST][reveal a grade 3 card with \"Heartluru\" in its card name from the ride deck], search your deck for up to one \"Toys Are Made for Children\", reveal it and put it into hand, and shuffle the deck.\n[AUTO]Front Row Right (RC)[1/Turn]: At the end of the battle this unit attacked a rear-guard, if your order zone has a \"Toys Are Made for Children\", and this unit was placed on (RC) from soul this turn, [COST][Soul-Blast 1], and [Stand] this unit.\n[Happy Toys] (This card is a Happy Toys made for children)"
       },
       {
+        name: "Nutcracker Soldier, Nutcrumbs",
+        image: "assets/cards/nutcracker-soldier-nutcrumbs.webp",
+        grade: "G1",
+        section: "Ride Line",
+        effect: "[AUTO]: When this unit is placed by riding from \"Cute Teddy Bear, Titi\", [COST][reveal a grade 3 card with \"Heartluru\" in its card name from the ride deck], search your deck for up to one \"Toys Are Made for Children\", reveal it and put it into hand, and shuffle the deck.\n[AUTO]Back Row Center (RC): When this unit is placed by a card's ability, if your opponent's vanguard is grade 3 or greater, and your bind zone does not have a \"Cute Teddy Bear, Titi\", [COST][Counter-Blast 1 & bind a \"Cute Teddy Bear, Titi\" from soul], search your deck for up to one \"Toys Are Made for Children\", reveal it and put it into hand, and shuffle the deck.\n[Happy Toys] (This card is a Happy Toys made for children)"
+      },
+      {
+        name: "Cute Teddy Bear, Titi",
+        image: "assets/cards/cute-teddy-bear-titi.webp",
+        grade: "G0",
+        section: "Ride Line",
+        effect: "[AUTO]: When this unit is rode upon, if you went second, draw a card.\n[Happy Toys] (This card is a Happy Toys made for children)"
+      },
+      {
+        name: "Fire Regalis",
+        image: "assets/cards/fire-regalis.webp",
+        grade: "G3",
+        section: "Main Deck",
+        effect: "Regalis Piece (You may only have one Regalis Piece in your deck, and use it a total of one time in a fight)\n[CONT]: This card cannot be played.\n[ACT](Hand)/(Drop): [COST][Remove this card], look at the top five cards of your deck, choose up to one card from among them, and reveal it. If you did not reveal a card, shuffle the deck, and draw a card. If you revealed a card, perform one of the following, and shuffle the deck.\n・If the revealed card is a [Glitter], put it into hand.\n・If the revealed card is less than or equal to your vanguard's grade, call it to (RC)."
+      },
+      {
         name: "Toys Monster, Blavyloss",
-        image: "assets/cards/toys-monster-blavyloss.png",
+        image: "assets/cards/toys-monster-blavyloss.webp",
         grade: "G2",
+        section: "Main Deck",
         effect: "[AUTO]: When this unit is placed on (RC), if your order zone has a \"Toys Are Made for Children\", [COST][Counter-Blast 1], draw a card, and if your opponent's vanguard is grade 3 or greater, this unit gets [Power]+5000 until end of turn.\n[AUTO]Front Row Left (RC): When this unit [Stand] by the ability of your grade 3 or greater vanguard with \"Heartluru\" in its card name, this unit gets [Critical]+1 until end of turn.\n[Happy Toys] (This card is a Happy Toys made for children)"
       },
       {
         name: "Giant Fluffy",
-        image: "assets/cards/giant-fluffy.png",
+        image: "assets/cards/giant-fluffy.webp",
         grade: "G2",
+        section: "Main Deck",
         effect: "[AUTO]: When this unit is placed on (RC), [COST][Soul-Blast 2], choose a \"Toys Are Made for Children\" from your drop or face up damage zone cards, and put it into hand. If you put a card from the damage zone, put the top card of your deck into the damage zone.\n[AUTO]Front Row Right (RC): When this unit [Stand] by the ability of your grade 3 or greater vanguard with \"Heartluru\" in its card name, until end of turn, this unit gets \"[CONT](RC): During the battle this unit attacked, when your opponent would call cards from hand to (GC), they must call two or more at the same time.\", and [Power]+10000.\n[Happy Toys] (This card is a Happy Toys made for children)"
       },
       {
-        name: "Nutcracker Soldier, Nutcrumbs",
-        image: "assets/cards/nutcracker-soldier-nutcrumbs.png",
-        grade: "G1",
-        effect: "[AUTO]: When this unit is placed by riding from \"Cute Teddy Bear, Titi\", [COST][reveal a grade 3 card with \"Heartluru\" in its card name from the ride deck], search your deck for up to one \"Toys Are Made for Children\", reveal it and put it into hand, and shuffle the deck.\n[AUTO]Back Row Center (RC): When this unit is placed by a card's ability, if your opponent's vanguard is grade 3 or greater, and your bind zone does not have a \"Cute Teddy Bear, Titi\", [COST][Counter-Blast 1 & bind a \"Cute Teddy Bear, Titi\" from soul], search your deck for up to one \"Toys Are Made for Children\", reveal it and put it into hand, and shuffle the deck.\n[Happy Toys] (This card is a Happy Toys made for children)"
-      },
-      {
         name: "Fashion Doll, Ruby Rouge",
-        image: "assets/cards/fashion-doll-ruby-rouge.png",
+        image: "assets/cards/fashion-doll-ruby-rouge.webp",
         grade: "G1",
+        section: "Main Deck",
         effect: "[AUTO]: When this card is discarded from hand during your ride phase, you may reveal a grade 3 card with \"Heartluru\" in its card name from your ride deck. If you revealed a card, or you have a grade 3 or greater vanguard with \"Heartluru\" in its card name, [COST][Counter-Blast 1 or Energy-Blast 3], and draw a card.\n[ACT](RC): If you have a grade 3 or greater vanguard with \"Heartluru\" in its card name, and your card with the same card name as this card was not bound this turn, [COST][bind this unit], choose a [Happy Toys] from your drop, and call it to (RC).\n[Happy Toys] (This card is a Happy Toys made for children)"
       },
       {
         name: "Block Horse",
-        image: "assets/cards/block-horse.png",
+        image: "assets/cards/block-horse.webp",
         grade: "G1",
+        section: "Main Deck",
         effect: "[CONT]Back Row Right (RC): This unit gets \"Intercept\", and can intercept from the back row.\n[CONT](GC): If your order zone has a \"Toys Are Made for Children\", this unit gets [Shield]+5000.\n[Happy Toys] (This card is a Happy Toys made for children)"
       },
       {
         name: "Sparkly Bunny",
-        image: "assets/cards/sparkly-bunny.png",
+        image: "assets/cards/sparkly-bunny.webp",
         grade: "G1",
+        section: "Main Deck",
         effect: "[AUTO]: When this unit is placed on (RC), if your order zone has a \"Toys Are Made for Children\", look at the top three cards of your deck, choose up to one card from among them, put it into soul, and shuffle the deck.\n[AUTO]Back Row Left (RC): When your [Happy Toys] in the same column as this unit [Stand] by your card's ability, you may [Stand] this unit. If you [Stand] it, at the end of that turn, retire this unit.\n[Happy Toys] (This card is a Happy Toys made for children)"
       },
       {
         name: "Purple Jeweled Beast, Almethys",
-        image: "assets/cards/purple-jeweled-beast-almethys.png",
+        image: "assets/cards/purple-jeweled-beast-almethys.webp",
         grade: "G1",
+        section: "Main Deck",
         effect: "[AUTO]: When this unit is placed on (RC) or put on (GC), [COST][put a total of two cards from soul or drop that were in the ride deck into ride deck face up], and perform either of the following according to the circle this unit is on.\n・(RC) - [Counter-Charge 1].\n・(GC) - This unit gets [Shield]+15000 until end of that battle."
       },
       {
-        name: "Steam Maiden, Arlim",
-        image: "assets/cards/steam-maiden-arlim.png",
+        name: "Darkside Mirror Master",
+        image: "assets/cards/darkside-mirror-master.webp",
         grade: "G1",
-        effect: "Sentinel.\n[AUTO]: When this unit is put on (GC), choose one of your units, and until end of that battle, that unit cannot be hit. If you have two or more cards in hand, discard a card from hand."
+        section: "Main Deck",
+        effect: "Sentinel (You may only have up to four cards with \"[CONT]:Sentinel\" in a deck.)\n[AUTO]: When this unit is put on (GC), choose one of your units, and it cannot be hit until end of that battle. If your hand has two or more cards, choose a card from your hand, and discard it."
       },
       {
         name: "Opener of Heart, Philya",
-        image: "assets/cards/opener-of-heart-philya.png",
+        image: "assets/cards/opener-of-heart-philya.webp",
         grade: "G1",
+        section: "Main Deck",
         effect: "[AUTO](RC): When this unit boosts, if your opponent has one or less rear-guards, or you played an order this turn, this unit gets [Power]+5000 until end of that battle, and at the end of that battle, [COST][put this unit into soul], and draw a card."
       },
       {
         name: "Elementaria Sanctitude",
-        image: "assets/cards/elementaria-sanctitude.png",
+        image: "assets/cards/elementaria-sanctitude.webp",
         grade: "G1",
+        section: "Main Deck",
         effect: "[CONT]: Sentinel (You may only have up to four cards with \"[CONT]: Sentinel\" in a deck.)\n[CONT]: You may only have one \"Elementaria Sanctitude\" in a deck.\nIf your opponent's vanguard has \"Triple Drive\", this ability can be played without paying the cost.\nPlay this with [COST][discard a card from hand] if your vanguard is grade 3 or less!\nChoose one of your units, and it cannot be hit until end of that battle. Remove this card."
       },
       {
         name: "Toys Are Made for Children",
-        image: "assets/cards/toys-are-made-for-children.png",
+        image: "assets/cards/toys-are-made-for-children.webp",
         grade: "G1",
+        section: "Main Deck",
         effect: "(After a set order is played, put it into the order zone)\n[CONT]: If your vanguard is a [Happy Toys], or you have a grade 3 or greater vanguard with \"Heartluru\" in its card name, this card gets all of the following.\n・[AUTO]: When this card is put into the order zone, look at the top five cards of your deck, choose up to two [Happy Toys] from among them, reveal them, choose up to one card from among the revealed cards, put it into hand, put the rest of the revealed cards into soul, and shuffle the deck.\n・[ACT]Order Zone: [COST][Rest two cards with the same card name as this card from the order zone], choose up to one [Happy Toys] from your drop, and put it into soul."
-      },
-      {
-        name: "Cute Teddy Bear, Titi",
-        image: "assets/cards/cute-teddy-bear-titi.png",
-        grade: "G0",
-        effect: "[AUTO]: When this unit is rode upon, if you went second, draw a card.\n[Happy Toys] (This card is a Happy Toys made for children)"
-      },
-      {
-        name: "Diabolos Girls, Natalia",
-        image: "assets/cards/diabolos-girls-natalia.png",
-        grade: "G0",
-        effect: "[CONT](GC): If your opponent's vanguard is grade 3 or greater, this unit gets [Shield]+5000.\n(Deck contains 3 total copies of this card across two different print rarities, shown as separate entries in the source decklist.)"
-      },
-      {
-        name: "Direful Doll, Alexandra",
-        image: "assets/cards/direful-doll-alexandra.png",
-        grade: "G0",
-        effect: "Heal Trigger: [Power]+10000.\n(You may only have up to four [Heal] triggers in a deck.) When revealed as a trigger, choose one of your units, and it gets [Power]+10000 until end of turn. Then, if the number of cards in your damage zone is equal to or more than your opponent's, choose a card from your damage zone, and heal it."
-      },
-      {
-        name: "Lively Breath Dragon",
-        image: "assets/cards/lively-breath-dragon.png",
-        grade: "G0",
-        effect: "Critical Trigger: [Power]+10000, [Critical]+1.\nWhen revealed as a trigger, choose one of your units, and it gets [Critical]+1 until end of turn. Then, choose one of your units, and it gets [Power]+10000 until end of turn."
-      },
-      {
-        name: "Connected Rampage, Clenn",
-        image: "assets/cards/connected-rampage-clenn.png",
-        grade: "G0",
-        effect: "Critical Trigger: [Power]+10000, [Critical]+1.\nWhen revealed as a trigger, choose one of your units, and it gets [Critical]+1 until end of turn. Then, choose one of your units, and it gets [Power]+10000 until end of turn."
-      },
-      {
-        name: "Caper Companion",
-        image: "assets/cards/caper-companion.png",
-        grade: "G0",
-        effect: "Heal Trigger: [Power]+10000.\n(You may only have up to four [Heal] triggers in a deck.) When revealed as a trigger, choose one of your units, and it gets [Power]+10000 until end of turn. Then, if the number of cards in your damage zone is equal to or more than your opponent's, choose a card from your damage zone, and heal it."
       },
       {
         name: "Spiritual King of Determination, Olbaria",
         image: "assets/cards/spiritual-king-of-determination-olbaria.png",
         grade: "G0",
+        section: "Main Deck",
         effect: "Over Trigger: [Power]+100 Million.\n(You may only have one [Over] trigger in a deck.) When revealed as a trigger, remove that card, draw a card, choose one of your units, and it gets [Power]+100 Million until end of turn. If revealed during drive check, activate its additional effect instead.\nAdditional Effect - Choose one of your units, and it gets [Power]+100 Million until end of turn."
       },
       {
         name: "Diabolos Girls, Maimai",
         image: "assets/cards/diabolos-girls-maimai.png",
         grade: "G0",
+        section: "Main Deck",
         effect: "Critical Trigger: [Power]+10000, [Critical]+1.\nWhen revealed as a trigger, choose one of your units, and it gets [Critical]+1 until end of turn. Then, choose one of your units, and it gets [Power]+10000 until end of turn."
+      },
+      {
+        name: "Hades Dragon Deity of Resentment, Gallmageheld",
+        image: "assets/cards/hades-dragon-deity-of-resentment-gallmageheld.webp",
+        grade: "G0",
+        section: "Main Deck",
+        effect: "Over Trigger: [Power]+100 Million.\n(You may only have one [Over] trigger in a deck.) When revealed as a trigger, remove that card, draw a card, choose one of your units, and it gets [Power]+100 Million until end of turn. If revealed during drive check, activate its additional effect instead.\nAdditional Effect - You get \"During your turn, all of your vanguards get [Power]+10000/[Critical]+1\" until end of this fight."
+      },
+      {
+        name: "Swanky Enthraller",
+        image: "assets/cards/swanky-enthraller.webp",
+        grade: "G0",
+        section: "Main Deck",
+        effect: "Critical Trigger: [Power]+10000, [Critical]+1.\nWhen revealed as a trigger, choose one of your units, and it gets [Critical]+1 until end of turn. Then, choose one of your units, and it gets [Power]+10000 until end of turn."
+      },
+      {
+        name: "Silky Sky Actress",
+        image: "assets/cards/silky-sky-actress.webp",
+        grade: "G0",
+        section: "Main Deck",
+        effect: "Draw Trigger: [Power]+10000, draw a card.\nWhen revealed as a trigger, draw a card. Then, choose one of your units, and it gets [Power]+10000 until end of turn."
+      },
+      {
+        name: "Intrepid Spinner",
+        image: "assets/cards/intrepid-spinner.webp",
+        grade: "G0",
+        section: "Main Deck",
+        effect: "Power Trigger: [Power]+10000 (front row units only).\nWhen revealed as a trigger, all of your front row units get [Power]+10000 until end of turn."
+      },
+      {
+        name: "Gambling Juggler",
+        image: "assets/cards/gambling-juggler.webp",
+        grade: "G0",
+        section: "Main Deck",
+        effect: "Heal Trigger: [Power]+10000.\n(You may only have up to four [Heal] triggers in a deck.) When revealed as a trigger, choose one of your units, and it gets [Power]+10000 until end of turn. Then, if the number of cards in your damage zone is equal to or more than your opponent's, choose a card from your damage zone, and heal it."
       }
     ]
   }
