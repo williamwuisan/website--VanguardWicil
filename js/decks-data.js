@@ -496,20 +496,6 @@ const DECKS = [
         effect: "(After a set order is played, put it into the order zone)\n[CONT]: If your vanguard is a [Happy Toys], or you have a grade 3 or greater vanguard with \"Heartluru\" in its card name, this card gets all of the following.\n・[AUTO]: When this card is put into the order zone, look at the top five cards of your deck, choose up to two [Happy Toys] from among them, reveal them, choose up to one card from among the revealed cards, put it into hand, put the rest of the revealed cards into soul, and shuffle the deck.\n・[ACT]Order Zone: [COST][Rest two cards with the same card name as this card from the order zone], choose up to one [Happy Toys] from your drop, and put it into soul."
       },
       {
-        name: "Spiritual King of Determination, Olbaria",
-        image: "assets/cards/spiritual-king-of-determination-olbaria.png",
-        grade: "G0",
-        section: "Main Deck",
-        effect: "Over Trigger: [Power]+100 Million.\n(You may only have one [Over] trigger in a deck.) When revealed as a trigger, remove that card, draw a card, choose one of your units, and it gets [Power]+100 Million until end of turn. If revealed during drive check, activate its additional effect instead.\nAdditional Effect - Choose one of your units, and it gets [Power]+100 Million until end of turn."
-      },
-      {
-        name: "Diabolos Girls, Maimai",
-        image: "assets/cards/diabolos-girls-maimai.png",
-        grade: "G0",
-        section: "Main Deck",
-        effect: "Critical Trigger: [Power]+10000, [Critical]+1.\nWhen revealed as a trigger, choose one of your units, and it gets [Critical]+1 until end of turn. Then, choose one of your units, and it gets [Power]+10000 until end of turn."
-      },
-      {
         name: "Hades Dragon Deity of Resentment, Gallmageheld",
         image: "assets/cards/hades-dragon-deity-of-resentment-gallmageheld.webp",
         grade: "G0",
