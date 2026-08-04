@@ -269,6 +269,30 @@ function renderStats() {
   document.getElementById('cardCount').textContent = DECKS.reduce((sum, d) => sum + d.cards.length, 0);
 }
 
+function renderDailyCard() {
+  const allCards = [];
+  DECKS.forEach(deck => deck.cards.forEach(card => allCards.push({ deck, card })));
+  if (!allCards.length) return;
+
+  const pick = allCards[Math.floor(Math.random() * allCards.length)];
+  const img = document.getElementById('dailyCardImage');
+  const nameEl = document.getElementById('dailyCardName');
+  const jpEl = document.getElementById('dailyCardJp');
+  const deckEl = document.getElementById('dailyCardDeck');
+  const btn = document.getElementById('dailyCardBtn');
+
+  if (pick.card.image) img.src = pick.card.image;
+  img.alt = pick.card.name;
+  nameEl.textContent = pick.card.name;
+  jpEl.textContent = pick.card.nameJp || '';
+  jpEl.style.display = pick.card.nameJp ? '' : 'none';
+  deckEl.textContent = pick.deck.name;
+
+  const goToCard = () => showDeckDetail(pick.deck.id, { section: pick.card.section || null, highlightName: pick.card.name });
+  img.onclick = goToCard;
+  btn.onclick = goToCard;
+}
+
 /* ===== Lightbox ===== */
 const lightbox = document.getElementById('lightbox');
 const lightboxImage = document.getElementById('lightboxImage');
@@ -427,6 +451,7 @@ selectedClan = initialClans[0] || null;
 renderClanTabs();
 renderDeckGrid();
 renderStats();
+renderDailyCard();
 observeRevealAll();
 
 /* ===== PWA: service worker registration ===== */

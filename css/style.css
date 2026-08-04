@@ -463,6 +463,36 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
   100% { background-position: -100% 0; }
 }
 
+/* ===== Home / Card of the day ===== */
+.home-band--daily { padding-top: 64px; padding-bottom: 72px; }
+.daily-card {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  max-width: 640px;
+  margin: 0 auto;
+}
+.daily-card__media { flex-shrink: 0; width: 140px; }
+.daily-card__image {
+  width: 100%;
+  aspect-ratio: 63 / 88;
+  object-fit: cover;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.12);
+  cursor: pointer;
+  transition: transform 0.4s var(--ease);
+}
+.daily-card__image:hover { transform: scale(1.03); }
+.daily-card__name { font-size: 1.4rem; font-weight: 700; margin-bottom: 4px; }
+.daily-card__name-jp { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 8px; }
+.daily-card__deck { color: var(--orange); font-weight: 600; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 18px; }
+
+@media (max-width: 600px) {
+  .daily-card { flex-direction: column; text-align: center; gap: 20px; }
+  .daily-card__media { width: 160px; }
+}
+
 /* ===== Deck List View ===== */
 .view-head { margin-bottom: 32px; }
 .view-head h2 {
