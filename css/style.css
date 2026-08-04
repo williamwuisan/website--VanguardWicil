@@ -965,7 +965,7 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
 }
 
 /* ===== Footer ===== */
-.footer { text-align: center; padding: 32px 24px; color: var(--text-muted); font-size: 0.82rem; border-top: 1px solid var(--border); }
+.footer { text-align: center; padding: 32px 24px; color: #ffffff; font-size: 0.82rem; background: var(--orange); }
 
 /* ===== Responsive ===== */
 @media (max-width: 600px) {
