@@ -299,7 +299,7 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
 }
-.home-band--hero { padding-top: 56px; padding-bottom: 140px; }
+.home-band--hero { padding-top: 56px; padding-bottom: 215px; }
 .home-band--art {
   padding-top: 72px;
   padding-bottom: 80px;
