@@ -460,6 +460,140 @@ themeToggle.addEventListener('click', () => {
   applyTheme(next);
 });
 
+/* ===== Onboarding tour ===== */
+const TOUR_STEPS = [
+  {
+    title: 'Welcome to WicilTCG 👋',
+    body: "This is Wicil's personal Cardfight!! Vanguard reference — every card here already has its skill translated into English.",
+  },
+  {
+    target: '#headerSearchBtn',
+    title: 'Search anything, fast',
+    body: 'Tap here — or press "/" on a keyboard — to search every card by name, English or Japanese, without opening a deck first.',
+  },
+  {
+    target: '#menuToggle',
+    title: 'Everything else lives here',
+    body: 'Decklist, Search, the Glossary, and the dark mode switch are all one tap away in this menu.',
+  },
+  {
+    target: '.btn--primary[data-nav="decks"]',
+    title: 'Browse the decks',
+    body: "Every deck is grouped by nation, then by card — grade, skill text, all of it, right where you'd expect.",
+  },
+  {
+    target: '#dailyCardImage',
+    title: 'A random pull, every visit',
+    body: 'This card changes every time you open the site — just for a bit of nostalgia.',
+  },
+  {
+    title: "That's it!",
+    body: 'Have fun digging through the collection. You can replay this tour anytime from the menu.',
+  },
+];
+
+let tourStepIndex = 0;
+let tourSpotlightEl = null;
+const tourBackdrop = document.getElementById('tourBackdrop');
+const tourTooltip = document.getElementById('tourTooltip');
+const tourStepCount = document.getElementById('tourStepCount');
+const tourTitle = document.getElementById('tourTitle');
+const tourBody = document.getElementById('tourBody');
+const tourNext = document.getElementById('tourNext');
+const tourSkip = document.getElementById('tourSkip');
+const replayTourBtn = document.getElementById('replayTourBtn');
+
+function clearTourSpotlight() {
+  if (tourSpotlightEl) {
+    tourSpotlightEl.classList.remove('tour-spotlight');
+    tourSpotlightEl = null;
+  }
+}
+
+function positionTourTooltip(target) {
+  if (!target) {
+    tourTooltip.classList.add('tour-tooltip--center');
+    return;
+  }
+  tourTooltip.classList.remove('tour-tooltip--center');
+  const rect = target.getBoundingClientRect();
+  const tw = tourTooltip.offsetWidth;
+  const th = tourTooltip.offsetHeight;
+  const margin = 16;
+  let top = rect.bottom + margin;
+  if (top + th > window.innerHeight - margin) {
+    top = Math.max(margin, rect.top - th - margin);
+  }
+  let left = rect.left + rect.width / 2 - tw / 2;
+  left = Math.max(margin, Math.min(left, window.innerWidth - tw - margin));
+  tourTooltip.style.top = `${top}px`;
+  tourTooltip.style.left = `${left}px`;
+}
+
+function showTourStep(index) {
+  clearTourSpotlight();
+  const step = TOUR_STEPS[index];
+  tourStepIndex = index;
+
+  tourStepCount.textContent = `Step ${index + 1} of ${TOUR_STEPS.length}`;
+  tourTitle.textContent = step.title;
+  tourBody.textContent = step.body;
+  tourNext.innerHTML = index === TOUR_STEPS.length - 1 ? 'Done' : 'Next<span class="btn__arrow">→</span>';
+
+  const target = step.target ? document.querySelector(step.target) : null;
+  if (target) {
+    target.classList.add('tour-spotlight');
+    tourSpotlightEl = target;
+    target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
+  positionTourTooltip(target);
+  tourTooltip.classList.add('is-open');
+}
+
+function startTour() {
+  closeDrawer();
+  closeLightbox();
+  closeSearchOverlay();
+  showView('home');
+  try { localStorage.setItem('wiciltcg-tour-seen', 'true'); } catch (e) {}
+  tourBackdrop.classList.add('is-open');
+  showTourStep(0);
+}
+
+function endTour() {
+  clearTourSpotlight();
+  tourBackdrop.classList.remove('is-open');
+  tourTooltip.classList.remove('is-open');
+}
+
+tourNext.addEventListener('click', () => {
+  if (tourStepIndex >= TOUR_STEPS.length - 1) {
+    endTour();
+  } else {
+    showTourStep(tourStepIndex + 1);
+  }
+});
+tourSkip.addEventListener('click', endTour);
+tourBackdrop.addEventListener('click', endTour);
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && tourBackdrop.classList.contains('is-open')) endTour();
+});
+replayTourBtn.addEventListener('click', startTour);
+
+window.addEventListener('resize', () => {
+  if (tourTooltip.classList.contains('is-open')) {
+    const step = TOUR_STEPS[tourStepIndex];
+    positionTourTooltip(step.target ? document.querySelector(step.target) : null);
+  }
+});
+
+try {
+  if (!localStorage.getItem('wiciltcg-tour-seen')) {
+    setTimeout(startTour, 900);
+  }
+} catch (e) {}
+
 const initialClans = getClans();
 selectedClan = initialClans[0] || null;
 renderClanTabs();

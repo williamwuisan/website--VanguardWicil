@@ -99,6 +99,7 @@
       <span class="theme-toggle__thumb"></span>
     </button>
   </div>
+  <button class="drawer__replay-tour" id="replayTourBtn">Replay tour</button>
 </nav>
 
 <main>
@@ -344,6 +345,17 @@
       <button class="search-overlay__close" id="searchOverlayClose" aria-label="Close">✕</button>
     </div>
     <div id="overlaySearchResults" class="search-overlay__results"></div>
+  </div>
+</div>
+
+<div class="tour-backdrop" id="tourBackdrop"></div>
+<div class="tour-tooltip" id="tourTooltip">
+  <p class="tour-tooltip__step" id="tourStepCount"></p>
+  <h4 id="tourTitle"></h4>
+  <p id="tourBody"></p>
+  <div class="tour-tooltip__actions">
+    <button class="btn btn--ghost" id="tourSkip">Skip</button>
+    <button class="btn btn--primary" id="tourNext">Next<span class="btn__arrow">→</span></button>
   </div>
 </div>
 

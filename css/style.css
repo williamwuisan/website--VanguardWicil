@@ -762,6 +762,66 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
   box-shadow: 0 0 0 3px var(--orange-dim);
 }
 
+/* ===== Onboarding tour ===== */
+.drawer__replay-tour {
+  margin-top: 14px;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.2s ease;
+}
+.drawer__replay-tour:hover { color: var(--orange); }
+
+.tour-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  background: rgba(10, 9, 8, 0.55);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+.tour-backdrop.is-open { opacity: 1; visibility: visible; }
+
+.tour-spotlight {
+  position: relative;
+  z-index: 41;
+  box-shadow: 0 0 0 6px var(--black-card), 0 0 0 9px var(--orange);
+  border-radius: 10px;
+  transition: box-shadow 0.25s ease;
+}
+
+.tour-tooltip {
+  position: fixed;
+  z-index: 305;
+  width: min(320px, calc(100vw - 32px));
+  background: var(--black-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 20px 22px;
+  box-shadow: 0 30px 70px rgba(0,0,0,0.35);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease, visibility 0.25s ease, top 0.3s var(--ease), left 0.3s var(--ease);
+}
+.tour-tooltip.is-open { opacity: 1; visibility: visible; }
+.tour-tooltip--center { top: 50% !important; left: 50% !important; transform: translate(-50%, -50%); }
+.tour-tooltip__step {
+  color: var(--orange);
+  font-weight: 700;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 8px;
+}
+.tour-tooltip h4 { font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; }
+.tour-tooltip > p:not(.tour-tooltip__step) { color: var(--text-muted); font-size: 0.9rem; line-height: 1.55; margin-bottom: 18px; }
+.tour-tooltip__actions { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.tour-tooltip__actions .btn { padding: 9px 18px; font-size: 0.85rem; }
+
 /* ===== Lightbox ===== */
 .lightbox {
   position: fixed;
