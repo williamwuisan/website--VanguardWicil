@@ -84,6 +84,10 @@
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
       Search
     </button>
+    <button class="drawer__item" data-nav="glossary">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+      Glossary
+    </button>
   </div>
   <div class="drawer__theme">
     <span class="drawer__theme-label">
@@ -252,6 +256,58 @@
       <div class="empty-state__icon">🔍</div>
       <h3>Start typing to search</h3>
       <p>Search by English or Japanese card name.</p>
+    </div>
+  </section>
+
+  <!-- ===== GLOSSARY VIEW ===== -->
+  <section id="view-glossary" class="view view--hidden">
+    <div class="view-head reveal">
+      <h2>Glossary</h2>
+      <p>What all those brackets and keywords in a card's skill text actually mean.</p>
+    </div>
+
+    <div class="glossary-group reveal">
+      <h3 class="glossary-group__title">Ability Types</h3>
+      <dl class="glossary-list">
+        <div class="glossary-term"><dt>[AUTO] — Automatic Ability</dt><dd>Triggers on its own the moment its condition is met, like "when this unit attacks" or "when this card is ridden."</dd></div>
+        <div class="glossary-term"><dt>[CONT] — Continuous Ability</dt><dd>Passively active for as long as its condition holds true — there's no timing to activate, it just works.</dd></div>
+        <div class="glossary-term"><dt>[ACT] — Activate Ability</dt><dd>You choose when to use it, usually during your own main phase, often for a cost.</dd></div>
+        <div class="glossary-term"><dt>[COST]</dt><dd>What you have to pay right after an ability's timing to actually use it — discarding a card, Soul-Blasting, and so on.</dd></div>
+      </dl>
+    </div>
+
+    <div class="glossary-group reveal">
+      <h3 class="glossary-group__title">Zones</h3>
+      <dl class="glossary-list">
+        <div class="glossary-term"><dt>G Zone</dt><dd>A separate zone holding your G units face-down until you Stride one of them onto your vanguard.</dd></div>
+        <div class="glossary-term"><dt>Damage Zone</dt><dd>Where cards go when you take damage. Face-up cards here can be spent to pay Counter-Blast costs.</dd></div>
+        <div class="glossary-term"><dt>Drop Zone</dt><dd>The discard pile — cards end up here when discarded, retired, or spent on most costs.</dd></div>
+        <div class="glossary-term"><dt>Bind Zone</dt><dd>A zone certain effects remove units to — cards sent here are usually much harder to bring back into play.</dd></div>
+      </dl>
+    </div>
+
+    <div class="glossary-group reveal">
+      <h3 class="glossary-group__title">Actions &amp; Resources</h3>
+      <dl class="glossary-list">
+        <div class="glossary-term"><dt>Ride / Ride Line</dt><dd>Placing a higher-grade unit on top of your vanguard, following your deck's grade progression (G0 → G1 → G2 → G3).</dd></div>
+        <div class="glossary-term"><dt>Stride</dt><dd>A special ride for your vanguard using a G unit from the G Zone as cost — gives a big power boost plus a bonus ability for the turn.</dd></div>
+        <div class="glossary-term"><dt>Generation Break X</dt><dd>A condition that's active once you've Strided X or more times so far this game.</dd></div>
+        <div class="glossary-term"><dt>Drive Check / Twin Drive / Triple Drive</dt><dd>When your vanguard attacks, you check cards off the top of your deck (2 for Twin Drive, 3 for Triple Drive) looking for triggers.</dd></div>
+        <div class="glossary-term"><dt>Intercept</dt><dd>A rear-guard moving in to guard your vanguard against an attack, usually retiring afterward as the cost.</dd></div>
+        <div class="glossary-term"><dt>Soul-Blast X</dt><dd>Cost: remove X cards from your Soul (the zone units go to when replaced by a ride).</dd></div>
+        <div class="glossary-term"><dt>Soul-Charge X</dt><dd>Put the top X cards of your deck into your Soul.</dd></div>
+        <div class="glossary-term"><dt>Counter-Blast X</dt><dd>Cost: turn X face-up cards in your Damage Zone face-down.</dd></div>
+      </dl>
+    </div>
+
+    <div class="glossary-group reveal">
+      <h3 class="glossary-group__title">Card Roles</h3>
+      <dl class="glossary-list">
+        <div class="glossary-term"><dt>Vanguard</dt><dd>Your main battling unit, standing in the center of the field.</dd></div>
+        <div class="glossary-term"><dt>Rear-guard</dt><dd>Support units in the back row that boost or add extra attacks.</dd></div>
+        <div class="glossary-term"><dt>Sentinel</dt><dd>A trigger unit type that can guard the vanguard on its own, without first needing to be a rear-guard.</dd></div>
+        <div class="glossary-term"><dt>Grade (G0–G3, G unit)</dt><dd>A card's level. You ride in increasing grade order; G units (Stride units) sit outside that progression, waiting in the G Zone.</dd></div>
+      </dl>
     </div>
   </section>
 

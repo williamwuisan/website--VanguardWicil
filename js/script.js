@@ -3,6 +3,7 @@ const views = {
   decks: document.getElementById('view-decks'),
   detail: document.getElementById('view-detail'),
   search: document.getElementById('view-search'),
+  glossary: document.getElementById('view-glossary'),
 };
 
 const revealObserver = new IntersectionObserver((entries) => {
@@ -38,7 +39,7 @@ function showView(name) {
 document.querySelectorAll('[data-nav]').forEach(el => {
   el.addEventListener('click', () => {
     const target = el.dataset.nav;
-    if (target === 'home' || target === 'decks' || target === 'search') showView(target);
+    if (target === 'home' || target === 'decks' || target === 'search' || target === 'glossary') showView(target);
     closeDrawer();
   });
 });
