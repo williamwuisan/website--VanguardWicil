@@ -430,6 +430,20 @@ searchOverlay.addEventListener('click', (e) => { if (e.target === searchOverlay)
 document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeSearchOverlay(); });
 overlaySearchInput.addEventListener('input', renderOverlaySearch);
 
+document.addEventListener('keydown', (e) => {
+  if (e.key !== '/' || e.metaKey || e.ctrlKey || e.altKey) return;
+  const active = document.activeElement;
+  const tag = active ? active.tagName : '';
+  const isEditable = tag === 'INPUT' || tag === 'TEXTAREA' || (active && active.isContentEditable);
+  if (isEditable) return;
+  e.preventDefault();
+  if (searchOverlay.classList.contains('is-open')) {
+    overlaySearchInput.focus();
+  } else {
+    openSearchOverlay();
+  }
+});
+
 document.getElementById('searchInput').addEventListener('input', renderSearch);
 
 /* ===== Dark theme toggle ===== */

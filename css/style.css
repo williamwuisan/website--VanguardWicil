@@ -90,6 +90,7 @@ img { max-width: 100%; display: block; }
 
 /* ===== Icon button (header search, etc.) ===== */
 .icon-btn {
+  position: relative;
   width: 42px; height: 42px;
   display: flex;
   align-items: center;
@@ -102,6 +103,26 @@ img { max-width: 100%; display: block; }
 }
 .icon-btn:hover { border-color: var(--orange-dim); color: var(--orange); }
 .icon-btn svg { width: 19px; height: 19px; }
+.icon-btn__hint {
+  display: none;
+  position: absolute;
+  bottom: -6px; right: -6px;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 3px;
+  border-radius: 4px;
+  background: var(--black-card);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  font-size: 0.65rem;
+  font-weight: 700;
+  font-family: 'Rajdhani', 'Inter', sans-serif;
+  line-height: 14px;
+  text-align: center;
+}
+@media (hover: hover) and (pointer: fine) {
+  .icon-btn__hint { display: block; }
+}
 
 /* ===== Hamburger menu toggle ===== */
 .menu-toggle {
