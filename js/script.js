@@ -261,13 +261,27 @@ function wireCardImageZoom(container) {
 }
 
 /* ===== Search ===== */
+function searchCards(query) {
+  const q = query.trim().toLowerCase();
+  if (!q) return [];
+  const matches = [];
+  DECKS.forEach(deck => {
+    deck.cards.forEach(card => {
+      const nameMatch = card.name && card.name.toLowerCase().includes(q);
+      const jpMatch = card.nameJp && card.nameJp.toLowerCase().includes(q);
+      if (nameMatch || jpMatch) matches.push({ deck, card });
+    });
+  });
+  return matches;
+}
+
 function renderSearch() {
   const input = document.getElementById('searchInput');
   const resultsContainer = document.getElementById('searchResults');
   const empty = document.getElementById('searchEmpty');
-  const query = input.value.trim().toLowerCase();
+  const query = input.value;
 
-  if (!query) {
+  if (!query.trim()) {
     resultsContainer.innerHTML = '';
     empty.querySelector('h3').textContent = 'Mulai ketik untuk mencari';
     empty.querySelector('p').textContent = 'Cari nama kartu dalam Bahasa Inggris atau Jepang.';
@@ -275,19 +289,12 @@ function renderSearch() {
     return;
   }
 
-  const matches = [];
-  DECKS.forEach(deck => {
-    deck.cards.forEach(card => {
-      const nameMatch = card.name && card.name.toLowerCase().includes(query);
-      const jpMatch = card.nameJp && card.nameJp.toLowerCase().includes(query);
-      if (nameMatch || jpMatch) matches.push({ deck, card });
-    });
-  });
+  const matches = searchCards(query);
 
   if (!matches.length) {
     resultsContainer.innerHTML = '';
     empty.querySelector('h3').textContent = 'Kartu tidak ditemukan';
-    empty.querySelector('p').textContent = `Tidak ada kartu yang cocok dengan "${input.value.trim()}".`;
+    empty.querySelector('p').textContent = `Tidak ada kartu yang cocok dengan "${query.trim()}".`;
     empty.classList.add('is-visible');
     return;
   }
@@ -305,6 +312,64 @@ function renderSearch() {
     });
   });
 }
+
+/* ===== Header quick-search overlay ===== */
+const searchOverlay = document.getElementById('searchOverlay');
+const overlaySearchInput = document.getElementById('overlaySearchInput');
+const overlaySearchResults = document.getElementById('overlaySearchResults');
+const headerSearchBtn = document.getElementById('headerSearchBtn');
+const searchOverlayClose = document.getElementById('searchOverlayClose');
+
+function renderOverlaySearch() {
+  const query = overlaySearchInput.value;
+
+  if (!query.trim()) {
+    overlaySearchResults.innerHTML = `<div class="search-overlay__empty">Ketik nama kartu buat mulai cari.</div>`;
+    return;
+  }
+
+  const matches = searchCards(query).slice(0, 20);
+
+  if (!matches.length) {
+    overlaySearchResults.innerHTML = `<div class="search-overlay__empty">Tidak ada kartu yang cocok dengan "${query.trim()}".</div>`;
+    return;
+  }
+
+  overlaySearchResults.innerHTML = matches.map(({ deck, card }) => `
+    <button class="search-overlay__item" data-deck-id="${deck.id}" data-card-name="${card.name}" data-card-section="${card.section || ''}">
+      ${card.image ? `<img src="${card.image}" alt="${card.name}" loading="lazy">` : ''}
+      <div class="search-overlay__item-info">
+        <div class="search-overlay__item-name">${card.name}</div>
+        <div class="search-overlay__item-deck">${deck.name}</div>
+      </div>
+    </button>
+  `).join('');
+
+  overlaySearchResults.querySelectorAll('.search-overlay__item').forEach(btn => {
+    btn.addEventListener('click', () => {
+      closeSearchOverlay();
+      showDeckDetail(btn.dataset.deckId, {
+        section: btn.dataset.cardSection || null,
+        highlightName: btn.dataset.cardName,
+      });
+    });
+  });
+}
+
+function openSearchOverlay() {
+  searchOverlay.classList.add('is-open');
+  renderOverlaySearch();
+  setTimeout(() => overlaySearchInput.focus(), 150);
+}
+function closeSearchOverlay() {
+  searchOverlay.classList.remove('is-open');
+}
+
+headerSearchBtn.addEventListener('click', openSearchOverlay);
+searchOverlayClose.addEventListener('click', closeSearchOverlay);
+searchOverlay.addEventListener('click', (e) => { if (e.target === searchOverlay) closeSearchOverlay(); });
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeSearchOverlay(); });
+overlaySearchInput.addEventListener('input', renderOverlaySearch);
 
 document.getElementById('searchInput').addEventListener('input', renderSearch);
 
