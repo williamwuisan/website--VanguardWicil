@@ -224,11 +224,18 @@ if (heroCarousel) {
   }
 
   function updateHeroCarousel() {
-    heroTrack.style.transform = `translateX(-${heroIndex * 100}%)`;
+    const viewport = heroCarousel.querySelector('.hero-carousel__viewport');
+    const activeSlide = heroSlides[heroIndex];
+    const offset = activeSlide.offsetLeft - (viewport.clientWidth - activeSlide.offsetWidth) / 2;
+    heroTrack.style.transform = `translateX(${-offset}px)`;
+
+    heroSlides.forEach((slide, i) => slide.classList.toggle('is-active', i === heroIndex));
     heroDotsContainer.querySelectorAll('.hero-carousel__dot').forEach((dot, i) => {
       dot.classList.toggle('is-active', i === heroIndex);
     });
   }
+
+  window.addEventListener('resize', updateHeroCarousel);
 
   function goToHeroSlide(i) {
     const clamped = Math.max(0, Math.min(heroSlides.length - 1, i));
@@ -269,6 +276,12 @@ if (heroCarousel) {
   document.querySelectorAll('[data-flip-card]').forEach(card => {
     card.addEventListener('click', () => {
       if (heroWasDragged) { heroWasDragged = false; return; }
+      const slide = card.closest('.hero-carousel__slide');
+      const slideIndex = heroSlides.indexOf(slide);
+      if (slideIndex !== heroIndex) {
+        goToHeroSlide(slideIndex);
+        return;
+      }
       card.classList.toggle('is-flipped');
     });
   });
