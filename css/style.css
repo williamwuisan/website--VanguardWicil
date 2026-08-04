@@ -964,6 +964,33 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
   .search-overlay { padding: 78px 14px 24px; }
 }
 
+/* ===== Scroll-to-top button ===== */
+.scroll-top-btn {
+  position: fixed;
+  right: 20px;
+  bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+  width: 46px; height: 46px;
+  border-radius: 50%;
+  background: var(--orange);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 12px 30px rgba(255,91,26,0.35);
+  z-index: 35;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px);
+  transition: opacity 0.25s ease, visibility 0.25s ease, transform 0.25s var(--ease), background 0.2s ease;
+}
+.scroll-top-btn.is-visible { opacity: 1; visibility: visible; transform: translateY(0); }
+.scroll-top-btn:hover { background: var(--orange-bright); }
+.scroll-top-btn svg { width: 20px; height: 20px; }
+
+@media (max-width: 600px) {
+  .scroll-top-btn { right: 16px; bottom: calc(16px + env(safe-area-inset-bottom, 0px)); width: 44px; height: 44px; }
+}
+
 /* ===== Footer ===== */
 .footer { text-align: center; padding: 32px 24px; color: #ffffff; font-size: 0.82rem; background: var(--orange); }
 

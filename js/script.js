@@ -65,6 +65,17 @@ document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') closeDrawer();
 });
 
+/* ===== Scroll-to-top button ===== */
+const scrollTopBtn = document.getElementById('scrollTopBtn');
+function updateScrollTopBtn() {
+  scrollTopBtn.classList.toggle('is-visible', window.scrollY > 400);
+}
+window.addEventListener('scroll', updateScrollTopBtn, { passive: true });
+scrollTopBtn.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+updateScrollTopBtn();
+
 function getClans() {
   const clans = [];
   DECKS.forEach(deck => {
