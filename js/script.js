@@ -2,6 +2,7 @@ const views = {
   home: document.getElementById('view-home'),
   decks: document.getElementById('view-decks'),
   detail: document.getElementById('view-detail'),
+  search: document.getElementById('view-search'),
 };
 
 const revealObserver = new IntersectionObserver((entries) => {
@@ -27,12 +28,17 @@ function showView(name) {
     link.classList.toggle('is-active', link.dataset.nav === name);
   });
   window.scrollTo({ top: 0, behavior: 'smooth' });
+  if (name === 'search') {
+    renderSearch();
+    const input = document.getElementById('searchInput');
+    if (input) setTimeout(() => input.focus(), 300);
+  }
 }
 
 document.querySelectorAll('[data-nav]').forEach(el => {
   el.addEventListener('click', () => {
     const target = el.dataset.nav;
-    if (target === 'home' || target === 'decks') showView(target);
+    if (target === 'home' || target === 'decks' || target === 'search') showView(target);
     closeDrawer();
   });
 });
@@ -121,7 +127,7 @@ function renderDeckGrid() {
 
 function renderCardItem(card, i = 0) {
   return `
-    <div class="card-item reveal" style="transition-delay:${Math.min(i, 8) * 0.05}s">
+    <div class="card-item reveal" data-card-name="${card.name}" style="transition-delay:${Math.min(i, 8) * 0.05}s">
       ${card.image ? `<div class="card-item__image-wrap"><img class="card-item__image" src="${card.image}" alt="${card.name}" loading="lazy"></div>` : ''}
       <div class="card-item__body">
         <div class="card-item__name">${card.name}</div>
@@ -130,6 +136,22 @@ function renderCardItem(card, i = 0) {
         <div class="card-item__effect">${card.effect || ''}</div>
       </div>
     </div>
+  `;
+}
+
+function renderSearchResultItem(entry, i = 0) {
+  const { deck, card } = entry;
+  return `
+    <button class="card-item search-result-item reveal" data-deck-id="${deck.id}" data-card-name="${card.name}" data-card-section="${card.section || ''}" style="transition-delay:${Math.min(i, 8) * 0.05}s">
+      ${card.image ? `<div class="card-item__image-wrap"><img class="card-item__image" src="${card.image}" alt="${card.name}" loading="lazy"></div>` : ''}
+      <div class="card-item__body">
+        <span class="search-result-deck">${deck.name}</span>
+        <div class="card-item__name">${card.name}</div>
+        ${card.nameJp ? `<div class="card-item__name-jp">${card.nameJp}</div>` : ''}
+        ${card.grade ? `<span class="card-item__grade">${card.grade}</span>` : ''}
+        <div class="card-item__effect">${card.effect || ''}</div>
+      </div>
+    </button>
   `;
 }
 
@@ -145,6 +167,7 @@ function renderCardListForSection() {
     : currentDeck.cards;
   list.innerHTML = `<div class="card-list">${cards.map(renderCardItem).join('')}</div>`;
   observeRevealAll(list);
+  wireCardImageZoom(list);
 }
 
 function renderSectionTabs(sections) {
@@ -168,7 +191,7 @@ function renderSectionTabs(sections) {
   });
 }
 
-function showDeckDetail(deckId) {
+function showDeckDetail(deckId, opts = {}) {
   const deck = DECKS.find(d => d.id === deckId);
   if (!deck) return;
 
@@ -187,18 +210,117 @@ function showDeckDetail(deckId) {
     deck.cards.forEach(c => {
       if (c.section && !sections.includes(c.section)) sections.push(c.section);
     });
-    selectedSection = sections[0];
+    selectedSection = (opts.section && sections.includes(opts.section)) ? opts.section : sections[0];
     renderSectionTabs(sections);
     renderCardListForSection();
   }
 
   showView('detail');
+  if (opts.highlightName) highlightCardByName(opts.highlightName);
+}
+
+function highlightCardByName(name) {
+  setTimeout(() => {
+    const target = document.querySelector(`#cardList .card-item[data-card-name="${CSS.escape(name)}"]`);
+    if (!target) return;
+    target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    target.classList.add('is-highlighted');
+    setTimeout(() => target.classList.remove('is-highlighted'), 1800);
+  }, 80);
 }
 
 function renderStats() {
   document.getElementById('deckCount').textContent = DECKS.length;
   document.getElementById('cardCount').textContent = DECKS.reduce((sum, d) => sum + d.cards.length, 0);
 }
+
+/* ===== Lightbox ===== */
+const lightbox = document.getElementById('lightbox');
+const lightboxImage = document.getElementById('lightboxImage');
+const lightboxClose = document.getElementById('lightboxClose');
+
+function openLightbox(src, alt) {
+  lightboxImage.src = src;
+  lightboxImage.alt = alt || '';
+  lightbox.classList.add('is-open');
+}
+function closeLightbox() {
+  lightbox.classList.remove('is-open');
+}
+lightboxClose.addEventListener('click', closeLightbox);
+lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
+
+function wireCardImageZoom(container) {
+  container.querySelectorAll('.card-item__image-wrap img').forEach(img => {
+    img.addEventListener('click', (e) => {
+      e.stopPropagation();
+      openLightbox(img.src, img.alt);
+    });
+  });
+}
+
+/* ===== Search ===== */
+function renderSearch() {
+  const input = document.getElementById('searchInput');
+  const resultsContainer = document.getElementById('searchResults');
+  const empty = document.getElementById('searchEmpty');
+  const query = input.value.trim().toLowerCase();
+
+  if (!query) {
+    resultsContainer.innerHTML = '';
+    empty.querySelector('h3').textContent = 'Mulai ketik untuk mencari';
+    empty.querySelector('p').textContent = 'Cari nama kartu dalam Bahasa Inggris atau Jepang.';
+    empty.classList.add('is-visible');
+    return;
+  }
+
+  const matches = [];
+  DECKS.forEach(deck => {
+    deck.cards.forEach(card => {
+      const nameMatch = card.name && card.name.toLowerCase().includes(query);
+      const jpMatch = card.nameJp && card.nameJp.toLowerCase().includes(query);
+      if (nameMatch || jpMatch) matches.push({ deck, card });
+    });
+  });
+
+  if (!matches.length) {
+    resultsContainer.innerHTML = '';
+    empty.querySelector('h3').textContent = 'Kartu tidak ditemukan';
+    empty.querySelector('p').textContent = `Tidak ada kartu yang cocok dengan "${input.value.trim()}".`;
+    empty.classList.add('is-visible');
+    return;
+  }
+
+  empty.classList.remove('is-visible');
+  resultsContainer.innerHTML = matches.map(renderSearchResultItem).join('');
+  observeRevealAll(resultsContainer);
+
+  resultsContainer.querySelectorAll('.search-result-item').forEach(btn => {
+    btn.addEventListener('click', () => {
+      showDeckDetail(btn.dataset.deckId, {
+        section: btn.dataset.cardSection || null,
+        highlightName: btn.dataset.cardName,
+      });
+    });
+  });
+}
+
+document.getElementById('searchInput').addEventListener('input', renderSearch);
+
+/* ===== Dark theme toggle ===== */
+const themeToggle = document.getElementById('themeToggle');
+function applyTheme(theme) {
+  document.documentElement.setAttribute('data-theme', theme);
+  themeToggle.classList.toggle('is-active', theme === 'dark');
+  themeToggle.setAttribute('aria-checked', theme === 'dark');
+  try { localStorage.setItem('wiciltcg-theme', theme); } catch (e) {}
+}
+applyTheme(document.documentElement.getAttribute('data-theme') || 'light');
+themeToggle.addEventListener('click', () => {
+  const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  applyTheme(next);
+});
 
 const initialClans = getClans();
 selectedClan = initialClans[0] || null;
@@ -219,8 +341,16 @@ if (heroCarousel) {
   let heroIsDragging = false;
   let heroWasDragged = false;
 
+  function resetHeroCardScroll(card) {
+    const back = card.querySelector('.flip-card__face--back');
+    if (back) back.scrollTop = 0;
+  }
+
   function unflipAllHeroCards() {
-    document.querySelectorAll('[data-flip-card]').forEach(card => card.classList.remove('is-flipped'));
+    document.querySelectorAll('[data-flip-card]').forEach(card => {
+      card.classList.remove('is-flipped');
+      resetHeroCardScroll(card);
+    });
   }
 
   function updateHeroCarousel() {
@@ -283,6 +413,7 @@ if (heroCarousel) {
         return;
       }
       card.classList.toggle('is-flipped');
+      if (!card.classList.contains('is-flipped')) resetHeroCardScroll(card);
     });
   });
 
