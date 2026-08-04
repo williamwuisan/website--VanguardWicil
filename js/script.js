@@ -116,7 +116,7 @@ function renderDeckGrid() {
       ${deck.image ? `<div class="deck-card__image-wrap"><img class="deck-card__image" src="${deck.image}" alt="${deck.name}" loading="lazy"></div>` : ''}
       <div class="deck-card__body">
         <div class="deck-card__name">${deck.name}</div>
-        <div class="deck-card__meta">${deck.clan ? deck.clan + ' · ' : ''}${deck.cards.length} kartu</div>
+        <div class="deck-card__meta">${deck.clan ? deck.clan + ' · ' : ''}${deck.cards.length} cards</div>
       </div>
     `;
     card.addEventListener('click', () => showDeckDetail(deck.id));
@@ -197,7 +197,7 @@ function showDeckDetail(deckId, opts = {}) {
 
   currentDeck = deck;
   document.getElementById('detailDeckName').textContent = deck.name;
-  document.getElementById('detailDeckMeta').textContent = `${deck.clan ? deck.clan + ' · ' : ''}${deck.cards.length} kartu`;
+  document.getElementById('detailDeckMeta').textContent = `${deck.clan ? deck.clan + ' · ' : ''}${deck.cards.length} cards`;
 
   const hasSections = deck.cards.some(card => card.section);
 
@@ -283,8 +283,8 @@ function renderSearch() {
 
   if (!query.trim()) {
     resultsContainer.innerHTML = '';
-    empty.querySelector('h3').textContent = 'Mulai ketik untuk mencari';
-    empty.querySelector('p').textContent = 'Cari nama kartu dalam Bahasa Inggris atau Jepang.';
+    empty.querySelector('h3').textContent = 'Start typing to search';
+    empty.querySelector('p').textContent = 'Search by English or Japanese card name.';
     empty.classList.add('is-visible');
     return;
   }
@@ -293,8 +293,8 @@ function renderSearch() {
 
   if (!matches.length) {
     resultsContainer.innerHTML = '';
-    empty.querySelector('h3').textContent = 'Kartu tidak ditemukan';
-    empty.querySelector('p').textContent = `Tidak ada kartu yang cocok dengan "${query.trim()}".`;
+    empty.querySelector('h3').textContent = 'No cards found';
+    empty.querySelector('p').textContent = `No cards match "${query.trim()}".`;
     empty.classList.add('is-visible');
     return;
   }
@@ -324,14 +324,14 @@ function renderOverlaySearch() {
   const query = overlaySearchInput.value;
 
   if (!query.trim()) {
-    overlaySearchResults.innerHTML = `<div class="search-overlay__empty">Ketik nama kartu buat mulai cari.</div>`;
+    overlaySearchResults.innerHTML = `<div class="search-overlay__empty">Type a card name to start searching.</div>`;
     return;
   }
 
   const matches = searchCards(query).slice(0, 20);
 
   if (!matches.length) {
-    overlaySearchResults.innerHTML = `<div class="search-overlay__empty">Tidak ada kartu yang cocok dengan "${query.trim()}".</div>`;
+    overlaySearchResults.innerHTML = `<div class="search-overlay__empty">No cards match "${query.trim()}".</div>`;
     return;
   }
 
