@@ -15,12 +15,12 @@ const DECKS = [
     id: "chronojet-deck",
     name: "Chronojet Deck",
     clan: "Dark States",
-    image: "assets/cards/chronojet-dragon.png",
+    image: "assets/cards/chronojet-dragon.webp",
     cards: [
       {
         name: "Chronojet Dragon",
         nameJp: "クロノジェット・ドラゴン",
-        image: "assets/cards/chronojet-dragon.png",
+        image: "assets/cards/chronojet-dragon.webp",
         grade: "G3",
         qty: 2,
         section: "Ride Line",
@@ -29,7 +29,7 @@ const DECKS = [
       {
         name: "Smokegear Dragon",
         nameJp: "スモークギア・ドラゴン",
-        image: "assets/cards/smokegear-dragon.png",
+        image: "assets/cards/smokegear-dragon.webp",
         grade: "G2",
         qty: 4,
         section: "Ride Line",
@@ -38,7 +38,7 @@ const DECKS = [
       {
         name: "Masergear Dragon",
         nameJp: "メーザーギア・ドラゴン",
-        image: "assets/cards/masergear-dragon.png",
+        image: "assets/cards/masergear-dragon.webp",
         grade: "G1",
         qty: 4,
         section: "Ride Line",
@@ -47,7 +47,7 @@ const DECKS = [
       {
         name: "Chrono Dran",
         nameJp: "クロノ・ドラン",
-        image: "assets/cards/chrono-dran.png",
+        image: "assets/cards/chrono-dran.webp",
         grade: "G0",
         qty: 4,
         section: "Ride Line",
@@ -56,7 +56,7 @@ const DECKS = [
       {
         name: "Steam Fighter, Balih",
         nameJp: "スチームファイター バリフ",
-        image: "assets/cards/steam-fighter-balih.png",
+        image: "assets/cards/steam-fighter-balih.webp",
         grade: "G3",
         qty: 4,
         section: "Main Deck",
@@ -65,7 +65,7 @@ const DECKS = [
       {
         name: "Dream Sky Mutual Love, Naama & Samaell",
         nameJp: "夢天相愛 ナアマ＆サマエル",
-        image: "assets/cards/naama-and-samaell.png",
+        image: "assets/cards/naama-and-samaell.webp",
         grade: "G2",
         qty: 4,
         section: "Main Deck",
@@ -74,7 +74,7 @@ const DECKS = [
       {
         name: "Upstream Dragon",
         nameJp: "アップストリーム・ドラゴン",
-        image: "assets/cards/upstream-dragon.png",
+        image: "assets/cards/upstream-dragon.webp",
         grade: "G2",
         qty: 4,
         section: "Main Deck",
@@ -83,7 +83,7 @@ const DECKS = [
       {
         name: "Steam Fighter, Amber",
         nameJp: "スチームファイター アンバー",
-        image: "assets/cards/steam-fighter-amber.png",
+        image: "assets/cards/steam-fighter-amber.webp",
         grade: "G2",
         qty: 1,
         section: "Main Deck",
@@ -92,7 +92,7 @@ const DECKS = [
       {
         name: "Steam Gunner, Tizkar",
         nameJp: "スチームガンナー ティズカール",
-        image: "assets/cards/steam-gunner-tizkar.png",
+        image: "assets/cards/steam-gunner-tizkar.webp",
         grade: "G2",
         qty: 3,
         section: "Main Deck",
@@ -101,7 +101,7 @@ const DECKS = [
       {
         name: "Mystery Creepy Artillery",
         nameJp: "Mystery Creepy Artillery",
-        image: "assets/cards/mystery-creepy-artillery.png",
+        image: "assets/cards/mystery-creepy-artillery.webp",
         grade: "G2",
         qty: 1,
         section: "Main Deck",
@@ -110,7 +110,7 @@ const DECKS = [
       {
         name: "Steam Scara, Gigi",
         nameJp: "スチームスカラー ジジ",
-        image: "assets/cards/steam-scara-gigi.png",
+        image: "assets/cards/steam-scara-gigi.webp",
         grade: "G1",
         qty: 4,
         section: "Main Deck",
@@ -119,7 +119,7 @@ const DECKS = [
       {
         name: "Steam Breath Dragon",
         nameJp: "スチームブレス・ドラゴン",
-        image: "assets/cards/steam-breath-dragon.png",
+        image: "assets/cards/steam-breath-dragon.webp",
         grade: "G1",
         qty: 4,
         section: "Main Deck",
@@ -128,7 +128,7 @@ const DECKS = [
       {
         name: "Steam Maiden, Arlim",
         nameJp: "スチームメイデン アルリム",
-        image: "assets/cards/steam-maiden-arlim.png",
+        image: "assets/cards/steam-maiden-arlim.webp",
         grade: "G1",
         qty: 3,
         section: "Main Deck",
@@ -137,7 +137,7 @@ const DECKS = [
       {
         name: "Direful Doll, Finley",
         nameJp: "ダイアフルドール ふぃんりー",
-        image: "assets/cards/direful-doll-finley.png",
+        image: "assets/cards/direful-doll-finley.webp",
         grade: "G1",
         qty: 1,
         section: "Main Deck",
@@ -146,7 +146,7 @@ const DECKS = [
       {
         name: "Steam Battler, Dadasig",
         nameJp: "スチームバトラー ダダシグ",
-        image: "assets/cards/steam-battler-dadasig.png",
+        image: "assets/cards/steam-battler-dadasig.webp",
         grade: "G0",
         qty: 4,
         section: "Main Deck",
@@ -155,7 +155,7 @@ const DECKS = [
       {
         name: "Stomach Clock Gear Rabbit",
         nameJp: "腹時計付きのギアラビット",
-        image: "assets/cards/stomach-clock-gear-rabbit.png",
+        image: "assets/cards/stomach-clock-gear-rabbit.webp",
         grade: "G0",
         qty: 4,
         section: "Main Deck",
@@ -164,7 +164,7 @@ const DECKS = [
       {
         name: "Steam Maiden, Ururu",
         nameJp: "スチームメイデン ウルル",
-        image: "assets/cards/steam-maiden-ururu.png",
+        image: "assets/cards/steam-maiden-ururu.webp",
         grade: "G0",
         qty: 4,
         section: "Main Deck",
@@ -182,7 +182,7 @@ const DECKS = [
       {
         name: "Chronodragon Nextage",
         nameJp: "クロノドラゴン・ネクステージ",
-        image: "assets/cards/chronodragon-nextage.png",
+        image: "assets/cards/chronodragon-nextage.webp",
         grade: "G (Stride/G unit)",
         qty: 4,
         section: "Stride",
@@ -191,7 +191,7 @@ const DECKS = [
       {
         name: "Interdimensional Dragon, Mystery-Flare Dragon",
         nameJp: "時空竜 ミステリーフレア・ドラゴン",
-        image: "assets/cards/mystery-flare-dragon.png",
+        image: "assets/cards/mystery-flare-dragon.webp",
         grade: "G (Stride/G unit)",
         qty: 4,
         section: "Stride",
