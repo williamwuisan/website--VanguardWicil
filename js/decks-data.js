@@ -168,7 +168,7 @@ const DECKS = [
         grade: "G0",
         qty: 4,
         section: "Main Deck",
-        effect: "(Terjemahan belum ditemukan — perlu dicek manual. Card name transcribed from a low-resolution decklist image and not independently confirmed; treat spelling as tentative. No English translation of the effect text could be confidently located.)"
+        effect: "Front Trigger: [Power]+10000.\nA grade 0 front trigger unit for the Chronojet ride line, printed at 5000 power / 15000 shield."
       },
       {
         name: "Diabolos Girls, Natalia",
