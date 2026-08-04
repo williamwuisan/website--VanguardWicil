@@ -4,6 +4,20 @@ const views = {
   detail: document.getElementById('view-detail'),
 };
 
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('is-visible');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+function observeReveal(el) { revealObserver.observe(el); }
+function observeRevealAll(root = document) {
+  root.querySelectorAll('.reveal').forEach(observeReveal);
+}
+
 let selectedClan = null;
 
 function showView(name) {
@@ -88,11 +102,12 @@ function renderDeckGrid() {
 
   const filtered = DECKS.filter(deck => (deck.clan || 'Lainnya') === selectedClan);
 
-  filtered.forEach(deck => {
+  filtered.forEach((deck, i) => {
     const card = document.createElement('button');
-    card.className = 'deck-card';
+    card.className = 'deck-card reveal';
+    card.style.transitionDelay = `${Math.min(i, 6) * 0.06}s`;
     card.innerHTML = `
-      ${deck.image ? `<img class="deck-card__image" src="${deck.image}" alt="${deck.name}" loading="lazy">` : ''}
+      ${deck.image ? `<div class="deck-card__image-wrap"><img class="deck-card__image" src="${deck.image}" alt="${deck.name}" loading="lazy"></div>` : ''}
       <div class="deck-card__body">
         <div class="deck-card__name">${deck.name}</div>
         <div class="deck-card__meta">${deck.clan ? deck.clan + ' · ' : ''}${deck.cards.length} kartu</div>
@@ -100,13 +115,14 @@ function renderDeckGrid() {
     `;
     card.addEventListener('click', () => showDeckDetail(deck.id));
     grid.appendChild(card);
+    observeReveal(card);
   });
 }
 
-function renderCardItem(card) {
+function renderCardItem(card, i = 0) {
   return `
-    <div class="card-item">
-      ${card.image ? `<img class="card-item__image" src="${card.image}" alt="${card.name}" loading="lazy">` : ''}
+    <div class="card-item reveal" style="transition-delay:${Math.min(i, 8) * 0.05}s">
+      ${card.image ? `<div class="card-item__image-wrap"><img class="card-item__image" src="${card.image}" alt="${card.name}" loading="lazy"></div>` : ''}
       <div class="card-item__body">
         <div class="card-item__name">${card.name}</div>
         ${card.nameJp ? `<div class="card-item__name-jp">${card.nameJp}</div>` : ''}
@@ -128,6 +144,7 @@ function renderCardListForSection() {
     ? currentDeck.cards.filter(c => c.section === selectedSection)
     : currentDeck.cards;
   list.innerHTML = `<div class="card-list">${cards.map(renderCardItem).join('')}</div>`;
+  observeRevealAll(list);
 }
 
 function renderSectionTabs(sections) {
@@ -188,6 +205,7 @@ selectedClan = initialClans[0] || null;
 renderClanTabs();
 renderDeckGrid();
 renderStats();
+observeRevealAll();
 
 const heroCarousel = document.getElementById('heroCarousel');
 if (heroCarousel) {
