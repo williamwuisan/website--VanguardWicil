@@ -531,6 +531,22 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
 .deck-detail__head h2 { font-size: clamp(1.7rem, 3.2vw, 2.2rem); font-weight: 400; margin-bottom: 6px; }
 .deck-detail__head p { color: var(--orange); font-weight: 600; font-size: 0.9rem; }
 
+.deck-stats { margin-bottom: 28px; }
+.deck-stats__bar {
+  display: flex;
+  width: 100%;
+  height: 10px;
+  border-radius: 999px;
+  overflow: hidden;
+  background: var(--black-soft);
+  margin-bottom: 14px;
+}
+.deck-stats__segment { height: 100%; }
+.deck-stats__legend { display: flex; flex-wrap: wrap; gap: 10px 22px; }
+.deck-stats__item { display: flex; align-items: center; gap: 7px; font-size: 0.85rem; color: var(--text-muted); }
+.deck-stats__dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+.deck-stats__item strong { color: var(--text); font-weight: 700; }
+
 .section-tabs {
   display: flex;
   border-bottom: 1px solid var(--border);

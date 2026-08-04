@@ -198,6 +198,7 @@ function showDeckDetail(deckId, opts = {}) {
   currentDeck = deck;
   document.getElementById('detailDeckName').textContent = deck.name;
   document.getElementById('detailDeckMeta').textContent = `${deck.clan ? deck.clan + ' · ' : ''}${deck.cards.length} cards`;
+  renderDeckStats(deck);
 
   const hasSections = deck.cards.some(card => card.section);
 
@@ -217,6 +218,39 @@ function showDeckDetail(deckId, opts = {}) {
 
   showView('detail');
   if (opts.highlightName) highlightCardByName(opts.highlightName);
+}
+
+const GRADE_ORDER = ['G0', 'G1', 'G2', 'G3', 'G (Stride/G unit)'];
+const GRADE_LABELS = { 'G0': 'G0', 'G1': 'G1', 'G2': 'G2', 'G3': 'G3', 'G (Stride/G unit)': 'Stride' };
+const GRADE_COLORS = { 'G0': '#ffd9b8', 'G1': '#ffb073', 'G2': '#ff8a3d', 'G3': '#ff5b1a', 'G (Stride/G unit)': '#b3390f' };
+
+function renderDeckStats(deck) {
+  const container = document.getElementById('deckStats');
+  const counts = {};
+  deck.cards.forEach(c => {
+    const g = c.grade || 'Unknown';
+    counts[g] = (counts[g] || 0) + 1;
+  });
+  const total = deck.cards.length;
+  const grades = Object.keys(counts).sort((a, b) => {
+    const ai = GRADE_ORDER.indexOf(a);
+    const bi = GRADE_ORDER.indexOf(b);
+    return (ai === -1 ? 999 : ai) - (bi === -1 ? 999 : bi);
+  });
+
+  container.innerHTML = `
+    <div class="deck-stats__bar">
+      ${grades.map(g => `<span class="deck-stats__segment" style="flex:0 0 ${(counts[g] / total * 100).toFixed(2)}%; background:${GRADE_COLORS[g] || 'var(--text-muted)'}"></span>`).join('')}
+    </div>
+    <div class="deck-stats__legend">
+      ${grades.map(g => `
+        <span class="deck-stats__item">
+          <span class="deck-stats__dot" style="background:${GRADE_COLORS[g] || 'var(--text-muted)'}"></span>
+          ${GRADE_LABELS[g] || g} <strong>${counts[g]}</strong>
+        </span>
+      `).join('')}
+    </div>
+  `;
 }
 
 function highlightCardByName(name) {
@@ -393,6 +427,13 @@ renderClanTabs();
 renderDeckGrid();
 renderStats();
 observeRevealAll();
+
+/* ===== PWA: service worker registration ===== */
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('sw.js').catch(() => {});
+  });
+}
 
 const heroCarousel = document.getElementById('heroCarousel');
 if (heroCarousel) {
