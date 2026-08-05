@@ -766,21 +766,33 @@ let idleCardIndex = 0;
 function showIdleCard(index, immediate) {
   const card = IDLE_CARDS[index];
 
-  const apply = () => {
+  const swapIn = () => {
     idleCardImage.src = card.image;
     idleCardImage.alt = card.name;
     idleCardName.textContent = card.name;
     idleCardClan.textContent = card.clan;
     idleOverlay.style.setProperty('--idle-color', card.color);
     idleOverlay.style.setProperty('--idle-bg-dark', card.bgDark);
-    requestAnimationFrame(() => idleCardImage.classList.add('is-visible'));
+    // Double rAF: guarantees the browser commits the opacity:0 state
+    // in one frame before the is-visible transition starts in the next.
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => idleCardImage.classList.add('is-visible'));
+    });
   };
 
   if (immediate) {
-    apply();
+    // First card on entering idle: show it right away, no fade-out to wait on.
+    swapIn();
   } else {
+    // Cycling to the next card: wait for the current one to fully fade out,
+    // then preload the next image so the src swap is instant (no pop/flash).
     idleCardImage.classList.remove('is-visible');
-    setTimeout(apply, 400);
+    setTimeout(() => {
+      const preload = new Image();
+      preload.onload = swapIn;
+      preload.onerror = swapIn;
+      preload.src = card.image;
+    }, 700);
   }
 }
 

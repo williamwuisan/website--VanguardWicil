@@ -1130,8 +1130,8 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
   position: absolute;
   top: 50%;
   left: 50%;
-  width: min(70vw, 640px);
-  height: min(70vw, 640px);
+  width: min(85vw, 760px);
+  height: min(85vw, 760px);
   transform: translate(-50%, -50%);
   z-index: 0;
   pointer-events: none;
@@ -1152,7 +1152,7 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
   border-radius: 14px;
   box-shadow: 0 30px 90px rgba(0,0,0,0.55);
   opacity: 0;
-  transition: opacity 0.5s ease;
+  transition: opacity 0.7s ease;
 }
 .idle-overlay__image.is-visible { opacity: 1; }
 .idle-overlay__caption {
@@ -1176,5 +1176,6 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
 }
 @media (max-width: 600px) {
   .idle-overlay__card { width: min(70vw, 240px); }
+  .idle-overlay__emblem { width: min(105vw, 460px); height: min(105vw, 460px); }
   .idle-overlay__name { font-size: 1.1rem; }
 }
