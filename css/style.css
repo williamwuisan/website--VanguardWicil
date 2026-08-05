@@ -508,16 +508,25 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
 }
 .daily-card__fan-item {
   flex-shrink: 0;
-  width: 84px;
+  width: 150px;
   aspect-ratio: 63 / 88;
   object-fit: cover;
-  border-radius: 8px;
+  border-radius: 10px;
   border: 1px solid var(--border);
-  box-shadow: 0 10px 26px rgba(0,0,0,0.18);
-  margin-left: -46px;
-  transition: opacity 0.4s ease;
+  box-shadow: 0 14px 34px rgba(0,0,0,0.2);
+  margin-left: -84px;
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: transform 0.6s var(--ease), opacity 0.6s var(--ease);
 }
 .daily-card__fan-item:first-child { margin-left: 0; }
+.daily-card__fan.is-revealed .daily-card__fan-item {
+  opacity: var(--target-opacity, 1);
+  transform: translateX(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .daily-card__fan-item { transition: none; opacity: var(--target-opacity, 1); transform: none; }
+}
 .daily-card__media {
   position: relative;
   flex-shrink: 0;
@@ -587,7 +596,7 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
 @media (max-width: 600px) {
   .daily-card { flex-direction: column; text-align: center; gap: 28px; }
   .daily-card__media { width: 160px; margin-top: 16px; }
-  .daily-card__fan-item { width: 64px; margin-left: -34px; }
+  .daily-card__fan-item { width: 108px; margin-left: -60px; }
 }
 
 /* ===== Deck List View ===== */

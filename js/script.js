@@ -286,14 +286,22 @@ function getShowcaseCards(deck) {
   return deck.cards.slice(0, 5);
 }
 
+const dailyFanObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    entry.target.classList.toggle('is-revealed', entry.isIntersecting);
+  });
+}, { threshold: 0.35 });
+
 function renderDailyCardFan(deck) {
   const fan = document.getElementById('dailyCardFan');
+  fan.classList.remove('is-revealed');
   const showcase = getShowcaseCards(deck);
   fan.innerHTML = showcase.map((card, i) => {
     if (!card.image) return '';
-    const opacity = Math.max(0.08, 1 - i * 0.22);
-    return `<img class="daily-card__fan-item" src="${card.image}" alt="${card.name}" style="opacity:${opacity.toFixed(2)}; z-index:${showcase.length - i};" loading="lazy">`;
+    const opacity = Math.max(0.08, 1 - i * 0.22).toFixed(2);
+    return `<img class="daily-card__fan-item" src="${card.image}" alt="${card.name}" style="--target-opacity:${opacity}; z-index:${showcase.length - i}; transition-delay:${i * 90}ms;" loading="lazy">`;
   }).join('');
+  dailyFanObserver.observe(fan);
 }
 
 function renderDailyCard() {
