@@ -387,6 +387,38 @@
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"/><path d="M5 12l7-7 7 7"/></svg>
 </button>
 
+<div class="idle-overlay" id="idleOverlay" aria-hidden="true">
+  <div class="idle-overlay__glow"></div>
+  <svg class="idle-overlay__emblem" viewBox="0 0 300 300" aria-hidden="true">
+    <circle cx="150" cy="150" r="140" fill="none" stroke="var(--idle-color)" stroke-width="1" opacity="0.3"/>
+    <circle cx="150" cy="150" r="118" fill="none" stroke="var(--idle-color)" stroke-width="1" stroke-dasharray="2 7" opacity="0.45"/>
+    <circle cx="150" cy="150" r="96" fill="none" stroke="var(--idle-color)" stroke-width="1" opacity="0.25"/>
+    <g stroke="var(--idle-color)" stroke-width="1" opacity="0.35" fill="none">
+      <path d="M 150 32 A 118 118 0 0 1 236 150"/>
+      <path d="M 150 268 A 118 118 0 0 1 64 150"/>
+    </g>
+    <g stroke="var(--idle-color)" stroke-width="1.5" opacity="0.55">
+      <line x1="150" y1="2" x2="150" y2="22"/>
+      <line x1="150" y1="278" x2="150" y2="298"/>
+      <line x1="2" y1="150" x2="22" y2="150"/>
+      <line x1="278" y1="150" x2="298" y2="150"/>
+    </g>
+    <g fill="var(--idle-color)" opacity="0.65">
+      <polygon points="150,0 156,10 150,20 144,10"/>
+      <polygon points="150,280 156,290 150,300 144,290"/>
+      <polygon points="0,150 10,144 20,150 10,156"/>
+      <polygon points="280,150 290,144 300,150 290,156"/>
+    </g>
+  </svg>
+  <div class="idle-overlay__card">
+    <img id="idleCardImage" class="idle-overlay__image" src="" alt="">
+  </div>
+  <div class="idle-overlay__caption">
+    <p id="idleCardName" class="idle-overlay__name"></p>
+    <p id="idleCardClan" class="idle-overlay__clan"></p>
+  </div>
+</div>
+
 <footer class="footer">
   <p>Built for Wicil &amp; his girlfriend's personal collection. Card data sourced publicly, for personal reference only.</p>
 </footer>

@@ -736,3 +736,84 @@ if (heroCarousel) {
 
   updateHeroCarousel();
 }
+
+/* ===== Idle wallpaper ===== */
+const IDLE_CARDS = [
+  { name: 'Blaster Dark', clan: 'Shadow Paladin', image: 'assets/idle/blaster-dark.webp', color: '#8b5cf6', bgDark: '#150a29' },
+  { name: 'Silver Thorn Dragon Tamer, Luquier', clan: 'Pale Moon', image: 'assets/idle/luquier.webp', color: '#14b8a6', bgDark: '#041613' },
+  { name: 'Pure Heart Jewel Knight, Ashlei', clan: 'Royal Paladin', image: 'assets/idle/ashlei.webp', color: '#38bdf8', bgDark: '#071a2b' },
+  { name: 'Chronojet Dragon', clan: 'Gear Chronicle', image: 'assets/idle/chronojet-dragon.webp', color: '#3b82f6', bgDark: '#05122b' },
+  { name: 'Masked Magician, Harri', clan: 'Pale Moon', image: 'assets/idle/harri.webp', color: '#a855f7', bgDark: '#1c0a2b' },
+  { name: 'Blue Sky Knight, Altmile', clan: 'Royal Paladin', image: 'assets/idle/altmile.webp', color: '#06b6d4', bgDark: '#04191d' },
+  { name: 'Ranunculus Flower Maiden, Ahsha', clan: 'Neo Nectar', image: 'assets/idle/ahsha.webp', color: '#22c55e', bgDark: '#06180d' },
+  { name: 'Vampire Princess of Night Fog, Nightrose', clan: 'Granblue', image: 'assets/idle/nightrose.webp', color: '#2b3a8f', bgDark: '#0a0f24' },
+  { name: 'Blaster Blade', clan: 'Royal Paladin', image: 'assets/idle/blaster-blade.webp', color: '#60a5fa', bgDark: '#0a1730' },
+  { name: 'Dragonic Overlord', clan: 'Kagero', image: 'assets/idle/dragonic-overlord.png', color: '#ef4444', bgDark: '#240707' },
+];
+
+const IDLE_DELAY = 30000;
+const IDLE_CARD_DURATION = 4000;
+
+const idleOverlay = document.getElementById('idleOverlay');
+const idleCardImage = document.getElementById('idleCardImage');
+const idleCardName = document.getElementById('idleCardName');
+const idleCardClan = document.getElementById('idleCardClan');
+
+let idleTimer = null;
+let idleCycleInterval = null;
+let idleCardIndex = 0;
+
+function showIdleCard(index, immediate) {
+  const card = IDLE_CARDS[index];
+
+  const apply = () => {
+    idleCardImage.src = card.image;
+    idleCardImage.alt = card.name;
+    idleCardName.textContent = card.name;
+    idleCardClan.textContent = card.clan;
+    idleOverlay.style.setProperty('--idle-color', card.color);
+    idleOverlay.style.setProperty('--idle-bg-dark', card.bgDark);
+    requestAnimationFrame(() => idleCardImage.classList.add('is-visible'));
+  };
+
+  if (immediate) {
+    apply();
+  } else {
+    idleCardImage.classList.remove('is-visible');
+    setTimeout(apply, 400);
+  }
+}
+
+function enterIdle() {
+  clearInterval(idleCycleInterval);
+  idleCardIndex = 0;
+  showIdleCard(idleCardIndex, true);
+  idleOverlay.classList.add('is-active');
+  idleCycleInterval = setInterval(() => {
+    idleCardIndex = (idleCardIndex + 1) % IDLE_CARDS.length;
+    showIdleCard(idleCardIndex, false);
+  }, IDLE_CARD_DURATION);
+}
+
+function exitIdle() {
+  if (!idleOverlay.classList.contains('is-active')) return;
+  idleOverlay.classList.remove('is-active');
+  clearInterval(idleCycleInterval);
+  resetIdleTimer();
+}
+
+function resetIdleTimer() {
+  clearTimeout(idleTimer);
+  idleTimer = setTimeout(enterIdle, IDLE_DELAY);
+}
+
+['mousemove', 'mousedown', 'touchstart', 'keydown', 'scroll', 'wheel'].forEach(evt => {
+  document.addEventListener(evt, () => {
+    if (idleOverlay.classList.contains('is-active')) {
+      exitIdle();
+    } else {
+      resetIdleTimer();
+    }
+  }, { passive: true });
+});
+resetIdleTimer();
