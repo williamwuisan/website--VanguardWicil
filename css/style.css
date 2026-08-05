@@ -489,32 +489,32 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
 .daily-showcase {
   display: flex;
   align-items: center;
-  gap: 24px;
+  justify-content: center;
+  gap: 48px;
+  max-width: 1100px;
+  margin: 0 auto;
 }
 .daily-card {
   display: flex;
   align-items: center;
   gap: 32px;
   flex-shrink: 0;
-  max-width: 460px;
+  max-width: 520px;
 }
 .daily-card__fan {
-  flex: 1;
   display: flex;
   align-items: center;
-  min-width: 0;
-  overflow: hidden;
-  padding-right: 24px;
+  flex-shrink: 0;
 }
 .daily-card__fan-item {
   flex-shrink: 0;
-  width: 150px;
+  width: 190px;
   aspect-ratio: 63 / 88;
   object-fit: cover;
   border-radius: 10px;
   border: 1px solid var(--border);
   box-shadow: 0 14px 34px rgba(0,0,0,0.2);
-  margin-left: -84px;
+  margin-left: -104px;
   opacity: 0;
   transform: translateX(-50px);
   transition: transform 0.6s var(--ease), opacity 0.6s var(--ease);
@@ -530,7 +530,7 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
 .daily-card__media {
   position: relative;
   flex-shrink: 0;
-  width: 140px;
+  width: 190px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -539,8 +539,8 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 260px;
-  height: 260px;
+  width: 340px;
+  height: 340px;
   transform: translate(-50%, -50%);
   z-index: 0;
   pointer-events: none;
@@ -555,19 +555,19 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
 }
 .daily-card__ribbon {
   position: absolute;
-  top: -16px;
+  top: -18px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 2;
   background: var(--orange);
   color: #ffffff;
   font-family: 'Russo One', 'Rajdhani', sans-serif;
-  font-size: 0.72rem;
+  font-size: 0.8rem;
   font-weight: 400;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   white-space: nowrap;
-  padding: 8px 20px;
+  padding: 10px 26px;
   clip-path: polygon(8% 0, 92% 0, 100% 50%, 92% 100%, 8% 100%, 0 50%);
   box-shadow: 0 10px 24px rgba(255,91,26,0.4);
 }
@@ -595,8 +595,8 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
 
 @media (max-width: 600px) {
   .daily-card { flex-direction: column; text-align: center; gap: 28px; }
-  .daily-card__media { width: 160px; margin-top: 16px; }
-  .daily-card__fan-item { width: 108px; margin-left: -60px; }
+  .daily-card__media { width: 220px; margin-top: 16px; }
+  .daily-card__fan-item { width: 140px; margin-left: -78px; }
 }
 
 /* ===== Deck List View ===== */
