@@ -280,6 +280,22 @@ function renderStats() {
   document.getElementById('cardCount').textContent = DECKS.reduce((sum, d) => sum + d.cards.length, 0);
 }
 
+function getShowcaseCards(deck) {
+  const rideLine = deck.cards.filter(c => c.section === 'Ride Line');
+  if (rideLine.length) return rideLine;
+  return deck.cards.slice(0, 5);
+}
+
+function renderDailyCardFan(deck) {
+  const fan = document.getElementById('dailyCardFan');
+  const showcase = getShowcaseCards(deck);
+  fan.innerHTML = showcase.map((card, i) => {
+    if (!card.image) return '';
+    const opacity = Math.max(0.08, 1 - i * 0.22);
+    return `<img class="daily-card__fan-item" src="${card.image}" alt="${card.name}" style="opacity:${opacity.toFixed(2)}; z-index:${showcase.length - i};" loading="lazy">`;
+  }).join('');
+}
+
 function renderDailyCard() {
   const allCards = [];
   DECKS.forEach(deck => deck.cards.forEach(card => allCards.push({ deck, card })));
@@ -302,6 +318,8 @@ function renderDailyCard() {
   const goToCard = () => showDeckDetail(pick.deck.id, { section: pick.card.section || null, highlightName: pick.card.name });
   img.onclick = goToCard;
   btn.onclick = goToCard;
+
+  renderDailyCardFan(pick.deck);
 }
 
 /* ===== Lightbox ===== */

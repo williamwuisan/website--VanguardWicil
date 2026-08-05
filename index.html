@@ -218,38 +218,41 @@
 
     <div class="home-band home-band--daily">
       <div class="home-band__inner">
-        <div class="daily-card reveal">
-          <div class="daily-card__media">
-            <svg class="daily-card__emblem" viewBox="0 0 300 300" aria-hidden="true">
-              <circle cx="150" cy="150" r="140" fill="none" stroke="var(--orange)" stroke-width="1" opacity="0.25"/>
-              <circle cx="150" cy="150" r="118" fill="none" stroke="var(--orange)" stroke-width="1" stroke-dasharray="2 7" opacity="0.4"/>
-              <circle cx="150" cy="150" r="96" fill="none" stroke="var(--orange)" stroke-width="1" opacity="0.2"/>
-              <g stroke="var(--orange)" stroke-width="1" opacity="0.3" fill="none">
-                <path d="M 150 32 A 118 118 0 0 1 236 150"/>
-                <path d="M 150 268 A 118 118 0 0 1 64 150"/>
-              </g>
-              <g stroke="var(--orange)" stroke-width="1.5" opacity="0.45">
-                <line x1="150" y1="2" x2="150" y2="22"/>
-                <line x1="150" y1="278" x2="150" y2="298"/>
-                <line x1="2" y1="150" x2="22" y2="150"/>
-                <line x1="278" y1="150" x2="298" y2="150"/>
-              </g>
-              <g fill="var(--orange)" opacity="0.55">
-                <polygon points="150,0 156,10 150,20 144,10"/>
-                <polygon points="150,280 156,290 150,300 144,290"/>
-                <polygon points="0,150 10,144 20,150 10,156"/>
-                <polygon points="280,150 290,144 300,150 290,156"/>
-              </g>
-            </svg>
-            <span class="daily-card__ribbon">Today's Card</span>
-            <img id="dailyCardImage" class="daily-card__image" src="" alt="">
+        <div class="daily-showcase reveal">
+          <div class="daily-card">
+            <div class="daily-card__media">
+              <svg class="daily-card__emblem" viewBox="0 0 300 300" aria-hidden="true">
+                <circle cx="150" cy="150" r="140" fill="none" stroke="var(--orange)" stroke-width="1" opacity="0.25"/>
+                <circle cx="150" cy="150" r="118" fill="none" stroke="var(--orange)" stroke-width="1" stroke-dasharray="2 7" opacity="0.4"/>
+                <circle cx="150" cy="150" r="96" fill="none" stroke="var(--orange)" stroke-width="1" opacity="0.2"/>
+                <g stroke="var(--orange)" stroke-width="1" opacity="0.3" fill="none">
+                  <path d="M 150 32 A 118 118 0 0 1 236 150"/>
+                  <path d="M 150 268 A 118 118 0 0 1 64 150"/>
+                </g>
+                <g stroke="var(--orange)" stroke-width="1.5" opacity="0.45">
+                  <line x1="150" y1="2" x2="150" y2="22"/>
+                  <line x1="150" y1="278" x2="150" y2="298"/>
+                  <line x1="2" y1="150" x2="22" y2="150"/>
+                  <line x1="278" y1="150" x2="298" y2="150"/>
+                </g>
+                <g fill="var(--orange)" opacity="0.55">
+                  <polygon points="150,0 156,10 150,20 144,10"/>
+                  <polygon points="150,280 156,290 150,300 144,290"/>
+                  <polygon points="0,150 10,144 20,150 10,156"/>
+                  <polygon points="280,150 290,144 300,150 290,156"/>
+                </g>
+              </svg>
+              <span class="daily-card__ribbon">Today's Card</span>
+              <img id="dailyCardImage" class="daily-card__image" src="" alt="">
+            </div>
+            <div class="daily-card__info">
+              <h3 id="dailyCardName" class="daily-card__name"></h3>
+              <p id="dailyCardJp" class="daily-card__name-jp"></p>
+              <p id="dailyCardDeck" class="daily-card__deck"></p>
+              <button id="dailyCardBtn" class="btn btn--ghost">View in Deck <span class="btn__arrow">→</span></button>
+            </div>
           </div>
-          <div class="daily-card__info">
-            <h3 id="dailyCardName" class="daily-card__name"></h3>
-            <p id="dailyCardJp" class="daily-card__name-jp"></p>
-            <p id="dailyCardDeck" class="daily-card__deck"></p>
-            <button id="dailyCardBtn" class="btn btn--ghost">View in Deck <span class="btn__arrow">→</span></button>
-          </div>
+          <div class="daily-card__fan" id="dailyCardFan"></div>
         </div>
       </div>
     </div>

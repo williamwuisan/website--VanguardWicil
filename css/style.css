@@ -486,13 +486,38 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
 
 /* ===== Home / Card of the day ===== */
 .home-band--daily { padding-top: 96px; padding-bottom: 96px; overflow: hidden; }
+.daily-showcase {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
 .daily-card {
   display: flex;
   align-items: center;
   gap: 32px;
-  max-width: 640px;
-  margin: 0 auto;
+  flex-shrink: 0;
+  max-width: 460px;
 }
+.daily-card__fan {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  overflow: hidden;
+  padding-right: 24px;
+}
+.daily-card__fan-item {
+  flex-shrink: 0;
+  width: 84px;
+  aspect-ratio: 63 / 88;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  box-shadow: 0 10px 26px rgba(0,0,0,0.18);
+  margin-left: -46px;
+  transition: opacity 0.4s ease;
+}
+.daily-card__fan-item:first-child { margin-left: 0; }
 .daily-card__media {
   position: relative;
   flex-shrink: 0;
@@ -554,9 +579,15 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
 .daily-card__name-jp { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 8px; }
 .daily-card__deck { color: var(--orange); font-weight: 600; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 18px; }
 
+@media (max-width: 860px) {
+  .daily-showcase { flex-direction: column; gap: 36px; }
+  .daily-card__fan { width: 100%; padding-right: 0; justify-content: center; }
+}
+
 @media (max-width: 600px) {
   .daily-card { flex-direction: column; text-align: center; gap: 28px; }
   .daily-card__media { width: 160px; margin-top: 16px; }
+  .daily-card__fan-item { width: 64px; margin-left: -34px; }
 }
 
 /* ===== Deck List View ===== */
