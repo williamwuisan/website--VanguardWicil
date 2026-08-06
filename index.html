@@ -27,6 +27,23 @@
 </head>
 <body>
 
+<div class="splash" id="splash" aria-hidden="true">
+  <svg class="splash__logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="splashGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#ffcf85"/>
+        <stop offset="50%" stop-color="#ff9540"/>
+        <stop offset="100%" stop-color="#ff4d00"/>
+      </linearGradient>
+    </defs>
+    <polygon class="splash__hex" points="50,3 90,25 90,75 50,97 10,75 10,25" fill="#0a0a0c" stroke="url(#splashGrad)" stroke-width="5"/>
+    <polygon class="splash__hex-inner" points="50,11 83,29 83,71 50,89 17,71 17,29" fill="none" stroke="url(#splashGrad)" stroke-width="1"/>
+    <text class="splash__letter" x="50" y="68" text-anchor="middle" font-family="'Russo One', Arial, sans-serif" font-size="46" fill="url(#splashGrad)">W</text>
+    <polygon class="splash__accent" points="50,2 57,13 50,24 43,13" fill="url(#splashGrad)"/>
+  </svg>
+  <p class="splash__word">Wicil<span class="text-accent">TCG</span></p>
+</div>
+
 <header class="header">
   <div class="header__inner">
     <a href="#" class="logo" data-nav="home">

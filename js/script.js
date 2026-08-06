@@ -631,6 +631,14 @@ try {
   }
 } catch (e) {}
 
+/* ===== First-load splash ===== */
+(function() {
+  const splash = document.getElementById('splash');
+  if (!splash) return;
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  setTimeout(() => splash.classList.add('is-hidden'), prefersReducedMotion ? 200 : 1700);
+})();
+
 const initialClans = getClans();
 selectedClan = initialClans[0] || null;
 renderClanTabs();
