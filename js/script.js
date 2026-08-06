@@ -899,7 +899,7 @@ function resetIdleTimer() {
 });
 resetIdleTimer();
 
-/* ===== Memory match minigame ===== */
+/* ===== Skill match minigame ===== */
 const MEMORY_PAIR_COUNT = 8;
 let memoryState = { flipped: [], matchedCount: 0, moves: 0, locked: false };
 
@@ -907,6 +907,24 @@ function getAllCardsWithImages() {
   const all = [];
   DECKS.forEach(deck => deck.cards.forEach(card => { if (card.image) all.push(card); }));
   return all;
+}
+
+function getCardsForSkillGame() {
+  return getAllCardsWithImages().filter(card =>
+    card.grade !== 'G (Stride/G unit)' &&
+    card.effect &&
+    card.effect.length > 15 &&
+    !card.effect.includes('Terjemahan belum ditemukan')
+  );
+}
+
+function getEffectSnippet(effect) {
+  const lines = effect.split('\n').map(l => l.trim()).filter(Boolean);
+  const isGenericReminder = (l) => /^\(.*\)$/.test(l) || /^\[[^\]]+\]\s*\(.*\)$/.test(l);
+  const abilityLine = lines.find(l => /\[(AUTO|CONT|ACT)\]/.test(l) || /Trigger:/.test(l));
+  const candidate = abilityLine || lines.find(l => !isGenericReminder(l)) || lines[0] || '';
+  const sentence = candidate.split(/(?<=[.!?])\s/)[0] || candidate;
+  return sentence.length > 110 ? sentence.slice(0, 108) + '…' : sentence;
 }
 
 function shuffleArray(arr) {
@@ -919,19 +937,24 @@ function shuffleArray(arr) {
 }
 
 function startMemoryGame() {
-  const pool = shuffleArray(getAllCardsWithImages()).slice(0, MEMORY_PAIR_COUNT);
-  const pairs = shuffleArray([...pool, ...pool]).map((card, idx) => ({ ...card, uid: idx }));
+  const pool = shuffleArray(getCardsForSkillGame()).slice(0, MEMORY_PAIR_COUNT);
+  const tiles = [];
+  pool.forEach((card, idx) => {
+    tiles.push({ uid: idx * 2, name: card.name, type: 'image', image: card.image });
+    tiles.push({ uid: idx * 2 + 1, name: card.name, type: 'effect', text: getEffectSnippet(card.effect) });
+  });
+  const shuffled = shuffleArray(tiles);
 
   memoryState = { flipped: [], matchedCount: 0, moves: 0, locked: false };
   document.getElementById('memoryWinMessage').classList.remove('is-visible');
   updateMemoryMoves();
-  renderMemoryBoard(pairs);
+  renderMemoryBoard(shuffled);
 }
 
-function renderMemoryBoard(pairs) {
+function renderMemoryBoard(tiles) {
   const grid = document.getElementById('memoryGrid');
-  grid.innerHTML = pairs.map(card => `
-    <button class="memory-card" data-uid="${card.uid}" data-name="${card.name}">
+  grid.innerHTML = tiles.map(tile => `
+    <button class="memory-card" data-uid="${tile.uid}" data-name="${tile.name}">
       <div class="memory-card__inner">
         <div class="memory-card__face memory-card__face--front">
           <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -940,7 +963,9 @@ function renderMemoryBoard(pairs) {
           </svg>
         </div>
         <div class="memory-card__face memory-card__face--back">
-          <img src="${card.image}" alt="${card.name}" loading="lazy">
+          ${tile.type === 'image'
+            ? `<img src="${tile.image}" alt="${tile.name}" loading="lazy">`
+            : `<p class="memory-card__effect-text">${tile.text}</p>`}
         </div>
       </div>
     </button>
@@ -990,45 +1015,3 @@ function checkMemoryWin() {
 
 document.getElementById('memoryRestart').addEventListener('click', startMemoryGame);
 document.getElementById('memoryPlayAgain').addEventListener('click', startMemoryGame);
-
-/* ===== Easter egg: click the logo 5x ===== */
-(function() {
-  const logo = document.querySelector('.logo');
-  const burst = document.getElementById('eggBurst');
-  const toast = document.getElementById('eggToast');
-  if (!logo || !burst || !toast) return;
-
-  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  let clickTimes = [];
-
-  logo.addEventListener('click', () => {
-    const now = Date.now();
-    clickTimes.push(now);
-    clickTimes = clickTimes.filter(t => now - t < 3000);
-    if (clickTimes.length >= 5) {
-      clickTimes = [];
-      triggerEasterEgg();
-    }
-  });
-
-  function triggerEasterEgg() {
-    if (!prefersReducedMotion) {
-      const count = 26;
-      let html = '';
-      for (let i = 0; i < count; i++) {
-        const angle = Math.random() * Math.PI * 2;
-        const dist = 120 + Math.random() * 220;
-        const tx = Math.round(Math.cos(angle) * dist);
-        const ty = Math.round(Math.sin(angle) * dist);
-        const rot = Math.round(Math.random() * 720 - 360);
-        const delay = (Math.random() * 0.15).toFixed(2);
-        html += `<span class="egg-particle" style="--tx:${tx}px; --ty:${ty}px; --rot:${rot}deg; animation-delay:${delay}s;"></span>`;
-      }
-      burst.innerHTML = html;
-      setTimeout(() => { burst.innerHTML = ''; }, 1500);
-    }
-
-    toast.classList.add('is-visible');
-    setTimeout(() => toast.classList.remove('is-visible'), 2200);
-  }
-})();

@@ -108,7 +108,7 @@
     </button>
     <button class="drawer__item" data-nav="game">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
-      Memory Game
+      Skill Match
     </button>
   </div>
   <div class="drawer__theme">
@@ -127,8 +127,8 @@
 
   <!-- ===== HOME VIEW ===== -->
   <section id="view-home" class="view view--flush">
+    <div class="particles" id="homeParticles" aria-hidden="true"></div>
     <div class="home-band home-band--hero">
-      <div class="particles" id="homeParticles" aria-hidden="true"></div>
       <div class="home-band__inner">
         <div class="hero reveal">
           <div class="hero__glow"></div>
@@ -376,11 +376,11 @@
     </div>
   </section>
 
-  <!-- ===== MEMORY GAME VIEW ===== -->
+  <!-- ===== SKILL MATCH GAME VIEW ===== -->
   <section id="view-game" class="view view--hidden">
     <div class="view-head reveal">
-      <h2>Memory Match</h2>
-      <p>Flip two cards at a time and find every pair. How few moves can you do it in?</p>
+      <h2>Skill Match</h2>
+      <p>Each card has two tiles: its art, and a line from its skill. Match the art to the skill it belongs to — a good way to actually learn what your cards do.</p>
     </div>
     <div class="memory-toolbar">
       <div class="memory-stat">Moves: <strong id="memoryMoves">0</strong></div>
@@ -425,9 +425,6 @@
 <button class="scroll-top-btn" id="scrollTopBtn" aria-label="Back to top">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"/><path d="M5 12l7-7 7 7"/></svg>
 </button>
-
-<div class="egg-burst" id="eggBurst" aria-hidden="true"></div>
-<div class="egg-toast" id="eggToast">✨ Critical Trigger! ✨</div>
 
 <div class="idle-overlay" id="idleOverlay" aria-hidden="true">
   <div class="idle-overlay__glow"></div>
