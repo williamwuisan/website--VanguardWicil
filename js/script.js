@@ -990,3 +990,45 @@ function checkMemoryWin() {
 
 document.getElementById('memoryRestart').addEventListener('click', startMemoryGame);
 document.getElementById('memoryPlayAgain').addEventListener('click', startMemoryGame);
+
+/* ===== Easter egg: click the logo 5x ===== */
+(function() {
+  const logo = document.querySelector('.logo');
+  const burst = document.getElementById('eggBurst');
+  const toast = document.getElementById('eggToast');
+  if (!logo || !burst || !toast) return;
+
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let clickTimes = [];
+
+  logo.addEventListener('click', () => {
+    const now = Date.now();
+    clickTimes.push(now);
+    clickTimes = clickTimes.filter(t => now - t < 3000);
+    if (clickTimes.length >= 5) {
+      clickTimes = [];
+      triggerEasterEgg();
+    }
+  });
+
+  function triggerEasterEgg() {
+    if (!prefersReducedMotion) {
+      const count = 26;
+      let html = '';
+      for (let i = 0; i < count; i++) {
+        const angle = Math.random() * Math.PI * 2;
+        const dist = 120 + Math.random() * 220;
+        const tx = Math.round(Math.cos(angle) * dist);
+        const ty = Math.round(Math.sin(angle) * dist);
+        const rot = Math.round(Math.random() * 720 - 360);
+        const delay = (Math.random() * 0.15).toFixed(2);
+        html += `<span class="egg-particle" style="--tx:${tx}px; --ty:${ty}px; --rot:${rot}deg; animation-delay:${delay}s;"></span>`;
+      }
+      burst.innerHTML = html;
+      setTimeout(() => { burst.innerHTML = ''; }, 1500);
+    }
+
+    toast.classList.add('is-visible');
+    setTimeout(() => toast.classList.remove('is-visible'), 2200);
+  }
+})();
