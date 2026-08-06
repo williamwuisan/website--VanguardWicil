@@ -639,6 +639,23 @@ try {
   setTimeout(() => splash.classList.add('is-hidden'), prefersReducedMotion ? 200 : 1700);
 })();
 
+/* ===== Ambient homepage particles ===== */
+(function() {
+  const container = document.getElementById('homeParticles');
+  if (!container || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const count = 24;
+  let html = '';
+  for (let i = 0; i < count; i++) {
+    const left = (Math.random() * 100).toFixed(1);
+    const size = (2 + Math.random() * 3).toFixed(1);
+    const duration = (10 + Math.random() * 14).toFixed(1);
+    const delay = (Math.random() * -20).toFixed(1);
+    const drift = Math.round(Math.random() * 60 - 30);
+    html += `<span class="particle" style="left:${left}%; width:${size}px; height:${size}px; animation-duration:${duration}s; animation-delay:${delay}s; --drift:${drift}px;"></span>`;
+  }
+  container.innerHTML = html;
+})();
+
 const initialClans = getClans();
 selectedClan = initialClans[0] || null;
 renderClanTabs();

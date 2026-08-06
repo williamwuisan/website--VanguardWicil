@@ -299,7 +299,33 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
 }
-.home-band--hero { padding-top: 56px; padding-bottom: 215px; }
+.home-band--hero { position: relative; padding-top: 56px; padding-bottom: 215px; overflow: hidden; }
+.particles {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+.particle {
+  position: absolute;
+  bottom: -10px;
+  border-radius: 50%;
+  background: var(--orange);
+  opacity: 0;
+  animation-name: particle-float;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+@keyframes particle-float {
+  0% { transform: translate(0, 0); opacity: 0; }
+  12% { opacity: 0.55; }
+  55% { opacity: 0.3; }
+  100% { transform: translate(var(--drift), -420px); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .particles { display: none; }
+}
 .home-band--art {
   padding-top: 72px;
   padding-bottom: 80px;
@@ -307,7 +333,7 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
 }
-.home-band__inner { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+.home-band__inner { position: relative; z-index: 1; max-width: 1080px; margin: 0 auto; padding: 0 24px; }
 
 /* ===== Home / Hero ===== */
 .hero { position: relative; text-align: center; max-width: 680px; margin: 0 auto 64px; padding-top: 24px; }
