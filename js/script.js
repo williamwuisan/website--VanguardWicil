@@ -23,6 +23,7 @@ function observeRevealAll(root = document) {
 let selectedClan = null;
 
 function showView(name) {
+  if (typeof stopSpeaking === 'function') stopSpeaking();
   Object.values(views).forEach(v => v.classList.add('view--hidden'));
   views[name].classList.remove('view--hidden');
   document.querySelectorAll('.drawer__item').forEach(link => {
@@ -137,11 +138,14 @@ function renderDeckGrid() {
   });
 }
 
+const SPEECH_SUPPORTED = typeof window !== 'undefined' && 'speechSynthesis' in window;
+
 function renderCardItem(card, i = 0) {
   return `
     <div class="card-item reveal" data-card-name="${card.name}" style="transition-delay:${Math.min(i, 8) * 0.05}s">
       ${card.image ? `<div class="card-item__image-wrap"><img class="card-item__image" src="${card.image}" alt="${card.name}" loading="lazy"></div>` : ''}
       <div class="card-item__body">
+        ${SPEECH_SUPPORTED ? `<button class="card-item__speak" data-speak aria-label="Read effect aloud"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg></button>` : ''}
         <div class="card-item__name">${card.name}</div>
         ${card.nameJp ? `<div class="card-item__name-jp">${card.nameJp}</div>` : ''}
         ${card.grade ? `<span class="card-item__grade">${card.grade}</span>` : ''}
@@ -180,6 +184,7 @@ function renderCardListForSection() {
   list.innerHTML = `<div class="card-list">${cards.map(renderCardItem).join('')}</div>`;
   observeRevealAll(list);
   wireCardImageZoom(list);
+  wireCardSpeak(list);
 }
 
 function renderSectionTabs(sections) {
@@ -352,6 +357,41 @@ function wireCardImageZoom(container) {
     img.addEventListener('click', (e) => {
       e.stopPropagation();
       openLightbox(img.src, img.alt);
+    });
+  });
+}
+
+/* ===== Text-to-speech ===== */
+let speakingBtn = null;
+
+function stopSpeaking() {
+  if (!SPEECH_SUPPORTED) return;
+  window.speechSynthesis.cancel();
+  if (speakingBtn) speakingBtn.classList.remove('is-speaking');
+  speakingBtn = null;
+}
+
+function wireCardSpeak(container) {
+  if (!SPEECH_SUPPORTED) return;
+  container.querySelectorAll('[data-speak]').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const wasSpeaking = btn === speakingBtn;
+      stopSpeaking();
+      if (wasSpeaking) return;
+
+      const item = btn.closest('.card-item');
+      const name = item.dataset.cardName;
+      const effect = item.querySelector('.card-item__effect').textContent;
+      const utter = new SpeechSynthesisUtterance(`${name}. ${effect}`);
+      utter.rate = 0.95;
+      utter.onend = utter.onerror = () => {
+        btn.classList.remove('is-speaking');
+        if (speakingBtn === btn) speakingBtn = null;
+      };
+      speakingBtn = btn;
+      btn.classList.add('is-speaking');
+      window.speechSynthesis.speak(utter);
     });
   });
 }
