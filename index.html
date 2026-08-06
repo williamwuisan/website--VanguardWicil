@@ -106,6 +106,10 @@
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
       Glossary
     </button>
+    <button class="drawer__item" data-nav="game">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+      Memory Game
+    </button>
   </div>
   <div class="drawer__theme">
     <span class="drawer__theme-label">
@@ -369,6 +373,23 @@
         <div class="glossary-term"><dt>Sentinel</dt><dd>A trigger unit type that can guard the vanguard on its own, without first needing to be a rear-guard.</dd></div>
         <div class="glossary-term"><dt>Grade (G0–G3, G unit)</dt><dd>A card's level. You ride in increasing grade order; G units (Stride units) sit outside that progression, waiting in the G Zone.</dd></div>
       </dl>
+    </div>
+  </section>
+
+  <!-- ===== MEMORY GAME VIEW ===== -->
+  <section id="view-game" class="view view--hidden">
+    <div class="view-head reveal">
+      <h2>Memory Match</h2>
+      <p>Flip two cards at a time and find every pair. How few moves can you do it in?</p>
+    </div>
+    <div class="memory-toolbar">
+      <div class="memory-stat">Moves: <strong id="memoryMoves">0</strong></div>
+      <button class="btn btn--ghost" id="memoryRestart">Restart</button>
+    </div>
+    <div class="memory-grid" id="memoryGrid"></div>
+    <div class="memory-win" id="memoryWinMessage">
+      <p>🎉 You matched every pair in <strong id="memoryFinalMoves"></strong> moves!</p>
+      <button class="btn btn--primary" id="memoryPlayAgain">Play Again</button>
     </div>
   </section>
 

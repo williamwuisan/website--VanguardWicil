@@ -4,6 +4,7 @@ const views = {
   detail: document.getElementById('view-detail'),
   search: document.getElementById('view-search'),
   glossary: document.getElementById('view-glossary'),
+  game: document.getElementById('view-game'),
 };
 
 const revealObserver = new IntersectionObserver((entries) => {
@@ -35,12 +36,15 @@ function showView(name) {
     const input = document.getElementById('searchInput');
     if (input) setTimeout(() => input.focus(), 300);
   }
+  if (name === 'game' && typeof startMemoryGame === 'function') {
+    startMemoryGame();
+  }
 }
 
 document.querySelectorAll('[data-nav]').forEach(el => {
   el.addEventListener('click', () => {
     const target = el.dataset.nav;
-    if (target === 'home' || target === 'decks' || target === 'search' || target === 'glossary') showView(target);
+    if (target === 'home' || target === 'decks' || target === 'search' || target === 'glossary' || target === 'game') showView(target);
     closeDrawer();
   });
 });
@@ -894,3 +898,95 @@ function resetIdleTimer() {
   }, { passive: true });
 });
 resetIdleTimer();
+
+/* ===== Memory match minigame ===== */
+const MEMORY_PAIR_COUNT = 8;
+let memoryState = { flipped: [], matchedCount: 0, moves: 0, locked: false };
+
+function getAllCardsWithImages() {
+  const all = [];
+  DECKS.forEach(deck => deck.cards.forEach(card => { if (card.image) all.push(card); }));
+  return all;
+}
+
+function shuffleArray(arr) {
+  const a = arr.slice();
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function startMemoryGame() {
+  const pool = shuffleArray(getAllCardsWithImages()).slice(0, MEMORY_PAIR_COUNT);
+  const pairs = shuffleArray([...pool, ...pool]).map((card, idx) => ({ ...card, uid: idx }));
+
+  memoryState = { flipped: [], matchedCount: 0, moves: 0, locked: false };
+  document.getElementById('memoryWinMessage').classList.remove('is-visible');
+  updateMemoryMoves();
+  renderMemoryBoard(pairs);
+}
+
+function renderMemoryBoard(pairs) {
+  const grid = document.getElementById('memoryGrid');
+  grid.innerHTML = pairs.map(card => `
+    <button class="memory-card" data-uid="${card.uid}" data-name="${card.name}">
+      <div class="memory-card__inner">
+        <div class="memory-card__face memory-card__face--front">
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <polygon points="50,3 90,25 90,75 50,97 10,75 10,25" fill="none" stroke="var(--orange)" stroke-width="5"/>
+            <text x="50" y="68" text-anchor="middle" font-family="'Russo One', Arial, sans-serif" font-size="46" fill="var(--orange)">W</text>
+          </svg>
+        </div>
+        <div class="memory-card__face memory-card__face--back">
+          <img src="${card.image}" alt="${card.name}" loading="lazy">
+        </div>
+      </div>
+    </button>
+  `).join('');
+  grid.querySelectorAll('.memory-card').forEach(btn => btn.addEventListener('click', onMemoryCardClick));
+}
+
+function onMemoryCardClick(e) {
+  const btn = e.currentTarget;
+  if (memoryState.locked || btn.classList.contains('is-flipped') || btn.classList.contains('is-matched')) return;
+
+  btn.classList.add('is-flipped');
+  memoryState.flipped.push(btn);
+
+  if (memoryState.flipped.length === 2) {
+    memoryState.moves++;
+    updateMemoryMoves();
+    const [a, b] = memoryState.flipped;
+    if (a.dataset.name === b.dataset.name) {
+      a.classList.add('is-matched');
+      b.classList.add('is-matched');
+      memoryState.flipped = [];
+      memoryState.matchedCount++;
+      checkMemoryWin();
+    } else {
+      memoryState.locked = true;
+      setTimeout(() => {
+        a.classList.remove('is-flipped');
+        b.classList.remove('is-flipped');
+        memoryState.flipped = [];
+        memoryState.locked = false;
+      }, 900);
+    }
+  }
+}
+
+function updateMemoryMoves() {
+  document.getElementById('memoryMoves').textContent = memoryState.moves;
+}
+
+function checkMemoryWin() {
+  if (memoryState.matchedCount === MEMORY_PAIR_COUNT) {
+    document.getElementById('memoryFinalMoves').textContent = memoryState.moves;
+    document.getElementById('memoryWinMessage').classList.add('is-visible');
+  }
+}
+
+document.getElementById('memoryRestart').addEventListener('click', startMemoryGame);
+document.getElementById('memoryPlayAgain').addEventListener('click', startMemoryGame);
