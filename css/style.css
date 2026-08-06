@@ -14,6 +14,7 @@ a { text-decoration: none; color: inherit; }
   --radius: 14px;
   --ease: cubic-bezier(.22, 1, .36, 1);
   --ink: #131211;
+  --card-cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'%3E%3Cpolygon points='14,2 26,14 14,26 2,14' fill='%23ff5b1a' stroke='%23131211' stroke-width='2'/%3E%3C/svg%3E") 14 14, pointer;
 }
 
 :root[data-theme="dark"] {
@@ -431,7 +432,7 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
   background: none;
   border: none;
   padding: 0;
-  cursor: pointer;
+  cursor: var(--card-cursor);
   border-radius: var(--radius);
   transition: transform 0.35s ease;
 }
@@ -606,7 +607,7 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
   border-radius: var(--radius);
   border: 1px solid var(--border);
   box-shadow: 0 16px 40px rgba(0,0,0,0.18);
-  cursor: pointer;
+  cursor: var(--card-cursor);
   transition: transform 0.4s var(--ease);
 }
 .daily-card__image:hover { transform: scale(1.03); }
@@ -668,6 +669,7 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
   border-radius: var(--radius);
   overflow: hidden;
   text-align: left;
+  cursor: var(--card-cursor);
   transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease), border-color 0.4s var(--ease);
 }
 .deck-card:hover {
@@ -914,7 +916,7 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
 }
 .memory-card__face--back img { width: 100%; height: 100%; object-fit: cover; }
 .memory-card.is-matched .memory-card__face--back { box-shadow: inset 0 0 0 3px var(--orange); }
-.memory-card:not(.is-flipped):not(.is-matched) { cursor: pointer; }
+.memory-card:not(.is-flipped):not(.is-matched) { cursor: var(--card-cursor); }
 .memory-win {
   display: none;
   align-items: center;
@@ -947,7 +949,7 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
 .search-input::placeholder { color: var(--text-muted); }
 .search-input:focus { outline: none; border-color: var(--orange); box-shadow: 0 0 0 4px var(--orange-dim); }
 
-.search-result-item { width: 100%; text-align: left; }
+.search-result-item { width: 100%; text-align: left; cursor: var(--card-cursor); }
 .search-result-deck {
   display: inline-block;
   color: var(--orange);
