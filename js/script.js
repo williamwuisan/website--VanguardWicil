@@ -216,6 +216,7 @@ const DECK_ACCENTS = {
   'chronojet-deck': '#3b82f6',
   'nightrose-deck': '#2b3a8f',
   'heartluru-deck': '#db2777',
+  'jewel-knight-deck': '#ca8a04',
 };
 
 function showDeckDetail(deckId, opts = {}) {

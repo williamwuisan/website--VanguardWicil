@@ -531,5 +531,237 @@ const DECKS = [
         effect: "Heal Trigger: [Power]+10000.\n(You may only have up to four [Heal] triggers in a deck.) When revealed as a trigger, choose one of your units, and it gets [Power]+10000 until end of turn. Then, if the number of cards in your damage zone is equal to or more than your opponent's, choose a card from your damage zone, and heal it."
       }
     ]
+  },
+  {
+    id: "jewel-knight-deck",
+    name: "Jewel Knight",
+    clan: "Keter Sanctuary",
+    image: "assets/cards/climax-jewel-knight-lord-evangeline.webp",
+    cards: [
+      {
+        name: "Innocent Ray Dragon",
+        image: "assets/cards/innocent-ray-dragon.webp",
+        grade: "G3",
+        section: "Main Deck",
+        effect: "Heal Trigger: [Power]+10000.\n[AUTO]: When this unit is placed on (VC) from hand, if you have not ridden a grade 3 or greater unit this fight, perform one of the following.\n・Choose one of your vanguards, and it gets [Power]+10000 until end of turn.\n・Choose one of your opponent's units, and it gets [Power]-3000 until end of that battle.\n[AUTO]: When this unit is placed on (RC) from hand, if your damage zone has no cards, put the top card of your deck into your damage zone."
+      },
+      {
+        name: "Leading Jewel Knight, Salome",
+        image: "assets/cards/leading-jewel-knight-salome.webp",
+        grade: "G3",
+        section: "Main Deck",
+        effect: "[AUTO](VC)[LB4]: When this unit attacks, if you have four or more rear-guards with \"Jewel Knight\" in their card names, this unit gets [Power]+2000/[Critical]+1 until end of that battle.\n[ACT](VC): [COST][Counter Blast 2 cards with \"Jewel Knight\" in their card names], search your deck for up to one card with \"Jewel Knight\" in its card name, call it to (RC), and shuffle your deck."
+      },
+      {
+        name: "Broken Heart Jewel Knight, Ashlei \"Reverse\"",
+        image: "assets/cards/broken-heart-jewel-knight-ashlei-reverse.webp",
+        grade: "G3",
+        section: "Main Deck",
+        effect: "[ACT](VC) 1/Turn: [COST][Counter Blast 2 & Lock one of your rear-guards], choose one of your opponent's front row rear-guards, retire it, look at the top four cards of your deck, choose up to one card with \"Jewel Knight\" in its card name from among them, call it to (RC), and put the rest on the bottom of your deck in any order.\n[AUTO](VC): When this unit attacks, if you have two or more locked cards, [COST][Counter Blast 1], search your deck for up to two grade 2 or lower cards with \"Jewel Knight\" in their card names, call them to (RC), shuffle your deck, and for each of your locked cards, this unit gets [Power]+10000 until end of turn. If you have three or more locked cards, until end of that battle, your opponent cannot call sentinels from hand to (GC)."
+      },
+      {
+        name: "Leading Jewel Knight, Salome (V Series)",
+        image: "assets/cards/leading-jewel-knight-salome-v.webp",
+        grade: "G3",
+        section: "Main Deck",
+        effect: "[AUTO](SOUL)1/Turn: At the end of the battle this unit attacked, [COST][Counter Blast 1], choose any number of cards with \"Jewel Knight\" in their card name from your hand, and call them to (RC) with units. Then, if you called three or more cards, and your opponent's vanguard is grade 3 or greater, [COST][Counter Blast 4], and [Stand] this unit.\n[AUTO](VC/RC): When your other unit is placed on this unit's circle, [COST][Counter Blast 1], and that placed unit gets [Power]+10000/drive+1 until end of turn.\n(An earlier printing of Leading Jewel Knight, Salome, kept as its own entry since its ability is different from the newer version above.)"
+      },
+      {
+        name: "Pure Heart Jewel Knight, Ashlei",
+        image: "assets/cards/pure-heart-jewel-knight-ashlei-dz.webp",
+        grade: "G3",
+        section: "Main Deck",
+        effect: "[AUTO](VC/RC): At the end of the battle this unit attacked, [COST][Counter Blast 2], search your deck for up to one grade 2 or less card with \"Jewel Knight\" in its card name, call it to (RC), and shuffle your deck. If this unit is on (VC), search for up to two cards instead of one.\n[AUTO](VC/RC): When your other unit is placed on this unit's circle, [COST][Counter Blast 1], and that placed unit gets [Critical]+1 until end of turn."
+      },
+      {
+        name: "Dogmatize Jewel Knight, Sybill",
+        image: "assets/cards/dogmatize-jewel-knight-sybill.webp",
+        grade: "G2",
+        section: "Main Deck",
+        effect: "[AUTO](VC/RC): When this unit attacks, [COST][put one grade 2 or less card from your hand into your soul], and draw a card.\n[AUTO](VC/RC): When your other unit is placed on this unit's circle, look at three cards from the top of your deck, choose up to one grade 2 or less card with \"Jewel Knight\" in its card name from among them, call it to (RC), and put the rest on the bottom of your deck in any order."
+      },
+      {
+        name: "Banding Jewel Knight, Miranda",
+        image: "assets/cards/banding-jewel-knight-miranda.webp",
+        grade: "G2",
+        section: "Main Deck",
+        effect: "[AUTO](RC): When this unit attacks while not boosted, if you have a vanguard with \"Jewel Knight\" in its card name, [COST][Counter Blast 1], choose one of your vanguards, and until end of that battle, increase or decrease this unit's [Power] to match that unit's [Power].\n[AUTO](VC/RC): When your other unit is placed on this unit's circle, [COST][Counter Charge 1], and if you have no face up cards in your damage zone, [COST][Counter Charge 1]."
+      },
+      {
+        name: "Jewel Knight, Swordmy",
+        image: "assets/cards/jewel-knight-swordmy.webp",
+        grade: "G2",
+        section: "Main Deck",
+        effect: "[AUTO]: [COST][Bind one card with \"Jewel Knight\" in its card name from your soul] When this unit is placed on (RC), you may pay the cost. If you do, search your deck for up to one grade 1 or less card with \"Jewel Knight\" in its card name, call it to (RC), and shuffle your deck."
+      },
+      {
+        name: "Explode Jewel Knight, Laile",
+        image: "assets/cards/explode-jewel-knight-laile.webp",
+        grade: "G2",
+        section: "Main Deck",
+        effect: "[AUTO](RC): When it attacks, [COST][put two normal units from your drop zone on the bottom of your deck in any order], [COST][Soul Charge 1], and this unit gets [Power]+5000 until end of that battle.\n[AUTO](VC/RC): When your other unit is placed on this unit's circle, that placed unit gets [Power]+10000 until end of turn."
+      },
+      {
+        name: "Fruiting Jewel Knight, Eunice",
+        image: "assets/cards/fruiting-jewel-knight-eunice.webp",
+        grade: "G1",
+        section: "Main Deck",
+        effect: "[AUTO](RC): At the end of the battle this unit boosted, [COST][put one normal unit from your drop on the bottom of your deck], and [COST][Soul Charge 1]. You may return this unit to your hand.\n[AUTO](VC/RC): When your other unit is placed on this unit's circle, choose one of your opponent's rear-guards in the same column as that placed unit, and retire it. If no units were retired, draw a card."
+      },
+      {
+        name: "Security Jewel Knight, Alwain",
+        image: "assets/cards/security-jewel-knight-alwain.webp",
+        grade: "G1",
+        section: "Main Deck",
+        effect: "[ACT](RC): [COST][This unit & put a normal unit from your drop on the bottom of your deck], [COST][Counter Charge 1], choose one of your vanguards with \"Jewel Knight\" in its card name, and it gets [Power]+5000 until end of turn.\n[AUTO](VC/RC): When your other unit is placed on this unit's circle, look at the top two cards of your deck, choose up to one card with \"Jewel Knight\" from among them, reveal it and put it into your hand, and put the rest on the bottom of your deck in any order."
+      },
+      {
+        name: "Calling Jewel Knight, Christine",
+        image: "assets/cards/calling-jewel-knight-christine.webp",
+        grade: "G1",
+        section: "Main Deck",
+        effect: "[AUTO]: When this unit is placed on (RC), if you have three or more other rear-guards with \"Jewel Knight\" in their card names, [COST][Counter Blast 1 & reveal a grade 3 card from your hand], search your deck for up to one grade 3 card with \"Jewel Knight\" in its card name, call it to (RC), and shuffle your deck. At the end of that turn, put that unit into hand, choose a card from your hand, and discard it."
+      },
+      {
+        name: "Charging Jewel Knight, Morvidus",
+        image: "assets/cards/charging-jewel-knight-morvidus.webp",
+        grade: "G1",
+        section: "Main Deck",
+        effect: "[ACT](RC): [COST][Counter Blast 1 & Put a normal unit from your drop zone on the bottom of your deck], [COST][Soul Charge 1], and one of your units with \"Jewel Knight\" in its card name gets [Power]+5000 until end of turn.\n[AUTO](VC/RC): When your other unit is placed on this unit's circle, draw a card."
+      },
+      {
+        name: "Elementaria Sanctitude",
+        image: "assets/cards/elementaria-sanctitude.webp",
+        grade: "G1",
+        section: "Main Deck",
+        effect: "[CONT]: Sentinel (You may only have up to four cards with \"[CONT]: Sentinel\" in a deck.)\n[CONT]: You may only have one \"Elementaria Sanctitude\" in a deck.\nIf your opponent's vanguard has \"Triple Drive\", this ability can be played without paying the cost.\nPlay this with [COST][discard a card from hand] if your vanguard is grade 3 or less!\nChoose one of your units, and it cannot be hit until end of that battle. Remove this card."
+      },
+      {
+        name: "Light Dragon Deity of Honors, Amartinoa",
+        image: "assets/cards/light-dragon-deity-of-honors-amartinoa.webp",
+        grade: "G0",
+        section: "Main Deck",
+        effect: "Over Trigger: [Power]+100 Million.\n(You may only have one [Over] trigger in a deck.) When revealed as a trigger, remove that card, draw a card, choose one of your units, and it gets [Power]+100 Million until end of turn. If revealed during drive check, activate its additional effect instead.\nAdditional Effect - Until end of turn, you also perform drive checks for the battles your rear-guards attack."
+      },
+      {
+        name: "Jewel Knight of Great Ambition, Tiffany",
+        image: "assets/cards/jewel-knight-of-great-ambition-tiffany.webp",
+        grade: "G0",
+        section: "Main Deck",
+        effect: "[AUTO]: When this unit is ridden upon, draw a card. Furthermore, if your opponent's vanguard is grade 1 or greater, add a Quick Shield Ticket to your hand."
+      },
+      {
+        name: "Flash Shield, Iseult",
+        image: "assets/cards/flash-shield-iseult.webp",
+        grade: "G0",
+        section: "Main Deck",
+        effect: "Draw Trigger: [Power]+10000, draw a card.\nSentinel (You may only have up to four cards with \"[CONT]: Sentinel\" in a deck.)\n[AUTO](GC): When placed, [COST][discard a card from your hand], and one of your units cannot be hit until end of that battle."
+      },
+      {
+        name: "Amulet Pure Eagle",
+        image: "assets/cards/amulet-pure-eagle.webp",
+        grade: "G0",
+        section: "Main Deck",
+        effect: "Critical Trigger: [Power]+10000, [Critical]+1.\n[AUTO](RC)[GB1]: When your vanguard attacks, [COST][put this unit into your soul], draw a card, and one of your vanguards gets [Power]+10000 until end of that battle."
+      },
+      {
+        name: "Sentflare Dracokid",
+        image: "assets/cards/sentflare-dracokid.webp",
+        grade: "G0",
+        section: "Main Deck",
+        effect: "Critical Trigger: [Power]+10000, [Critical]+1.\n[CONT](Hand): While paying the cost for [Stride], this card may be discarded as a grade 3."
+      },
+      {
+        name: "Climax Jewel Knight Lord, Evangeline",
+        image: "assets/cards/climax-jewel-knight-lord-evangeline.webp",
+        grade: "G (Stride/G unit)",
+        section: "Stride",
+        effect: "(This card cannot be in your main deck)\n[STRIDE]-Stride Step-[Choose one or more cards from hand with the sum of their grades being 3 or greater, and discard them], and [STRIDE] this card on your (VC) from face down.\n[ACT](G zone)1/Turn: If your vanguard is a grade 3 \"Leading Jewel Knight, Salome\" with the [LB4] ability, and you did not get an Imaginary Gift this fight, [COST][choose one or more cards from hand with the sum of their grades being 3 or greater, and discard them], and [STRIDE] this card from your G zone from face down. Then, [COST][turn a card with \"Jewel Knight\" in its card name from G zone face up], you get two Imaginary Gift: Force, and you get a \"Leading Jewel Knight, Salome\" crest.\n[ACT](VC)1/Turn: [COST][Turn a card from G zone face up], if you have a heart card with \"Jewel Knight\" in its card name, and if you have three or more rear-guards with \"Jewel Knight\" in their card names, all of your units with \"Jewel Knight\" in their card names get [Power]+3000 until end of turn for each face up card named \"Climax Jewel Knight Lord, Evangeline\" in your G zone."
+      },
+      {
+        name: "Divine Knight of Triumph, Eulogias",
+        image: "assets/cards/divine-knight-of-triumph-eulogias.webp",
+        grade: "G (Stride/G unit)",
+        section: "Stride",
+        effect: "(This card cannot be in your main deck)\n[STRIDE]-Stride Step-[Choose one or more cards with the sum of their grades being 3 or greater from your hand, and discard them], and [STRIDE] this card on your (VC) from face down.\n[AUTO](VC): When this unit attacks, [COST][Counter Blast 1 & turn a card from your G zone face up], draw the same number of cards as the number of your rear-guards, choose the same number of cards from your hand as the number of cards drawn, and call them to (RC). Then, if you have five or more rear-guards, you get an Imaginary Gift: Force."
+      },
+      {
+        name: "Holy Dragon, Crystaluster Dragon",
+        image: "assets/cards/holy-dragon-crystaluster-dragon.webp",
+        grade: "G (Stride/G unit)",
+        section: "Stride",
+        effect: "(This card cannot be in your main deck)\n[STRIDE]-Stride Step-[Choose one or more cards from hand with the sum of their grades being 3 or greater, and discard them], and [STRIDE] this card on your (VC) from face down.\n[ACT](VC)1/Turn: [COST][Turn a card from G zone face up], choose one of your heart cards, and until end of turn, this unit gets all of the original abilities of that card.\n[CONT](VC): If you have three or more grade 2 or greater units, when your opponent would call cards from their hand to (GC), they must call three or more cards at the same time."
+      },
+      {
+        name: "Aerial Divine Knight, Altmile",
+        image: "assets/cards/aerial-divine-knight-altmile.webp",
+        grade: "G (Stride/G unit)",
+        section: "Stride",
+        effect: "(This card cannot be in your main deck)\n[STRIDE]-Stride Step-[Choose one or more cards with the sum of their grades being 3 or greater from your hand, and discard them], and [STRIDE] this card on your (VC) from face down.\n[AUTO]: [Choose a face down card named \"Aerial Divine Knight, Altmile\" from your G zone, and turn it face up] When this unit is placed on (VC), you may pay the cost. If you do, until end of turn, this unit gets \"[CONT](VC): All of the units in your front row get [Power]+3000.\" Then, if the number of face up cards in your G zone is two or more, search your deck for up to one grade 2 card, call it to (RC), shuffle your deck, and that unit gets [Power]+5000 until end of turn."
+      },
+      {
+        name: "Divine Knight of Condensed Light, Olbius Avalon",
+        image: "assets/cards/divine-knight-of-condensed-light-olbius-avalon.webp",
+        grade: "G (Stride/G unit)",
+        section: "Stride",
+        effect: "(This card cannot be in your main deck)\n[STRIDE]-Stride Step-[Choose one or more cards with the sum of their grades being 3 or greater from your hand, and discard them], and [STRIDE] this card on your (VC) from face down.\n[AUTO](VC)[GB8]: [COST][Soul Blast 1] When this unit attacks a vanguard, you may pay the cost. If you do, search your deck for up to five cards, call them to separate (RC), and until end of turn, they get [Power]+4000, and this unit gets [Critical]+1. Shuffle your deck."
+      },
+      {
+        name: "Divine Knight of Twin Absolutes, Saint of Twin Sword",
+        image: "assets/cards/divine-knight-of-twin-absolutes-saint-of-twin-sword.webp",
+        grade: "G (Stride/G unit)",
+        section: "Stride",
+        effect: "(This card cannot be in your main deck)\n[STRIDE]-Stride Step-[Choose one or more cards with the sum of their grades being 3 or greater from your hand, and discard them], and [STRIDE] this card on your (VC) from face down.\n[AUTO](VC): When it attacks a vanguard while boosted, [COST][Counter Blast 1 & turn a card from your G zone face up], search your deck for up to two grade 2 cards, call them to (RC), and shuffle your deck.\n[AUTO](VC): When your rear-guard is placed from deck, that unit gets [Power]+5000 until end of turn for each face up card in your G zone."
+      },
+      {
+        name: "Harmonics Messiah",
+        image: "assets/cards/harmonics-messiah.webp",
+        grade: "G (Stride/G unit)",
+        section: "Stride",
+        effect: "(This card cannot be in your main deck)\n[CONT]: You may only have one \"Harmonics Messiah\" G unit in a G deck.\n[STRIDE]-Stride Step-[Choose one or more cards from hand with the sum of their grades being 3 or greater, and discard them], and [STRIDE] this card on your (VC) from face down.\n[AUTO]: When this unit is placed on (VC), choose any number of your locked cards, and unlock them. Choose the same number of cards from your hand as the number of cards unlocked by this effect, and discard them.\n[AUTO](VC/G Zone): When this unit is placed on (VC), or at the beginning of your turn, if this card is face up, your damage zone has two or less cards, and no new card was put into your damage zone during your opponent's preceding turn, [COST][put the top card of the deck into damage zone], and draw a card.\n[AUTO](G Zone): When your grade 1 unit is placed by riding from a grade 0, if you went second, [COST][reveal this card], and put a Guardian Shield ticket into your hand."
+      },
+      {
+        name: "Faithful Sacred Staff, Morgause",
+        image: "assets/cards/faithful-sacred-staff-morgause.webp",
+        grade: "G (Stride/G unit)",
+        section: "Stride",
+        effect: "(This card cannot be in your main deck)\n[G GUARDIAN]-Opponent Turn's Guard Step-[Discard a card with (Force) from your hand], and call this card to your (GC) from face down.\n[AUTO]: When this unit is put on (GC), choose one of your grade 2 units, and until end of turn, it gets [Shield]+10000, and \"[AUTO]: When this unit intercepts, [COST][Counter Blast 1 & Soul Blast 1], choose one of your units, and it cannot be hit until end of that battle.\"."
+      },
+      {
+        name: "Vivid Sacred Staff, Andragius",
+        image: "assets/cards/vivid-sacred-staff-andragius.webp",
+        grade: "G (Stride/G unit)",
+        section: "Stride",
+        effect: "(This card cannot be in your main deck)\n[G GUARDIAN] (Usable when both fighters' vanguards are grade 3 or greater, and the number of face up G guardians in your G zone is three or less)-Opponent Turn's Guard Step-[Choose a card with \"Heal\" from your hand, and discard it] Call this card to your (GC) from face down.\n[CONT](GC): If you have two or more grade 2 rear-guards, this unit gets [Shield]+10000."
+      },
+      {
+        name: "Mixed Element, Colburn",
+        image: "assets/cards/mixed-element-colburn.webp",
+        grade: "G (Stride/G unit)",
+        section: "Stride",
+        effect: "(This card cannot be in your main deck. This card is from all clans and nations.)\n[G GUARDIAN] (Usable when both fighters' vanguards are grade 3 or greater, and the number of face up G guardians in your G zone is three or less)-Opponent Turn's Guard Step-[Choose a card with \"Heal\" from your hand, and discard it] Call this card to your (GC) from face down.\n[AUTO]: [Choose a card from your hand, and discard it] When this unit is placed on (GC) during the battle that your opponent's vanguard attacked, you may pay the cost. If you do, this unit gets [Shield]+5000 until end of that battle for every two cards in your opponent's hand."
+      },
+      {
+        name: "Holy Dragon, Laserguard Dragon",
+        image: "assets/cards/holy-dragon-laserguard-dragon.webp",
+        grade: "G (Stride/G unit)",
+        section: "Stride",
+        effect: "(This card cannot be in your main deck)\n[G GUARDIAN] (Usable when both fighters' vanguards are grade 3 or greater, and the number of face up G guardians in your G zone is three or less)-Opponent Turn's Guard Step-[Choose a card with \"Heal\" from your hand, and discard it] Call this card to your (GC) from face down.\n[AUTO]: When this unit is placed on (GC), if you have one or more grade 2 rear-guards, this unit gets [Shield]+5000 until end of that battle."
+      },
+      {
+        name: "Holy Beast, Divine Maskkgal",
+        image: "assets/cards/holy-beast-divine-maskkgal.webp",
+        grade: "G (Stride/G unit)",
+        section: "Stride",
+        effect: "(This card cannot be in your main deck)\n[G GUARDIAN] (Usable when both fighters' vanguards are grade 3 or greater, and the number of face up G guardians in your G zone is three or less)-Opponent Turn's Guard Step-[Choose a card with \"Heal\" from your hand, and discard it] Call this card to your (GC) from face down.\n[AUTO][GB1]: [Choose a face down G guardian from your G zone, and turn it face up] When this unit is placed on (GC), if there is a rear-guard in your front row, you may pay the cost. If you do, this unit gets [Shield]+10000 until end of that battle."
+      },
+      {
+        name: "Leading Jewel Knight, Salome (Crest)",
+        image: "assets/cards/leading-jewel-knight-salome-crest.webp",
+        grade: "Crest",
+        section: "Stride",
+        effect: "(This is a Crest — a support card tied to the G zone, not part of the 50-card main deck.)\n[CONT]: If your heart is a \"Leading Jewel Knight, Salome\" with the [LB4] ability, the \"Climax Jewel Knight Lord, Evangeline\" on your (VC) gets all of the original abilities of your heart, and when you would pay the cost for those acquired abilities for the first time each turn, reduce that cost by [Counter Blast]2.\n[CONT]: The original [Power] of your grade 3 cards with the [LB4] ability become 13000. (Including heart cards)\n[CONT]: Your vanguard's [LB4] abilities are active even if your damage zone has three or less cards."
+      }
+    ]
   }
 ];
