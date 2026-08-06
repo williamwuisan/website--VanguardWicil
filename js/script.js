@@ -5,7 +5,6 @@ const views = {
   search: document.getElementById('view-search'),
   glossary: document.getElementById('view-glossary'),
   game: document.getElementById('view-game'),
-  codex: document.getElementById('view-codex'),
 };
 
 const revealObserver = new IntersectionObserver((entries) => {
@@ -40,15 +39,12 @@ function showView(name) {
   if (name === 'game' && typeof startMemoryGame === 'function') {
     startMemoryGame();
   }
-  if (name === 'codex' && typeof renderCodex === 'function') {
-    renderCodex();
-  }
 }
 
 document.querySelectorAll('[data-nav]').forEach(el => {
   el.addEventListener('click', () => {
     const target = el.dataset.nav;
-    if (target === 'home' || target === 'decks' || target === 'search' || target === 'glossary' || target === 'game' || target === 'codex') showView(target);
+    if (target === 'home' || target === 'decks' || target === 'search' || target === 'glossary' || target === 'game') showView(target);
     closeDrawer();
   });
 });
@@ -297,63 +293,6 @@ function highlightCardByName(name) {
     target.classList.add('is-highlighted');
     setTimeout(() => target.classList.remove('is-highlighted'), 1800);
   }, 80);
-}
-
-function renderCodex() {
-  const container = document.getElementById('codexContent');
-  if (container.dataset.rendered) return;
-
-  let html = '';
-
-  DECKS.forEach(deck => {
-    const codexDeck = CODEX_DECKS[deck.id];
-    if (!codexDeck) return;
-    const accent = DECK_ACCENTS[deck.id] || '';
-    const entries = deck.cards.map(card => {
-      const text = codexDeck.cards[card.name];
-      if (!text || !card.image) return '';
-      return `
-        <div class="codex-entry">
-          <img class="codex-entry__image" src="${card.image}" alt="${card.name}" loading="lazy">
-          <div class="codex-entry__body">
-            <h4 class="codex-entry__name">${card.name}</h4>
-            <p class="codex-entry__text">${text}</p>
-          </div>
-        </div>
-      `;
-    }).join('');
-    html += `
-      <section class="codex-group" ${accent ? `style="--deck-accent:${accent}"` : ''}>
-        <h3 class="codex-group__title">${deck.name}</h3>
-        <p class="codex-group__intro">${codexDeck.intro}</p>
-        ${entries}
-      </section>
-    `;
-  });
-
-  const idleEntries = IDLE_CARDS.map(card => {
-    const text = CODEX_IDLE[card.name];
-    if (!text) return '';
-    return `
-      <div class="codex-entry">
-        <img class="codex-entry__image" src="${card.image}" alt="${card.name}" loading="lazy">
-        <div class="codex-entry__body">
-          <h4 class="codex-entry__name">${card.name}</h4>
-          <p class="codex-entry__text">${text}</p>
-        </div>
-      </div>
-    `;
-  }).join('');
-  html += `
-    <section class="codex-group">
-      <h3 class="codex-group__title">Legends (Idle Screen)</h3>
-      <p class="codex-group__intro">The cast that drifts across the wallpaper once the site's been quiet a while — icons from across the game, not from Wicil's own decks.</p>
-      ${idleEntries}
-    </section>
-  `;
-
-  container.innerHTML = html;
-  container.dataset.rendered = 'true';
 }
 
 function renderStats() {

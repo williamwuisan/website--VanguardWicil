@@ -944,45 +944,6 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
 .memory-win.is-visible { display: flex; }
 .memory-win p { font-size: 1.1rem; }
 
-/* ===== Codex ===== */
-.codex-group { margin-bottom: 48px; }
-.codex-group__title {
-  font-family: 'Rajdhani', 'Inter', sans-serif;
-  font-size: 1.3rem;
-  font-weight: 700;
-  color: var(--deck-accent, var(--orange));
-}
-.codex-group__intro {
-  color: var(--text-muted);
-  font-style: italic;
-  margin: 8px 0 24px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid var(--border);
-  line-height: 1.7;
-}
-.codex-entry {
-  display: flex;
-  gap: 20px;
-  padding: 16px 0;
-  border-bottom: 1px solid var(--border);
-}
-.codex-entry:last-child { border-bottom: none; }
-.codex-entry__image {
-  flex-shrink: 0;
-  width: 72px;
-  aspect-ratio: 63 / 88;
-  object-fit: cover;
-  border-radius: 8px;
-  border: 1px solid var(--border);
-}
-.codex-entry__name { font-size: 1rem; font-weight: 700; margin-bottom: 6px; }
-.codex-entry__text { color: var(--text-muted); font-size: 0.92rem; line-height: 1.65; white-space: pre-line; }
-
-@media (max-width: 480px) {
-  .codex-entry { gap: 14px; }
-  .codex-entry__image { width: 56px; }
-}
-
 /* ===== Search ===== */
 .search-bar { margin-bottom: 28px; }
 .search-input {
