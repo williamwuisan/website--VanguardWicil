@@ -768,7 +768,7 @@ const DECKS = [
     id: "silver-thorn-deck",
     name: "Silver Thorn",
     clan: "Dark States",
-    image: "assets/cards/silver-thorn-dragon-tamer-luquier.webp",
+    image: "assets/cards/silver-thorn-dragon-tamer-luquier-sv.webp",
     cards: [
       {
         name: "Silver Thorn, Rising Dragon",
