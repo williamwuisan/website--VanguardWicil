@@ -536,10 +536,10 @@ const DECKS = [
     id: "jewel-knight-deck",
     name: "Jewel Knight",
     clan: "Keter Sanctuary",
-    image: "assets/cards/leading-jewel-knight-salome-v.webp",
+    image: "assets/cards/leading-jewel-knight-salome.webp",
     cards: [
       {
-        name: "Leading Jewel Knight, Salome (V Series)",
+        name: "Leading Jewel Knight, Salome",
         image: "assets/cards/leading-jewel-knight-salome.webp",
         grade: "G3",
         section: "Main Deck",
@@ -553,11 +553,11 @@ const DECKS = [
         effect: "[ACT](VC) 1/Turn: [COST][Counter Blast 2 & Lock one of your rear-guards], choose one of your opponent's front row rear-guards, retire it, look at the top four cards of your deck, choose up to one card with \"Jewel Knight\" in its card name from among them, call it to (RC), and put the rest on the bottom of your deck in any order.\n[AUTO](VC): When this unit attacks, if you have two or more locked cards, [COST][Counter Blast 1], search your deck for up to two grade 2 or lower cards with \"Jewel Knight\" in their card names, call them to (RC), shuffle your deck, and for each of your locked cards, this unit gets [Power]+10000 until end of turn. If you have three or more locked cards, until end of that battle, your opponent cannot call sentinels from hand to (GC)."
       },
       {
-        name: "Leading Jewel Knight, Salome",
+        name: "Leading Jewel Knight, Salome (V Series)",
         image: "assets/cards/leading-jewel-knight-salome-v.webp",
         grade: "G3",
         section: "Main Deck",
-        effect: "[AUTO](SOUL)1/Turn: At the end of the battle this unit attacked, [COST][Counter Blast 1], choose any number of cards with \"Jewel Knight\" in their card name from your hand, and call them to (RC) with units. Then, if you called three or more cards, and your opponent's vanguard is grade 3 or greater, [COST][Counter Blast 4], and [Stand] this unit.\n[AUTO](VC/RC): When your other unit is placed on this unit's circle, [COST][Counter Blast 1], and that placed unit gets [Power]+10000/drive+1 until end of turn.\n(A separate printing of Leading Jewel Knight, Salome, kept as its own entry since its ability differs from the \"(V Series)\" version, which has the [LB4] ability instead.)"
+        effect: "[AUTO](SOUL)1/Turn: At the end of the battle this unit attacked, [COST][Counter Blast 1], choose any number of cards with \"Jewel Knight\" in their card name from your hand, and call them to (RC) with units. Then, if you called three or more cards, and your opponent's vanguard is grade 3 or greater, [COST][Counter Blast 4], and [Stand] this unit.\n[AUTO](VC/RC): When your other unit is placed on this unit's circle, [COST][Counter Blast 1], and that placed unit gets [Power]+10000/drive+1 until end of turn.\n(An earlier printing of Leading Jewel Knight, Salome, kept as its own entry since its ability is different from the version above, which has the [LB4] ability instead.)"
       },
       {
         name: "Pure Heart Jewel Knight, Ashlei",
