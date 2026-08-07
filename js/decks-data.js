@@ -771,6 +771,27 @@ const DECKS = [
     image: "assets/cards/silver-thorn-dragon-tamer-luquier-sv.webp",
     cards: [
       {
+        name: "Silver Thorn Dragon Tamer, Luquier",
+        image: "assets/cards/silver-thorn-dragon-tamer-luquier.webp",
+        grade: "G3",
+        section: "Main Deck",
+        effect: "[CONT](VC/RC): During your turn, if you called two or more cards from your soul this turn, this unit gets [Power]+10000.\n[ACT](VC)1/Turn: [COST][Accel & Soul Blast 2 & Discard a card from your hand], call any number of cards with \"Silver Thorn\" in their card names from your soul to (RC), and all of your front row rear-guards get [Power]+3000 until end of turn."
+      },
+      {
+        name: "Silver Thorn Dragon Empress, Venus Luquier",
+        image: "assets/cards/silver-thorn-dragon-empress-venus-luquier.webp",
+        grade: "G3",
+        section: "Main Deck",
+        effect: "[CONT](VC): During your turn, if all of your front row circles have units, all of your front row units get [Power]+5000.\n[ACT](VC)1/Turn: [COST][Counter Blast 1 & Discard a card from your hand], call any number of cards with \"Silver Thorn\" in their card names from your soul to front row (RC). At the end of that turn, [COST][you have four or more rear-guards, and put all of your rear-guards into your soul], and get an Imaginary Gift: Accel."
+      },
+      {
+        name: "Silver Thorn Beast Tamer, Doriane",
+        image: "assets/cards/silver-thorn-beast-tamer-doriane.webp",
+        grade: "G3",
+        section: "Main Deck",
+        effect: "[AUTO](VC/RC): At the end of your turn, [COST][put all of your other rear-guards into your soul], and draw a card for every two cards put into your soul for this cost. If you put four or more cards, return a grade 3 card with \"Silver Thorn\" in its card name from your soul to your hand. Retire this unit if it is on (RC)."
+      },
+      {
         name: "Silver Thorn, Rising Dragon",
         image: "assets/cards/silver-thorn-rising-dragon.webp",
         grade: "G2",
@@ -785,11 +806,53 @@ const DECKS = [
         effect: "[CONT](RC): If you called two or more cards from your soul this turn, this unit gets [Power]+10000.\n(An earlier printing of Silver Thorn, Rising Dragon, kept as its own entry since its ability is simpler than the version above.)"
       },
       {
-        name: "Nightmare Doll, Lindy",
-        image: "assets/cards/nightmare-doll-lindy.webp",
-        grade: "G3",
+        name: "Silver Thorn Marionette, Lilian",
+        image: "assets/cards/silver-thorn-marionette-lilian.webp",
+        grade: "G2",
         section: "Main Deck",
-        effect: "Heal Trigger: [Power]+10000.\n[AUTO](VC): When this unit is put on (VC) from hand, if you did not ride a grade 3 or greater unit this fight, perform one of the following.\n・Choose one of your vanguards, and it gets [Power]+10000 until end of turn.\n・Choose one of your opponent's units, and it gets [Critical]-2 until end of that battle.\n[AUTO](RC): When this unit is placed on (RC) from hand, if your damage zone has no cards, put the top card of your deck into your damage zone."
+        effect: "[AUTO](VC/RC): When placed from hand, [COST][Soul Blast 1], search your deck for up to one card with \"Silver Thorn\" in its card name, put it into your soul, and shuffle your deck.\n[AUTO](RC): When it attacks a vanguard, if your soul has four or more cards with \"Silver Thorn\" in their different card names, this unit gets [Power]+10000 until end of that battle."
+      },
+      {
+        name: "Silver Thorn Beast Tamer, Shayda",
+        image: "assets/cards/silver-thorn-beast-tamer-shayda.webp",
+        grade: "G2",
+        section: "Main Deck",
+        effect: "[AUTO](RC): When placed, [COST][put this unit into your soul], and if your soul has four or more cards with \"Silver Thorn\" in their different card names, one of your units gets [Power]+15000 until end of that battle."
+      },
+      {
+        name: "Silver Thorn Diva, Selvia",
+        image: "assets/cards/silver-thorn-diva-selvia.webp",
+        grade: "G2",
+        section: "Main Deck",
+        effect: "[AUTO](VC/RC): When placed, [COST][Soul Blast 1], choose up to two cards with \"Silver Thorn\" in their card names not named \"Silver Thorn Diva, Selvia\" from your soul, and call them to (RC)."
+      },
+      {
+        name: "Silver Thorn Assistant, Irina",
+        image: "assets/cards/silver-thorn-assistant-irina.webp",
+        grade: "G1",
+        section: "Main Deck",
+        effect: "[AUTO](RC): When placed from hand, look at two cards from the top of your deck, put one card from among them into your soul, and put one card from among them on the bottom of your deck.\n[AUTO]: When rode upon, look at three cards from the top of your deck, put any number of cards with \"Silver Thorn\" in their card names from among them into your soul, and put the rest on the bottom of your deck in any order. If you put two or more cards into your soul, draw a card."
+      },
+      {
+        name: "Silver Thorn, Breathing Dragon",
+        image: "assets/cards/silver-thorn-breathing-dragon.webp",
+        grade: "G1",
+        section: "Main Deck",
+        effect: "[AUTO](RC): At the end of the battle it boosted, if your soul has four or more cards with \"Silver Thorn\" in their different card names, [COST][Soul Blast 1 & put one rear-guard with \"Silver Thorn\" in its card name that this unit boosted into your soul], call a card with \"Silver Thorn\" in its card name from your soul to (RC)."
+      },
+      {
+        name: "Silver Thorn Conjurer, Romy",
+        image: "assets/cards/silver-thorn-conjurer-romy.webp",
+        grade: "G1",
+        section: "Main Deck",
+        effect: "[ACT](RC): [COST][Retire this unit, and put it into your soul], look at three cards from the top of your deck, put any number of cards with \"Silver Thorn\" in their card names from among them into your soul, and put the rest on the bottom of your deck in any order."
+      },
+      {
+        name: "Silver Thorn Handlegrip, Linnea",
+        image: "assets/cards/silver-thorn-handlegrip-linnea.webp",
+        grade: "G1",
+        section: "Main Deck",
+        effect: "[AUTO](VC/RC): When it attacks or boosts, [COST][Soul Charge 1], and this unit gets [Power]+5000 until end of turn."
       },
       {
         name: "Quick Shield",
@@ -820,81 +883,11 @@ const DECKS = [
         effect: "Draw Trigger: [Power]+10000.\n[CONT]: Sentinel (You may only have up to four cards with \"[CONT]: Sentinel\" in a deck.)\n[AUTO](RC): When placed, [COST][discard a card from your hand], and one of your units cannot be hit until end of that battle."
       },
       {
-        name: "Silver Thorn Dragon Tamer, Luquier",
-        image: "assets/cards/silver-thorn-dragon-tamer-luquier.webp",
-        grade: "G3",
-        section: "Main Deck",
-        effect: "[CONT](VC/RC): During your turn, if you called two or more cards from your soul this turn, this unit gets [Power]+10000.\n[ACT](VC)1/Turn: [COST][Accel & Soul Blast 2 & Discard a card from your hand], call any number of cards with \"Silver Thorn\" in their card names from your soul to (RC), and all of your front row rear-guards get [Power]+3000 until end of turn."
-      },
-      {
-        name: "Silver Thorn Dragon Empress, Venus Luquier",
-        image: "assets/cards/silver-thorn-dragon-empress-venus-luquier.webp",
-        grade: "G3",
-        section: "Main Deck",
-        effect: "[CONT](VC): During your turn, if all of your front row circles have units, all of your front row units get [Power]+5000.\n[ACT](VC)1/Turn: [COST][Counter Blast 1 & Discard a card from your hand], call any number of cards with \"Silver Thorn\" in their card names from your soul to front row (RC). At the end of that turn, [COST][you have four or more rear-guards, and put all of your rear-guards into your soul], and get an Imaginary Gift: Accel."
-      },
-      {
-        name: "Silver Thorn Marionette, Lilian",
-        image: "assets/cards/silver-thorn-marionette-lilian.webp",
-        grade: "G2",
-        section: "Main Deck",
-        effect: "[AUTO](VC/RC): When placed from hand, [COST][Soul Blast 1], search your deck for up to one card with \"Silver Thorn\" in its card name, put it into your soul, and shuffle your deck.\n[AUTO](RC): When it attacks a vanguard, if your soul has four or more cards with \"Silver Thorn\" in their different card names, this unit gets [Power]+10000 until end of that battle."
-      },
-      {
-        name: "Silver Thorn Assistant, Irina",
-        image: "assets/cards/silver-thorn-assistant-irina.webp",
-        grade: "G1",
-        section: "Main Deck",
-        effect: "[AUTO](RC): When placed from hand, look at two cards from the top of your deck, put one card from among them into your soul, and put one card from among them on the bottom of your deck.\n[AUTO]: When rode upon, look at three cards from the top of your deck, put any number of cards with \"Silver Thorn\" in their card names from among them into your soul, and put the rest on the bottom of your deck in any order. If you put two or more cards into your soul, draw a card."
-      },
-      {
-        name: "Silver Thorn, Breathing Dragon",
-        image: "assets/cards/silver-thorn-breathing-dragon.webp",
-        grade: "G1",
-        section: "Main Deck",
-        effect: "[AUTO](RC): At the end of the battle it boosted, if your soul has four or more cards with \"Silver Thorn\" in their different card names, [COST][Soul Blast 1 & put one rear-guard with \"Silver Thorn\" in its card name that this unit boosted into your soul], call a card with \"Silver Thorn\" in its card name from your soul to (RC)."
-      },
-      {
-        name: "Silver Thorn Beast Tamer, Doriane",
-        image: "assets/cards/silver-thorn-beast-tamer-doriane.webp",
-        grade: "G3",
-        section: "Main Deck",
-        effect: "[AUTO](VC/RC): At the end of your turn, [COST][put all of your other rear-guards into your soul], and draw a card for every two cards put into your soul for this cost. If you put four or more cards, return a grade 3 card with \"Silver Thorn\" in its card name from your soul to your hand. Retire this unit if it is on (RC)."
-      },
-      {
-        name: "Silver Thorn Conjurer, Romy",
-        image: "assets/cards/silver-thorn-conjurer-romy.webp",
-        grade: "G1",
-        section: "Main Deck",
-        effect: "[ACT](RC): [COST][Retire this unit, and put it into your soul], look at three cards from the top of your deck, put any number of cards with \"Silver Thorn\" in their card names from among them into your soul, and put the rest on the bottom of your deck in any order."
-      },
-      {
-        name: "Silver Thorn Beast Tamer, Shayda",
-        image: "assets/cards/silver-thorn-beast-tamer-shayda.webp",
-        grade: "G2",
-        section: "Main Deck",
-        effect: "[AUTO](RC): When placed, [COST][put this unit into your soul], and if your soul has four or more cards with \"Silver Thorn\" in their different card names, one of your units gets [Power]+15000 until end of that battle."
-      },
-      {
-        name: "Silver Thorn Diva, Selvia",
-        image: "assets/cards/silver-thorn-diva-selvia.webp",
-        grade: "G2",
-        section: "Main Deck",
-        effect: "[AUTO](VC/RC): When placed, [COST][Soul Blast 1], choose up to two cards with \"Silver Thorn\" in their card names not named \"Silver Thorn Diva, Selvia\" from your soul, and call them to (RC)."
-      },
-      {
         name: "Darkside Sword Master",
         image: "assets/cards/darkside-sword-master.webp",
         grade: "G0",
         section: "Main Deck",
         effect: "Critical Trigger: [Power]+10000, [Critical]+1.\n[CONT]: Sentinel (You may only have up to four cards with \"[CONT]: Sentinel\" in a deck.)"
-      },
-      {
-        name: "Silver Thorn Handlegrip, Linnea",
-        image: "assets/cards/silver-thorn-handlegrip-linnea.webp",
-        grade: "G1",
-        section: "Main Deck",
-        effect: "[AUTO](VC/RC): When it attacks or boosts, [COST][Soul Charge 1], and this unit gets [Power]+5000 until end of turn."
       },
       {
         name: "Silver Thorn, Barking Dragon",
@@ -918,11 +911,11 @@ const DECKS = [
         effect: "[AUTO]: When rode upon, draw a card. Then, if your opponent's vanguard is grade 1 or greater, put a Quick Shield ticket into your hand."
       },
       {
-        name: "Jester Demonic Beast, Flection Chimera",
-        image: "assets/cards/jester-demonic-beast-flection-chimera.webp",
-        grade: "G (Guardian)",
-        section: "Stride",
-        effect: "(This card cannot be in your main deck)\n[G GUARDIAN]-Opponent Turn's Guard Step-[COST][Discard a card from your hand], call this card to your (GC) from face down.\n[AUTO]: When this unit is put on (GC), [COST][put one or more cards from your hand into your soul], and this unit gets [Shield]+10000 until end of that battle for each card put into your soul for this cost. If you put two or more cards into your soul for this cost, your opponent chooses one of their rear-guards, and puts it into their soul."
+        name: "Nightmare Doll, Lindy",
+        image: "assets/cards/nightmare-doll-lindy.webp",
+        grade: "G3",
+        section: "Main Deck",
+        effect: "Heal Trigger: [Power]+10000.\n[AUTO](VC): When this unit is put on (VC) from hand, if you did not ride a grade 3 or greater unit this fight, perform one of the following.\n・Choose one of your vanguards, and it gets [Power]+10000 until end of turn.\n・Choose one of your opponent's units, and it gets [Critical]-2 until end of that battle.\n[AUTO](RC): When this unit is placed on (RC) from hand, if your damage zone has no cards, put the top card of your deck into your damage zone."
       },
       {
         name: "Dragon Masquerade, Harri",
@@ -939,39 +932,11 @@ const DECKS = [
         effect: "(This card cannot be in your main deck)\n[STRIDE]-Stride Step-[Choose one or more cards with the sum of their grades being 3 or greater from your hand, and discard them], and [STRIDE] this card on your (VC) from face down.\nMagia-[ACT](VC)1/Turn[GB3]: [COST][Counter Blast 2 & Choose a card from your drop zone and soul, and return them to your deck] Choose a card from your soul, call it to (RC), and until end of turn, it gets [Power]+10000/[Critical]+1, \"[ACT](RC): [COST][Soul Blast 2] Until end of turn, this unit gets [Power]+5000, and cannot be chosen by card effects.\", and shuffle your deck. At the end of that turn, put that unit into your soul."
       },
       {
-        name: "Jester Demonic Dragon, Wandering Dragon",
-        image: "assets/cards/jester-demonic-dragon-wandering-dragon.webp",
-        grade: "G (Guardian)",
-        section: "Stride",
-        effect: "(This card cannot be in your main deck)\n[G GUARDIAN](Usable when both fighters' vanguards are grade 3 or greater, and the number of face up G guardians in your G zone is three or less)-Opponent Turn's Guard Step-[COST][Discard a card with \"Heal\" in its card name from your hand], call this card to your (GC) from face down.\n[AUTO]: When this unit is placed on (GC), [COST][Soul Blast 1], choose a card from your soul, and call it to (GC)."
-      },
-      {
-        name: "Chainsaw Megatrick, Furnival",
-        image: "assets/cards/chainsaw-megatrick-furnival.webp",
-        grade: "G (Guardian)",
-        section: "Stride",
-        effect: "(This card cannot be in your main deck)\n[G GUARDIAN](Usable when both fighters' vanguards are grade 3 or greater, and the number of face up G guardians in your G zone is three or less)-Opponent Turn's Guard Step-[COST][Discard a card with \"Heal\" in its card name from your hand], call this card to your (GC) from face down.\n[AUTO]: When this unit is placed on (GC), look at three cards from the top of your deck, search for one card from among them, put it into your soul, and put the rest on the bottom of your deck in any order. If the card put into your soul with this effect is grade 1 or greater, this unit gets [Shield]+5000 until end of that battle."
-      },
-      {
         name: "Scream Dragon Master, Droll Kimberly",
         image: "assets/cards/scream-dragon-master-droll-kimberly.webp",
         grade: "G (Stride/G unit)",
         section: "Stride",
         effect: "(This card cannot be in your main deck)\n[STRIDE]-Stride Step-[Choose one or more cards with the sum of their grades being 3 or greater from your hand, and discard them], and [STRIDE] this card on your (VC) from face down.\n[AUTO](VC)[GB8]: When this unit attacks a vanguard, choose up to five cards from your soul, call them to separate (RC), and until end of turn, they get [Power]+5000, and <Abyss Dragon>. Until end of that battle, this unit gets \"[CONT](VC): This unit gets [Power]+10000 for each <Abyss Dragon> on your (RC).\""
-      },
-      {
-        name: "Zeroth Dragon of End of the World, Dust",
-        image: "assets/cards/zeroth-dragon-of-end-of-the-world-dust.webp",
-        grade: "G (Stride/G unit)",
-        section: "Stride",
-        effect: "(This card cannot be in your main deck)\n[ULTIMATE STRIDE]-Stride Step-[COST][Choose a card with the same card name as your vanguard from your hand, and discard it], and [STRIDE] this card on your (VC) from face down.\n[AUTO]: When placed on (VC), [COST][Soul Blast 2], until end of turn, your opponent's vanguards and rear-guards lose all of their abilities, and their grade and [Power] increase or decrease to 1. If the number of cards in your opponent's damage zone is four or less, choose one of your opponent's vanguards, and deal one damage."
-      },
-      {
-        name: "Kinesis Megatrick, Coulthard",
-        image: "assets/cards/kinesis-megatrick-coulthard.webp",
-        grade: "G (Guardian)",
-        section: "Stride",
-        effect: "(This card cannot be in your main deck)\n[G GUARDIAN]-Opponent Turn's Guard Step-[COST][Discard a card with \"Heal\" in its card name from your hand], call this card to your (GC) from face down.\n[AUTO]1/Turn: When placed on (GC), if there are cards of four or more different grades in your soul, [COST][choose a face down G Guardian from your G zone, and turn it face up], and this unit gets [Shield]+15000 until end of that battle."
       },
       {
         name: "Masquerade Master, Harri",
@@ -1000,6 +965,41 @@ const DECKS = [
         grade: "G (Stride/G unit)",
         section: "Stride",
         effect: "(This card cannot be in your main deck)\n[AUTO](VC): [COST][Counter Blast 1 & discard a card from your hand], put all of your rear-guards into your soul. For each card put into your soul, choose up to two unit cards from your soul, and call them to (RC). If you called four or more different grades, until end of turn, when your opponent would call cards from hand to (RC), they must call two or more at the same time."
+      },
+      {
+        name: "Zeroth Dragon of End of the World, Dust",
+        image: "assets/cards/zeroth-dragon-of-end-of-the-world-dust.webp",
+        grade: "G (Stride/G unit)",
+        section: "Stride",
+        effect: "(This card cannot be in your main deck)\n[ULTIMATE STRIDE]-Stride Step-[COST][Choose a card with the same card name as your vanguard from your hand, and discard it], and [STRIDE] this card on your (VC) from face down.\n[AUTO]: When placed on (VC), [COST][Soul Blast 2], until end of turn, your opponent's vanguards and rear-guards lose all of their abilities, and their grade and [Power] increase or decrease to 1. If the number of cards in your opponent's damage zone is four or less, choose one of your opponent's vanguards, and deal one damage."
+      },
+      {
+        name: "Jester Demonic Beast, Flection Chimera",
+        image: "assets/cards/jester-demonic-beast-flection-chimera.webp",
+        grade: "G (Guardian)",
+        section: "Stride",
+        effect: "(This card cannot be in your main deck)\n[G GUARDIAN]-Opponent Turn's Guard Step-[COST][Discard a card from your hand], call this card to your (GC) from face down.\n[AUTO]: When this unit is put on (GC), [COST][put one or more cards from your hand into your soul], and this unit gets [Shield]+10000 until end of that battle for each card put into your soul for this cost. If you put two or more cards into your soul for this cost, your opponent chooses one of their rear-guards, and puts it into their soul."
+      },
+      {
+        name: "Jester Demonic Dragon, Wandering Dragon",
+        image: "assets/cards/jester-demonic-dragon-wandering-dragon.webp",
+        grade: "G (Guardian)",
+        section: "Stride",
+        effect: "(This card cannot be in your main deck)\n[G GUARDIAN](Usable when both fighters' vanguards are grade 3 or greater, and the number of face up G guardians in your G zone is three or less)-Opponent Turn's Guard Step-[COST][Discard a card with \"Heal\" in its card name from your hand], call this card to your (GC) from face down.\n[AUTO]: When this unit is placed on (GC), [COST][Soul Blast 1], choose a card from your soul, and call it to (GC)."
+      },
+      {
+        name: "Chainsaw Megatrick, Furnival",
+        image: "assets/cards/chainsaw-megatrick-furnival.webp",
+        grade: "G (Guardian)",
+        section: "Stride",
+        effect: "(This card cannot be in your main deck)\n[G GUARDIAN](Usable when both fighters' vanguards are grade 3 or greater, and the number of face up G guardians in your G zone is three or less)-Opponent Turn's Guard Step-[COST][Discard a card with \"Heal\" in its card name from your hand], call this card to your (GC) from face down.\n[AUTO]: When this unit is placed on (GC), look at three cards from the top of your deck, search for one card from among them, put it into your soul, and put the rest on the bottom of your deck in any order. If the card put into your soul with this effect is grade 1 or greater, this unit gets [Shield]+5000 until end of that battle."
+      },
+      {
+        name: "Kinesis Megatrick, Coulthard",
+        image: "assets/cards/kinesis-megatrick-coulthard.webp",
+        grade: "G (Guardian)",
+        section: "Stride",
+        effect: "(This card cannot be in your main deck)\n[G GUARDIAN]-Opponent Turn's Guard Step-[COST][Discard a card with \"Heal\" in its card name from your hand], call this card to your (GC) from face down.\n[AUTO]1/Turn: When placed on (GC), if there are cards of four or more different grades in your soul, [COST][choose a face down G Guardian from your G zone, and turn it face up], and this unit gets [Shield]+15000 until end of that battle."
       }
     ]
   }
