@@ -217,6 +217,7 @@ const DECK_ACCENTS = {
   'nightrose-deck': '#2b3a8f',
   'heartluru-deck': '#db2777',
   'jewel-knight-deck': '#ca8a04',
+  'silver-thorn-deck': '#7c3aed',
 };
 
 function showDeckDetail(deckId, opts = {}) {
