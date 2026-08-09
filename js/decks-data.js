@@ -550,21 +550,21 @@ const DECKS = [
         image: "assets/cards/broken-heart-jewel-knight-ashlei-reverse.webp",
         grade: "G3",
         section: "Main Deck",
-        effect: "[ACT](VC) 1/Turn: [COST][Counter Blast 2 & Lock one of your rear-guards], choose one of your opponent's front row rear-guards, retire it, look at the top four cards of your deck, choose up to one card with \"Jewel Knight\" in its card name from among them, call it to (RC), and put the rest on the bottom of your deck in any order.\n[AUTO](VC): When this unit attacks, if you have two or more locked cards, [COST][Counter Blast 1], search your deck for up to two grade 2 or lower cards with \"Jewel Knight\" in their card names, call them to (RC), shuffle your deck, and for each of your locked cards, this unit gets [Power]+10000 until end of turn. If you have three or more locked cards, until end of that battle, your opponent cannot call sentinels from hand to (GC)."
+        effect: "[ACT](VC) 1/Turn: [COST][Soul Blast 2 & Lock one of your rear-guards], choose one of your opponent's front row rear-guards, retire it, look at the top four cards of your deck, choose up to one card with \"Jewel Knight\" in its card name from among them, call it to (RC), and put the rest on the bottom of your deck in any order.\n[AUTO](VC): When this unit attacks, if you have two or more locked cards, [COST][Counter Blast 1], search your deck for up to two grade 2 or lower cards with \"Jewel Knight\" in their card names, call them to (RC), shuffle your deck, and for each of your locked cards, this unit gets [Power]+10000 until end of turn. If you have three or more locked cards, until end of that battle, your opponent cannot call sentinels from hand to (GC)."
       },
       {
         name: "Leading Jewel Knight, Salome (V Series)",
         image: "assets/cards/leading-jewel-knight-salome-v.webp",
         grade: "G3",
         section: "Main Deck",
-        effect: "[AUTO](SOUL)1/Turn: At the end of the battle this unit attacked, [COST][Counter Blast 1], choose any number of cards with \"Jewel Knight\" in their card name from your hand, and call them to (RC) with units. Then, if you called three or more cards, and your opponent's vanguard is grade 3 or greater, [COST][Counter Blast 4], and [Stand] this unit.\n[AUTO](VC/RC): When your other unit is placed on this unit's circle, [COST][Counter Blast 1], and that placed unit gets [Power]+10000/drive+1 until end of turn.\n(An earlier printing of Leading Jewel Knight, Salome, kept as its own entry since its ability is different from the version above, which has the [LB4] ability instead.)"
+        effect: "[AUTO](VC)1/Turn: At the end of the battle this unit attacked, [COST][Counter Blast 1], choose any number of cards with \"Jewel Knight\" in their card name from your hand, and call them to (RC) with units. Then, if you called three or more cards, and your opponent's vanguard is grade 3 or greater, [COST][Soul Blast 4], and [Stand] this unit.\n[AUTO](VC/RC): When your other unit is placed on this unit's circle, [COST][Counter Blast 1], and that placed unit gets [Power]+10000/drive+1 until end of turn.\n(An earlier printing of Leading Jewel Knight, Salome, kept as its own entry since its ability is different from the version above, which has the [LB4] ability instead.)"
       },
       {
         name: "Pure Heart Jewel Knight, Ashlei",
         image: "assets/cards/pure-heart-jewel-knight-ashlei-dz.webp",
         grade: "G3",
         section: "Main Deck",
-        effect: "[AUTO](VC/RC): At the end of the battle this unit attacked, [COST][Counter Blast 2], search your deck for up to one grade 2 or less card with \"Jewel Knight\" in its card name, call it to (RC), and shuffle your deck. If this unit is on (VC), search for up to two cards instead of one.\n[AUTO](VC/RC): When your other unit is placed on this unit's circle, [COST][Counter Blast 1], and that placed unit gets [Critical]+1 until end of turn."
+        effect: "[AUTO](VC/RC): At the end of the battle this unit attacked, [COST][Soul Blast 2], search your deck for up to one grade 2 or less card with \"Jewel Knight\" in its card name, call it to (RC), and shuffle your deck. If this unit is on (VC), search for up to two cards instead of one.\n[AUTO](VC/RC): When your other unit is placed on this unit's circle, [COST][Counter Blast 1], and that placed unit gets [Critical]+1 until end of turn."
       },
       {
         name: "Dogmatize Jewel Knight, Sybill",
@@ -578,14 +578,14 @@ const DECKS = [
         image: "assets/cards/banding-jewel-knight-miranda.webp",
         grade: "G2",
         section: "Main Deck",
-        effect: "[AUTO](RC): When this unit attacks while not boosted, if you have a vanguard with \"Jewel Knight\" in its card name, [COST][Counter Blast 1], choose one of your vanguards, and until end of that battle, increase or decrease this unit's [Power] to match that unit's [Power].\n[AUTO](VC/RC): When your other unit is placed on this unit's circle, [COST][Counter Charge 1], and if you have no face up cards in your damage zone, [COST][Counter Charge 1]."
+        effect: "[AUTO](RC): When this unit attacks while not boosted, if you have a vanguard with \"Jewel Knight\" in its card name, [COST][Counter Blast 1], choose one of your vanguards, and until end of that battle, increase or decrease this unit's [Power] to match that unit's [Power].\n[AUTO](VC/RC): When your other unit is placed on this unit's circle, [COST][Soul Charge 1], and if you have no face up cards in your damage zone, [COST][Counter Charge 1]."
       },
       {
         name: "Jewel Knight, Swordmy",
         image: "assets/cards/jewel-knight-swordmy.webp",
         grade: "G2",
         section: "Main Deck",
-        effect: "[AUTO]: [COST][Bind one card with \"Jewel Knight\" in its card name from your soul] When this unit is placed on (RC), you may pay the cost. If you do, search your deck for up to one grade 1 or less card with \"Jewel Knight\" in its card name, call it to (RC), and shuffle your deck."
+        effect: "[AUTO]: [COST][Soul Blast 1 card with \"Jewel Knight\" in its card name] When this unit is placed on (RC), you may pay the cost. If you do, search your deck for up to one grade 1 or less card with \"Jewel Knight\" in its card name, call it to (RC), and shuffle your deck."
       },
       {
         name: "Explode Jewel Knight, Laile",
@@ -775,7 +775,7 @@ const DECKS = [
         image: "assets/cards/silver-thorn-dragon-tamer-luquier.webp",
         grade: "G3",
         section: "Main Deck",
-        effect: "[CONT](VC/RC): During your turn, if you called two or more cards from your soul this turn, this unit gets [Power]+10000.\n[ACT](VC)1/Turn: [COST][Accel & Soul Blast 2 & Discard a card from your hand], call any number of cards with \"Silver Thorn\" in their card names from your soul to (RC), and all of your front row rear-guards get [Power]+3000 until end of turn."
+        effect: "[CONT](VC/RC): During your turn, if you called two or more cards from your soul this turn, this unit gets [Power]+10000.\n[ACT](VC)1/Turn: [COST][Counter Blast 2 & Discard a card from your hand], call any number of cards with \"Silver Thorn\" in their card names from your soul to (RC), and all of your front row rear-guards get [Power]+3000 until end of turn."
       },
       {
         name: "Silver Thorn Dragon Empress, Venus Luquier",
@@ -810,7 +810,7 @@ const DECKS = [
         image: "assets/cards/silver-thorn-marionette-lilian.webp",
         grade: "G2",
         section: "Main Deck",
-        effect: "[AUTO](VC/RC): When placed from hand, [COST][Soul Blast 1], search your deck for up to one card with \"Silver Thorn\" in its card name, put it into your soul, and shuffle your deck.\n[AUTO](RC): When it attacks a vanguard, if your soul has four or more cards with \"Silver Thorn\" in their different card names, this unit gets [Power]+10000 until end of that battle."
+        effect: "[AUTO](VC/RC): When placed from hand, [COST][Counter Blast 1], search your deck for up to one card with \"Silver Thorn\" in its card name, put it into your soul, and shuffle your deck.\n[AUTO](RC): When it attacks a vanguard, if your soul has four or more cards with \"Silver Thorn\" in their different card names, this unit gets [Power]+10000 until end of that battle."
       },
       {
         name: "Silver Thorn Beast Tamer, Shayda",
@@ -824,7 +824,7 @@ const DECKS = [
         image: "assets/cards/silver-thorn-diva-selvia.webp",
         grade: "G2",
         section: "Main Deck",
-        effect: "[AUTO](VC/RC): When placed, [COST][Soul Blast 1], choose up to two cards with \"Silver Thorn\" in their card names not named \"Silver Thorn Diva, Selvia\" from your soul, and call them to (RC)."
+        effect: "[AUTO](VC/RC): When placed, [COST][Counter Blast 1], choose up to two cards with \"Silver Thorn\" in their card names not named \"Silver Thorn Diva, Selvia\" from your soul, and call them to (RC)."
       },
       {
         name: "Silver Thorn Assistant, Irina",
@@ -838,7 +838,7 @@ const DECKS = [
         image: "assets/cards/silver-thorn-breathing-dragon.webp",
         grade: "G1",
         section: "Main Deck",
-        effect: "[AUTO](RC): At the end of the battle it boosted, if your soul has four or more cards with \"Silver Thorn\" in their different card names, [COST][Soul Blast 1 & put one rear-guard with \"Silver Thorn\" in its card name that this unit boosted into your soul], call a card with \"Silver Thorn\" in its card name from your soul to (RC)."
+        effect: "[AUTO](RC): At the end of the battle it boosted, if your soul has four or more cards with \"Silver Thorn\" in their different card names, [COST][Counter Blast 1 & put one rear-guard with \"Silver Thorn\" in its card name that this unit boosted into your soul], call a card with \"Silver Thorn\" in its card name from your soul to (RC)."
       },
       {
         name: "Silver Thorn Conjurer, Romy",
@@ -922,14 +922,14 @@ const DECKS = [
         image: "assets/cards/dragon-masquerade-harri.webp",
         grade: "G (Stride/G unit)",
         section: "Stride",
-        effect: "(This card cannot be in your main deck)\n[STRIDE]-Stride Step-[Choose one or more cards with the sum of their grades being 3 or greater from your hand, and discard them], and [STRIDE] this card on your (VC) from face down.\nMagia-[AUTO](VC)[GB3]: [COST][Counter Blast 2 & Choose one of your rear-guards, and put it into your soul] When this unit attacks a vanguard, you may pay the cost. If you do, choose up to three cards from your soul, and call them to separate (RC). Then, if you have five or more rear-guards, your opponent chooses two of his or her rear-guards, and puts them into his or her soul. At the end of that turn, put the units called with this effect into your soul."
+        effect: "(This card cannot be in your main deck)\n[STRIDE]-Stride Step-[Choose one or more cards with the sum of their grades being 3 or greater from your hand, and discard them], and [STRIDE] this card on your (VC) from face down.\nMagia-[AUTO](VC)[GB3]: [COST][Soul Blast 2 & Choose one of your rear-guards, and put it into your soul] When this unit attacks a vanguard, you may pay the cost. If you do, choose up to three cards from your soul, and call them to separate (RC). Then, if you have five or more rear-guards, your opponent chooses two of his or her rear-guards, and puts them into his or her soul. At the end of that turn, put the units called with this effect into your soul."
       },
       {
         name: "Parallel Megatrick, Fairfield",
         image: "assets/cards/parallel-megatrick-fairfield.webp",
         grade: "G (Stride/G unit)",
         section: "Stride",
-        effect: "(This card cannot be in your main deck)\n[STRIDE]-Stride Step-[Choose one or more cards with the sum of their grades being 3 or greater from your hand, and discard them], and [STRIDE] this card on your (VC) from face down.\nMagia-[ACT](VC)1/Turn[GB3]: [COST][Counter Blast 2 & Choose a card from your drop zone and soul, and return them to your deck] Choose a card from your soul, call it to (RC), and until end of turn, it gets [Power]+10000/[Critical]+1, \"[ACT](RC): [COST][Soul Blast 2] Until end of turn, this unit gets [Power]+5000, and cannot be chosen by card effects.\", and shuffle your deck. At the end of that turn, put that unit into your soul."
+        effect: "(This card cannot be in your main deck)\n[STRIDE]-Stride Step-[Choose one or more cards with the sum of their grades being 3 or greater from your hand, and discard them], and [STRIDE] this card on your (VC) from face down.\nMagia-[ACT](VC)1/Turn[GB3]: [COST][Soul Blast 2 & Choose a card from your drop zone and soul, and return them to your deck] Choose a card from your soul, call it to (RC), and until end of turn, it gets [Power]+10000/[Critical]+1, \"[ACT](RC): [COST][Soul Blast 2] Until end of turn, this unit gets [Power]+5000, and cannot be chosen by card effects.\", and shuffle your deck. At the end of that turn, put that unit into your soul."
       },
       {
         name: "Scream Dragon Master, Droll Kimberly",
@@ -943,7 +943,7 @@ const DECKS = [
         image: "assets/cards/masquerade-master-harri.webp",
         grade: "G (Stride/G unit)",
         section: "Stride",
-        effect: "(This card cannot be in your main deck)\n[STRIDE]-Stride Step-[Choose one or more cards with the sum of their grades being 3 or greater from your hand, and discard them], and [STRIDE] this card on your (VC) from face down.\nMagia-[AUTO](VC): [COST][Counter Blast 1 & Choose a face down card with the same card name as this unit from your G zone, turn it face up, choose two cards in your other circles, and put them into your soul] When this unit attacks, you may pay the cost. If you do, choose up to three cards from your soul, call them to separate (RC), and at the end of that turn, put them into your soul.\n[CONT](VC): All of your rear-guards with the magia ability get [Power]+3000 for each face up card with \"Harri\" in its card name in your G zone."
+        effect: "(This card cannot be in your main deck)\n[STRIDE]-Stride Step-[Choose one or more cards with the sum of their grades being 3 or greater from your hand, and discard them], and [STRIDE] this card on your (VC) from face down.\nMagia-[AUTO](VC): [COST][Soul Blast 1 & Choose a face down card with the same card name as this unit from your G zone, turn it face up, choose two cards in your other circles, and put them into your soul] When this unit attacks, you may pay the cost. If you do, choose up to three cards from your soul, call them to separate (RC), and at the end of that turn, put them into your soul.\n[CONT](VC): All of your rear-guards with the magia ability get [Power]+3000 for each face up card with \"Harri\" in its card name in your G zone."
       },
       {
         name: "Fancy Megatrick, Darklord Princess",
@@ -971,7 +971,7 @@ const DECKS = [
         image: "assets/cards/zeroth-dragon-of-end-of-the-world-dust.webp",
         grade: "G (Stride/G unit)",
         section: "Stride",
-        effect: "(This card cannot be in your main deck)\n[ULTIMATE STRIDE]-Stride Step-[COST][Choose a card with the same card name as your vanguard from your hand, and discard it], and [STRIDE] this card on your (VC) from face down.\n[AUTO]: When placed on (VC), [COST][Soul Blast 2], until end of turn, your opponent's vanguards and rear-guards lose all of their abilities, and their grade and [Power] increase or decrease to 1. If the number of cards in your opponent's damage zone is four or less, choose one of your opponent's vanguards, and deal one damage."
+        effect: "(This card cannot be in your main deck)\n[ULTIMATE STRIDE]-Stride Step-[COST][Choose a card with the same card name as your vanguard from your hand, and discard it], and [STRIDE] this card on your (VC) from face down.\n[AUTO]: When placed on (VC), [COST][Counter Blast 2], until end of turn, your opponent's vanguards and rear-guards lose all of their abilities, and their grade and [Power] increase or decrease to 1. If the number of cards in your opponent's damage zone is four or less, choose one of your opponent's vanguards, and deal one damage."
       },
       {
         name: "Jester Demonic Beast, Flection Chimera",
