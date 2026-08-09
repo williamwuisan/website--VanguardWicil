@@ -218,6 +218,7 @@ const DECK_ACCENTS = {
   'heartluru-deck': '#db2777',
   'jewel-knight-deck': '#ca8a04',
   'silver-thorn-deck': '#7c3aed',
+  'og-knight-deck': '#06b6d4',
 };
 
 function showDeckDetail(deckId, opts = {}) {

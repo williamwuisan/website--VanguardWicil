@@ -1002,5 +1002,139 @@ const DECKS = [
         effect: "(This card cannot be in your main deck)\n[G GUARDIAN]-Opponent Turn's Guard Step-[COST][Discard a card with \"Heal\" in its card name from your hand], call this card to your (GC) from face down.\n[AUTO]1/Turn: When placed on (GC), if there are cards of four or more different grades in your soul, [COST][choose a face down G Guardian from your G zone, and turn it face up], and this unit gets [Shield]+15000 until end of that battle."
       }
     ]
+  },
+  {
+    id: "og-knight-deck",
+    name: "OG Knight",
+    clan: "Keter Sanctuary",
+    image: "assets/cards/pure-heart-jewel-knight-ashlei-bt10.webp",
+    cards: [
+      {
+        name: "Pure Heart Jewel Knight, Ashlei",
+        image: "assets/cards/pure-heart-jewel-knight-ashlei-bt10.webp",
+        grade: "G3",
+        section: "Main Deck",
+        effect: "[AUTO][LB4] (This ability is active if you have four or more damage): When a «Royal Paladin» rides this unit, choose your vanguard, and that unit gets [Power]+10000/[Critical]+1 until end of turn.\n[AUTO](VC): When this unit attacks a vanguard, this unit gets [Power]+2000 until end of that battle.\n[CONT](VC/RC): Lord (If you have a unit without a same clan as this unit, this unit cannot attack)"
+      },
+      {
+        name: "Broken Heart Jewel Knight, Ashlei \"Reverse\"",
+        image: "assets/cards/broken-heart-jewel-knight-ashlei-reverse-og.webp",
+        grade: "G3",
+        section: "Main Deck",
+        effect: "[ACT](VC)[LB4] (This ability is active if you have four or more damage): [COST][Counter Blast 1 & Choose one of your rear-guards with \"Jewel Knight\" in its card name, and lock it] Choose up to one rear-guard in your opponent's front row, retire it, search your deck for up to one card with \"Jewel Knight\" in its card name, call it to (RC), and shuffle your deck. This ability cannot be used for the rest of that turn. (The locked card is turned face down, and cannot do anything. It turns face up at end of the owner's turn.)\n[CONT](VC): If you have a card named \"Pure Heart Jewel Knight, Ashlei\" in your soul, this unit gets [Power]+2000.\n[CONT](VC/RC): Lord (If you have a unit without a same clan as this unit, this unit cannot attack)"
+      },
+      {
+        name: "Leading Jewel Knight, Salome",
+        image: "assets/cards/leading-jewel-knight-salome.webp",
+        grade: "G3",
+        section: "Main Deck",
+        effect: "[AUTO](VC)[LB4]: When this unit attacks, if you have four or more rear-guards with \"Jewel Knight\" in their card names, this unit gets [Power]+2000/[Critical]+1 until end of that battle.\n[ACT](VC): [COST][Counter Blast 2 cards with \"Jewel Knight\" in their card names], search your deck for up to one card with \"Jewel Knight\" in its card name, call it to (RC), and shuffle your deck."
+      },
+      {
+        name: "Prevail Jewel Knight, Yvain",
+        image: "assets/cards/prevail-jewel-knight-yvain.webp",
+        grade: "G3",
+        section: "Main Deck",
+        effect: "[ACT](VC): Legion 20000 \"Jewel Knight, Swordmy\" (If your opponent's vanguard is grade 3 or greater, this unit may return four cards from your drop zone into your deck once, search your deck for the specified card, and Legion)\n[AUTO](VC): When this unit attacks a vanguard, if this unit is Legion, if you have six or more units with \"Jewel Knight\" in its card name, this unit gets [Power]+5000/[Critical]+1 until end of that battle.\n[AUTO](VC): When this unit attacks a vanguard, this unit gets [Power]+2000 until end of that battle."
+      },
+      {
+        name: "Fellowship Jewel Knight, Tracie",
+        image: "assets/cards/fellowship-jewel-knight-tracie.webp",
+        grade: "G2",
+        section: "Main Deck",
+        effect: "[AUTO](RC): When this unit attacks, if the number of other rear-guards you have with \"Jewel Knight\" in its card name is three or more, this unit gets [Power]+3000 until end of that battle."
+      },
+      {
+        name: "Banding Jewel Knight, Miranda",
+        image: "assets/cards/banding-jewel-knight-miranda-bt14.webp",
+        grade: "G2",
+        section: "Main Deck",
+        effect: "[AUTO](RC): When this unit attacks, if you have a vanguard with \"Ashlei\" in its card name, this unit gets [Power]+2000 until end of that battle.\n[AUTO](RC): When this unit's attack hits a vanguard, if you have a vanguard with \"Ashlei\" in its card name, choose one of your «Royal Paladin», and that unit gets [Power]+3000 until end of turn."
+      },
+      {
+        name: "Pure Wind Jewel Knight, Kymbelinus",
+        image: "assets/cards/pure-wind-jewel-knight-kymbelinus.webp",
+        grade: "G2",
+        section: "Main Deck",
+        effect: "[AUTO]: [COST][Soul Blast 1 card with \"Jewel Knight\" in its card name] When this unit intercepts, if the number of other rear-guards with \"Jewel Knight\" in its card name is three or more, you may pay the cost. If you do, this unit gets [Shield]+10000 until end of that battle."
+      },
+      {
+        name: "Jewel Knight, Swordmy",
+        image: "assets/cards/jewel-knight-swordmy.webp",
+        grade: "G2",
+        section: "Main Deck",
+        effect: "[AUTO]: [COST][Counter Blast 1 card with \"Jewel Knight\" in its card name] When this unit is placed on (RC), you may pay the cost. If you do, search your deck for up to one grade 1 or less card with \"Jewel Knight\" in its card name, call it to (RC), and shuffle your deck."
+      },
+      {
+        name: "Flashing Jewel Knight, Iseult",
+        image: "assets/cards/flashing-jewel-knight-iseult.webp",
+        grade: "G1",
+        section: "Main Deck",
+        effect: "[CONT]: Sentinel (You may only have up to four cards with \"[CONT]: Sentinel\" in a deck.)\n[AUTO]: [COST][Choose a «Royal Paladin» from your hand, and discard it] When this unit is placed on (GC), you may pay the cost. If you do, choose one of your «Royal Paladin» that is being attacked, and that unit cannot be hit until end of that battle."
+      },
+      {
+        name: "Jewel Knight, Prizmy",
+        image: "assets/cards/jewel-knight-prizmy.webp",
+        grade: "G1",
+        section: "Main Deck",
+        effect: "[AUTO]: [COST][Choose a card from your hand, and discard it] When this unit is placed on (RC), if the number of other rear-guards you have with \"Jewel Knight\" in its card name is three or more, you may pay the cost. If you do, draw a card."
+      },
+      {
+        name: "Stinging Jewel Knight, Shellie",
+        image: "assets/cards/stinging-jewel-knight-shellie.webp",
+        grade: "G1",
+        section: "Main Deck",
+        effect: "[AUTO](RC): When this unit attacks, if the number of other rear-guards you have with \"Jewel Knight\" in its card name is three or more, this unit gets [Power]+3000 until end of that battle."
+      },
+      {
+        name: "Jewel Knight, Sabremy",
+        image: "assets/cards/jewel-knight-sabremy.webp",
+        grade: "G1",
+        section: "Main Deck",
+        effect: "[CONT](RC): Your vanguard's \"[LB4]\" is active even when you have three or less damage."
+      },
+      {
+        name: "Blazing Jewel Knight, Rachelle",
+        image: "assets/cards/blazing-jewel-knight-rachelle.webp",
+        grade: "G0",
+        section: "Main Deck",
+        effect: "Critical Trigger: [Power]+5000, [Critical]+1."
+      },
+      {
+        name: "Devoting Jewel Knight, Tabitha",
+        image: "assets/cards/devoting-jewel-knight-tabitha.webp",
+        grade: "G0",
+        section: "Main Deck",
+        effect: "Draw Trigger: [Power]+5000, draw a card."
+      },
+      {
+        name: "Ardent Jewel Knight, Polli",
+        image: "assets/cards/ardent-jewel-knight-polli.webp",
+        grade: "G0",
+        section: "Main Deck",
+        effect: "Heal Trigger: [Power]+5000. (You may only have up to four cards with \"[Heal]\" in a deck.)"
+      },
+      {
+        name: "Desire Jewel Knight, Heloise",
+        image: "assets/cards/desire-jewel-knight-heloise.webp",
+        grade: "G0",
+        section: "Main Deck",
+        effect: "[AUTO]: Forerunner (When a unit of the same clan rides this unit, you may call this unit to (RC))\n[AUTO](RC): When this unit boosts, if the number of your other \"Jewel Knight\" rear-guards is three or more, the boosted unit gets [Power]+3000 until end of that battle."
+      },
+      {
+        name: "Jewel Knight, Noble Stinger",
+        image: "assets/cards/jewel-knight-noble-stinger.webp",
+        grade: "G0",
+        section: "Main Deck",
+        effect: "Critical Trigger: [Power]+5000, [Critical]+1."
+      },
+      {
+        name: "Shrouded Divine Knight, Gablade",
+        image: "assets/cards/shrouded-divine-knight-gablade.webp",
+        grade: "G (Stride/G unit)",
+        section: "Stride",
+        effect: "(This card cannot be in your main deck)\n[STRIDE]-Stride Step-[Choose one or more cards from hand with the sum of their grades being 3 or greater, and discard them], and [STRIDE] this card on your (VC) from face down.\n[ACT](G Zone)1/Turn: If your vanguard is a grade 3 \"Blue Sky Knight, Altmile\", and you did not get an Imaginary Gift this fight, [COST][choose one or more cards from hand with the sum of their grades being 3 or greater, and discard them], and [STRIDE] this card on your (VC) from face down. Then, [turn a card from G zone with the same card name as this unit face up], and you get two Imaginary Gift: Force.\n[CONT](VC): This unit's \"when attack hits\" effects activate even if the attack did not hit.\n[AUTO](VC): When this unit's attack hits a vanguard, search your deck for up to one grade 2 or greater card, call it to (RC), and shuffle your deck."
+      }
+    ]
   }
 ];
