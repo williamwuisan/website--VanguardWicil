@@ -110,6 +110,10 @@
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
       Skill Match
     </button>
+    <button class="drawer__item drawer__item--og" data-nav="og-story">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l7.1-1.01L12 2z"/></svg>
+      OG Deck
+    </button>
   </div>
   <div class="drawer__theme">
     <span class="drawer__theme-label">
@@ -390,6 +394,20 @@
     <div class="memory-win" id="memoryWinMessage">
       <p>🎉 You matched every pair in <strong id="memoryFinalMoves"></strong> moves!</p>
       <button class="btn btn--primary" id="memoryPlayAgain">Play Again</button>
+    </div>
+  </section>
+
+  <!-- ===== OG DECK STORY VIEW ===== -->
+  <section id="view-og-story" class="view view--hidden">
+    <div class="og-story reveal">
+      <p class="eyebrow">11 Years Ago</p>
+      <h2 class="og-story__title">Where It All Started</h2>
+      <div class="og-story__card-wrap">
+        <img id="ogStoryImage" class="og-story__card" src="assets/cards/pure-heart-jewel-knight-ashlei-bt10.webp" alt="Pure Heart Jewel Knight, Ashlei">
+      </div>
+      <p class="og-story__body">Before Silver Thorn. Before Jewel Knight got its glossy modern reprints. Before any other deck in this collection existed — there was this stack of Royal Paladin knights.</p>
+      <p class="og-story__body">It's Wicil's very first Cardfight!! Vanguard deck, built eleven years ago the way every first deck gets built: card by card, whatever looked cool, whatever felt right. Some of these knights have since been reprinted, upgraded, given flashier art. This is where they started.</p>
+      <button class="btn btn--primary" id="ogStoryEnterBtn"><span class="btn__label">Open the Deck</span><span class="btn__arrow">→</span></button>
     </div>
   </section>
 

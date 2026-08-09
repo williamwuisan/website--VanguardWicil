@@ -5,7 +5,10 @@ const views = {
   search: document.getElementById('view-search'),
   glossary: document.getElementById('view-glossary'),
   game: document.getElementById('view-game'),
+  'og-story': document.getElementById('view-og-story'),
 };
+
+const HIDDEN_DECK_IDS = ['og-knight-deck'];
 
 const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
@@ -44,10 +47,15 @@ function showView(name) {
 document.querySelectorAll('[data-nav]').forEach(el => {
   el.addEventListener('click', () => {
     const target = el.dataset.nav;
-    if (target === 'home' || target === 'decks' || target === 'search' || target === 'glossary' || target === 'game') showView(target);
+    if (target === 'home' || target === 'decks' || target === 'search' || target === 'glossary' || target === 'game' || target === 'og-story') showView(target);
     closeDrawer();
   });
 });
+
+const ogStoryEnterBtn = document.getElementById('ogStoryEnterBtn');
+if (ogStoryEnterBtn) {
+  ogStoryEnterBtn.addEventListener('click', () => showDeckDetail('og-knight-deck'));
+}
 
 const menuToggle = document.getElementById('menuToggle');
 const drawer = document.getElementById('drawer');
@@ -83,7 +91,7 @@ updateScrollTopBtn();
 
 function getClans() {
   const clans = [];
-  DECKS.forEach(deck => {
+  DECKS.filter(d => !HIDDEN_DECK_IDS.includes(d.id)).forEach(deck => {
     const clan = deck.clan || 'Lainnya';
     if (!clans.includes(clan)) clans.push(clan);
   });
@@ -123,7 +131,7 @@ function renderDeckGrid() {
   }
   empty.classList.remove('is-visible');
 
-  const filtered = DECKS.filter(deck => (deck.clan || 'Lainnya') === selectedClan);
+  const filtered = DECKS.filter(deck => !HIDDEN_DECK_IDS.includes(deck.id) && (deck.clan || 'Lainnya') === selectedClan);
 
   filtered.forEach((deck, i) => {
     const card = document.createElement('button');
