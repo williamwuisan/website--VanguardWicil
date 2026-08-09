@@ -243,6 +243,15 @@ function showDeckDetail(deckId, opts = {}) {
   document.getElementById('detailDeckMeta').textContent = `${deck.clan ? deck.clan + ' · ' : ''}${deck.cards.length} cards`;
   renderDeckStats(deck);
 
+  const backBtn = document.getElementById('detailBackBtn');
+  if (HIDDEN_DECK_IDS.includes(deck.id)) {
+    backBtn.dataset.nav = 'home';
+    backBtn.textContent = '← Back to Home';
+  } else {
+    backBtn.dataset.nav = 'decks';
+    backBtn.textContent = '← Back to Decklist';
+  }
+
   const hasSections = deck.cards.some(card => card.section);
 
   if (!hasSections) {
@@ -842,7 +851,7 @@ const IDLE_CARDS = [
   { name: 'Dragonic Overlord', clan: 'Kagero', image: 'assets/idle/dragonic-overlord.png', color: '#ef4444', bgDark: '#240707' },
 ];
 
-const IDLE_DELAY = 30000;
+const IDLE_DELAY = 60000;
 const IDLE_CARD_DURATION = 4000;
 
 const idleOverlay = document.getElementById('idleOverlay');
