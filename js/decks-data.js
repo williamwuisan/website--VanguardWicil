@@ -585,7 +585,7 @@ const DECKS = [
         image: "assets/cards/jewel-knight-swordmy.webp",
         grade: "G2",
         section: "Main Deck",
-        effect: "[AUTO]: [COST][Soul Blast 1 card with \"Jewel Knight\" in its card name] When this unit is placed on (RC), you may pay the cost. If you do, search your deck for up to one grade 1 or less card with \"Jewel Knight\" in its card name, call it to (RC), and shuffle your deck."
+        effect: "[AUTO]: [COST][Counter Blast 1 card with \"Jewel Knight\" in its card name] When this unit is placed on (RC), you may pay the cost. If you do, search your deck for up to one grade 1 or less card with \"Jewel Knight\" in its card name, call it to (RC), and shuffle your deck."
       },
       {
         name: "Explode Jewel Knight, Laile",
@@ -704,7 +704,7 @@ const DECKS = [
         image: "assets/cards/divine-knight-of-condensed-light-olbius-avalon.webp",
         grade: "G (Stride/G unit)",
         section: "Stride",
-        effect: "(This card cannot be in your main deck)\n[STRIDE]-Stride Step-[Choose one or more cards with the sum of their grades being 3 or greater from your hand, and discard them], and [STRIDE] this card on your (VC) from face down.\n[AUTO](VC)[GB8]: [COST][Soul Blast 1] When this unit attacks a vanguard, you may pay the cost. If you do, search your deck for up to five cards, call them to separate (RC), and until end of turn, they get [Power]+4000, and this unit gets [Critical]+1. Shuffle your deck."
+        effect: "(This card cannot be in your main deck)\n[STRIDE]-Stride Step-[Choose one or more cards with the sum of their grades being 3 or greater from your hand, and discard them], and [STRIDE] this card on your (VC) from face down.\n[AUTO](VC)[GB8]: [COST][Counter Blast 1] When this unit attacks a vanguard, you may pay the cost. If you do, search your deck for up to five cards, call them to separate (RC), and until end of turn, they get [Power]+4000, and this unit gets [Critical]+1. Shuffle your deck."
       },
       {
         name: "Divine Knight of Twin Absolutes, Saint of Twin Sword",
@@ -922,14 +922,14 @@ const DECKS = [
         image: "assets/cards/dragon-masquerade-harri.webp",
         grade: "G (Stride/G unit)",
         section: "Stride",
-        effect: "(This card cannot be in your main deck)\n[STRIDE]-Stride Step-[Choose one or more cards with the sum of their grades being 3 or greater from your hand, and discard them], and [STRIDE] this card on your (VC) from face down.\nMagia-[AUTO](VC)[GB3]: [COST][Soul Blast 2 & Choose one of your rear-guards, and put it into your soul] When this unit attacks a vanguard, you may pay the cost. If you do, choose up to three cards from your soul, and call them to separate (RC). Then, if you have five or more rear-guards, your opponent chooses two of his or her rear-guards, and puts them into his or her soul. At the end of that turn, put the units called with this effect into your soul."
+        effect: "(This card cannot be in your main deck)\n[STRIDE]-Stride Step-[Choose one or more cards with the sum of their grades being 3 or greater from your hand, and discard them], and [STRIDE] this card on your (VC) from face down.\nMagia-[AUTO](VC)[GB3]: [COST][Counter Blast 2 & Choose one of your rear-guards, and put it into your soul] When this unit attacks a vanguard, you may pay the cost. If you do, choose up to three cards from your soul, and call them to separate (RC). Then, if you have five or more rear-guards, your opponent chooses two of his or her rear-guards, and puts them into his or her soul. At the end of that turn, put the units called with this effect into your soul."
       },
       {
         name: "Parallel Megatrick, Fairfield",
         image: "assets/cards/parallel-megatrick-fairfield.webp",
         grade: "G (Stride/G unit)",
         section: "Stride",
-        effect: "(This card cannot be in your main deck)\n[STRIDE]-Stride Step-[Choose one or more cards with the sum of their grades being 3 or greater from your hand, and discard them], and [STRIDE] this card on your (VC) from face down.\nMagia-[ACT](VC)1/Turn[GB3]: [COST][Soul Blast 2 & Choose a card from your drop zone and soul, and return them to your deck] Choose a card from your soul, call it to (RC), and until end of turn, it gets [Power]+10000/[Critical]+1, \"[ACT](RC): [COST][Soul Blast 2] Until end of turn, this unit gets [Power]+5000, and cannot be chosen by card effects.\", and shuffle your deck. At the end of that turn, put that unit into your soul."
+        effect: "(This card cannot be in your main deck)\n[STRIDE]-Stride Step-[Choose one or more cards with the sum of their grades being 3 or greater from your hand, and discard them], and [STRIDE] this card on your (VC) from face down.\nMagia-[ACT](VC)1/Turn[GB3]: [COST][Counter Blast 2 & Choose a card from your drop zone and soul, and return them to your deck] Choose a card from your soul, call it to (RC), and until end of turn, it gets [Power]+10000/[Critical]+1, \"[ACT](RC): [COST][Soul Blast 2] Until end of turn, this unit gets [Power]+5000, and cannot be chosen by card effects.\", and shuffle your deck. At the end of that turn, put that unit into your soul."
       },
       {
         name: "Scream Dragon Master, Droll Kimberly",
@@ -943,7 +943,7 @@ const DECKS = [
         image: "assets/cards/masquerade-master-harri.webp",
         grade: "G (Stride/G unit)",
         section: "Stride",
-        effect: "(This card cannot be in your main deck)\n[STRIDE]-Stride Step-[Choose one or more cards with the sum of their grades being 3 or greater from your hand, and discard them], and [STRIDE] this card on your (VC) from face down.\nMagia-[AUTO](VC): [COST][Soul Blast 1 & Choose a face down card with the same card name as this unit from your G zone, turn it face up, choose two cards in your other circles, and put them into your soul] When this unit attacks, you may pay the cost. If you do, choose up to three cards from your soul, call them to separate (RC), and at the end of that turn, put them into your soul.\n[CONT](VC): All of your rear-guards with the magia ability get [Power]+3000 for each face up card with \"Harri\" in its card name in your G zone."
+        effect: "(This card cannot be in your main deck)\n[STRIDE]-Stride Step-[Choose one or more cards with the sum of their grades being 3 or greater from your hand, and discard them], and [STRIDE] this card on your (VC) from face down.\nMagia-[AUTO](VC): [COST][Counter Blast 1 & Choose a face down card with the same card name as this unit from your G zone, turn it face up, choose two cards in your other circles, and put them into your soul] When this unit attacks, you may pay the cost. If you do, choose up to three cards from your soul, call them to separate (RC), and at the end of that turn, put them into your soul.\n[CONT](VC): All of your rear-guards with the magia ability get [Power]+3000 for each face up card with \"Harri\" in its card name in your G zone."
       },
       {
         name: "Fancy Megatrick, Darklord Princess",
@@ -985,7 +985,7 @@ const DECKS = [
         image: "assets/cards/jester-demonic-dragon-wandering-dragon.webp",
         grade: "G (Guardian)",
         section: "Stride",
-        effect: "(This card cannot be in your main deck)\n[G GUARDIAN](Usable when both fighters' vanguards are grade 3 or greater, and the number of face up G guardians in your G zone is three or less)-Opponent Turn's Guard Step-[COST][Discard a card with \"Heal\" in its card name from your hand], call this card to your (GC) from face down.\n[AUTO]: When this unit is placed on (GC), [COST][Soul Blast 1], choose a card from your soul, and call it to (GC)."
+        effect: "(This card cannot be in your main deck)\n[G GUARDIAN](Usable when both fighters' vanguards are grade 3 or greater, and the number of face up G guardians in your G zone is three or less)-Opponent Turn's Guard Step-[COST][Discard a card with \"Heal\" in its card name from your hand], call this card to your (GC) from face down.\n[AUTO]: When this unit is placed on (GC), [COST][Soul Charge 1], choose a card from your soul, and call it to (GC)."
       },
       {
         name: "Chainsaw Megatrick, Furnival",
