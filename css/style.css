@@ -300,9 +300,6 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
   --text: #f5f3ef;
   --text-muted: #b6b2ab;
   color: var(--text);
-  background:
-    radial-gradient(ellipse 130% 70% at 50% 0%, #241733 0%, #150f22 30%, #0a0812 55%, #050408 80%),
-    #030307;
 }
 
 /* ===== Home page section bands ===== */
@@ -319,7 +316,19 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
 }
 
 /* ===== Cosmic hero background ===== */
-.cosmic-bg { position: fixed; inset: 0; overflow: hidden; pointer-events: none; z-index: 0; }
+.cosmic-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse 130% 70% at 50% 0%, #241733 0%, #150f22 30%, #0a0812 55%, #050408 80%),
+    #030307;
+}
 
 .cosmic-star {
   position: absolute;
@@ -352,15 +361,15 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
 
 .cosmic-portal {
   position: absolute;
-  top: 46%; left: 50%;
-  width: 640px; height: 640px;
+  top: 34%; left: 50%;
+  width: 560px; height: 560px;
   transform: translate(-50%, -50%);
   opacity: 0.55;
   animation: cosmic-spin 100s linear infinite;
 }
 @keyframes cosmic-spin { to { transform: translate(-50%, -50%) rotate(360deg); } }
 @media (max-width: 640px) {
-  .cosmic-portal { width: 420px; height: 420px; }
+  .cosmic-portal { top: 30%; width: 340px; height: 340px; }
 }
 
 .cosmic-comet {
@@ -492,48 +501,33 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
 }
 .hero-art__beam {
   position: absolute;
-  top: 20px; left: 50%;
+  top: -46px; left: 50%;
   transform: translateX(-50%);
-  width: 150px;
-  height: 280px;
-  background: linear-gradient(180deg, rgba(255,255,255,0.22), rgba(255,145,80,0.07) 55%, transparent 100%);
-  clip-path: polygon(38% 0%, 62% 0%, 100% 100%, 0% 100%);
+  width: 130px;
+  height: 100px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.22), rgba(255,145,80,0.06) 70%, transparent 100%);
+  clip-path: polygon(32% 0%, 68% 0%, 100% 100%, 0% 100%);
   pointer-events: none;
   z-index: 0;
-  opacity: 0.65;
+  opacity: 0.6;
 }
 
 .hero-art__projector {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  width: 210px;
-  height: 42px;
+  width: 78%;
+  max-width: 210px;
+  overflow: visible;
   pointer-events: none;
   z-index: 0;
-}
-.hero-art__projector--top { top: -10px; }
-.hero-art__projector--bottom { bottom: 40px; }
-.hero-art__projector-ring {
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  background: linear-gradient(180deg, rgba(255,255,255,0.4), rgba(180,180,190,0.12) 45%, transparent 75%);
-  border: 1px solid rgba(255,255,255,0.28);
-  box-shadow: 0 0 34px 6px rgba(255,145,80,0.32), inset 0 3px 8px rgba(255,255,255,0.25);
-}
-.hero-art__projector-core {
-  position: absolute;
-  top: 28%; left: 22%; right: 22%; bottom: 28%;
-  border-radius: 50%;
-  background: radial-gradient(ellipse, rgba(255,255,255,0.95), rgba(255,180,120,0.45) 60%, transparent 82%);
-  filter: blur(2px);
   animation: hero-projector-pulse 3.4s ease-in-out infinite;
 }
-.hero-art__projector--bottom .hero-art__projector-core { animation-delay: -1.7s; }
+.hero-art__projector--top { top: -50px; }
+.hero-art__projector--bottom { top: 100%; margin-top: -18px; animation-delay: -1.7s; }
 @keyframes hero-projector-pulse {
-  0%, 100% { opacity: 0.55; transform: scale(0.94); }
-  50% { opacity: 1; transform: scale(1.08); }
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
 }
 .hero-art__sparks {
   position: absolute;
@@ -568,7 +562,7 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
   opacity: 0.85;
 }
 @media (prefers-reduced-motion: reduce) {
-  .hero-art__projector-core, .hero-art__sparks::before, .hero-art__sparks::after { animation: none; }
+  .hero-art__projector, .hero-art__sparks::before, .hero-art__sparks::after { animation: none; }
 }
 
 .hero-carousel { position: relative; width: 100%; touch-action: pan-y; z-index: 1; }
