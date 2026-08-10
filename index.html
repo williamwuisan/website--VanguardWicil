@@ -301,7 +301,12 @@
 
   <!-- ===== DECK DETAIL VIEW ===== -->
   <section id="view-detail" class="view view--hidden">
-    <button class="btn btn--ghost btn--back" id="detailBackBtn" data-nav="decks">← Back to Decklist</button>
+    <div class="deck-detail__topbar">
+      <button class="btn btn--ghost btn--back" id="detailBackBtn" data-nav="decks">← Back to Decklist</button>
+      <button class="icon-btn" id="shareDeckBtn" aria-label="Share this deck">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v7a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7"/><path d="M16 6l-4-4-4 4"/><path d="M12 2v14"/></svg>
+      </button>
+    </div>
     <div class="deck-detail__head reveal">
       <h2 id="detailDeckName"></h2>
       <p id="detailDeckMeta"></p>
@@ -428,6 +433,8 @@
     <div id="overlaySearchResults" class="search-overlay__results"></div>
   </div>
 </div>
+
+<div class="toast" id="shareToast"></div>
 
 <div class="tour-backdrop" id="tourBackdrop"></div>
 <div class="tour-tooltip" id="tourTooltip">

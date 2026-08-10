@@ -272,6 +272,48 @@ function showDeckDetail(deckId, opts = {}) {
   if (opts.highlightName) highlightCardByName(opts.highlightName);
 }
 
+function showToast(message) {
+  const toast = document.getElementById('shareToast');
+  if (!toast) return;
+  toast.textContent = message;
+  toast.classList.add('is-visible');
+  clearTimeout(showToast._timer);
+  showToast._timer = setTimeout(() => toast.classList.remove('is-visible'), 2200);
+}
+
+function getDeckShareUrl(deck) {
+  return `${location.origin}${location.pathname}#deck=${encodeURIComponent(deck.id)}`;
+}
+
+const shareDeckBtn = document.getElementById('shareDeckBtn');
+if (shareDeckBtn) {
+  shareDeckBtn.addEventListener('click', async () => {
+    if (!currentDeck) return;
+    const url = getDeckShareUrl(currentDeck);
+    const shareData = {
+      title: `WicilTCG — ${currentDeck.name}`,
+      text: `Check out the "${currentDeck.name}" deck on WicilTCG!`,
+      url,
+    };
+    if (navigator.share) {
+      try {
+        await navigator.share(shareData);
+      } catch (err) {
+        if (err && err.name !== 'AbortError') showToast('Could not share');
+      }
+    } else if (navigator.clipboard) {
+      try {
+        await navigator.clipboard.writeText(url);
+        showToast('Link copied!');
+      } catch (err) {
+        showToast('Could not copy link');
+      }
+    } else {
+      showToast('Sharing not supported on this browser');
+    }
+  });
+}
+
 const GRADE_ORDER = ['G0', 'G1', 'G2', 'G3', 'G (Stride/G unit)'];
 const GRADE_LABELS = { 'G0': 'G0', 'G1': 'G1', 'G2': 'G2', 'G3': 'G3', 'G (Stride/G unit)': 'Stride' };
 const GRADE_COLORS = { 'G0': '#ffd9b8', 'G1': '#ffb073', 'G2': '#ff8a3d', 'G3': '#ff5b1a', 'G (Stride/G unit)': '#b3390f' };
@@ -701,7 +743,7 @@ window.addEventListener('resize', () => {
 });
 
 try {
-  if (!localStorage.getItem('wiciltcg-tour-seen')) {
+  if (!localStorage.getItem('wiciltcg-tour-seen') && !location.hash.startsWith('#deck=')) {
     setTimeout(startTour, 900);
   }
 } catch (e) {}
@@ -738,6 +780,14 @@ renderDeckGrid();
 renderStats();
 renderDailyCard();
 observeRevealAll();
+
+/* ===== Deep link: #deck=<id> opens a deck detail directly ===== */
+(function() {
+  const match = location.hash.match(/^#deck=(.+)$/);
+  if (!match) return;
+  const deckId = decodeURIComponent(match[1]);
+  if (DECKS.some(d => d.id === deckId)) showDeckDetail(deckId);
+})();
 
 /* ===== PWA: service worker registration ===== */
 if ('serviceWorker' in navigator) {
