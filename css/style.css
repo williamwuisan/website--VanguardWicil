@@ -300,7 +300,95 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
 }
-.home-band--hero { padding-top: 56px; padding-bottom: 215px; }
+.home-band--hero {
+  position: relative;
+  overflow: hidden;
+  padding-top: 56px;
+  padding-bottom: 215px;
+  --text: #f5f3ef;
+  --text-muted: #b6b2ab;
+  color: var(--text);
+  background:
+    radial-gradient(ellipse 90% 60% at 50% -8%, rgba(255,91,26,0.16) 0%, transparent 55%),
+    radial-gradient(ellipse 130% 90% at 50% 0%, #241733 0%, #150f22 40%, #0a0812 72%, #050408 100%);
+}
+
+/* ===== Cosmic hero background ===== */
+.cosmic-bg { position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: 0; }
+
+.cosmic-star {
+  position: absolute;
+  background: #fff;
+  border-radius: 50%;
+  animation-name: cosmic-twinkle;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+@keyframes cosmic-twinkle {
+  0%, 100% { opacity: 0.15; transform: scale(1); }
+  50% { opacity: var(--star-max, 0.85); transform: scale(1.4); }
+}
+
+.cosmic-nebula {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(70px);
+  mix-blend-mode: screen;
+  opacity: 0.5;
+  animation: cosmic-drift ease-in-out infinite alternate;
+}
+.cosmic-nebula--a { width: 460px; height: 460px; top: -140px; left: -90px; background: radial-gradient(circle, #ff5b1a, transparent 70%); animation-duration: 38s; }
+.cosmic-nebula--b { width: 420px; height: 420px; bottom: -170px; right: -110px; background: radial-gradient(circle, #7c3aed, transparent 70%); animation-duration: 46s; animation-delay: -14s; }
+.cosmic-nebula--c { width: 320px; height: 320px; top: 25%; right: 8%; background: radial-gradient(circle, #2b3a8f, transparent 70%); animation-duration: 32s; animation-delay: -22s; }
+@keyframes cosmic-drift {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(46px, -34px) scale(1.15); }
+}
+
+.cosmic-portal {
+  position: absolute;
+  top: 46%; left: 50%;
+  width: 640px; height: 640px;
+  transform: translate(-50%, -50%);
+  opacity: 0.55;
+  animation: cosmic-spin 100s linear infinite;
+}
+@keyframes cosmic-spin { to { transform: translate(-50%, -50%) rotate(360deg); } }
+@media (max-width: 640px) {
+  .cosmic-portal { width: 420px; height: 420px; }
+}
+
+.cosmic-comet {
+  position: absolute;
+  width: 3px; height: 3px;
+  border-radius: 50%;
+  background: #fff8f0;
+  box-shadow: 0 0 8px 1px rgba(255,200,150,0.7);
+  opacity: 0;
+  animation-name: cosmic-comet-fly;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+.cosmic-comet::before {
+  content: '';
+  position: absolute;
+  top: 1px; left: 1px;
+  width: 130px; height: 1.5px;
+  background: linear-gradient(90deg, rgba(255,180,120,0.85), transparent);
+  transform-origin: left center;
+  transform: rotate(-35deg);
+}
+@keyframes cosmic-comet-fly {
+  0% { opacity: 0; transform: translate(0, 0); }
+  10% { opacity: 1; }
+  82% { opacity: 1; }
+  100% { opacity: 0; transform: translate(var(--comet-x), var(--comet-y)); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cosmic-star, .cosmic-nebula, .cosmic-portal, .cosmic-comet { animation: none !important; }
+}
+
 .particles {
   position: fixed;
   inset: 0;

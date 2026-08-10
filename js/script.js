@@ -1023,6 +1023,51 @@ try {
   container.innerHTML = html;
 })();
 
+/* ===== Cosmic hero background: starfield + comets ===== */
+(function() {
+  const starsContainer = document.getElementById('cosmicStars');
+  const cometsContainer = document.getElementById('cosmicComets');
+  if (!starsContainer || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  const starCount = 90;
+  let starsHtml = '';
+  for (let i = 0; i < starCount; i++) {
+    const top = (Math.random() * 100).toFixed(2);
+    const left = (Math.random() * 100).toFixed(2);
+    const size = (Math.random() * 1.8 + 0.6).toFixed(2);
+    const duration = (2.2 + Math.random() * 4).toFixed(2);
+    const delay = (Math.random() * -6).toFixed(2);
+    const maxOpacity = (0.5 + Math.random() * 0.5).toFixed(2);
+    starsHtml += `<span class="cosmic-star" style="top:${top}%; left:${left}%; width:${size}px; height:${size}px; animation-duration:${duration}s; animation-delay:${delay}s; --star-max:${maxOpacity};"></span>`;
+  }
+  starsContainer.innerHTML = starsHtml;
+
+  if (!cometsContainer) return;
+
+  function spawnComet() {
+    const comet = document.createElement('span');
+    comet.className = 'cosmic-comet';
+    const startTop = (Math.random() * 35).toFixed(2);
+    const startLeft = (55 + Math.random() * 45).toFixed(2);
+    const travelX = -(280 + Math.random() * 220);
+    const travelY = 180 + Math.random() * 160;
+    const duration = (1.1 + Math.random() * 0.7).toFixed(2);
+    comet.style.top = `${startTop}%`;
+    comet.style.left = `${startLeft}%`;
+    comet.style.setProperty('--comet-x', `${travelX}px`);
+    comet.style.setProperty('--comet-y', `${travelY}px`);
+    comet.style.animationDuration = `${duration}s`;
+    cometsContainer.appendChild(comet);
+    setTimeout(() => comet.remove(), duration * 1000 + 150);
+  }
+
+  function scheduleComet() {
+    spawnComet();
+    setTimeout(scheduleComet, 2600 + Math.random() * 4400);
+  }
+  setTimeout(scheduleComet, 1200);
+})();
+
 const initialClans = getClans();
 selectedClan = initialClans[0] || null;
 renderClanTabs();

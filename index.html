@@ -137,6 +137,35 @@
   <section id="view-home" class="view view--flush">
     <div class="particles" id="homeParticles" aria-hidden="true"></div>
     <div class="home-band home-band--hero">
+      <div class="cosmic-bg" id="cosmicBg" aria-hidden="true">
+        <div class="cosmic-bg__stars" id="cosmicStars"></div>
+        <div class="cosmic-nebula cosmic-nebula--a"></div>
+        <div class="cosmic-nebula cosmic-nebula--b"></div>
+        <div class="cosmic-nebula cosmic-nebula--c"></div>
+        <svg class="cosmic-portal" viewBox="0 0 300 300" aria-hidden="true">
+          <circle cx="150" cy="150" r="140" fill="none" stroke="var(--orange)" stroke-width="1" opacity="0.3"/>
+          <circle cx="150" cy="150" r="118" fill="none" stroke="var(--orange)" stroke-width="1" stroke-dasharray="2 7" opacity="0.45"/>
+          <circle cx="150" cy="150" r="96" fill="none" stroke="var(--orange)" stroke-width="1" opacity="0.25"/>
+          <circle cx="150" cy="150" r="70" fill="none" stroke="var(--orange)" stroke-width="0.75" opacity="0.2"/>
+          <g stroke="var(--orange)" stroke-width="1" opacity="0.35" fill="none">
+            <path d="M 150 32 A 118 118 0 0 1 236 150"/>
+            <path d="M 150 268 A 118 118 0 0 1 64 150"/>
+          </g>
+          <g stroke="var(--orange)" stroke-width="1.5" opacity="0.5">
+            <line x1="150" y1="2" x2="150" y2="22"/>
+            <line x1="150" y1="278" x2="150" y2="298"/>
+            <line x1="2" y1="150" x2="22" y2="150"/>
+            <line x1="278" y1="150" x2="298" y2="150"/>
+          </g>
+          <g fill="var(--orange)" opacity="0.6">
+            <polygon points="150,0 156,10 150,20 144,10"/>
+            <polygon points="150,280 156,290 150,300 144,290"/>
+            <polygon points="0,150 10,144 20,150 10,156"/>
+            <polygon points="280,150 290,144 300,150 290,156"/>
+          </g>
+        </svg>
+        <div class="cosmic-bg__comets" id="cosmicComets"></div>
+      </div>
       <div class="home-band__inner">
         <div class="hero reveal">
           <div class="hero__glow"></div>
