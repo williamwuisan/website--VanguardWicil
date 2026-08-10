@@ -98,6 +98,10 @@
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="12" height="16" rx="2"/><path d="M9 21h9a2 2 0 0 0 2-2V7"/></svg>
       Decklist
     </button>
+    <button class="drawer__item" data-nav="compare">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3v18"/><path d="M15 3v18"/><rect x="3" y="7" width="6" height="10" rx="1"/><rect x="15" y="5" width="6" height="14" rx="1"/></svg>
+      Compare Decks
+    </button>
     <button class="drawer__item" data-nav="search">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
       Search
@@ -319,6 +323,20 @@
     <div id="deckStats" class="deck-stats reveal"></div>
     <div id="sectionTabs" class="section-tabs"></div>
     <div id="cardList"></div>
+  </section>
+
+  <!-- ===== COMPARE DECKS VIEW ===== -->
+  <section id="view-compare" class="view view--hidden">
+    <div class="view-head reveal">
+      <h2>Compare Decks</h2>
+      <p>Pick two decks to see their grade curves and card counts side by side.</p>
+    </div>
+    <div class="compare-pickers reveal">
+      <select id="comparePickA" class="compare-picker"></select>
+      <span class="compare-vs">vs</span>
+      <select id="comparePickB" class="compare-picker"></select>
+    </div>
+    <div id="compareResults" class="compare-grid"></div>
   </section>
 
   <!-- ===== SEARCH VIEW ===== -->

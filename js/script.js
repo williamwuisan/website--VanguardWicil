@@ -6,6 +6,7 @@ const views = {
   glossary: document.getElementById('view-glossary'),
   game: document.getElementById('view-game'),
   'og-story': document.getElementById('view-og-story'),
+  compare: document.getElementById('view-compare'),
 };
 
 const HIDDEN_DECK_IDS = ['og-knight-deck'];
@@ -42,12 +43,15 @@ function showView(name) {
   if (name === 'game' && typeof startMemoryGame === 'function') {
     startMemoryGame();
   }
+  if (name === 'compare' && typeof renderComparison === 'function') {
+    renderComparison();
+  }
 }
 
 document.querySelectorAll('[data-nav]').forEach(el => {
   el.addEventListener('click', () => {
     const target = el.dataset.nav;
-    if (target === 'home' || target === 'decks' || target === 'search' || target === 'glossary' || target === 'game' || target === 'og-story') showView(target);
+    if (target === 'home' || target === 'decks' || target === 'search' || target === 'glossary' || target === 'game' || target === 'og-story' || target === 'compare') showView(target);
     closeDrawer();
   });
 });
@@ -492,8 +496,7 @@ const GRADE_ORDER = ['G0', 'G1', 'G2', 'G3', 'G (Stride/G unit)'];
 const GRADE_LABELS = { 'G0': 'G0', 'G1': 'G1', 'G2': 'G2', 'G3': 'G3', 'G (Stride/G unit)': 'Stride' };
 const GRADE_COLORS = { 'G0': '#ffd9b8', 'G1': '#ffb073', 'G2': '#ff8a3d', 'G3': '#ff5b1a', 'G (Stride/G unit)': '#b3390f' };
 
-function renderDeckStats(deck) {
-  const container = document.getElementById('deckStats');
+function getStatsHTML(deck) {
   const counts = {};
   deck.cards.forEach(c => {
     const g = c.grade || 'Unknown';
@@ -506,7 +509,7 @@ function renderDeckStats(deck) {
     return (ai === -1 ? 999 : ai) - (bi === -1 ? 999 : bi);
   });
 
-  container.innerHTML = `
+  return `
     <div class="deck-stats__bar">
       ${grades.map(g => `<span class="deck-stats__segment" style="flex:0 0 ${(counts[g] / total * 100).toFixed(2)}%; background:${GRADE_COLORS[g] || 'var(--text-muted)'}"></span>`).join('')}
     </div>
@@ -519,6 +522,79 @@ function renderDeckStats(deck) {
       `).join('')}
     </div>
   `;
+}
+
+function renderDeckStats(deck) {
+  document.getElementById('deckStats').innerHTML = getStatsHTML(deck);
+}
+
+/* ===== Compare Decks ===== */
+const comparePickA = document.getElementById('comparePickA');
+const comparePickB = document.getElementById('comparePickB');
+
+function populateComparePickers() {
+  if (!comparePickA || !comparePickB) return;
+  const options = DECKS.map(d => `<option value="${d.id}">${d.name}</option>`).join('');
+  comparePickA.innerHTML = options;
+  comparePickB.innerHTML = options;
+  if (DECKS.length > 1) {
+    comparePickA.value = DECKS[0].id;
+    comparePickB.value = DECKS[1].id;
+  }
+}
+
+function getComparePanelHTML(deck) {
+  const accent = DECK_ACCENTS[deck.id] || 'var(--orange)';
+  const sectionCounts = {};
+  deck.cards.forEach(c => {
+    const s = c.section || 'Cards';
+    sectionCounts[s] = (sectionCounts[s] || 0) + 1;
+  });
+  const sections = Object.keys(sectionCounts).sort((a, b) => {
+    const ai = SECTION_ORDER.indexOf(a);
+    const bi = SECTION_ORDER.indexOf(b);
+    return (ai === -1 ? 999 : ai) - (bi === -1 ? 999 : bi);
+  });
+
+  return `
+    <div class="compare-panel" style="--panel-accent: ${accent}">
+      <div class="compare-panel__name">${deck.name}</div>
+      <div class="compare-panel__clan">${deck.clan ? deck.clan + ' · ' : ''}${deck.cards.length} cards</div>
+      ${getStatsHTML(deck)}
+      <div class="compare-panel__sections">
+        ${sections.map(s => `
+          <div class="compare-panel__section-row">
+            <span>${s}</span>
+            <strong>${sectionCounts[s]}</strong>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  `;
+}
+
+function renderComparison() {
+  const results = document.getElementById('compareResults');
+  if (!results) return;
+
+  if (DECKS.length < 2) {
+    results.innerHTML = `<div class="compare-empty">Need at least two decks to compare.</div>`;
+    return;
+  }
+
+  if (!comparePickA.value || !comparePickB.value) populateComparePickers();
+
+  const deckA = DECKS.find(d => d.id === comparePickA.value);
+  const deckB = DECKS.find(d => d.id === comparePickB.value);
+  if (!deckA || !deckB) return;
+
+  results.innerHTML = getComparePanelHTML(deckA) + getComparePanelHTML(deckB);
+}
+
+if (comparePickA && comparePickB) {
+  populateComparePickers();
+  comparePickA.addEventListener('change', renderComparison);
+  comparePickB.addEventListener('change', renderComparison);
 }
 
 function highlightCardByName(name) {
