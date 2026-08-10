@@ -28,11 +28,20 @@ a { text-decoration: none; color: inherit; }
 
 html { scroll-behavior: smooth; overflow-x: hidden; width: 100%; }
 
+:root {
+  --station-cyan: #4fd8ff;
+  --station-cyan-dim: rgba(79, 216, 255, 0.18);
+  --station-panel: rgba(28, 37, 48, 0.72);
+  --station-border-cyan: rgba(120, 210, 255, 0.32);
+  --station-border-orange: rgba(255, 145, 80, 0.38);
+}
+.station-panel-blur { backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  background:
-    radial-gradient(ellipse 800px 420px at 90% -10%, rgba(255,91,26,0.08), transparent 60%),
-    var(--black);
+  background: var(--black);
+  --text: #eef2f5;
+  --text-muted: #8b95a3;
   color: var(--text);
   line-height: 1.6;
   min-height: 100vh;
@@ -297,9 +306,6 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
 
 #view-home {
   position: relative;
-  --text: #f5f3ef;
-  --text-muted: #b6b2ab;
-  color: var(--text);
 }
 
 /* ===== Home page section bands ===== */
@@ -861,25 +867,8 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
 }
 .view-head p { color: var(--text-muted); }
 
-/* ===== Deck List View: space-station interior ===== */
-#view-decks {
-  position: relative;
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
-  padding-left: calc(50vw - 50% + 24px);
-  padding-right: calc(50vw - 50% + 24px);
-  --text: #eef2f5;
-  --text-muted: #8b95a3;
-  --station-cyan: #4fd8ff;
-  --station-border: rgba(120, 210, 255, 0.16);
-  --station-panel: #141a22;
-  color: var(--text);
-  background:
-    repeating-linear-gradient(0deg, rgba(120,210,255,0.035) 0px, rgba(120,210,255,0.035) 1px, transparent 1px, transparent 40px),
-    repeating-linear-gradient(90deg, rgba(120,210,255,0.035) 0px, rgba(120,210,255,0.035) 1px, transparent 1px, transparent 40px),
-    linear-gradient(180deg, #0b0e13 0%, #131922 100%);
-}
-#view-decks .view-head h2::before {
+/* ===== Space-station HUD accents (shared across views) ===== */
+.view-head h2::before {
   animation: station-light-blink 2.2s ease-in-out infinite;
 }
 @keyframes station-light-blink {
@@ -890,29 +879,30 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
 .clan-tabs { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 28px; }
 .clan-tab {
   padding: 10px 22px;
-  border-radius: 999px;
+  border-radius: 6px;
   font-weight: 700;
   font-size: 0.9rem;
   color: var(--text-muted);
-  background: var(--black-card);
-  border: 1px solid var(--border);
+  background: var(--station-panel);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--station-border-cyan);
   transition: all 0.2s ease;
 }
-.clan-tab:hover { color: var(--text); border-color: var(--orange); }
-.clan-tab.is-active { background: var(--orange); color: #150a02; border-color: var(--orange); }
-#view-decks .clan-tab {
-  background: var(--station-panel);
-  border: 1px solid var(--station-border);
-  border-radius: 6px;
-  color: var(--text-muted);
-}
-#view-decks .clan-tab:hover { border-color: var(--station-cyan); color: var(--station-cyan); }
-#view-decks .clan-tab.is-active {
-  background: rgba(79, 216, 255, 0.12);
+.clan-tab:hover { color: var(--station-cyan); border-color: var(--station-cyan); }
+.clan-tab.is-active {
+  background: var(--station-cyan-dim);
   border-color: var(--station-cyan);
   color: var(--station-cyan);
   box-shadow: 0 0 14px rgba(79, 216, 255, 0.25);
 }
+.clan-tab:nth-of-type(even).is-active {
+  background: rgba(255, 145, 80, 0.14);
+  border-color: var(--orange);
+  color: var(--orange-bright, var(--orange));
+  box-shadow: 0 0 14px rgba(255, 145, 80, 0.3);
+}
+.clan-tab:nth-of-type(even):hover { color: var(--orange); border-color: var(--orange); }
 
 .deck-grid {
   display: grid;
@@ -920,33 +910,19 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
   gap: 20px;
 }
 .deck-card {
-  background: var(--black-card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
+  position: relative;
+  background: var(--station-panel);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--station-border-cyan);
+  border-radius: 8px;
   overflow: hidden;
   text-align: left;
   cursor: var(--card-cursor);
   transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease), border-color 0.4s var(--ease);
 }
-.deck-card:hover {
-  border-color: var(--orange);
-  transform: translateY(-6px);
-  box-shadow: 0 20px 40px rgba(17,17,16,0.14);
-}
-.deck-card__image-wrap { overflow: hidden; }
-.deck-card__image { width: 100%; aspect-ratio: 63/88; object-fit: cover; background: var(--black-soft); transition: transform 0.6s var(--ease); }
-.deck-card:hover .deck-card__image { transform: scale(1.08); }
-.deck-card__body { padding: 16px 18px; }
-.deck-card__name { font-weight: 700; font-size: 1.05rem; margin-bottom: 4px; }
-.deck-card__meta { color: var(--text-muted); font-size: 0.85rem; }
-#view-decks .deck-card {
-  position: relative;
-  background: var(--station-panel);
-  border: 1px solid var(--station-border);
-  border-radius: 8px;
-}
-#view-decks .deck-card::before,
-#view-decks .deck-card::after {
+.deck-card::before,
+.deck-card::after {
   content: '';
   position: absolute;
   width: 16px;
@@ -956,29 +932,48 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
   transition: opacity 0.3s ease;
   pointer-events: none;
 }
-#view-decks .deck-card::before {
+.deck-card::before {
   top: 7px; left: 7px;
   border-top: 2px solid var(--station-cyan);
   border-left: 2px solid var(--station-cyan);
 }
-#view-decks .deck-card::after {
+.deck-card::after {
   bottom: 7px; right: 7px;
   border-bottom: 2px solid var(--orange);
   border-right: 2px solid var(--orange);
 }
-#view-decks .deck-card:hover {
+.deck-card:hover {
   border-color: var(--station-cyan);
-  box-shadow: 0 0 20px rgba(79, 216, 255, 0.18);
+  transform: translateY(-6px);
+  box-shadow: 0 0 24px rgba(79, 216, 255, 0.2);
 }
-#view-decks .deck-card:hover::before,
-#view-decks .deck-card:hover::after {
+.deck-card:hover::before,
+.deck-card:hover::after {
   opacity: 1;
 }
-#view-decks .deck-card__meta { color: var(--station-cyan); opacity: 0.75; }
+.deck-card:nth-child(even) { border-color: var(--station-border-orange); }
+.deck-card:nth-child(even):hover {
+  border-color: var(--orange);
+  box-shadow: 0 0 24px rgba(255, 145, 80, 0.22);
+}
+.deck-card:nth-child(even)::before {
+  border-top-color: var(--orange);
+  border-left-color: var(--orange);
+}
+.deck-card:nth-child(even)::after {
+  border-bottom-color: var(--station-cyan);
+  border-right-color: var(--station-cyan);
+}
+.deck-card__image-wrap { overflow: hidden; }
+.deck-card__image { width: 100%; aspect-ratio: 63/88; object-fit: cover; background: var(--black-soft); transition: transform 0.6s var(--ease); }
+.deck-card:hover .deck-card__image { transform: scale(1.08); }
+.deck-card__body { padding: 16px 18px; }
+.deck-card__name { font-weight: 700; font-size: 1.05rem; margin-bottom: 4px; }
+.deck-card__meta { color: var(--station-cyan); opacity: 0.8; font-size: 0.85rem; }
+.deck-card:nth-child(even) .deck-card__meta { color: var(--orange); }
 
-.empty-state { display: none; text-align: center; padding: 64px 24px; border: 1.5px dashed var(--border); border-radius: var(--radius); }
+.empty-state { display: none; text-align: center; padding: 64px 24px; border: 1.5px dashed var(--station-border-cyan); border-radius: var(--radius); }
 .empty-state.is-visible { display: block; }
-#view-decks .empty-state { border-color: var(--station-border); }
 .empty-state__icon { font-size: 2.5rem; margin-bottom: 16px; }
 .empty-state h3 { font-size: 1.2rem; margin-bottom: 8px; }
 .empty-state p { color: var(--text-muted); }
