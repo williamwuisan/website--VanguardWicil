@@ -322,6 +322,7 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
   left: 0;
   width: 100vw;
   height: 100vh;
+  height: 100dvh;
   overflow: hidden;
   pointer-events: none;
   z-index: 0;
@@ -361,7 +362,7 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
 
 .cosmic-portal {
   position: absolute;
-  top: 34%; left: 50%;
+  top: 38%; left: 50%;
   width: 560px; height: 560px;
   transform: translate(-50%, -50%);
   opacity: 0.55;
@@ -369,7 +370,7 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
 }
 @keyframes cosmic-spin { to { transform: translate(-50%, -50%) rotate(360deg); } }
 @media (max-width: 640px) {
-  .cosmic-portal { top: 30%; width: 340px; height: 340px; }
+  .cosmic-portal { top: 35%; width: 340px; height: 340px; }
 }
 
 .cosmic-comet {
