@@ -314,15 +314,48 @@ if (shareDeckBtn) {
   });
 }
 
-function buildDeckPdf(deck) {
+function loadImageElement(src) {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.onload = () => resolve(img);
+    img.onerror = reject;
+    img.src = src;
+  });
+}
+
+async function getCardThumb(src, targetWidth = 160) {
+  try {
+    const img = await loadImageElement(src);
+    const ratio = img.naturalHeight / img.naturalWidth;
+    const w = targetWidth;
+    const h = Math.round(targetWidth * ratio);
+    const canvas = document.createElement('canvas');
+    canvas.width = w;
+    canvas.height = h;
+    canvas.getContext('2d').drawImage(img, 0, 0, w, h);
+    return { dataUrl: canvas.toDataURL('image/jpeg', 0.8), ratio };
+  } catch (err) {
+    return null;
+  }
+}
+
+async function buildDeckPdf(deck) {
   const { jsPDF } = window.jspdf;
   const doc = new jsPDF({ unit: 'pt', format: 'a4' });
   const pageWidth = doc.internal.pageSize.getWidth();
   const pageHeight = doc.internal.pageSize.getHeight();
   const margin = 44;
   const contentWidth = pageWidth - margin * 2;
+  const thumbW = 46;
+  const thumbGap = 12;
+  const textX = margin + thumbW + thumbGap;
+  const textWidth = contentWidth - thumbW - thumbGap;
   let y = margin;
   let page = 1;
+
+  const uniqueSrcs = [...new Set(deck.cards.map(c => c.image).filter(Boolean))];
+  const thumbEntries = await Promise.all(uniqueSrcs.map(src => getCardThumb(src).then(t => [src, t])));
+  const thumbCache = new Map(thumbEntries);
 
   function addFooter() {
     doc.setFont('helvetica', 'normal');
@@ -378,29 +411,41 @@ function buildDeckPdf(deck) {
     y += 18;
 
     cards.forEach(card => {
+      const thumb = card.image ? thumbCache.get(card.image) : null;
+      const thumbH = thumb ? Math.round(thumbW * thumb.ratio) : 0;
+
       const nameLine = `${card.name}${card.grade ? '  —  ' + card.grade : ''}`;
       doc.setFont('helvetica', 'bold');
       doc.setFontSize(10.5);
-      const nameLines = doc.splitTextToSize(cleanText(nameLine), contentWidth);
+      const nameLines = doc.splitTextToSize(cleanText(nameLine), textWidth);
 
       doc.setFont('helvetica', 'normal');
       doc.setFontSize(9);
-      const effectLines = doc.splitTextToSize(cleanText(card.effect), contentWidth);
+      const effectLines = doc.splitTextToSize(cleanText(card.effect), textWidth);
 
-      const blockHeight = nameLines.length * 13 + effectLines.length * 11.5 + 12;
+      const textBlockHeight = nameLines.length * 13 + effectLines.length * 11.5 + 2;
+      const blockHeight = Math.max(textBlockHeight, thumbH) + 12;
       ensureSpace(blockHeight);
+
+      const blockTop = y;
+
+      if (thumb) {
+        try { doc.addImage(thumb.dataUrl, 'JPEG', margin, blockTop - 9, thumbW, thumbH); } catch (err) {}
+      }
 
       doc.setFont('helvetica', 'bold');
       doc.setFontSize(10.5);
       doc.setTextColor(20);
-      doc.text(nameLines, margin, y);
+      doc.text(nameLines, textX, y);
       y += nameLines.length * 13 + 2;
 
       doc.setFont('helvetica', 'normal');
       doc.setFontSize(9);
       doc.setTextColor(110);
-      doc.text(effectLines, margin, y);
-      y += effectLines.length * 11.5 + 10;
+      doc.text(effectLines, textX, y);
+      y += effectLines.length * 11.5;
+
+      y = Math.max(y, blockTop - 9 + thumbH) + 10;
     });
 
     y += 6;
@@ -418,8 +463,9 @@ if (exportPdfBtn) {
       return;
     }
     exportPdfBtn.classList.add('is-busy');
+    showToast('Generating PDF…');
     try {
-      const doc = buildDeckPdf(currentDeck);
+      const doc = await buildDeckPdf(currentDeck);
       const filename = `${currentDeck.name.replace(/[^a-z0-9]+/gi, '-')}.pdf`;
       const blob = doc.output('blob');
       const file = new File([blob], filename, { type: 'application/pdf' });
