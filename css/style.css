@@ -1338,16 +1338,18 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
 .search-input {
   width: 100%;
   padding: 15px 20px;
-  border: 1px solid var(--border);
+  border: 1px solid var(--station-border-cyan);
   border-radius: 999px;
-  background: var(--black-card);
+  background: var(--station-panel);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   color: var(--text);
   font-size: 1rem;
   font-family: inherit;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 .search-input::placeholder { color: var(--text-muted); }
-.search-input:focus { outline: none; border-color: var(--orange); box-shadow: 0 0 0 4px var(--orange-dim); }
+.search-input:focus { outline: none; border-color: var(--station-cyan); box-shadow: 0 0 0 4px var(--station-cyan-dim); }
 
 .search-result-item { width: 100%; text-align: left; cursor: var(--card-cursor); }
 .search-result-deck {
@@ -1508,8 +1510,10 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
   width: 100%;
   max-width: 560px;
   max-height: 100%;
-  background: var(--black-card);
-  border: 1px solid var(--border);
+  background: var(--station-panel);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--station-border-cyan);
   border-radius: 20px;
   box-shadow: 0 30px 80px rgba(0,0,0,0.35);
   display: flex;
@@ -1524,7 +1528,7 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
   align-items: center;
   gap: 12px;
   padding: 16px 20px;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--station-border-cyan);
   flex-shrink: 0;
 }
 .search-overlay__bar > svg { width: 20px; height: 20px; color: var(--text-muted); flex-shrink: 0; }
