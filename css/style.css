@@ -344,6 +344,24 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
   50% { opacity: var(--star-max, 0.85); transform: scale(1.4); }
 }
 
+.cosmic-sparkle {
+  position: absolute;
+  background: radial-gradient(circle, #ffffff 0%, #ffd9a0 45%, transparent 76%);
+  clip-path: polygon(50% 0%, 61% 39%, 100% 50%, 61% 61%, 50% 100%, 39% 61%, 0% 50%, 39% 39%);
+  opacity: 0;
+  pointer-events: none;
+  animation-name: cosmic-sparkle-twinkle;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+@keyframes cosmic-sparkle-twinkle {
+  0%, 100% { opacity: 0; transform: scale(0.2) rotate(0deg); }
+  45% { opacity: 0; transform: scale(0.2) rotate(20deg); }
+  55% { opacity: 1; transform: scale(1) rotate(35deg); }
+  70% { opacity: 0.7; transform: scale(0.85) rotate(45deg); }
+  100% { opacity: 0; transform: scale(0.2) rotate(70deg); }
+}
+
 .cosmic-nebula {
   position: absolute;
   border-radius: 50%;
@@ -371,6 +389,14 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
 @keyframes cosmic-spin { to { transform: translate(-50%, -50%) rotate(360deg); } }
 @media (max-width: 640px) {
   .cosmic-portal { top: 35%; width: 340px; height: 340px; }
+}
+.cosmic-portal__diamonds {
+  transform-origin: 150px 150px;
+  animation: cosmic-diamond-glint 3.2s ease-in-out infinite;
+}
+@keyframes cosmic-diamond-glint {
+  0%, 100% { opacity: 0.4; filter: drop-shadow(0 0 0 transparent); }
+  50% { opacity: 1; filter: drop-shadow(0 0 6px var(--orange)); }
 }
 
 .cosmic-comet {
@@ -401,7 +427,7 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .cosmic-star, .cosmic-nebula, .cosmic-portal, .cosmic-comet { animation: none !important; }
+  .cosmic-star, .cosmic-nebula, .cosmic-portal, .cosmic-comet, .cosmic-sparkle, .cosmic-portal__diamonds, .hero__accent-square { animation: none !important; }
 }
 
 .particles {
@@ -456,6 +482,11 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
   background: var(--orange);
   transform: rotate(8deg);
   z-index: 1;
+  animation: hero-accent-glint 3s ease-in-out infinite;
+}
+@keyframes hero-accent-glint {
+  0%, 100% { box-shadow: 0 0 0 rgba(255,91,26,0); transform: rotate(8deg) scale(1); }
+  50% { box-shadow: 0 0 14px 2px rgba(255,145,80,0.7); transform: rotate(8deg) scale(1.12); }
 }
 .eyebrow {
   display: inline-flex;

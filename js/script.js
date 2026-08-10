@@ -1040,6 +1040,16 @@ try {
     const maxOpacity = (0.5 + Math.random() * 0.5).toFixed(2);
     starsHtml += `<span class="cosmic-star" style="top:${top}%; left:${left}%; width:${size}px; height:${size}px; animation-duration:${duration}s; animation-delay:${delay}s; --star-max:${maxOpacity};"></span>`;
   }
+
+  const sparkleCount = 14;
+  for (let i = 0; i < sparkleCount; i++) {
+    const top = (Math.random() * 100).toFixed(2);
+    const left = (Math.random() * 100).toFixed(2);
+    const size = (7 + Math.random() * 9).toFixed(1);
+    const duration = (3.5 + Math.random() * 3).toFixed(2);
+    const delay = (Math.random() * -6).toFixed(2);
+    starsHtml += `<span class="cosmic-sparkle" style="top:${top}%; left:${left}%; width:${size}px; height:${size}px; animation-duration:${duration}s; animation-delay:${delay}s;"></span>`;
+  }
   starsContainer.innerHTML = starsHtml;
 
   if (!cometsContainer) return;
