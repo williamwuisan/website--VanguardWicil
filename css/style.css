@@ -1323,16 +1323,20 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   border-radius: 10px;
-  border: 1px solid var(--border);
+  border: 1px solid var(--station-border-cyan);
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 .memory-card__face--front {
-  background: linear-gradient(135deg, var(--black-card), var(--black-soft));
+  background: var(--station-panel);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
-.memory-card__face--front svg { width: 40%; height: 40%; opacity: 0.5; }
+.memory-card__face--front svg { width: 40%; height: 40%; opacity: 0.5; color: var(--station-cyan); }
+.memory-card:nth-child(even) .memory-card__face { border-color: var(--station-border-orange); }
+.memory-card:nth-child(even) .memory-card__face--front svg { color: var(--orange); }
 .memory-card__face--back {
   transform: rotateY(180deg);
   background: var(--black-soft);
@@ -1349,7 +1353,8 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
 @media (min-width: 500px) {
   .memory-card__effect-text { font-size: 0.75rem; padding: 12px; }
 }
-.memory-card.is-matched .memory-card__face--back { box-shadow: inset 0 0 0 3px var(--orange); }
+.memory-card.is-matched .memory-card__face--back { box-shadow: inset 0 0 0 3px var(--station-cyan); }
+.memory-card:nth-child(even).is-matched .memory-card__face--back { box-shadow: inset 0 0 0 3px var(--orange); }
 .memory-card:not(.is-flipped):not(.is-matched) { cursor: var(--card-cursor); }
 .memory-win {
   display: none;
@@ -1360,9 +1365,11 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
   text-align: center;
   margin-top: 32px;
   padding: 28px;
-  border: 1px solid var(--border);
+  border: 1px solid var(--station-border-cyan);
   border-radius: var(--radius);
-  background: var(--black-card);
+  background: var(--station-panel);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 .memory-win.is-visible { display: flex; }
 .memory-win p { font-size: 1.1rem; }
