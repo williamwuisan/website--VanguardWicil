@@ -295,6 +295,16 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
 .view--hidden { display: none; }
 .view--flush { padding: 0; }
 
+#view-home {
+  position: relative;
+  --text: #f5f3ef;
+  --text-muted: #b6b2ab;
+  color: var(--text);
+  background:
+    radial-gradient(ellipse 130% 70% at 50% 0%, #241733 0%, #150f22 30%, #0a0812 55%, #050408 80%),
+    #030307;
+}
+
 /* ===== Home page section bands ===== */
 .home-band {
   margin-left: calc(50% - 50vw);
@@ -305,16 +315,11 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
   overflow: hidden;
   padding-top: 56px;
   padding-bottom: 215px;
-  --text: #f5f3ef;
-  --text-muted: #b6b2ab;
-  color: var(--text);
-  background:
-    radial-gradient(ellipse 90% 60% at 50% -8%, rgba(255,91,26,0.16) 0%, transparent 55%),
-    radial-gradient(ellipse 130% 90% at 50% 0%, #241733 0%, #150f22 40%, #0a0812 72%, #050408 100%);
+  background: radial-gradient(ellipse 90% 60% at 50% -8%, rgba(255,91,26,0.16) 0%, transparent 55%);
 }
 
 /* ===== Cosmic hero background ===== */
-.cosmic-bg { position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: 0; }
+.cosmic-bg { position: fixed; inset: 0; overflow: hidden; pointer-events: none; z-index: 0; }
 
 .cosmic-star {
   position: absolute;
@@ -416,11 +421,9 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
   .particles { display: none; }
 }
 .home-band--art {
+  position: relative;
   padding-top: 72px;
   padding-bottom: 80px;
-  background: var(--black-card);
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
 }
 .home-band__inner { position: relative; z-index: 1; max-width: 1080px; margin: 0 auto; padding: 0 24px; }
 
@@ -487,23 +490,50 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
   pointer-events: none;
   z-index: 0;
 }
-.hero-art__platform {
+.hero-art__beam {
   position: absolute;
-  bottom: 44px; left: 50%;
+  top: 20px; left: 50%;
   transform: translateX(-50%);
-  width: 72%;
-  max-width: 320px;
-  height: 34px;
-  border-radius: 50%;
-  background: radial-gradient(ellipse, rgba(255,91,26,0.4) 0%, rgba(255,91,26,0.14) 50%, transparent 78%);
-  filter: blur(4px);
-  animation: hero-platform-pulse 4s ease-in-out infinite;
+  width: 150px;
+  height: 280px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.22), rgba(255,145,80,0.07) 55%, transparent 100%);
+  clip-path: polygon(38% 0%, 62% 0%, 100% 100%, 0% 100%);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.65;
+}
+
+.hero-art__projector {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 210px;
+  height: 42px;
   pointer-events: none;
   z-index: 0;
 }
-@keyframes hero-platform-pulse {
-  0%, 100% { opacity: 0.7; transform: translateX(-50%) scale(1); }
-  50% { opacity: 1; transform: translateX(-50%) scale(1.06); }
+.hero-art__projector--top { top: -10px; }
+.hero-art__projector--bottom { bottom: 40px; }
+.hero-art__projector-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: linear-gradient(180deg, rgba(255,255,255,0.4), rgba(180,180,190,0.12) 45%, transparent 75%);
+  border: 1px solid rgba(255,255,255,0.28);
+  box-shadow: 0 0 34px 6px rgba(255,145,80,0.32), inset 0 3px 8px rgba(255,255,255,0.25);
+}
+.hero-art__projector-core {
+  position: absolute;
+  top: 28%; left: 22%; right: 22%; bottom: 28%;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(255,255,255,0.95), rgba(255,180,120,0.45) 60%, transparent 82%);
+  filter: blur(2px);
+  animation: hero-projector-pulse 3.4s ease-in-out infinite;
+}
+.hero-art__projector--bottom .hero-art__projector-core { animation-delay: -1.7s; }
+@keyframes hero-projector-pulse {
+  0%, 100% { opacity: 0.55; transform: scale(0.94); }
+  50% { opacity: 1; transform: scale(1.08); }
 }
 .hero-art__sparks {
   position: absolute;
@@ -538,7 +568,7 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
   opacity: 0.85;
 }
 @media (prefers-reduced-motion: reduce) {
-  .hero-art__platform, .hero-art__sparks::before, .hero-art__sparks::after { animation: none; }
+  .hero-art__projector-core, .hero-art__sparks::before, .hero-art__sparks::after { animation: none; }
 }
 
 .hero-carousel { position: relative; width: 100%; touch-action: pan-y; z-index: 1; }
