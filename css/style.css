@@ -861,6 +861,32 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
 }
 .view-head p { color: var(--text-muted); }
 
+/* ===== Deck List View: space-station interior ===== */
+#view-decks {
+  position: relative;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  padding-left: calc(50vw - 50% + 24px);
+  padding-right: calc(50vw - 50% + 24px);
+  --text: #eef2f5;
+  --text-muted: #8b95a3;
+  --station-cyan: #4fd8ff;
+  --station-border: rgba(120, 210, 255, 0.16);
+  --station-panel: #141a22;
+  color: var(--text);
+  background:
+    repeating-linear-gradient(0deg, rgba(120,210,255,0.035) 0px, rgba(120,210,255,0.035) 1px, transparent 1px, transparent 40px),
+    repeating-linear-gradient(90deg, rgba(120,210,255,0.035) 0px, rgba(120,210,255,0.035) 1px, transparent 1px, transparent 40px),
+    linear-gradient(180deg, #0b0e13 0%, #131922 100%);
+}
+#view-decks .view-head h2::before {
+  animation: station-light-blink 2.2s ease-in-out infinite;
+}
+@keyframes station-light-blink {
+  0%, 100% { opacity: 0.55; box-shadow: 0 0 0 rgba(79,216,255,0); }
+  50% { opacity: 1; box-shadow: 0 0 10px 2px rgba(79,216,255,0.6); }
+}
+
 .clan-tabs { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 28px; }
 .clan-tab {
   padding: 10px 22px;
@@ -874,6 +900,19 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
 }
 .clan-tab:hover { color: var(--text); border-color: var(--orange); }
 .clan-tab.is-active { background: var(--orange); color: #150a02; border-color: var(--orange); }
+#view-decks .clan-tab {
+  background: var(--station-panel);
+  border: 1px solid var(--station-border);
+  border-radius: 6px;
+  color: var(--text-muted);
+}
+#view-decks .clan-tab:hover { border-color: var(--station-cyan); color: var(--station-cyan); }
+#view-decks .clan-tab.is-active {
+  background: rgba(79, 216, 255, 0.12);
+  border-color: var(--station-cyan);
+  color: var(--station-cyan);
+  box-shadow: 0 0 14px rgba(79, 216, 255, 0.25);
+}
 
 .deck-grid {
   display: grid;
@@ -900,9 +939,46 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
 .deck-card__body { padding: 16px 18px; }
 .deck-card__name { font-weight: 700; font-size: 1.05rem; margin-bottom: 4px; }
 .deck-card__meta { color: var(--text-muted); font-size: 0.85rem; }
+#view-decks .deck-card {
+  position: relative;
+  background: var(--station-panel);
+  border: 1px solid var(--station-border);
+  border-radius: 8px;
+}
+#view-decks .deck-card::before,
+#view-decks .deck-card::after {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+#view-decks .deck-card::before {
+  top: 7px; left: 7px;
+  border-top: 2px solid var(--station-cyan);
+  border-left: 2px solid var(--station-cyan);
+}
+#view-decks .deck-card::after {
+  bottom: 7px; right: 7px;
+  border-bottom: 2px solid var(--orange);
+  border-right: 2px solid var(--orange);
+}
+#view-decks .deck-card:hover {
+  border-color: var(--station-cyan);
+  box-shadow: 0 0 20px rgba(79, 216, 255, 0.18);
+}
+#view-decks .deck-card:hover::before,
+#view-decks .deck-card:hover::after {
+  opacity: 1;
+}
+#view-decks .deck-card__meta { color: var(--station-cyan); opacity: 0.75; }
 
 .empty-state { display: none; text-align: center; padding: 64px 24px; border: 1.5px dashed var(--border); border-radius: var(--radius); }
 .empty-state.is-visible { display: block; }
+#view-decks .empty-state { border-color: var(--station-border); }
 .empty-state__icon { font-size: 2.5rem; margin-bottom: 16px; }
 .empty-state h3 { font-size: 1.2rem; margin-bottom: 8px; }
 .empty-state p { color: var(--text-muted); }
