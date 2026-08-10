@@ -1249,9 +1249,25 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
   letter-spacing: 0.06em;
   margin-bottom: 16px;
   padding-bottom: 10px;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--station-border-orange);
+}
+.glossary-group:nth-of-type(even) .glossary-group__title {
+  color: var(--station-cyan);
+  border-bottom-color: var(--station-border-cyan);
 }
 .glossary-list { display: grid; gap: 18px; }
+.glossary-term {
+  padding: 10px 14px;
+  border-left: 2px solid var(--station-border-orange);
+  background: transparent;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+.glossary-group:nth-of-type(even) .glossary-term { border-left-color: var(--station-border-cyan); }
+.glossary-term:hover {
+  background: var(--station-panel);
+  border-left-color: var(--orange);
+}
+.glossary-group:nth-of-type(even) .glossary-term:hover { border-left-color: var(--station-cyan); }
 .glossary-term dt {
   font-weight: 700;
   font-size: 0.98rem;
