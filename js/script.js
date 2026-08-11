@@ -1129,7 +1129,9 @@ try {
       const minY = Math.min(...ys);
       const w = (Math.max(...xs) - minX) * scale;
       const h = (Math.max(...ys) - minY) * scale;
-      const offsetX = 8 + Math.random() * Math.max(4, 84 - w);
+      const band = Math.max(4, 22 - w);
+      const onLeft = Math.random() < 0.5;
+      const offsetX = onLeft ? (2 + Math.random() * band) : (98 - w - Math.random() * band);
       const offsetY = 8 + Math.random() * Math.max(4, 84 - h);
       const pts = shape.stars.map(([x, y]) => [
         offsetX + (x - minX) * scale,
@@ -1141,7 +1143,7 @@ try {
         svgHtml += `<line class="cosmic-constellation__line" x1="${pts[a][0].toFixed(2)}" y1="${pts[a][1].toFixed(2)}" x2="${pts[b][0].toFixed(2)}" y2="${pts[b][1].toFixed(2)}"></line>`;
       });
       pts.forEach(([x, y]) => {
-        const r = (0.35 + Math.random() * 0.35).toFixed(2);
+        const r = (0.25 + Math.random() * 0.25).toFixed(2);
         const duration = (2 + Math.random() * 2.4).toFixed(2);
         const delay = (Math.random() * -4).toFixed(2);
         svgHtml += `<circle class="cosmic-constellation__star" cx="${x.toFixed(2)}" cy="${y.toFixed(2)}" r="${r}" style="animation-duration:${duration}s; animation-delay:${delay}s;"></circle>`;
@@ -1154,7 +1156,7 @@ try {
       let idx;
       do { idx = Math.floor(Math.random() * CONSTELLATION_SHAPES.length); } while (idx === lastShapeIndex && CONSTELLATION_SHAPES.length > 1);
       lastShapeIndex = idx;
-      renderConstellation(CONSTELLATION_SHAPES[idx], 2.2 + Math.random() * 1.6);
+      renderConstellation(CONSTELLATION_SHAPES[idx], 0.45 + Math.random() * 0.35);
       requestAnimationFrame(() => constellationSvg.classList.add('is-visible'));
     }
     function nextConstellation() {
