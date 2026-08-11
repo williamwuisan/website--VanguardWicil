@@ -449,14 +449,24 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
   transition: opacity 1.6s ease;
 }
 .cosmic-constellation.is-visible { opacity: 1; }
+.cosmic-constellation__lines {
+  position: absolute;
+  inset: 0;
+  width: 100%; height: 100%;
+  overflow: visible;
+}
 .cosmic-constellation__line {
-  stroke: rgba(255, 200, 150, 0.4);
+  stroke: rgba(255, 200, 150, 0.45);
   stroke-width: 1px;
   vector-effect: non-scaling-stroke;
   fill: none;
 }
-.cosmic-constellation__star {
-  fill: #fff8ef;
+.cosmic-constellation__stars { position: absolute; inset: 0; }
+.cosmic-constellation-star {
+  position: absolute;
+  background: radial-gradient(circle, #ffffff 0%, #ffe3b0 45%, transparent 76%);
+  clip-path: polygon(50% 0%, 61% 39%, 100% 50%, 61% 61%, 50% 100%, 39% 61%, 0% 50%, 39% 39%);
+  transform: translate(-50%, -50%);
   animation-name: cosmic-constellation-twinkle;
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
@@ -467,7 +477,7 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .cosmic-star, .cosmic-nebula, .cosmic-portal, .cosmic-comet, .cosmic-sparkle, .cosmic-portal__diamonds, .hero__accent-square, .cosmic-constellation__star, .cosmic-constellation { animation: none !important; transition: none !important; }
+  .cosmic-star, .cosmic-nebula, .cosmic-portal, .cosmic-comet, .cosmic-sparkle, .cosmic-portal__diamonds, .hero__accent-square, .cosmic-constellation-star, .cosmic-constellation { animation: none !important; transition: none !important; }
 }
 
 .particles {

@@ -1111,18 +1111,24 @@ try {
   setTimeout(scheduleComet, 1200);
 
   /* ===== Constellations: cycling connect-the-dot star patterns ===== */
-  const constellationSvg = document.getElementById('cosmicConstellation');
-  if (constellationSvg) {
+  const constellationGroup = document.getElementById('cosmicConstellation');
+  const constellationLines = constellationGroup ? constellationGroup.querySelector('.cosmic-constellation__lines') : null;
+  const constellationStars = document.getElementById('cosmicConstellationStars');
+  if (constellationGroup && constellationLines && constellationStars) {
     const CONSTELLATION_SHAPES = [
-      { stars: [[0, 10], [6, 8], [12, 9], [18, 6], [19, 14], [13, 17], [7, 17]], edges: [[0, 1], [1, 2], [2, 3], [3, 4], [4, 5], [5, 6]] },
-      { stars: [[0, 6], [5, 0], [10, 6], [15, 0], [20, 6]], edges: [[0, 1], [1, 2], [2, 3], [3, 4]] },
-      { stars: [[8, 0], [0, 8], [16, 8], [8, 16], [8, 8]], edges: [[0, 4], [4, 3], [1, 4], [4, 2]] },
-      { stars: [[0, 10], [6, 4], [12, 10], [6, 16], [6, 10]], edges: [[0, 4], [4, 2], [1, 4], [4, 3]] },
-      { stars: [[0, 0], [12, 3], [4, 14], [16, 16]], edges: [[0, 1], [1, 2], [2, 0], [1, 3]] },
-      { stars: [[0, 4], [5, 0], [10, 5], [15, 1], [20, 6], [24, 2]], edges: [[0, 1], [1, 2], [2, 3], [3, 4], [4, 5]] },
+      { stars: [[0, 4], [6, 1], [11, 3], [16, 0]], edges: [[0, 1], [1, 2], [2, 3]] },
+      { stars: [[0, 2], [5, 8], [10, 12], [15, 7], [20, 2], [8, 16]], edges: [[0, 1], [1, 2], [2, 3], [3, 4], [1, 5]] },
+      { stars: [[2, 0], [2, 6], [3, 12], [1, 17], [9, 0], [9, 6], [10, 12], [8, 17]], edges: [[0, 1], [1, 2], [2, 3], [4, 5], [5, 6], [6, 7], [0, 4]] },
+      { stars: [[0, 10], [3, 4], [8, 0], [13, 2], [15, 8], [20, 10]], edges: [[0, 1], [1, 2], [2, 3], [3, 4], [4, 5]] },
+      { stars: [[0, 2], [4, 0], [8, 2], [12, 6], [15, 11], [16, 16], [13, 19], [9, 18]], edges: [[0, 1], [1, 2], [2, 3], [3, 4], [4, 5], [5, 6], [6, 7]] },
+      { stars: [[0, 8], [4, 4], [9, 0], [14, 3], [16, 9], [11, 12], [6, 10]], edges: [[0, 1], [1, 2], [2, 3], [3, 4], [4, 5], [5, 6], [6, 0]] },
+      { stars: [[8, 0], [0, 7], [4, 16], [16, 14], [14, 4]], edges: [[0, 4], [4, 3], [3, 2], [2, 1], [1, 0]] },
+      { stars: [[0, 0], [3, 4], [0, 7], [20, 14], [23, 18], [20, 21]], edges: [[0, 1], [1, 2], [2, 0], [3, 4], [4, 5], [5, 3], [1, 4]] },
+      { stars: [[0, 10], [6, 4], [12, 0], [12, 10], [18, 14]], edges: [[0, 1], [1, 2], [1, 3], [3, 4]] },
+      { stars: [[0, 4], [5, 0], [11, 2], [16, 8], [10, 10], [4, 9]], edges: [[0, 1], [1, 2], [2, 3], [3, 4], [4, 5], [5, 0]] },
     ];
 
-    function renderConstellation(shape, scale) {
+    function buildConstellationMarkup(shape, scale, side) {
       const xs = shape.stars.map(p => p[0]);
       const ys = shape.stars.map(p => p[1]);
       const minX = Math.min(...xs);
@@ -1130,37 +1136,48 @@ try {
       const w = (Math.max(...xs) - minX) * scale;
       const h = (Math.max(...ys) - minY) * scale;
       const band = Math.max(4, 22 - w);
-      const onLeft = Math.random() < 0.5;
-      const offsetX = onLeft ? (2 + Math.random() * band) : (98 - w - Math.random() * band);
+      const offsetX = side === 'left' ? (2 + Math.random() * band) : (98 - w - Math.random() * band);
       const offsetY = 8 + Math.random() * Math.max(4, 84 - h);
       const pts = shape.stars.map(([x, y]) => [
         offsetX + (x - minX) * scale,
         offsetY + (y - minY) * scale,
       ]);
 
-      let svgHtml = '';
+      let linesHtml = '';
       shape.edges.forEach(([a, b]) => {
-        svgHtml += `<line class="cosmic-constellation__line" x1="${pts[a][0].toFixed(2)}" y1="${pts[a][1].toFixed(2)}" x2="${pts[b][0].toFixed(2)}" y2="${pts[b][1].toFixed(2)}"></line>`;
+        linesHtml += `<line class="cosmic-constellation__line" x1="${pts[a][0].toFixed(2)}" y1="${pts[a][1].toFixed(2)}" x2="${pts[b][0].toFixed(2)}" y2="${pts[b][1].toFixed(2)}"></line>`;
       });
+
+      let starsHtml = '';
       pts.forEach(([x, y]) => {
-        const r = (0.25 + Math.random() * 0.25).toFixed(2);
+        const size = (4 + Math.random() * 4).toFixed(1);
         const duration = (2 + Math.random() * 2.4).toFixed(2);
         const delay = (Math.random() * -4).toFixed(2);
-        svgHtml += `<circle class="cosmic-constellation__star" cx="${x.toFixed(2)}" cy="${y.toFixed(2)}" r="${r}" style="animation-duration:${duration}s; animation-delay:${delay}s;"></circle>`;
+        starsHtml += `<span class="cosmic-constellation-star" style="left:${x.toFixed(2)}%; top:${y.toFixed(2)}%; width:${size}px; height:${size}px; animation-duration:${duration}s; animation-delay:${delay}s;"></span>`;
       });
-      constellationSvg.innerHTML = svgHtml;
+
+      return { linesHtml, starsHtml };
     }
 
-    let lastShapeIndex = -1;
-    function swapConstellation() {
+    function pickShapeIndex(exclude) {
       let idx;
-      do { idx = Math.floor(Math.random() * CONSTELLATION_SHAPES.length); } while (idx === lastShapeIndex && CONSTELLATION_SHAPES.length > 1);
-      lastShapeIndex = idx;
-      renderConstellation(CONSTELLATION_SHAPES[idx], 0.45 + Math.random() * 0.35);
-      requestAnimationFrame(() => constellationSvg.classList.add('is-visible'));
+      do { idx = Math.floor(Math.random() * CONSTELLATION_SHAPES.length); } while (idx === exclude && CONSTELLATION_SHAPES.length > 1);
+      return idx;
+    }
+
+    let lastLeftIndex = -1;
+    let lastRightIndex = -1;
+    function swapConstellation() {
+      lastLeftIndex = pickShapeIndex(lastLeftIndex);
+      lastRightIndex = pickShapeIndex(lastRightIndex);
+      const left = buildConstellationMarkup(CONSTELLATION_SHAPES[lastLeftIndex], 0.5 + Math.random() * 0.35, 'left');
+      const right = buildConstellationMarkup(CONSTELLATION_SHAPES[lastRightIndex], 0.5 + Math.random() * 0.35, 'right');
+      constellationLines.innerHTML = left.linesHtml + right.linesHtml;
+      constellationStars.innerHTML = left.starsHtml + right.starsHtml;
+      requestAnimationFrame(() => constellationGroup.classList.add('is-visible'));
     }
     function nextConstellation() {
-      constellationSvg.classList.remove('is-visible');
+      constellationGroup.classList.remove('is-visible');
       setTimeout(swapConstellation, 1700);
     }
     swapConstellation();
