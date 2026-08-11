@@ -439,8 +439,35 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
   100% { opacity: 0; transform: translate(var(--comet-x), var(--comet-y)); }
 }
 
+.cosmic-constellation {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  overflow: visible;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 1.6s ease;
+}
+.cosmic-constellation.is-visible { opacity: 1; }
+.cosmic-constellation__line {
+  stroke: rgba(255, 200, 150, 0.4);
+  stroke-width: 1px;
+  vector-effect: non-scaling-stroke;
+  fill: none;
+}
+.cosmic-constellation__star {
+  fill: #fff8ef;
+  animation-name: cosmic-constellation-twinkle;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+@keyframes cosmic-constellation-twinkle {
+  0%, 100% { opacity: 0.45; }
+  50% { opacity: 1; }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .cosmic-star, .cosmic-nebula, .cosmic-portal, .cosmic-comet, .cosmic-sparkle, .cosmic-portal__diamonds, .hero__accent-square { animation: none !important; }
+  .cosmic-star, .cosmic-nebula, .cosmic-portal, .cosmic-comet, .cosmic-sparkle, .cosmic-portal__diamonds, .hero__accent-square, .cosmic-constellation__star, .cosmic-constellation { animation: none !important; transition: none !important; }
 }
 
 .particles {

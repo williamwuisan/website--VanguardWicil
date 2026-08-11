@@ -1109,6 +1109,61 @@ try {
     setTimeout(scheduleComet, 2600 + Math.random() * 4400);
   }
   setTimeout(scheduleComet, 1200);
+
+  /* ===== Constellations: cycling connect-the-dot star patterns ===== */
+  const constellationSvg = document.getElementById('cosmicConstellation');
+  if (constellationSvg) {
+    const CONSTELLATION_SHAPES = [
+      { stars: [[0, 10], [6, 8], [12, 9], [18, 6], [19, 14], [13, 17], [7, 17]], edges: [[0, 1], [1, 2], [2, 3], [3, 4], [4, 5], [5, 6]] },
+      { stars: [[0, 6], [5, 0], [10, 6], [15, 0], [20, 6]], edges: [[0, 1], [1, 2], [2, 3], [3, 4]] },
+      { stars: [[8, 0], [0, 8], [16, 8], [8, 16], [8, 8]], edges: [[0, 4], [4, 3], [1, 4], [4, 2]] },
+      { stars: [[0, 10], [6, 4], [12, 10], [6, 16], [6, 10]], edges: [[0, 4], [4, 2], [1, 4], [4, 3]] },
+      { stars: [[0, 0], [12, 3], [4, 14], [16, 16]], edges: [[0, 1], [1, 2], [2, 0], [1, 3]] },
+      { stars: [[0, 4], [5, 0], [10, 5], [15, 1], [20, 6], [24, 2]], edges: [[0, 1], [1, 2], [2, 3], [3, 4], [4, 5]] },
+    ];
+
+    function renderConstellation(shape, scale) {
+      const xs = shape.stars.map(p => p[0]);
+      const ys = shape.stars.map(p => p[1]);
+      const minX = Math.min(...xs);
+      const minY = Math.min(...ys);
+      const w = (Math.max(...xs) - minX) * scale;
+      const h = (Math.max(...ys) - minY) * scale;
+      const offsetX = 8 + Math.random() * Math.max(4, 84 - w);
+      const offsetY = 8 + Math.random() * Math.max(4, 84 - h);
+      const pts = shape.stars.map(([x, y]) => [
+        offsetX + (x - minX) * scale,
+        offsetY + (y - minY) * scale,
+      ]);
+
+      let svgHtml = '';
+      shape.edges.forEach(([a, b]) => {
+        svgHtml += `<line class="cosmic-constellation__line" x1="${pts[a][0].toFixed(2)}" y1="${pts[a][1].toFixed(2)}" x2="${pts[b][0].toFixed(2)}" y2="${pts[b][1].toFixed(2)}"></line>`;
+      });
+      pts.forEach(([x, y]) => {
+        const r = (0.35 + Math.random() * 0.35).toFixed(2);
+        const duration = (2 + Math.random() * 2.4).toFixed(2);
+        const delay = (Math.random() * -4).toFixed(2);
+        svgHtml += `<circle class="cosmic-constellation__star" cx="${x.toFixed(2)}" cy="${y.toFixed(2)}" r="${r}" style="animation-duration:${duration}s; animation-delay:${delay}s;"></circle>`;
+      });
+      constellationSvg.innerHTML = svgHtml;
+    }
+
+    let lastShapeIndex = -1;
+    function swapConstellation() {
+      let idx;
+      do { idx = Math.floor(Math.random() * CONSTELLATION_SHAPES.length); } while (idx === lastShapeIndex && CONSTELLATION_SHAPES.length > 1);
+      lastShapeIndex = idx;
+      renderConstellation(CONSTELLATION_SHAPES[idx], 2.2 + Math.random() * 1.6);
+      requestAnimationFrame(() => constellationSvg.classList.add('is-visible'));
+    }
+    function nextConstellation() {
+      constellationSvg.classList.remove('is-visible');
+      setTimeout(swapConstellation, 1700);
+    }
+    swapConstellation();
+    setInterval(nextConstellation, 16000);
+  }
 })();
 
 const initialClans = getClans();
