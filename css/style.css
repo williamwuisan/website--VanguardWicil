@@ -26,7 +26,7 @@ a { text-decoration: none; color: inherit; }
   --text-muted: #9a978f;
 }
 
-html { scroll-behavior: smooth; overflow-x: hidden; width: 100%; }
+html { scroll-behavior: smooth; overflow-x: hidden; width: 100%; scrollbar-gutter: stable both-edges; }
 
 :root {
   --station-cyan: #4fd8ff;
@@ -561,8 +561,8 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  width: 78%;
-  max-width: 210px;
+  width: 96%;
+  max-width: 460px;
   overflow: visible;
   pointer-events: none;
   z-index: 0;
@@ -631,7 +631,7 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
   transform: scale(1);
   cursor: default;
 }
-.hero-carousel__dots { display: flex; justify-content: center; gap: 8px; margin-top: 18px; }
+.hero-carousel__dots { display: flex; justify-content: center; gap: 8px; margin-top: 116px; }
 .hero-carousel__dot {
   width: 8px;
   height: 8px;
