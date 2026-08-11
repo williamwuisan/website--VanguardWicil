@@ -26,7 +26,7 @@ a { text-decoration: none; color: inherit; }
   --text-muted: #9a978f;
 }
 
-html { scroll-behavior: smooth; overflow-x: hidden; width: 100%; scrollbar-gutter: stable both-edges; }
+html { scroll-behavior: smooth; overflow-x: hidden; width: 100%; }
 
 :root {
   --station-cyan: #4fd8ff;
