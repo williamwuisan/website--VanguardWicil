@@ -1256,12 +1256,12 @@ const DECKS = [
         effect: "[CONT](Hand): While you are paying the cost for [Stride], this card may be discarded as a grade 3.\n[ACT](Hand): If you have a \"Masked Magician, Harri\" crest, COST[discard this card], search your deck or drop for up to one grade 3 card with \"Harri\" in its card name, reveal it and put it into hand, and if you searched the deck, shuffle the deck."
       },
       {
-        name: "Lunging Assistant",
-        nameJp: "ランジング・アシスタント",
-        image: "assets/cards/lunging-assistant.webp",
+        name: "Juggle Technician",
+        nameJp: "ジャッグル・テクニシャン",
+        image: "assets/cards/juggle-technician.webp",
         grade: "G1",
         section: "Main Deck",
-        effect: "[AUTO]: When this unit is placed on (RC) from hand, if you have a \"Masked Magician, Harri\" crest, Soul Charge (2)."
+        effect: "[CONT](Hand): You may discard this card as a [Heal] for the cost of calling a G guardian.\n[AUTO]: When this unit is put on (GC) from hand, COST[remove a [Heal] from hand or drop], Soul Charge (2), choose up to two normal units without sentinel from your soul, call them to (GC), and they get [Shield]+10000 until end of that battle. If you called a grade 2 or greater unit, COST[Counter Blast (1)], choose one of your vanguards, and it gets [Power]+5000 until end of turn."
       },
       {
         name: "Magia Doll, Flying Peryton",
