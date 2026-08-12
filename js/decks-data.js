@@ -1184,19 +1184,19 @@ const DECKS = [
     image: "assets/cards/masked-magician-harri.jpg",
     cards: [
       {
+        name: "Starry Pop Dragon",
+        image: "assets/cards/starry-pop-dragon.webp",
+        grade: "G4",
+        section: "Main Deck",
+        effect: "[CONT](VC): This unit gets [Power]+5000 for each of your rear-guards with \"Magia Doll\" in their different card names.\n[AUTO](VC): When placed on the stage, you get an Imaginary Gift: Accel.\n[AUTO](VC): When it attacks, if this unit's [Power] is 40000 or greater, until end of that battle, this unit gets [Critical]+1, and your opponent cannot call sentinels from their hand. At the end of that battle, retire this unit."
+      },
+      {
         name: "Masked Magician, Harri",
         nameJp: "仮面の奇術師 ハリー",
         image: "assets/cards/masked-magician-harri.jpg",
         grade: "G3",
         section: "Main Deck",
         effect: "[AUTO](VC): When placed, choose one of your additional (RC), and it becomes the stage until end of that fight. (Until end of this fight, the stage becomes your only additional (RC), and move all Accel markers to the stage)\n[ACT](VC) 1/Turn: COST[Counter Blast (1) & discard a card from your hand], call up to two cards with \"Magia Doll\" in their different card names from your soul to (RC), and they get [Power]+5000 until end of turn. If your opponent's vanguard is grade 3 or greater, you may call up to four cards instead of two cards."
-      },
-      {
-        name: "Nightmare Doll, Lindy",
-        image: "assets/cards/nightmare-doll-lindy.webp",
-        grade: "G3",
-        section: "Main Deck",
-        effect: "Heal Trigger: [Power]+10000.\n[AUTO](VC): When this unit is put on (VC) from hand, if you did not ride a grade 3 or greater unit this fight, perform one of the following.\n・Choose one of your vanguards, and it gets [Power]+10000 until end of turn.\n・Choose one of your opponent's units, and it gets [Critical]-2 until end of that battle.\n[AUTO](RC): When this unit is placed on (RC) from hand, if your damage zone has no cards, put the top card of your deck into your damage zone."
       },
       {
         name: "Comicality Chimera",
@@ -1313,6 +1313,13 @@ const DECKS = [
         effect: "Critical Trigger: [Power]+10000, [Critical]+1.\n[CONT](Hand): While paying the cost for [Stride], this card may be discarded as a grade 3."
       },
       {
+        name: "Nightmare Doll, Lindy",
+        image: "assets/cards/nightmare-doll-lindy.webp",
+        grade: "G3",
+        section: "Main Deck",
+        effect: "Heal Trigger: [Power]+10000.\n[AUTO](VC): When this unit is put on (VC) from hand, if you did not ride a grade 3 or greater unit this fight, perform one of the following.\n・Choose one of your vanguards, and it gets [Power]+10000 until end of turn.\n・Choose one of your opponent's units, and it gets [Critical]-2 until end of that battle.\n[AUTO](RC): When this unit is placed on (RC) from hand, if your damage zone has no cards, put the top card of your deck into your damage zone."
+      },
+      {
         name: "Fancy Megatrick, Darklord Princess",
         image: "assets/cards/fancy-megatrick-darklord-princess.webp",
         grade: "G (Stride/G unit)",
@@ -1340,13 +1347,6 @@ const DECKS = [
         grade: "G (Stride/G unit)",
         section: "Stride",
         effect: "(This card cannot be in your main deck)\n[STRIDE]-Stride Step-[Choose one or more cards with the sum of their grades being 3 or greater from your hand, and discard them], and [STRIDE] this card on your (VC) from face down.\nMagia-[ACT](VC)1/Turn[GB3]: [COST][Counter Blast 2 & Choose a card from your drop zone and soul, and return them to your deck] Choose a card from your soul, call it to (RC), and until end of turn, it gets [Power]+10000/[Critical]+1, \"[ACT](RC): [COST][Soul Blast 2] Until end of turn, this unit gets [Power]+5000, and cannot be chosen by card effects.\", and shuffle your deck. At the end of that turn, put that unit into your soul."
-      },
-      {
-        name: "Starry Pop Dragon",
-        image: "assets/cards/starry-pop-dragon.webp",
-        grade: "G (Stride/G unit)",
-        section: "Stride",
-        effect: "[CONT](VC): This unit gets [Power]+5000 for each of your rear-guards with \"Magia Doll\" in their different card names.\n[AUTO](VC): When placed on the stage, you get an Imaginary Gift: Accel.\n[AUTO](VC): When it attacks, if this unit's [Power] is 40000 or greater, until end of that battle, this unit gets [Critical]+1, and your opponent cannot call sentinels from their hand. At the end of that battle, retire this unit."
       },
       {
         name: "Midair Megatrick, Yvette",
