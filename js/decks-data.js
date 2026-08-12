@@ -1176,5 +1176,227 @@ const DECKS = [
         effect: "(This card cannot be in your main deck)\n[STRIDE]-Stride Step-[Choose one or more cards from hand with the sum of their grades being 3 or greater, and discard them], and [STRIDE] this card on your (VC) from face down.\n[ACT](G Zone)1/Turn: If your vanguard is a grade 3 \"Blue Sky Knight, Altmile\", and you did not get an Imaginary Gift this fight, [COST][choose one or more cards from hand with the sum of their grades being 3 or greater, and discard them], and [STRIDE] this card on your (VC) from face down. Then, [turn a card from G zone with the same card name as this unit face up], and you get two Imaginary Gift: Force.\n[CONT](VC): This unit's \"when attack hits\" effects activate even if the attack did not hit.\n[AUTO](VC): When this unit's attack hits a vanguard, search your deck for up to one grade 2 or greater card, call it to (RC), and shuffle your deck."
       }
     ]
+  },
+  {
+    id: "harri-premium-deck",
+    name: "Harri Premium",
+    clan: "Dark States",
+    image: "assets/cards/masked-magician-harri.jpg",
+    cards: [
+      {
+        name: "Masked Magician, Harri",
+        nameJp: "仮面の奇術師 ハリー",
+        image: "assets/cards/masked-magician-harri.jpg",
+        grade: "G3",
+        section: "Main Deck",
+        effect: "[AUTO](VC): When placed, choose one of your additional (RC), and it becomes the stage until end of that fight. (Until end of this fight, the stage becomes your only additional (RC), and move all Accel markers to the stage)\n[ACT](VC) 1/Turn: COST[Counter Blast (1) & discard a card from your hand], call up to two cards with \"Magia Doll\" in their different card names from your soul to (RC), and they get [Power]+5000 until end of turn. If your opponent's vanguard is grade 3 or greater, you may call up to four cards instead of two cards."
+      },
+      {
+        name: "Nightmare Doll, Lindy",
+        image: "assets/cards/nightmare-doll-lindy.webp",
+        grade: "G3",
+        section: "Main Deck",
+        effect: "Heal Trigger: [Power]+10000.\n[AUTO](VC): When this unit is put on (VC) from hand, if you did not ride a grade 3 or greater unit this fight, perform one of the following.\n・Choose one of your vanguards, and it gets [Power]+10000 until end of turn.\n・Choose one of your opponent's units, and it gets [Critical]-2 until end of that battle.\n[AUTO](RC): When this unit is placed on (RC) from hand, if your damage zone has no cards, put the top card of your deck into your damage zone."
+      },
+      {
+        name: "Comicality Chimera",
+        image: "assets/cards/comicality-chimera.webp",
+        grade: "G3",
+        section: "Main Deck",
+        effect: "[AUTO](RC): When it attacks, COST[Soul Blast 1 & put one other rear-guard into your soul], this unit gets [Power]+5000 until end of that battle, and if you did not Charge into soul this turn, Soul Charge (1)."
+      },
+      {
+        name: "Flying Peryton",
+        image: "assets/cards/flying-peryton.webp",
+        grade: "G2",
+        section: "Main Deck",
+        effect: "Magia-[AUTO][GB1]: When this unit is placed on (RC), COST[Counter Blast 1], choose up to one card from your soul, call it to a (RC) in the same column as this unit, and at the end of that turn, put the unit called with this effect into your soul."
+      },
+      {
+        name: "Magia Doll, Lunatec Dragon",
+        image: "assets/cards/magia-doll-lunatec-dragon.webp",
+        grade: "G2",
+        section: "Main Deck",
+        effect: "[AUTO]: When retired from (RC), you may put this card into your soul.\n[AUTO](RC): When placed by the ability of your unit with \"Harri\" in its card name, choose up to one of your opponent's rear-guards, and your opponent puts that unit into their soul."
+      },
+      {
+        name: "Knife Strike, Pardos",
+        nameJp: "ナイフストライク パルドス",
+        image: "assets/cards/knife-strike-pardos.webp",
+        grade: "G2",
+        section: "Main Deck",
+        effect: "[AUTO](VC/RC) 1/Turn: When this unit attacks while boosted, COST[Counter Blast 1], Soul Charge (1), choose a unit card from your soul with a different card name from this unit, and call it to (RC).\n[AUTO](Hand): At the beginning of your ride phase, if your vanguard is grade 1 or less, COST[discard this card], look at the top five cards of your deck, choose up to one grade 2 or less card from among them, reveal it and put it into hand, and shuffle the deck."
+      },
+      {
+        name: "Lore Pigeon, Pop",
+        image: "assets/cards/lore-pigeon-pop.webp",
+        grade: "G2",
+        section: "Main Deck",
+        effect: "[AUTO](RC): When placed, put up to one card with \"Magia Doll\" in its card name from your drop zone into your soul.\n[AUTO](RC): At the end of the battle it attacked, if this unit is on the stage, COST[Soul Blast 1 & return this unit to your hand], search your deck or soul or drop zone for up to one \"Starry Pop Dragon\", call it to the stage, and if you searched your deck, shuffle your deck."
+      },
+      {
+        name: "Purple Trapezist",
+        image: "assets/cards/purple-trapezist.webp",
+        grade: "G1",
+        section: "Main Deck",
+        effect: "[AUTO][Choose another of your «Pale Moon» rear-guards, and put it into your soul]: When this unit is placed on (RC), if you have a «Pale Moon» vanguard, you may pay the cost. If you do, choose a «Pale Moon» other than a card named \"Purple Trapezist\" from your soul, and call it to (RC)."
+      },
+      {
+        name: "Moonlight Melody Tamer, Betty",
+        image: "assets/cards/moonlight-melody-tamer-betty.webp",
+        grade: "G1",
+        section: "Main Deck",
+        effect: "[AUTO]: When this unit is placed by riding from \"Happiness Collector\", draw a card, and you get a \"Masked Magician, Harri\" crest."
+      },
+      {
+        name: "Masquerade Bunny",
+        image: "assets/cards/masquerade-bunny.webp",
+        grade: "G1",
+        section: "Main Deck",
+        effect: "[CONT](Hand): While you are paying the cost for [Stride], this card may be discarded as a grade 3.\n[ACT](Hand): If you have a \"Masked Magician, Harri\" crest, COST[discard this card], search your deck or drop for up to one grade 3 card with \"Harri\" in its card name, reveal it and put it into hand, and if you searched the deck, shuffle the deck."
+      },
+      {
+        name: "Lunging Assistant",
+        nameJp: "ランジング・アシスタント",
+        image: "assets/cards/lunging-assistant.webp",
+        grade: "G1",
+        section: "Main Deck",
+        effect: "[AUTO]: When this unit is placed on (RC) from hand, if you have a \"Masked Magician, Harri\" crest, Soul Charge (2)."
+      },
+      {
+        name: "Magia Doll, Flying Peryton",
+        image: "assets/cards/magia-doll-flying-peryton.webp",
+        grade: "G1",
+        section: "Main Deck",
+        effect: "[AUTO]: When retired from (RC), you may put this card into your soul.\n[AUTO](RC): When placed by the ability of your unit with \"Harri\" in its card name, draw a card."
+      },
+      {
+        name: "Magia Doll, Darkside Mirror Master",
+        image: "assets/cards/magia-doll-darkside-mirror-master.webp",
+        grade: "G1",
+        section: "Main Deck",
+        effect: "[AUTO]: When retired from (RC), you may put this card into your soul.\n[AUTO](RC): When placed by the ability of your unit with \"Harri\" in its card name, Soul Charge (1)."
+      },
+      {
+        name: "Spiritual King of Ignition, Valnout",
+        image: "assets/cards/spiritual-king-of-ignition-valnout.webp",
+        grade: "G0",
+        section: "Main Deck",
+        effect: "Over Trigger: [Power]+100 Million.\n(You may only have one [Over] trigger in a deck.) When revealed as a trigger, remove that card, draw a card, choose one of your units, and it gets [Power]+100 Million until end of turn. If revealed during drive check, activate its additional effect instead.\nAdditional Effect - Choose one of your [Stand] rear-guards, and it gets \"[AUTO](RC) 1/Turn: At the end of the battle this unit attacked, [Stand] this unit.\" until end of turn. If you did not choose a card, draw a card, choose up to one unit card from your hand, and call it to (RC)."
+      },
+      {
+        name: "Prankster Girl of Mirrorland",
+        image: "assets/cards/prankster-girl-of-mirrorland.webp",
+        grade: "G0",
+        section: "Main Deck",
+        effect: "Stand Trigger: [Power]+5000.\n[AUTO][GB1]: [Put this card on the top of your deck]: When this card is put into your soul, you may pay the cost. If you do, search your deck for up to one card not named \"Prankster Girl of Mirrorland\", put it into your soul, and shuffle your deck."
+      },
+      {
+        name: "Hades Hypnotist",
+        image: "assets/cards/hades-hypnotist.webp",
+        grade: "G0",
+        section: "Main Deck",
+        effect: "Draw Trigger: [Power]+10000.\n[CONT]: Sentinel (You may only have up to four cards with \"[CONT]: Sentinel\" in a deck.)\n[AUTO](RC): When placed, [COST][discard a card from your hand], and one of your units cannot be hit until end of that battle."
+      },
+      {
+        name: "Happiness Collector",
+        image: "assets/cards/happiness-collector.webp",
+        grade: "G0",
+        section: "Main Deck",
+        effect: "[AUTO]: When rode upon, draw a card. Then, if your opponent's vanguard is grade 1 or greater, put a Quick Shield ticket into your hand."
+      },
+      {
+        name: "Convert Bunny",
+        image: "assets/cards/convert-bunny.webp",
+        grade: "G0",
+        section: "Main Deck",
+        effect: "Critical Trigger: [Power]+10000, [Critical]+1.\n[CONT](Hand): While paying the cost for [Stride], this card may be discarded as a grade 3."
+      },
+      {
+        name: "Jester Demonic Beast, Flection Chimera",
+        image: "assets/cards/jester-demonic-beast-flection-chimera.webp",
+        grade: "G (Guardian)",
+        section: "Stride",
+        effect: "(This card cannot be in your main deck)\n[G GUARDIAN]-Opponent Turn's Guard Step-[COST][Discard a card from your hand], call this card to your (GC) from face down.\n[AUTO]: When this unit is put on (GC), [COST][put one or more cards from your hand into your soul], and this unit gets [Shield]+10000 until end of that battle for each card put into your soul for this cost. If you put two or more cards into your soul for this cost, your opponent chooses one of their rear-guards, and puts it into their soul."
+      },
+      {
+        name: "Dragon Masquerade, Harri",
+        nameJp: "仮面の神竜使い ハリー",
+        image: "assets/cards/dragon-masquerade-harri-dz.webp",
+        grade: "G (Stride/G unit)",
+        section: "Stride",
+        effect: "(This card cannot be in your main deck)\n[Stride]-Stride Step-COST[Discard a grade 3 card with \"Harri\" in its card name from your hand], and Stride this card on your (VC) from face down. (When you stride, your original vanguard becomes a heart card, and this unit gets that card's [Power] and card name. At the end of the turn, return this unit face up)\nMagia-[AUTO](VC) Generation Break 2: When this unit attacks a vanguard, COST[Counter Blast 2 & put two rear-guards into soul], choose up to two cards with different card names from your soul, call them to (RC), choose up to two of your opponent's rear-guards, and put them into soul. At the end of that turn, put that called unit into the soul."
+      },
+      {
+        name: "Parallel Megatrick, Fairfield",
+        image: "assets/cards/parallel-megatrick-fairfield.webp",
+        grade: "G (Stride/G unit)",
+        section: "Stride",
+        effect: "(This card cannot be in your main deck)\n[STRIDE]-Stride Step-[Choose one or more cards with the sum of their grades being 3 or greater from your hand, and discard them], and [STRIDE] this card on your (VC) from face down.\nMagia-[ACT](VC)1/Turn[GB3]: [COST][Counter Blast 2 & Choose a card from your drop zone and soul, and return them to your deck] Choose a card from your soul, call it to (RC), and until end of turn, it gets [Power]+10000/[Critical]+1, \"[ACT](RC): [COST][Soul Blast 2] Until end of turn, this unit gets [Power]+5000, and cannot be chosen by card effects.\", and shuffle your deck. At the end of that turn, put that unit into your soul."
+      },
+      {
+        name: "Jester Demonic Dragon, Wandering Dragon",
+        image: "assets/cards/jester-demonic-dragon-wandering-dragon.webp",
+        grade: "G (Guardian)",
+        section: "Stride",
+        effect: "(This card cannot be in your main deck)\n[G GUARDIAN](Usable when both fighters' vanguards are grade 3 or greater, and the number of face up G guardians in your G zone is three or less)-Opponent Turn's Guard Step-[COST][Discard a card with \"Heal\" in its card name from your hand], call this card to your (GC) from face down.\n[AUTO]: When this unit is placed on (GC), [COST][Soul Charge 1], choose a card from your soul, and call it to (GC)."
+      },
+      {
+        name: "Chainsaw Megatrick, Furnival",
+        image: "assets/cards/chainsaw-megatrick-furnival.webp",
+        grade: "G (Guardian)",
+        section: "Stride",
+        effect: "(This card cannot be in your main deck)\n[G GUARDIAN](Usable when both fighters' vanguards are grade 3 or greater, and the number of face up G guardians in your G zone is three or less)-Opponent Turn's Guard Step-[COST][Discard a card with \"Heal\" in its card name from your hand], call this card to your (GC) from face down.\n[AUTO]: When this unit is placed on (GC), look at three cards from the top of your deck, search for one card from among them, put it into your soul, and put the rest on the bottom of your deck in any order. If the card put into your soul with this effect is grade 1 or greater, this unit gets [Shield]+5000 until end of that battle."
+      },
+      {
+        name: "Zeroth Dragon of End of the World, Dust",
+        image: "assets/cards/zeroth-dragon-of-end-of-the-world-dust.webp",
+        grade: "G (Stride/G unit)",
+        section: "Stride",
+        effect: "(This card cannot be in your main deck)\n[ULTIMATE STRIDE]-Stride Step-[COST][Choose a card with the same card name as your vanguard from your hand, and discard it], and [STRIDE] this card on your (VC) from face down.\n[AUTO]: When placed on (VC), [COST][Counter Blast 2], until end of turn, your opponent's vanguards and rear-guards lose all of their abilities, and their grade and [Power] increase or decrease to 1. If the number of cards in your opponent's damage zone is four or less, choose one of your opponent's vanguards, and deal one damage."
+      },
+      {
+        name: "Kinesis Megatrick, Coulthard",
+        image: "assets/cards/kinesis-megatrick-coulthard.webp",
+        grade: "G (Guardian)",
+        section: "Stride",
+        effect: "(This card cannot be in your main deck)\n[G GUARDIAN]-Opponent Turn's Guard Step-[COST][Discard a card with \"Heal\" in its card name from your hand], call this card to your (GC) from face down.\n[AUTO]1/Turn: When placed on (GC), if there are cards of four or more different grades in your soul, [COST][choose a face down G Guardian from your G zone, and turn it face up], and this unit gets [Shield]+15000 until end of that battle."
+      },
+      {
+        name: "Masquerade Master, Harri",
+        image: "assets/cards/masquerade-master-harri.webp",
+        grade: "G (Stride/G unit)",
+        section: "Stride",
+        effect: "(This card cannot be in your main deck)\n[STRIDE]-Stride Step-[Choose one or more cards with the sum of their grades being 3 or greater from your hand, and discard them], and [STRIDE] this card on your (VC) from face down.\nMagia-[AUTO](VC): [COST][Counter Blast 1 & Choose a face down card with the same card name as this unit from your G zone, turn it face up, choose two cards in your other circles, and put them into your soul] When this unit attacks, you may pay the cost. If you do, choose up to three cards from your soul, call them to separate (RC), and at the end of that turn, put them into your soul.\n[CONT](VC): All of your rear-guards with the magia ability get [Power]+3000 for each face up card with \"Harri\" in its card name in your G zone."
+      },
+      {
+        name: "Starry Pop Dragon",
+        image: "assets/cards/starry-pop-dragon.webp",
+        grade: "G (Stride/G unit)",
+        section: "Stride",
+        effect: "[CONT](VC): This unit gets [Power]+5000 for each of your rear-guards with \"Magia Doll\" in their different card names.\n[AUTO](VC): When placed on the stage, you get an Imaginary Gift: Accel.\n[AUTO](VC): When it attacks, if this unit's [Power] is 40000 or greater, until end of that battle, this unit gets [Critical]+1, and your opponent cannot call sentinels from their hand. At the end of that battle, retire this unit."
+      },
+      {
+        name: "Fancy Megatrick, Darklord Princess",
+        image: "assets/cards/fancy-megatrick-darklord-princess.webp",
+        grade: "G (Stride/G unit)",
+        section: "Stride",
+        effect: "(This card cannot be in your main deck)\n[STRIDE]-Stride Step-[Choose one or more cards with the sum of their grades being 3 or greater from your hand, and discard them], and [STRIDE] this card on your (VC) from face down.\n[AUTO](VC): At the end of the battle it attacked a vanguard, [COST][turn a card from your G zone face up], [STRIDE] a face up G unit with [Power]+ and the magia ability from your G zone on your (VC) as an additional stride, and that unit gets [Drive]-2 until end of turn. If you stride this way, call this card to (RC)."
+      },
+      {
+        name: "Midair Megatrick, Yvette",
+        image: "assets/cards/midair-megatrick-yvette.webp",
+        grade: "G (Stride/G unit)",
+        section: "Stride",
+        effect: "(This card cannot be in your main deck)\n[STRIDE]-Stride Step-[Choose one or more cards with the sum of their grades being 3 or greater from your hand, and discard them], and [STRIDE] this card on your (VC) from face down.\nMagia-[AUTO](VC): [COST][put a card from your hand into your soul & turn a card from your G zone face up], get an Imaginary Gift: Accel. When it attacks, call a card from your soul to an additional (RC), that unit gets [Power]+15000 until end of turn, and at the end of that turn, put that called unit into your soul."
+      },
+      {
+        name: "Trenchant Megatrick, Leontina",
+        image: "assets/cards/trenchant-megatrick-leontina.webp",
+        grade: "G (Stride/G unit)",
+        section: "Stride",
+        effect: "(This card cannot be in your main deck)\n[AUTO](VC): [COST][Counter Blast 1 & discard a card from your hand], put all of your rear-guards into your soul. For each card put into your soul, choose up to two unit cards from your soul, and call them to (RC). If you called four or more different grades, until end of turn, when your opponent would call cards from hand to (RC), they must call two or more at the same time."
+      }
+    ]
   }
 ];
