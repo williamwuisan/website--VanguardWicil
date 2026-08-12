@@ -1313,11 +1313,11 @@ const DECKS = [
         effect: "Critical Trigger: [Power]+10000, [Critical]+1.\n[CONT](Hand): While paying the cost for [Stride], this card may be discarded as a grade 3."
       },
       {
-        name: "Jester Demonic Beast, Flection Chimera",
-        image: "assets/cards/jester-demonic-beast-flection-chimera.webp",
-        grade: "G (Guardian)",
+        name: "Fancy Megatrick, Darklord Princess",
+        image: "assets/cards/fancy-megatrick-darklord-princess.webp",
+        grade: "G (Stride/G unit)",
         section: "Stride",
-        effect: "(This card cannot be in your main deck)\n[G GUARDIAN]-Opponent Turn's Guard Step-[COST][Discard a card from your hand], call this card to your (GC) from face down.\n[AUTO]: When this unit is put on (GC), [COST][put one or more cards from your hand into your soul], and this unit gets [Shield]+10000 until end of that battle for each card put into your soul for this cost. If you put two or more cards into your soul for this cost, your opponent chooses one of their rear-guards, and puts it into their soul."
+        effect: "(This card cannot be in your main deck)\n[STRIDE]-Stride Step-[Choose one or more cards with the sum of their grades being 3 or greater from your hand, and discard them], and [STRIDE] this card on your (VC) from face down.\n[AUTO](VC): At the end of the battle it attacked a vanguard, [COST][turn a card from your G zone face up], [STRIDE] a face up G unit with [Power]+ and the magia ability from your G zone on your (VC) as an additional stride, and that unit gets [Drive]-2 until end of turn. If you stride this way, call this card to (RC)."
       },
       {
         name: "Dragon Masquerade, Harri",
@@ -1328,11 +1328,53 @@ const DECKS = [
         effect: "(This card cannot be in your main deck)\n[Stride]-Stride Step-COST[Discard a grade 3 card with \"Harri\" in its card name from your hand], and Stride this card on your (VC) from face down. (When you stride, your original vanguard becomes a heart card, and this unit gets that card's [Power] and card name. At the end of the turn, return this unit face up)\nMagia-[AUTO](VC) Generation Break 2: When this unit attacks a vanguard, COST[Counter Blast 2 & put two rear-guards into soul], choose up to two cards with different card names from your soul, call them to (RC), choose up to two of your opponent's rear-guards, and put them into soul. At the end of that turn, put that called unit into the soul."
       },
       {
+        name: "Masquerade Master, Harri",
+        image: "assets/cards/masquerade-master-harri.webp",
+        grade: "G (Stride/G unit)",
+        section: "Stride",
+        effect: "(This card cannot be in your main deck)\n[STRIDE]-Stride Step-[Choose one or more cards with the sum of their grades being 3 or greater from your hand, and discard them], and [STRIDE] this card on your (VC) from face down.\nMagia-[AUTO](VC): [COST][Counter Blast 1 & Choose a face down card with the same card name as this unit from your G zone, turn it face up, choose two cards in your other circles, and put them into your soul] When this unit attacks, you may pay the cost. If you do, choose up to three cards from your soul, call them to separate (RC), and at the end of that turn, put them into your soul.\n[CONT](VC): All of your rear-guards with the magia ability get [Power]+3000 for each face up card with \"Harri\" in its card name in your G zone."
+      },
+      {
         name: "Parallel Megatrick, Fairfield",
         image: "assets/cards/parallel-megatrick-fairfield.webp",
         grade: "G (Stride/G unit)",
         section: "Stride",
         effect: "(This card cannot be in your main deck)\n[STRIDE]-Stride Step-[Choose one or more cards with the sum of their grades being 3 or greater from your hand, and discard them], and [STRIDE] this card on your (VC) from face down.\nMagia-[ACT](VC)1/Turn[GB3]: [COST][Counter Blast 2 & Choose a card from your drop zone and soul, and return them to your deck] Choose a card from your soul, call it to (RC), and until end of turn, it gets [Power]+10000/[Critical]+1, \"[ACT](RC): [COST][Soul Blast 2] Until end of turn, this unit gets [Power]+5000, and cannot be chosen by card effects.\", and shuffle your deck. At the end of that turn, put that unit into your soul."
+      },
+      {
+        name: "Starry Pop Dragon",
+        image: "assets/cards/starry-pop-dragon.webp",
+        grade: "G (Stride/G unit)",
+        section: "Stride",
+        effect: "[CONT](VC): This unit gets [Power]+5000 for each of your rear-guards with \"Magia Doll\" in their different card names.\n[AUTO](VC): When placed on the stage, you get an Imaginary Gift: Accel.\n[AUTO](VC): When it attacks, if this unit's [Power] is 40000 or greater, until end of that battle, this unit gets [Critical]+1, and your opponent cannot call sentinels from their hand. At the end of that battle, retire this unit."
+      },
+      {
+        name: "Midair Megatrick, Yvette",
+        image: "assets/cards/midair-megatrick-yvette.webp",
+        grade: "G (Stride/G unit)",
+        section: "Stride",
+        effect: "(This card cannot be in your main deck)\n[STRIDE]-Stride Step-[Choose one or more cards with the sum of their grades being 3 or greater from your hand, and discard them], and [STRIDE] this card on your (VC) from face down.\nMagia-[AUTO](VC): [COST][put a card from your hand into your soul & turn a card from your G zone face up], get an Imaginary Gift: Accel. When it attacks, call a card from your soul to an additional (RC), that unit gets [Power]+15000 until end of turn, and at the end of that turn, put that called unit into your soul."
+      },
+      {
+        name: "Trenchant Megatrick, Leontina",
+        image: "assets/cards/trenchant-megatrick-leontina.webp",
+        grade: "G (Stride/G unit)",
+        section: "Stride",
+        effect: "(This card cannot be in your main deck)\n[AUTO](VC): [COST][Counter Blast 1 & discard a card from your hand], put all of your rear-guards into your soul. For each card put into your soul, choose up to two unit cards from your soul, and call them to (RC). If you called four or more different grades, until end of turn, when your opponent would call cards from hand to (RC), they must call two or more at the same time."
+      },
+      {
+        name: "Zeroth Dragon of End of the World, Dust",
+        image: "assets/cards/zeroth-dragon-of-end-of-the-world-dust.webp",
+        grade: "G (Stride/G unit)",
+        section: "Stride",
+        effect: "(This card cannot be in your main deck)\n[ULTIMATE STRIDE]-Stride Step-[COST][Choose a card with the same card name as your vanguard from your hand, and discard it], and [STRIDE] this card on your (VC) from face down.\n[AUTO]: When placed on (VC), [COST][Counter Blast 2], until end of turn, your opponent's vanguards and rear-guards lose all of their abilities, and their grade and [Power] increase or decrease to 1. If the number of cards in your opponent's damage zone is four or less, choose one of your opponent's vanguards, and deal one damage."
+      },
+      {
+        name: "Jester Demonic Beast, Flection Chimera",
+        image: "assets/cards/jester-demonic-beast-flection-chimera.webp",
+        grade: "G (Guardian)",
+        section: "Stride",
+        effect: "(This card cannot be in your main deck)\n[G GUARDIAN]-Opponent Turn's Guard Step-[COST][Discard a card from your hand], call this card to your (GC) from face down.\n[AUTO]: When this unit is put on (GC), [COST][put one or more cards from your hand into your soul], and this unit gets [Shield]+10000 until end of that battle for each card put into your soul for this cost. If you put two or more cards into your soul for this cost, your opponent chooses one of their rear-guards, and puts it into their soul."
       },
       {
         name: "Jester Demonic Dragon, Wandering Dragon",
@@ -1349,53 +1391,11 @@ const DECKS = [
         effect: "(This card cannot be in your main deck)\n[G GUARDIAN](Usable when both fighters' vanguards are grade 3 or greater, and the number of face up G guardians in your G zone is three or less)-Opponent Turn's Guard Step-[COST][Discard a card with \"Heal\" in its card name from your hand], call this card to your (GC) from face down.\n[AUTO]: When this unit is placed on (GC), look at three cards from the top of your deck, search for one card from among them, put it into your soul, and put the rest on the bottom of your deck in any order. If the card put into your soul with this effect is grade 1 or greater, this unit gets [Shield]+5000 until end of that battle."
       },
       {
-        name: "Zeroth Dragon of End of the World, Dust",
-        image: "assets/cards/zeroth-dragon-of-end-of-the-world-dust.webp",
-        grade: "G (Stride/G unit)",
-        section: "Stride",
-        effect: "(This card cannot be in your main deck)\n[ULTIMATE STRIDE]-Stride Step-[COST][Choose a card with the same card name as your vanguard from your hand, and discard it], and [STRIDE] this card on your (VC) from face down.\n[AUTO]: When placed on (VC), [COST][Counter Blast 2], until end of turn, your opponent's vanguards and rear-guards lose all of their abilities, and their grade and [Power] increase or decrease to 1. If the number of cards in your opponent's damage zone is four or less, choose one of your opponent's vanguards, and deal one damage."
-      },
-      {
         name: "Kinesis Megatrick, Coulthard",
         image: "assets/cards/kinesis-megatrick-coulthard.webp",
         grade: "G (Guardian)",
         section: "Stride",
         effect: "(This card cannot be in your main deck)\n[G GUARDIAN]-Opponent Turn's Guard Step-[COST][Discard a card with \"Heal\" in its card name from your hand], call this card to your (GC) from face down.\n[AUTO]1/Turn: When placed on (GC), if there are cards of four or more different grades in your soul, [COST][choose a face down G Guardian from your G zone, and turn it face up], and this unit gets [Shield]+15000 until end of that battle."
-      },
-      {
-        name: "Masquerade Master, Harri",
-        image: "assets/cards/masquerade-master-harri.webp",
-        grade: "G (Stride/G unit)",
-        section: "Stride",
-        effect: "(This card cannot be in your main deck)\n[STRIDE]-Stride Step-[Choose one or more cards with the sum of their grades being 3 or greater from your hand, and discard them], and [STRIDE] this card on your (VC) from face down.\nMagia-[AUTO](VC): [COST][Counter Blast 1 & Choose a face down card with the same card name as this unit from your G zone, turn it face up, choose two cards in your other circles, and put them into your soul] When this unit attacks, you may pay the cost. If you do, choose up to three cards from your soul, call them to separate (RC), and at the end of that turn, put them into your soul.\n[CONT](VC): All of your rear-guards with the magia ability get [Power]+3000 for each face up card with \"Harri\" in its card name in your G zone."
-      },
-      {
-        name: "Starry Pop Dragon",
-        image: "assets/cards/starry-pop-dragon.webp",
-        grade: "G (Stride/G unit)",
-        section: "Stride",
-        effect: "[CONT](VC): This unit gets [Power]+5000 for each of your rear-guards with \"Magia Doll\" in their different card names.\n[AUTO](VC): When placed on the stage, you get an Imaginary Gift: Accel.\n[AUTO](VC): When it attacks, if this unit's [Power] is 40000 or greater, until end of that battle, this unit gets [Critical]+1, and your opponent cannot call sentinels from their hand. At the end of that battle, retire this unit."
-      },
-      {
-        name: "Fancy Megatrick, Darklord Princess",
-        image: "assets/cards/fancy-megatrick-darklord-princess.webp",
-        grade: "G (Stride/G unit)",
-        section: "Stride",
-        effect: "(This card cannot be in your main deck)\n[STRIDE]-Stride Step-[Choose one or more cards with the sum of their grades being 3 or greater from your hand, and discard them], and [STRIDE] this card on your (VC) from face down.\n[AUTO](VC): At the end of the battle it attacked a vanguard, [COST][turn a card from your G zone face up], [STRIDE] a face up G unit with [Power]+ and the magia ability from your G zone on your (VC) as an additional stride, and that unit gets [Drive]-2 until end of turn. If you stride this way, call this card to (RC)."
-      },
-      {
-        name: "Midair Megatrick, Yvette",
-        image: "assets/cards/midair-megatrick-yvette.webp",
-        grade: "G (Stride/G unit)",
-        section: "Stride",
-        effect: "(This card cannot be in your main deck)\n[STRIDE]-Stride Step-[Choose one or more cards with the sum of their grades being 3 or greater from your hand, and discard them], and [STRIDE] this card on your (VC) from face down.\nMagia-[AUTO](VC): [COST][put a card from your hand into your soul & turn a card from your G zone face up], get an Imaginary Gift: Accel. When it attacks, call a card from your soul to an additional (RC), that unit gets [Power]+15000 until end of turn, and at the end of that turn, put that called unit into your soul."
-      },
-      {
-        name: "Trenchant Megatrick, Leontina",
-        image: "assets/cards/trenchant-megatrick-leontina.webp",
-        grade: "G (Stride/G unit)",
-        section: "Stride",
-        effect: "(This card cannot be in your main deck)\n[AUTO](VC): [COST][Counter Blast 1 & discard a card from your hand], put all of your rear-guards into your soul. For each card put into your soul, choose up to two unit cards from your soul, and call them to (RC). If you called four or more different grades, until end of turn, when your opponent would call cards from hand to (RC), they must call two or more at the same time."
       }
     ]
   }
