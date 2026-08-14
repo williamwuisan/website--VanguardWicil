@@ -383,14 +383,19 @@ function buildGhostShipFx() {
     html += `<span class="ghostship-bat" style="top:${top}%; left:${left}%; animation-duration:${duration}s; animation-delay:${delay}s; --fly-x:${flyX}px; --fly-y:${flyY}px; --fly-x2:${flyX2}px; --fly-y2:${flyY2}px;"></span>`;
   }
 
-  // Dust motes catching the moonlight, concentrated over the window
-  for (let i = 0; i < 16; i++) {
-    const left = (16 + Math.random() * 50).toFixed(2);
-    const top = (6 + Math.random() * 34).toFixed(2);
-    const size = (2 + Math.random() * 3).toFixed(1);
-    const duration = (2 + Math.random() * 2.4).toFixed(2);
-    const delay = (Math.random() * -5).toFixed(2);
-    html += `<span class="ghostship-wisp" style="left:${left}%; top:${top}%; width:${size}px; height:${size}px; animation-duration:${duration}s; animation-delay:${delay}s;"></span>`;
+  // Fireflies / dust motes wandering all through the room
+  for (let i = 0; i < 46; i++) {
+    const left = (4 + Math.random() * 92).toFixed(2);
+    const top = (5 + Math.random() * 88).toFixed(2);
+    const size = (2 + Math.random() * 3.4).toFixed(1);
+    const duration = (2.6 + Math.random() * 3.2).toFixed(2);
+    const delay = (Math.random() * -6).toFixed(2);
+    const wx = Math.round(Math.random() * 40 - 20);
+    const wy = Math.round(-10 - Math.random() * 20);
+    const wx2 = Math.round(Math.random() * 40 - 20);
+    const wy2 = Math.round(-24 - Math.random() * 26);
+    const cls = Math.random() < 0.35 ? 'ghostship-wisp ghostship-wisp--gold' : 'ghostship-wisp';
+    html += `<span class="${cls}" style="left:${left}%; top:${top}%; width:${size}px; height:${size}px; animation-duration:${duration}s; animation-delay:${delay}s; --wx:${wx}px; --wy:${wy}px; --wx2:${wx2}px; --wy2:${wy2}px;"></span>`;
   }
 
   return html;
