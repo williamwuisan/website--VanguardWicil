@@ -234,16 +234,14 @@ const DECK_ACCENTS = {
   'harri-premium-deck': '#ec4899',
 };
 
-/* ===== Festive FX: Harri Premium's over-the-top circus treatment ===== */
-const FESTIVE_DECK_ID = 'harri-premium-deck';
+/* ===== Themed FX: per-deck atmosphere on the detail page ===== */
+const THEMED_DECKS = {
+  'harri-premium-deck': 'circus',
+  'nightrose-deck': 'ghostship',
+};
 const FESTIVE_COLORS = ['#ff6fae', '#ffd23f', '#4fd8ff', '#b46eff', '#5eead4', '#ff8a3d'];
 
-function buildFestiveFx() {
-  const container = document.getElementById('festiveFx');
-  if (!container || container.dataset.built) return;
-  container.dataset.built = '1';
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
+function buildCircusFx() {
   let html = '';
 
   // Big-top tent canopy background (replaces the starfield behind this deck)
@@ -336,20 +334,119 @@ function buildFestiveFx() {
     html += `<span class="festive-sparkle" style="top:${top}%; left:${left}%; width:${size}px; height:${size}px; background:${color}; animation-duration:${duration}s; animation-delay:${delay}s;"></span>`;
   }
 
-  container.innerHTML = html;
+  return html;
 }
 
-function toggleFestiveFx(isActive) {
+function buildGhostShipFx() {
+  let html = '';
+
+  // Cave interior with a warm shaft of light falling from the opening above
+  html += `<div class="ghostship-bg"></div>`;
+  html += `<div class="ghostship-moon"></div>`;
+  html += `<div class="ghostship-moonbeam"></div>`;
+
+  // Dust motes drifting inside the light shaft
+  for (let i = 0; i < 20; i++) {
+    const top = (Math.random() * 55).toFixed(2);
+    const left = (38 + Math.random() * 24).toFixed(2);
+    const size = (1.2 + Math.random() * 1.6).toFixed(2);
+    const duration = (2.6 + Math.random() * 3).toFixed(2);
+    const delay = (Math.random() * -6).toFixed(2);
+    html += `<span class="ghostship-star" style="top:${top}%; left:${left}%; width:${size}px; height:${size}px; animation-duration:${duration}s; animation-delay:${delay}s;"></span>`;
+  }
+
+  // Cave rock walls framing the wreck
+  html += `<div class="ghostship-rock ghostship-rock--left"></div>`;
+  html += `<div class="ghostship-rock ghostship-rock--right"></div>`;
+
+  // Drifting mist/steam off the water
+  const mistBands = [
+    { top: 32, height: 80, duration: 30 },
+    { top: 46, height: 100, duration: 38 },
+    { top: 58, height: 70, duration: 34 },
+  ];
+  mistBands.forEach((m) => {
+    const delay = (Math.random() * -20).toFixed(2);
+    html += `<div class="ghostship-mist" style="top:${m.top}%; height:${m.height}px; animation-duration:${m.duration}s; animation-delay:${delay}s;"></div>`;
+  });
+
+  // The wrecked ship: hull, two broken masts, tattered sails, a torn flag
+  html += `
+    <div class="ghostship-vessel">
+      <div class="ghostship-mast ghostship-mast--main"></div>
+      <div class="ghostship-mast ghostship-mast--fore"></div>
+      <div class="ghostship-yard" style="left:calc(34% - 34px); bottom:188px; width:68px;"></div>
+      <div class="ghostship-yard" style="left:calc(66% - 24px); bottom:120px; width:48px;"></div>
+      <div class="ghostship-sail" style="left:calc(34% - 30px); bottom:120px; width:60px; height:68px; clip-path:polygon(0% 0%, 100% 0%, 92% 88%, 60% 100%, 30% 92%, 4% 78%);"></div>
+      <div class="ghostship-sail" style="left:calc(66% - 20px); bottom:65px; width:40px; height:55px; clip-path:polygon(0% 0%, 100% 0%, 88% 82%, 55% 100%, 22% 86%, 2% 70%); animation-delay:-2.4s;"></div>
+      <div class="ghostship-flag" style="left:34%; bottom:188px;"></div>
+      <div class="ghostship-hull"></div>
+    </div>`;
+
+  // Rusty lanterns swinging at the top corners
+  const lanternSpots = [
+    { left: 9, ropeHeight: 46 },
+    { left: 91, ropeHeight: 60 },
+  ];
+  lanternSpots.forEach((l, i) => {
+    const duration = (3 + Math.random() * 1.6).toFixed(2);
+    const delay = (Math.random() * -4).toFixed(2);
+    html += `<span class="ghostship-lantern" style="left:${l.left}%; height:${l.ropeHeight}px; animation-duration:${duration}s; animation-delay:${delay}s;"></span>`;
+  });
+
+  // Bats flitting across the cave in slow arcs
+  for (let i = 0; i < 3; i++) {
+    const top = (4 + Math.random() * 12).toFixed(2);
+    const left = (10 + Math.random() * 20).toFixed(2);
+    const duration = (13 + Math.random() * 7).toFixed(2);
+    const delay = (Math.random() * -12).toFixed(2);
+    const flyX = Math.round(160 + Math.random() * 100);
+    const flyY = Math.round(-20 - Math.random() * 30);
+    const flyX2 = Math.round(flyX * 2);
+    const flyY2 = Math.round(flyY * -0.4);
+    html += `<span class="ghostship-bat" style="top:${top}%; left:${left}%; animation-duration:${duration}s; animation-delay:${delay}s; --fly-x:${flyX}px; --fly-y:${flyY}px; --fly-x2:${flyX2}px; --fly-y2:${flyY2}px;"></span>`;
+  }
+
+  // Gold coin glints pooling around the wreck, teal shimmer further out on the water
+  for (let i = 0; i < 20; i++) {
+    const nearShip = Math.random() < 0.6;
+    const left = nearShip ? (32 + Math.random() * 36).toFixed(2) : (Math.random() * 96).toFixed(2);
+    const top = (70 + Math.random() * 26).toFixed(2);
+    const size = (nearShip ? 3 + Math.random() * 5 : 3 + Math.random() * 4).toFixed(1);
+    const duration = (2 + Math.random() * 2.4).toFixed(2);
+    const delay = (Math.random() * -5).toFixed(2);
+    const cls = nearShip ? 'ghostship-wisp ghostship-wisp--gold' : 'ghostship-wisp';
+    html += `<span class="${cls}" style="left:${left}%; top:${top}%; width:${size}px; height:${size}px; animation-duration:${duration}s; animation-delay:${delay}s;"></span>`;
+  }
+
+  return html;
+}
+
+function buildThemedFx(theme) {
+  const container = document.getElementById('festiveFx');
+  if (!container || container.dataset.builtTheme === theme) return;
+  container.dataset.builtTheme = theme;
+  container.innerHTML = '';
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (theme === 'circus') container.innerHTML = buildCircusFx();
+  else if (theme === 'ghostship') container.innerHTML = buildGhostShipFx();
+}
+
+function applyThemedFx(deckId) {
   const container = document.getElementById('festiveFx');
   const title = document.getElementById('detailDeckName');
   if (!container) return;
-  if (isActive) {
-    buildFestiveFx();
-    container.classList.add('is-active');
-    if (title) title.classList.add('is-festive');
+  const theme = THEMED_DECKS[deckId];
+  if (theme) {
+    buildThemedFx(theme);
+    container.className = 'festive-fx is-active theme-' + theme;
+    if (title) {
+      title.classList.remove('is-festive', 'is-ghostship');
+      title.classList.add(theme === 'circus' ? 'is-festive' : 'is-ghostship');
+    }
   } else {
-    container.classList.remove('is-active');
-    if (title) title.classList.remove('is-festive');
+    container.className = 'festive-fx';
+    if (title) title.classList.remove('is-festive', 'is-ghostship');
   }
 }
 
@@ -366,7 +463,7 @@ function showDeckDetail(deckId, opts = {}) {
   document.getElementById('detailDeckName').textContent = deck.name;
   document.getElementById('detailDeckMeta').textContent = `${deck.clan ? deck.clan + ' · ' : ''}${deck.cards.length} cards`;
   renderDeckStats(deck);
-  toggleFestiveFx(deck.id === FESTIVE_DECK_ID);
+  applyThemedFx(deck.id);
 
   const backBtn = document.getElementById('detailBackBtn');
   if (HIDDEN_DECK_IDS.includes(deck.id)) {

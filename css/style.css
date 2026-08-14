@@ -1313,9 +1313,294 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
   animation-iteration-count: infinite;
 }
 
+/* ===== Ghost Ship FX (Nightrose): horizon, not a reskinned tent ===== */
+.deck-detail__head h2.is-ghostship {
+  background: linear-gradient(90deg, #eafffa, #7fe3c9, #3f8f8a, #a8d8cf, #eafffa);
+  background-size: 300% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 2px 3px rgba(0, 8, 8, 0.85)) drop-shadow(0 0 14px rgba(0, 8, 8, 0.6));
+  animation: festive-title-shimmer 7s linear infinite;
+}
+
+/* Sunken treasure cave: warm shaft of light from a hole above, teal-gold water below */
+.ghostship-bg {
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 55% 38% at 50% 0%, rgba(255, 240, 200, 0.4) 0%, rgba(255, 220, 150, 0.12) 22%, transparent 48%),
+    linear-gradient(180deg,
+      #0b0906 0%, #1a140e 20%, #14120f 40%, #0f1614 58%,
+      #0a1a19 72%, #071615 86%, #030a09 100%);
+}
+.ghostship-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 65% 42% at 50% 60%, rgba(120, 220, 200, 0.14) 0%, transparent 70%);
+}
+/* Water surface: teal glow with warm gold pooling where the treasure sits */
+.ghostship-bg::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 40%;
+  background:
+    radial-gradient(ellipse 42% 90% at 50% 100%, rgba(255, 195, 90, 0.28), transparent 65%),
+    linear-gradient(180deg, rgba(4, 16, 15, 0.25) 0%, rgba(2, 12, 11, 0.78) 100%),
+    radial-gradient(ellipse 60% 85% at 50% 100%, rgba(70, 220, 195, 0.28), transparent 72%);
+  box-shadow: 0 -40px 60px -10px rgba(0,0,0,0.55) inset;
+}
+
+.ghostship-moon {
+  position: fixed;
+  top: -4%;
+  left: 50%;
+  width: 170px;
+  height: 170px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: radial-gradient(circle at 44% 40%, #fffbe8 0%, #ffe6a8 38%, rgba(255, 220, 150, 0.22) 66%, transparent 78%);
+  opacity: 0.85;
+  animation-name: ghostship-moon-glow;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 6s;
+}
+@keyframes ghostship-moon-glow {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 0.95; }
+}
+/* Warm shaft of light falling from the cave opening down to the treasure */
+.ghostship-moonbeam {
+  position: fixed;
+  top: -2%;
+  left: 50%;
+  width: 130px;
+  height: 68%;
+  transform: translateX(-50%);
+  clip-path: polygon(34% 0%, 66% 0%, 100% 100%, 0% 100%);
+  background: linear-gradient(180deg, rgba(255, 235, 190, 0.22), transparent 85%);
+  opacity: 0.75;
+  pointer-events: none;
+  animation: ghostship-beam-flicker 5s ease-in-out infinite;
+}
+@keyframes ghostship-beam-flicker {
+  0%, 100% { opacity: 0.45; }
+  50% { opacity: 0.7; }
+}
+
+.ghostship-star {
+  position: fixed;
+  border-radius: 50%;
+  background: #ffe6a8;
+  opacity: 0;
+  animation-name: cosmic-twinkle;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  --star-max: 0.6;
+}
+
+/* Drifting cave mist/steam off the water */
+.ghostship-mist {
+  position: fixed;
+  left: -15%;
+  width: 130%;
+  border-radius: 50%;
+  filter: blur(22px);
+  opacity: 0.18;
+  background: linear-gradient(90deg, transparent, rgba(150, 200, 190, 0.7) 35%, rgba(150, 200, 190, 0.7) 65%, transparent);
+  animation-name: ghostship-mist-drift;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+@keyframes ghostship-mist-drift {
+  0%, 100% { transform: translateX(-4%); }
+  50% { transform: translateX(4%); }
+}
+
+/* Jagged cave rock walls framing the wreck */
+.ghostship-rock {
+  position: fixed;
+  top: 0;
+  width: clamp(70px, 12vw, 190px);
+  height: 100%;
+  background:
+    linear-gradient(90deg, rgba(0,0,0,0.25) 0px, transparent 30px),
+    linear-gradient(90deg, #241a10, #120c07);
+  opacity: 0.95;
+  box-shadow: inset 0 0 70px 22px rgba(0,0,0,0.65);
+}
+.ghostship-rock--left {
+  left: 0;
+  clip-path: polygon(
+    0% 0%, 100% 0%,
+    82% 6%, 100% 13%, 68% 19%, 94% 26%, 72% 33%, 100% 41%,
+    76% 48%, 90% 56%, 65% 63%, 100% 71%, 78% 79%, 92% 87%, 70% 95%, 100% 100%,
+    0% 100%
+  );
+}
+.ghostship-rock--right {
+  right: 0;
+  clip-path: polygon(
+    100% 0%, 0% 0%,
+    18% 6%, 0% 13%, 32% 19%, 6% 26%, 28% 33%, 0% 41%,
+    24% 48%, 10% 56%, 35% 63%, 0% 71%, 22% 79%, 8% 87%, 30% 95%, 0% 100%,
+    100% 100%
+  );
+}
+
+/* The wrecked ship: tilted hull + broken masts + tattered black sails, run aground on the treasure */
+.ghostship-vessel {
+  position: fixed;
+  left: 50%;
+  bottom: 5%;
+  width: min(78vw, 620px);
+  height: 220px;
+  transform: translateX(-58%) rotate(-3deg);
+  pointer-events: none;
+  opacity: 0.92;
+  filter: drop-shadow(0 10px 22px rgba(0,0,0,0.65));
+}
+.ghostship-hull {
+  position: absolute;
+  left: 8%;
+  right: 8%;
+  bottom: 0;
+  height: 36px;
+  background: linear-gradient(180deg, #2a1c10, #170f08);
+  clip-path: polygon(4% 0%, 96% 0%, 100% 55%, 82% 100%, 18% 100%, 0% 55%);
+  box-shadow: 0 0 30px 6px rgba(255, 190, 80, 0.15);
+}
+.ghostship-mast {
+  position: absolute;
+  bottom: 32px;
+  width: 4px;
+  background: linear-gradient(180deg, #241809, #140d05);
+}
+.ghostship-mast--main { left: 34%; height: 190px; }
+.ghostship-mast--fore { left: 66%; height: 110px; }
+.ghostship-yard {
+  position: absolute;
+  height: 3px;
+  background: #1c1208;
+  transform-origin: center;
+}
+.ghostship-sail {
+  position: absolute;
+  background: linear-gradient(180deg, rgba(40, 36, 34, 0.85), rgba(20, 18, 17, 0.55));
+  opacity: 0.85;
+  transform-origin: top center;
+  animation-name: ghostship-sail-billow;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 6.5s;
+}
+@keyframes ghostship-sail-billow {
+  0%, 100% { transform: skewX(-4deg) scaleX(1); }
+  50% { transform: skewX(3deg) scaleX(1.03); }
+}
+.ghostship-flag {
+  position: absolute;
+  top: -4px;
+  width: 22px;
+  height: 14px;
+  background: #0c0a09;
+  clip-path: polygon(0% 0%, 100% 20%, 78% 50%, 100% 80%, 0% 100%);
+  transform-origin: left center;
+  animation-name: ghostship-flag-flutter;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 2.4s;
+}
+@keyframes ghostship-flag-flutter {
+  0%, 100% { transform: rotate(-6deg) scaleX(1); }
+  50% { transform: rotate(4deg) scaleX(0.92); }
+}
+
+/* Lanterns swinging from the rigging */
+.ghostship-lantern {
+  position: fixed;
+  top: 0;
+  width: 1px;
+  background: rgba(150, 170, 160, 0.4);
+  transform-origin: top center;
+  animation-name: ghostship-lantern-swing;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+.ghostship-lantern::after {
+  content: '';
+  position: absolute;
+  bottom: -7px;
+  left: 50%;
+  width: 12px;
+  height: 14px;
+  border-radius: 3px;
+  transform: translateX(-50%);
+  background: radial-gradient(circle at 50% 40%, #ffe9a8 0%, #d8a23f 55%, #6b4a1a 85%);
+  box-shadow: 0 0 12px 4px rgba(255, 200, 100, 0.45);
+}
+@keyframes ghostship-lantern-swing {
+  0%, 100% { transform: rotate(-9deg); }
+  50% { transform: rotate(9deg); }
+}
+
+/* Bats flitting through the cave in slow arcs */
+.ghostship-bat {
+  position: fixed;
+  width: 16px;
+  height: 6px;
+  opacity: 0;
+  animation-name: ghostship-bat-fly;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+.ghostship-bat::before,
+.ghostship-bat::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 9px;
+  height: 2px;
+  background: #0c0a08;
+  border-radius: 2px 2px 2px 0;
+}
+.ghostship-bat::before { left: 0; transform: rotate(24deg); transform-origin: right center; }
+.ghostship-bat::after { right: 0; transform: rotate(-24deg); transform-origin: left center; }
+@keyframes ghostship-bat-fly {
+  0% { transform: translate(0, 0); opacity: 0; }
+  8% { opacity: 0.6; }
+  50% { transform: translate(var(--fly-x, 220px), var(--fly-y, -30px)); opacity: 0.6; }
+  92% { opacity: 0.6; }
+  100% { transform: translate(var(--fly-x2, 440px), var(--fly-y2, 10px)); opacity: 0; }
+}
+
+/* Water shimmer + gold coin glints, confined near the wreck instead of rising like confetti */
+.ghostship-wisp {
+  position: fixed;
+  border-radius: 50%;
+  background: radial-gradient(circle, #e2fff5 0%, #4fd8b8 45%, transparent 75%);
+  box-shadow: 0 0 10px 3px rgba(79, 216, 184, 0.55);
+  opacity: 0;
+  animation-name: ghostship-wisp-glint;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+.ghostship-wisp--gold {
+  background: radial-gradient(circle, #fff6d0 0%, #ffcf4d 45%, transparent 75%);
+  box-shadow: 0 0 10px 3px rgba(255, 200, 60, 0.6);
+}
+@keyframes ghostship-wisp-glint {
+  0%, 100% { opacity: 0; transform: translateY(0) scale(0.8); }
+  50% { opacity: 0.75; transform: translateY(-6px) scale(1.1); }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .festive-fx { display: none; }
-  .deck-detail__head h2.is-festive { animation: none; background-position: 0 center; }
+  .deck-detail__head h2.is-festive,
+  .deck-detail__head h2.is-ghostship { animation: none; background-position: 0 center; }
 }
 
 .deck-stats { position: relative; margin-bottom: 28px; }
