@@ -280,10 +280,10 @@ function buildCircusFx() {
 
   // Big-top curtains: real traced artwork, cropped to each side
   html += `<div class="festive-curtain festive-curtain--left">
-    <svg viewBox="-30.5833 -39.9987 320 816.188" preserveAspectRatio="xMinYMin slice" xmlns="http://www.w3.org/2000/svg">${CIRCUS_CURTAIN_PATHS}</svg>
+    <svg viewBox="-30.5833 -39.9987 319.3695 816.188" preserveAspectRatio="xMinYMin slice" xmlns="http://www.w3.org/2000/svg">${CIRCUS_CURTAIN_PATHS}</svg>
   </div>`;
   html += `<div class="festive-curtain festive-curtain--right">
-    <svg viewBox="288.155 -39.9987 320 816.188" preserveAspectRatio="xMaxYMin slice" xmlns="http://www.w3.org/2000/svg">${CIRCUS_CURTAIN_PATHS}</svg>
+    <svg viewBox="288.7862 -39.9987 319.3695 816.188" preserveAspectRatio="xMaxYMin slice" xmlns="http://www.w3.org/2000/svg">${CIRCUS_CURTAIN_PATHS}</svg>
   </div>`;
 
   // Bunting flag garland strung across the top
