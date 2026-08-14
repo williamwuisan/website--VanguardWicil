@@ -246,9 +246,40 @@ function buildFestiveFx() {
 
   let html = '';
 
-  // Big-top curtains framing the stage
-  html += `<div class="festive-curtain festive-curtain--left"></div>`;
-  html += `<div class="festive-curtain festive-curtain--right"></div>`;
+  // Big-top tent canopy background (replaces the starfield behind this deck)
+  html += `<div class="festive-bigtop-bg"></div>`;
+
+  // String lights following the canopy seams
+  const lightArcs = [
+    { top: 11, count: 11, amp: 5 },
+    { top: 16, count: 13, amp: 6 },
+    { top: 21, count: 15, amp: 7 },
+  ];
+  lightArcs.forEach((arc, arcIndex) => {
+    for (let i = 0; i < arc.count; i++) {
+      const t = i / (arc.count - 1);
+      const left = (2 + t * 96).toFixed(2);
+      const top = (arc.top + Math.sin(t * Math.PI) * arc.amp).toFixed(2);
+      const duration = (1.6 + Math.random() * 1.8).toFixed(2);
+      const delay = (Math.random() * -4).toFixed(2);
+      html += `<span class="festive-light" style="left:${left}%; top:${top}%; animation-duration:${duration}s; animation-delay:${delay}s;"></span>`;
+    }
+  });
+
+  // Big-top curtains framing the stage, trimmed with hanging tassels
+  const tasselPeaks = [7, 15, 23, 31, 39, 47, 55, 63, 71, 79, 87, 95];
+  const leftTassels = tasselPeaks.map((top) => {
+    const duration = (2.2 + Math.random() * 1.4).toFixed(2);
+    const delay = (Math.random() * -4).toFixed(2);
+    return `<span class="festive-tassel" style="top:${top}%; right:20%; animation-duration:${duration}s; animation-delay:${delay}s;"></span>`;
+  }).join('');
+  const rightTassels = tasselPeaks.map((top) => {
+    const duration = (2.2 + Math.random() * 1.4).toFixed(2);
+    const delay = (Math.random() * -4).toFixed(2);
+    return `<span class="festive-tassel" style="top:${top}%; left:20%; animation-duration:${duration}s; animation-delay:${delay}s;"></span>`;
+  }).join('');
+  html += `<div class="festive-curtain festive-curtain--left">${leftTassels}</div>`;
+  html += `<div class="festive-curtain festive-curtain--right">${rightTassels}</div>`;
 
   // Bunting flag garland strung across the top
   html += `<div class="festive-bunting-line"></div>`;
