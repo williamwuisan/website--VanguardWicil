@@ -1361,6 +1361,26 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
   --star-max: 0.7;
 }
 
+/* Drifting fog, low in the room, for a gloomier haunted feel */
+.ghostship-mist {
+  position: fixed;
+  left: -20%;
+  width: 140%;
+  border-radius: 50%;
+  filter: blur(30px);
+  opacity: 0.55;
+  background: radial-gradient(ellipse, rgba(200, 205, 220, 0.9), transparent 68%);
+  mix-blend-mode: screen;
+  animation-name: ghostship-mist-drift;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  pointer-events: none;
+}
+@keyframes ghostship-mist-drift {
+  0%, 100% { transform: translateX(-4%); }
+  50% { transform: translateX(4%); }
+}
+
 /* Soft glow ring behind the moon in the real artwork, for a bit of life */
 .ghostship-vessel {
   position: fixed;

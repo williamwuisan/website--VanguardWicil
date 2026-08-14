@@ -346,6 +346,17 @@ function buildGhostShipFx() {
   // Soft glow behind the moon that's already painted into the artwork
   html += `<div class="ghostship-vessel"></div>`;
 
+  // Drifting fog banks, low across the room, for a gloomier haunted feel
+  const mistBands = [
+    { top: 58, height: 90, duration: 32 },
+    { top: 72, height: 110, duration: 40 },
+    { top: 84, height: 90, duration: 36 },
+  ];
+  mistBands.forEach((m) => {
+    const delay = (Math.random() * -20).toFixed(2);
+    html += `<div class="ghostship-mist" style="top:${m.top}%; height:${m.height}px; animation-duration:${m.duration}s; animation-delay:${delay}s;"></div>`;
+  });
+
   // Stars glimpsed through the window (positioned over the window area of the artwork)
   for (let i = 0; i < 14; i++) {
     const top = (4 + Math.random() * 26).toFixed(2);
