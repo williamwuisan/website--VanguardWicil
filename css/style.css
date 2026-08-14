@@ -1060,6 +1060,105 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
 .deck-detail__head h2 { font-size: clamp(1.7rem, 3.2vw, 2.2rem); font-weight: 400; margin-bottom: 6px; }
 .deck-detail__head p { color: var(--deck-accent, var(--orange)); font-weight: 600; font-size: 0.9rem; }
 
+/* ===== Festive FX (Harri Premium) ===== */
+.deck-detail__head h2.is-festive {
+  background: linear-gradient(90deg, #ff6fae, #ffd23f, #4fd8ff, #b46eff, #ff8a3d, #ff6fae);
+  background-size: 300% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: festive-title-shimmer 5s linear infinite;
+}
+@keyframes festive-title-shimmer {
+  to { background-position: -300% center; }
+}
+
+.festive-fx {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 5;
+  opacity: 0;
+  transition: opacity 0.7s ease;
+}
+.festive-fx.is-active { opacity: 1; }
+
+.festive-spotlight {
+  position: absolute;
+  top: -30%;
+  width: 260px;
+  height: 170%;
+  transform-origin: top center;
+  opacity: 0.14;
+  mix-blend-mode: screen;
+  filter: blur(8px);
+  clip-path: polygon(46% 0%, 54% 0%, 100% 100%, 0% 100%);
+  animation-name: festive-spotlight-sweep;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+@keyframes festive-spotlight-sweep {
+  0%, 100% { transform: rotate(-24deg); }
+  50% { transform: rotate(24deg); }
+}
+
+.festive-confetti {
+  position: absolute;
+  top: -24px;
+  opacity: 0;
+  animation-name: festive-confetti-fall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+@keyframes festive-confetti-fall {
+  0% { transform: translate(0, -24px) rotate(0deg); opacity: 0; }
+  6% { opacity: 0.95; }
+  92% { opacity: 0.95; }
+  100% { transform: translate(var(--drift, 40px), 112vh) rotate(var(--spin, 520deg)); opacity: 0; }
+}
+
+.festive-balloon {
+  position: absolute;
+  bottom: -90px;
+  border-radius: 50% 50% 50% 50% / 58% 58% 42% 42%;
+  opacity: 0;
+  box-shadow: inset -6px -8px 14px rgba(0,0,0,0.18), inset 6px 6px 10px rgba(255,255,255,0.25);
+  animation-name: festive-balloon-float;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+.festive-balloon::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  width: 1px;
+  height: 44px;
+  background: rgba(255,255,255,0.4);
+  transform: translateX(-50%);
+}
+@keyframes festive-balloon-float {
+  0% { transform: translate(0, 0); opacity: 0; }
+  8% { opacity: 0.9; }
+  92% { opacity: 0.9; }
+  100% { transform: translate(var(--drift, 24px), -118vh); opacity: 0; }
+}
+
+.festive-sparkle {
+  position: absolute;
+  clip-path: polygon(50% 0%, 61% 39%, 100% 50%, 61% 61%, 50% 100%, 39% 61%, 0% 50%, 39% 39%);
+  opacity: 0;
+  animation-name: cosmic-sparkle-twinkle;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .festive-fx { display: none; }
+  .deck-detail__head h2.is-festive { animation: none; background-position: 0 center; }
+}
+
 .deck-stats { margin-bottom: 28px; }
 .deck-stats__bar {
   display: flex;

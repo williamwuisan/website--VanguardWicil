@@ -231,7 +231,81 @@ const DECK_ACCENTS = {
   'jewel-knight-deck': '#ca8a04',
   'silver-thorn-deck': '#7c3aed',
   'og-knight-deck': '#06b6d4',
+  'harri-premium-deck': '#ec4899',
 };
+
+/* ===== Festive FX: Harri Premium's over-the-top circus treatment ===== */
+const FESTIVE_DECK_ID = 'harri-premium-deck';
+const FESTIVE_COLORS = ['#ff6fae', '#ffd23f', '#4fd8ff', '#b46eff', '#5eead4', '#ff8a3d'];
+
+function buildFestiveFx() {
+  const container = document.getElementById('festiveFx');
+  if (!container || container.dataset.built) return;
+  container.dataset.built = '1';
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  let html = '';
+
+  // Spotlight beams sweeping like a stage show
+  const spotlightSpots = [12, 38, 64, 88];
+  spotlightSpots.forEach((leftPct, i) => {
+    const color = FESTIVE_COLORS[i % FESTIVE_COLORS.length];
+    const duration = (4.5 + Math.random() * 3).toFixed(2);
+    const delay = (Math.random() * -6).toFixed(2);
+    html += `<div class="festive-spotlight" style="left:${leftPct}%; background:linear-gradient(180deg, ${color}, transparent 75%); animation-duration:${duration}s; animation-delay:${delay}s;"></div>`;
+  });
+
+  // Falling confetti
+  for (let i = 0; i < 55; i++) {
+    const left = (Math.random() * 100).toFixed(2);
+    const size = (5 + Math.random() * 6).toFixed(1);
+    const color = FESTIVE_COLORS[Math.floor(Math.random() * FESTIVE_COLORS.length)];
+    const duration = (4 + Math.random() * 5).toFixed(2);
+    const delay = (Math.random() * -9).toFixed(2);
+    const drift = Math.round(Math.random() * 160 - 80);
+    const spin = Math.round(360 + Math.random() * 540);
+    const shape = Math.random() < 0.5 ? '2px' : '50%';
+    html += `<span class="festive-confetti" style="left:${left}%; width:${size}px; height:${size}px; background:${color}; border-radius:${shape}; animation-duration:${duration}s; animation-delay:${delay}s; --drift:${drift}px; --spin:${spin}deg;"></span>`;
+  }
+
+  // Floating balloons
+  for (let i = 0; i < 9; i++) {
+    const left = (Math.random() * 96).toFixed(2);
+    const size = (26 + Math.random() * 16).toFixed(1);
+    const color = FESTIVE_COLORS[Math.floor(Math.random() * FESTIVE_COLORS.length)];
+    const duration = (10 + Math.random() * 8).toFixed(2);
+    const delay = (Math.random() * -18).toFixed(2);
+    const drift = Math.round(Math.random() * 80 - 40);
+    html += `<span class="festive-balloon" style="left:${left}%; width:${size}px; height:${(size * 1.2).toFixed(1)}px; background:${color}; animation-duration:${duration}s; animation-delay:${delay}s; --drift:${drift}px;"></span>`;
+  }
+
+  // Twinkling sparkles
+  for (let i = 0; i < 24; i++) {
+    const top = (Math.random() * 100).toFixed(2);
+    const left = (Math.random() * 100).toFixed(2);
+    const size = (6 + Math.random() * 8).toFixed(1);
+    const color = FESTIVE_COLORS[Math.floor(Math.random() * FESTIVE_COLORS.length)];
+    const duration = (2.4 + Math.random() * 2.6).toFixed(2);
+    const delay = (Math.random() * -6).toFixed(2);
+    html += `<span class="festive-sparkle" style="top:${top}%; left:${left}%; width:${size}px; height:${size}px; background:${color}; animation-duration:${duration}s; animation-delay:${delay}s;"></span>`;
+  }
+
+  container.innerHTML = html;
+}
+
+function toggleFestiveFx(isActive) {
+  const container = document.getElementById('festiveFx');
+  const title = document.getElementById('detailDeckName');
+  if (!container) return;
+  if (isActive) {
+    buildFestiveFx();
+    container.classList.add('is-active');
+    if (title) title.classList.add('is-festive');
+  } else {
+    container.classList.remove('is-active');
+    if (title) title.classList.remove('is-festive');
+  }
+}
 
 function showDeckDetail(deckId, opts = {}) {
   const deck = DECKS.find(d => d.id === deckId);
@@ -246,6 +320,7 @@ function showDeckDetail(deckId, opts = {}) {
   document.getElementById('detailDeckName').textContent = deck.name;
   document.getElementById('detailDeckMeta').textContent = `${deck.clan ? deck.clan + ' · ' : ''}${deck.cards.length} cards`;
   renderDeckStats(deck);
+  toggleFestiveFx(deck.id === FESTIVE_DECK_ID);
 
   const backBtn = document.getElementById('detailBackBtn');
   if (HIDDEN_DECK_IDS.includes(deck.id)) {
