@@ -370,17 +370,67 @@ function buildGhostShipFx() {
     html += `<div class="ghostship-mist" style="top:${m.top}%; height:${m.height}px; animation-duration:${m.duration}s; animation-delay:${delay}s;"></div>`;
   });
 
-  // The wrecked ship: hull, two broken masts, tattered sails, a torn flag
+  // The wrecked ship: a proper vector illustration (jagged broken hull, torn sails, snapped mast)
   html += `
     <div class="ghostship-vessel">
-      <div class="ghostship-mast ghostship-mast--main"></div>
-      <div class="ghostship-mast ghostship-mast--fore"></div>
-      <div class="ghostship-yard" style="left:calc(34% - 34px); bottom:188px; width:68px;"></div>
-      <div class="ghostship-yard" style="left:calc(66% - 24px); bottom:120px; width:48px;"></div>
-      <div class="ghostship-sail" style="left:calc(34% - 30px); bottom:120px; width:60px; height:68px; clip-path:polygon(0% 0%, 100% 0%, 92% 88%, 60% 100%, 30% 92%, 4% 78%);"></div>
-      <div class="ghostship-sail" style="left:calc(66% - 20px); bottom:65px; width:40px; height:55px; clip-path:polygon(0% 0%, 100% 0%, 88% 82%, 55% 100%, 22% 86%, 2% 70%); animation-delay:-2.4s;"></div>
-      <div class="ghostship-flag" style="left:34%; bottom:188px;"></div>
-      <div class="ghostship-hull"></div>
+      <svg viewBox="0 0 560 340" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax meet">
+        <defs>
+          <linearGradient id="gsHullGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#4a3620"/>
+            <stop offset="55%" stop-color="#2a1c10"/>
+            <stop offset="100%" stop-color="#120b06"/>
+          </linearGradient>
+          <linearGradient id="gsSailGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#413a35" stop-opacity="0.92"/>
+            <stop offset="100%" stop-color="#171411" stop-opacity="0.55"/>
+          </linearGradient>
+          <radialGradient id="gsGlow" cx="50%" cy="30%" r="70%">
+            <stop offset="0%" stop-color="#ffc65a" stop-opacity="0.35"/>
+            <stop offset="100%" stop-color="#ffc65a" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+
+        <ellipse class="gs-glow" cx="280" cy="255" rx="180" ry="45" fill="url(#gsGlow)"/>
+
+        <path d="M 70,230 L 95,205 L 118,222 L 140,198 L 168,215 L 195,192
+                 L 225,208 L 255,190 L 288,206 L 322,188 L 355,204 L 385,196
+                 L 415,212 L 445,222 L 470,238 C 478,255 465,272 435,282
+                 L 400,290 C 350,296 260,296 200,290 L 130,282
+                 C 92,274 65,255 70,230 Z"
+              fill="url(#gsHullGrad)" stroke="#050301" stroke-width="2"/>
+
+        <path d="M150,235 L165,280 M230,225 L235,288 M310,222 L308,292 M390,232 L385,284"
+              stroke="#000" stroke-width="2" opacity="0.4"/>
+        <path d="M100,240 L440,262" stroke="#5c4326" stroke-width="1.5" opacity="0.4"/>
+
+        <path d="M256,45 L262,205" stroke="#1c130a" stroke-width="6" stroke-linecap="round"/>
+        <path d="M256,45 L268,32 M256,45 L248,30" stroke="#1c130a" stroke-width="4" stroke-linecap="round"/>
+        <path d="M375,95 L368,210" stroke="#1c130a" stroke-width="5" stroke-linecap="round"/>
+
+        <path d="M175,72 L340,66" stroke="#1c130a" stroke-width="5" stroke-linecap="round"/>
+        <path d="M320,108 L420,102" stroke="#1c130a" stroke-width="4" stroke-linecap="round"/>
+
+        <path d="M256,45 L200,205 M256,45 L330,200 M375,95 L340,208 M375,95 L410,205 M262,205 L340,66 M262,205 L175,72"
+              stroke="#241a10" stroke-width="1" opacity="0.55" fill="none"/>
+
+        <path class="gs-sail gs-sail--main" fill="url(#gsSailGrad)"
+              d="M182,75 C 205,90 192,105 208,120 C 190,132 202,142 186,155
+                 C 205,168 195,182 210,195 C 235,200 265,198 288,193
+                 C 300,178 288,162 296,148 C 305,132 292,118 300,102
+                 C 310,86 296,76 288,68 C 250,60 210,64 182,75 Z"/>
+        <ellipse cx="228" cy="118" rx="8" ry="11" fill="#0b0906" opacity="0.75"/>
+        <ellipse cx="262" cy="160" rx="10" ry="7" fill="#0b0906" opacity="0.7"/>
+        <path d="M240,90 L236,108" stroke="#0b0906" stroke-width="2" opacity="0.5"/>
+
+        <path class="gs-sail gs-sail--fore" fill="url(#gsSailGrad)"
+              d="M330,112 C 345,122 336,134 346,146 C 333,155 342,164 331,175
+                 C 346,184 340,194 350,202 C 368,206 388,204 402,200
+                 C 410,190 402,178 408,168 C 415,156 405,146 411,134
+                 C 418,122 407,115 402,110 C 378,105 350,107 330,112 Z"/>
+        <ellipse cx="368" cy="150" rx="6" ry="8" fill="#0b0906" opacity="0.7"/>
+
+        <path class="gs-flag" fill="#0a0806" d="M262,30 L295,36 L280,45 L296,54 L262,48 Z"/>
+      </svg>
     </div>`;
 
   // Rusty lanterns swinging at the top corners

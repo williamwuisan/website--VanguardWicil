@@ -1451,63 +1451,38 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
   );
 }
 
-/* The wrecked ship: tilted hull + broken masts + tattered black sails, run aground on the treasure */
+/* The wrecked ship: proper vector illustration (jagged broken hull, torn sails, snapped mast) */
 .ghostship-vessel {
   position: fixed;
   left: 50%;
-  bottom: 5%;
-  width: min(78vw, 620px);
-  height: 220px;
-  transform: translateX(-58%) rotate(-3deg);
+  bottom: 4%;
+  width: min(82vw, 640px);
+  height: 260px;
+  transform: translateX(-56%) rotate(-2deg);
   pointer-events: none;
-  opacity: 0.92;
-  filter: drop-shadow(0 10px 22px rgba(0,0,0,0.65));
+  opacity: 0.95;
+  filter: drop-shadow(0 12px 24px rgba(0,0,0,0.7));
 }
-.ghostship-hull {
-  position: absolute;
-  left: 8%;
-  right: 8%;
-  bottom: 0;
-  height: 36px;
-  background: linear-gradient(180deg, #2a1c10, #170f08);
-  clip-path: polygon(4% 0%, 96% 0%, 100% 55%, 82% 100%, 18% 100%, 0% 55%);
-  box-shadow: 0 0 30px 6px rgba(255, 190, 80, 0.15);
+.ghostship-vessel svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
 }
-.ghostship-mast {
-  position: absolute;
-  bottom: 32px;
-  width: 4px;
-  background: linear-gradient(180deg, #241809, #140d05);
-}
-.ghostship-mast--main { left: 34%; height: 190px; }
-.ghostship-mast--fore { left: 66%; height: 110px; }
-.ghostship-yard {
-  position: absolute;
-  height: 3px;
-  background: #1c1208;
-  transform-origin: center;
-}
-.ghostship-sail {
-  position: absolute;
-  background: linear-gradient(180deg, rgba(40, 36, 34, 0.85), rgba(20, 18, 17, 0.55));
-  opacity: 0.85;
+.ghostship-vessel .gs-sail {
+  transform-box: fill-box;
   transform-origin: top center;
   animation-name: ghostship-sail-billow;
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
   animation-duration: 6.5s;
 }
+.ghostship-vessel .gs-sail--fore { animation-delay: -2.4s; }
 @keyframes ghostship-sail-billow {
-  0%, 100% { transform: skewX(-4deg) scaleX(1); }
-  50% { transform: skewX(3deg) scaleX(1.03); }
+  0%, 100% { transform: skewX(-2.5deg) scaleX(1); }
+  50% { transform: skewX(2deg) scaleX(1.015); }
 }
-.ghostship-flag {
-  position: absolute;
-  top: -4px;
-  width: 22px;
-  height: 14px;
-  background: #0c0a09;
-  clip-path: polygon(0% 0%, 100% 20%, 78% 50%, 100% 80%, 0% 100%);
+.ghostship-vessel .gs-flag {
+  transform-box: fill-box;
   transform-origin: left center;
   animation-name: ghostship-flag-flutter;
   animation-timing-function: ease-in-out;
@@ -1515,8 +1490,15 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
   animation-duration: 2.4s;
 }
 @keyframes ghostship-flag-flutter {
-  0%, 100% { transform: rotate(-6deg) scaleX(1); }
-  50% { transform: rotate(4deg) scaleX(0.92); }
+  0%, 100% { transform: rotate(-5deg) scaleX(1); }
+  50% { transform: rotate(4deg) scaleX(0.94); }
+}
+.ghostship-vessel .gs-glow {
+  animation: ghostship-hull-glow 5s ease-in-out infinite;
+}
+@keyframes ghostship-hull-glow {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
 }
 
 /* Lanterns swinging from the rigging */
