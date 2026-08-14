@@ -340,112 +340,29 @@ function buildCircusFx() {
 function buildGhostShipFx() {
   let html = '';
 
-  // Purple moonlit cabin backdrop with a wooden floor
+  // The real painted cabin artwork (converted from the owner's EPS) as the base background
   html += `<div class="ghostship-bg"></div>`;
 
-  // Sparse stars, only near the top (mostly seen through the window anyway)
+  // Soft glow behind the moon that's already painted into the artwork
+  html += `<div class="ghostship-vessel"></div>`;
+
+  // Stars glimpsed through the window (positioned over the window area of the artwork)
   for (let i = 0; i < 14; i++) {
-    const top = (Math.random() * 20).toFixed(2);
-    const left = (Math.random() * 100).toFixed(2);
+    const top = (4 + Math.random() * 26).toFixed(2);
+    const left = (16 + Math.random() * 50).toFixed(2);
     const size = (1 + Math.random() * 1.4).toFixed(2);
     const duration = (2.6 + Math.random() * 3).toFixed(2);
     const delay = (Math.random() * -6).toFixed(2);
     html += `<span class="ghostship-star" style="top:${top}%; left:${left}%; width:${size}px; height:${size}px; animation-duration:${duration}s; animation-delay:${delay}s;"></span>`;
   }
 
-  // The full cabin scene: huge arched window with a big moon, the captain at his desk, a chest, a curtain
-  html += `
-    <div class="ghostship-vessel">
-      <svg viewBox="0 0 800 420" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax meet">
-        <defs>
-          <linearGradient id="gsSkyGrad" cx="50%" cy="35%" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stop-color="#7396e0"/>
-            <stop offset="45%" stop-color="#3e5dae"/>
-            <stop offset="100%" stop-color="#1b2d63"/>
-          </linearGradient>
-          <radialGradient id="gsMoonGlow" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stop-color="#fffbe8" stop-opacity="0.95"/>
-            <stop offset="55%" stop-color="#fffbe8" stop-opacity="0.3"/>
-            <stop offset="100%" stop-color="#fffbe8" stop-opacity="0"/>
-          </radialGradient>
-          <linearGradient id="gsDeskGrad" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stop-color="#6a4527"/>
-            <stop offset="100%" stop-color="#301d10"/>
-          </linearGradient>
-          <clipPath id="gsWindowClip">
-            <path d="M280,60 C280,20 320,5 400,5 C480,5 520,20 520,60 L520,262 L280,262 Z"/>
-          </clipPath>
-        </defs>
-
-        <!-- arched window with a big glowing moon -->
-        <g clip-path="url(#gsWindowClip)">
-          <rect x="270" y="0" width="260" height="272" fill="url(#gsSkyGrad)"/>
-          <circle class="gs-moon" cx="400" cy="92" r="58" fill="url(#gsMoonGlow)"/>
-          <circle class="gs-moon" cx="400" cy="92" r="30" fill="#fffdf2"/>
-          <circle cx="320" cy="50" r="1.6" fill="#fff"/>
-          <circle cx="350" cy="35" r="1.2" fill="#fff"/>
-          <circle cx="460" cy="55" r="1.8" fill="#fff"/>
-          <circle cx="480" cy="90" r="1.3" fill="#fff"/>
-          <circle cx="310" cy="120" r="1.4" fill="#fff"/>
-          <circle cx="490" cy="140" r="1.5" fill="#fff"/>
-          <circle cx="340" cy="165" r="1.2" fill="#fff"/>
-          <circle cx="460" cy="185" r="1.6" fill="#fff"/>
-        </g>
-        <path d="M280,60 C280,20 320,5 400,5 C480,5 520,20 520,60 L520,262 L280,262 Z"
-              fill="none" stroke="#0d0818" stroke-width="10"/>
-        <path d="M400,8 L400,262 M285,122 L515,122 M285,192 L515,192 M332,20 L332,262 M468,20 L468,262"
-              stroke="#0d0818" stroke-width="5" opacity="0.85"/>
-        <path d="M285,65 C300,25 340,10 400,10 C460,10 500,25 515,65"
-              fill="none" stroke="#0d0818" stroke-width="8"/>
-
-        <!-- desk -->
-        <path d="M255,300 L545,300 L560,420 L240,420 Z" fill="url(#gsDeskGrad)" stroke="#160d05" stroke-width="2"/>
-        <rect x="255" y="292" width="290" height="14" rx="3" fill="#7a5230"/>
-        <path d="M270,340 L280,420 M330,320 L332,420 M400,314 L400,420 M470,320 L472,420 M530,340 L522,420"
-              stroke="#160d05" stroke-width="1.5" opacity="0.4"/>
-
-        <!-- captain silhouette, seated, mug raised -->
-        <g fill="#0a0612">
-          <path d="M410,300 C405,270 415,240 405,215 C420,205 445,205 455,220
-                   C468,215 480,225 476,240 L470,300 Z"/>
-          <circle cx="428" cy="195" r="20"/>
-          <path d="M403,190 C400,175 415,162 428,162 C444,162 458,174 456,190
-                   C448,182 410,182 403,190 Z"/>
-          <path d="M398,192 C412,186 446,186 460,193 C458,199 400,199 398,192 Z"/>
-          <path d="M452,222 C466,210 476,192 472,178 C480,180 486,196 480,212
-                   C476,224 464,232 456,232 Z"/>
-          <circle cx="478" cy="176" r="9"/>
-        </g>
-
-        <!-- bottles and cup on the desk -->
-        <path d="M300,270 L300,300 L312,300 L312,258 C312,252 306,250 304,254 C300,258 300,264 300,270 Z" fill="#2a5a3a" opacity="0.9"/>
-        <path d="M330,280 L330,300 L340,300 L340,268 C340,263 335,261 333,265 C330,269 330,274 330,280 Z" fill="#5a2a4a" opacity="0.9"/>
-        <path d="M360,286 L358,300 L378,300 L376,286 C378,282 376,276 368,276 C360,276 358,282 360,286 Z" fill="#c9a24a" opacity="0.9"/>
-
-        <!-- treasure chest, left -->
-        <g>
-          <path d="M40,340 L160,340 L160,410 L40,410 Z" fill="#4a2c14" stroke="#1c0f06" stroke-width="2"/>
-          <path d="M35,320 C35,300 60,290 100,290 C140,290 165,300 165,320 L165,342 L35,342 Z" fill="#5a3a1c" stroke="#1c0f06" stroke-width="2"/>
-          <rect x="90" y="330" width="20" height="16" rx="3" fill="#c9a24a"/>
-          <path d="M35,320 L165,320" stroke="#c9a24a" stroke-width="4" opacity="0.7"/>
-          <path d="M40,340 L160,340" stroke="#c9a24a" stroke-width="4" opacity="0.7"/>
-        </g>
-
-        <!-- curtain drape, right -->
-        <path class="gs-curtain" d="M700,0 C680,60 690,140 672,200 C688,260 678,340 696,420 L800,420 L800,0 Z"
-              fill="#3a1c4a" opacity="0.9"/>
-        <path d="M700,0 C680,60 690,140 672,200 C688,260 678,340 696,420"
-              fill="none" stroke="#6a3a7a" stroke-width="3" opacity="0.6"/>
-      </svg>
-    </div>`;
-
-  // Lantern hanging above the desk, in front of the window
-  html += `<span class="ghostship-lantern" style="left:50%; top:6%; height:38px; animation-duration:3.4s;"></span>`;
+  // Lantern glow, positioned over the lantern already painted above the desk
+  html += `<span class="ghostship-lantern" style="left:49%; top:5%; height:34px; animation-duration:3.4s;"></span>`;
 
   // Bats flitting past the window
   for (let i = 0; i < 2; i++) {
-    const top = (10 + Math.random() * 10).toFixed(2);
-    const left = (28 + Math.random() * 12).toFixed(2);
+    const top = (8 + Math.random() * 10).toFixed(2);
+    const left = (24 + Math.random() * 14).toFixed(2);
     const duration = (13 + Math.random() * 7).toFixed(2);
     const delay = (Math.random() * -12).toFixed(2);
     const flyX = Math.round(120 + Math.random() * 80);
@@ -455,10 +372,10 @@ function buildGhostShipFx() {
     html += `<span class="ghostship-bat" style="top:${top}%; left:${left}%; animation-duration:${duration}s; animation-delay:${delay}s; --fly-x:${flyX}px; --fly-y:${flyY}px; --fly-x2:${flyX2}px; --fly-y2:${flyY2}px;"></span>`;
   }
 
-  // Dust motes catching the moonlight
+  // Dust motes catching the moonlight, concentrated over the window
   for (let i = 0; i < 16; i++) {
-    const left = (30 + Math.random() * 42).toFixed(2);
-    const top = (10 + Math.random() * 55).toFixed(2);
+    const left = (16 + Math.random() * 50).toFixed(2);
+    const top = (6 + Math.random() * 34).toFixed(2);
     const size = (2 + Math.random() * 3).toFixed(1);
     const duration = (2 + Math.random() * 2.4).toFixed(2);
     const delay = (Math.random() * -5).toFixed(2);

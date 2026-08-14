@@ -1324,34 +1324,30 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
   animation: festive-title-shimmer 7s linear infinite;
 }
 
-/* Captain's quarters: purple moonlit cabin, huge arched window, desk scene */
+/* Captain's quarters: real painted background art + a light animated overlay */
 .ghostship-bg {
   position: fixed;
   inset: 0;
-  background:
-    radial-gradient(ellipse 60% 46% at 50% 22%, rgba(120, 150, 230, 0.22) 0%, transparent 60%),
-    linear-gradient(180deg,
-      #241640 0%, #1c1040 26%, #170c34 50%, #130a2a 70%, #0c0620 100%);
+  background-image:
+    linear-gradient(180deg, rgba(10, 4, 20, 0.15) 0%, rgba(6, 2, 12, 0.55) 78%, rgba(4, 1, 8, 0.8) 100%),
+    url('../assets/nightrose-cabin-bg.jpg');
+  background-size: cover;
+  background-position: center bottom;
+  background-repeat: no-repeat;
 }
+/* Soft vignette so card panels stay readable over busy art */
 .ghostship-bg::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse 55% 40% at 50% 18%, rgba(180, 210, 255, 0.18) 0%, transparent 65%);
+  background: radial-gradient(ellipse 75% 55% at 50% 40%, transparent 40%, rgba(5, 2, 10, 0.55) 100%);
 }
-/* Wooden cabin floor at the bottom */
 .ghostship-bg::after {
   content: '';
   position: absolute;
   left: 0; right: 0; bottom: 0;
-  height: 30%;
-  background:
-    repeating-linear-gradient(90deg, rgba(0,0,0,0.28) 0px, transparent 3px, transparent 44px, rgba(200,160,110,0.06) 44px, transparent 47px),
-    repeating-linear-gradient(90deg, #3a2412 0px, #3a2412 46px, #2e1c0e 46px, #2e1c0e 92px),
-    linear-gradient(0deg, rgba(0,0,0,0.55) 0%, transparent 65%);
-  -webkit-mask-image: linear-gradient(0deg, #000 34%, transparent 100%);
-  mask-image: linear-gradient(0deg, #000 34%, transparent 100%);
-  box-shadow: 0 -50px 70px -20px rgba(0,0,0,0.6) inset;
+  height: 22%;
+  background: linear-gradient(0deg, rgba(3, 1, 6, 0.75) 0%, transparent 100%);
 }
 
 .ghostship-star {
@@ -1365,38 +1361,22 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
   --star-max: 0.7;
 }
 
-/* The full cabin scene: arched window with a big moon, captain at his desk, chest, curtain */
+/* Soft glow ring behind the moon in the real artwork, for a bit of life */
 .ghostship-vessel {
   position: fixed;
+  top: 4%;
   left: 50%;
-  bottom: 0;
-  width: min(94vw, 900px);
-  height: min(58vh, 472px);
+  width: min(30vw, 260px);
+  height: min(30vw, 260px);
   transform: translateX(-50%);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 251, 232, 0.28) 0%, rgba(255, 251, 232, 0.08) 45%, transparent 72%);
   pointer-events: none;
-  opacity: 0.97;
-  filter: drop-shadow(0 14px 26px rgba(0,0,0,0.65));
-}
-.ghostship-vessel svg {
-  width: 100%;
-  height: 100%;
-  overflow: visible;
-}
-.ghostship-vessel .gs-moon {
   animation: ghostship-moon-glow 6s ease-in-out infinite;
 }
 @keyframes ghostship-moon-glow {
-  0%, 100% { opacity: 0.8; }
+  0%, 100% { opacity: 0.7; }
   50% { opacity: 1; }
-}
-.ghostship-vessel .gs-curtain {
-  transform-box: fill-box;
-  transform-origin: top center;
-  animation: ghostship-sail-billow 7s ease-in-out infinite;
-}
-@keyframes ghostship-sail-billow {
-  0%, 100% { transform: skewX(-1deg); }
-  50% { transform: skewX(1deg); }
 }
 
 /* Lantern swinging above the desk */
