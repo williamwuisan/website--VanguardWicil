@@ -238,7 +238,14 @@ const DECK_ACCENTS = {
 const THEMED_DECKS = {
   'harri-premium-deck': 'circus',
   'nightrose-deck': 'ghostship',
+  'heartluru-deck': 'candyland',
 };
+const THEME_TITLE_CLASS = {
+  circus: 'is-festive',
+  ghostship: 'is-ghostship',
+  candyland: 'is-candyland',
+};
+const CANDY_COLORS = ['#ff6fa5', '#7bdcd0', '#ffd66b', '#c084fc', '#ff9ecf', '#f9f4c9'];
 const FESTIVE_COLORS = ['#ff6fae', '#ffd23f', '#4fd8ff', '#b46eff', '#5eead4', '#ff8a3d'];
 
 // Real curtain artwork (traced from the owner's circus EPS, recolored), reused for both sides
@@ -342,7 +349,12 @@ function buildCircusFx() {
   }
 
   // Poster-style checkered border framing the whole screen
-  html += `<div class="festive-frame-checker"></div>`;
+  html += `<div class="festive-frame-checker">
+    <span class="festive-frame-edge festive-frame-edge--top"></span>
+    <span class="festive-frame-edge festive-frame-edge--bottom"></span>
+    <span class="festive-frame-edge festive-frame-edge--left"></span>
+    <span class="festive-frame-edge festive-frame-edge--right"></span>
+  </div>`;
 
   return html;
 }
@@ -411,6 +423,58 @@ function buildGhostShipFx() {
   return html;
 }
 
+function buildCandylandFx() {
+  let html = '';
+
+  // The real candy-land illustration (traced from the owner's EPS, watermark cropped out)
+  html += `<div class="candyland-bg"></div>`;
+
+  // Twinkling sparkles scattered over the sky
+  for (let i = 0; i < 22; i++) {
+    const top = (2 + Math.random() * 34).toFixed(2);
+    const left = (Math.random() * 100).toFixed(2);
+    const size = (2 + Math.random() * 2.6).toFixed(2);
+    const duration = (2.2 + Math.random() * 3).toFixed(2);
+    const delay = (Math.random() * -6).toFixed(2);
+    html += `<span class="candyland-sparkle" style="top:${top}%; left:${left}%; width:${size}px; height:${size}px; animation-duration:${duration}s; animation-delay:${delay}s;"></span>`;
+  }
+
+  // Rising gumball bubbles drifting up through the whole scene
+  for (let i = 0; i < 32; i++) {
+    const left = (Math.random() * 100).toFixed(2);
+    const size = (7 + Math.random() * 12).toFixed(1);
+    const color = CANDY_COLORS[Math.floor(Math.random() * CANDY_COLORS.length)];
+    const duration = (7 + Math.random() * 8).toFixed(2);
+    const delay = (Math.random() * -14).toFixed(2);
+    const drift = Math.round(Math.random() * 100 - 50);
+    html += `<span class="candyland-bubble" style="left:${left}%; width:${size}px; height:${size}px; background:${color}; animation-duration:${duration}s; animation-delay:${delay}s; --drift:${drift}px;"></span>`;
+  }
+
+  // Sprinkles gently raining down
+  for (let i = 0; i < 40; i++) {
+    const left = (Math.random() * 100).toFixed(2);
+    const size = (4 + Math.random() * 4).toFixed(1);
+    const color = CANDY_COLORS[Math.floor(Math.random() * CANDY_COLORS.length)];
+    const duration = (5 + Math.random() * 5).toFixed(2);
+    const delay = (Math.random() * -10).toFixed(2);
+    const spin = Math.round(200 + Math.random() * 400);
+    html += `<span class="candyland-sprinkle" style="left:${left}%; width:${size}px; height:${(size * 2.6).toFixed(1)}px; background:${color}; animation-duration:${duration}s; animation-delay:${delay}s; --spin:${spin}deg;"></span>`;
+  }
+
+  // A handful of little hearts drifting up, nodding to "Heartluru"
+  for (let i = 0; i < 10; i++) {
+    const left = (4 + Math.random() * 92).toFixed(2);
+    const size = (9 + Math.random() * 8).toFixed(1);
+    const color = Math.random() < 0.5 ? '#ff6fa5' : '#ff9ecf';
+    const duration = (9 + Math.random() * 7).toFixed(2);
+    const delay = (Math.random() * -14).toFixed(2);
+    const drift = Math.round(Math.random() * 60 - 30);
+    html += `<span class="candyland-heart" style="left:${left}%; width:${size}px; height:${size}px; background:${color}; animation-duration:${duration}s; animation-delay:${delay}s; --drift:${drift}px;"></span>`;
+  }
+
+  return html;
+}
+
 function buildThemedFx(theme) {
   const container = document.getElementById('festiveFx');
   if (!container || container.dataset.builtTheme === theme) return;
@@ -419,6 +483,7 @@ function buildThemedFx(theme) {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   if (theme === 'circus') container.innerHTML = buildCircusFx();
   else if (theme === 'ghostship') container.innerHTML = buildGhostShipFx();
+  else if (theme === 'candyland') container.innerHTML = buildCandylandFx();
 }
 
 function applyThemedFx(deckId) {
@@ -426,16 +491,17 @@ function applyThemedFx(deckId) {
   const title = document.getElementById('detailDeckName');
   if (!container) return;
   const theme = THEMED_DECKS[deckId];
+  const allTitleClasses = Object.values(THEME_TITLE_CLASS);
   if (theme) {
     buildThemedFx(theme);
     container.className = 'festive-fx is-active theme-' + theme;
     if (title) {
-      title.classList.remove('is-festive', 'is-ghostship');
-      title.classList.add(theme === 'circus' ? 'is-festive' : 'is-ghostship');
+      title.classList.remove(...allTitleClasses);
+      title.classList.add(THEME_TITLE_CLASS[theme]);
     }
   } else {
     container.className = 'festive-fx';
-    if (title) title.classList.remove('is-festive', 'is-ghostship');
+    if (title) title.classList.remove(...allTitleClasses);
   }
 }
 
