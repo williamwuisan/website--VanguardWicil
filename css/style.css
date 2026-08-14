@@ -1135,88 +1135,25 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
 .festive-curtain {
   position: fixed;
   top: 0;
-  width: clamp(64px, 10vw, 150px);
+  width: clamp(80px, 12vw, 200px);
   height: 100%;
-  background:
-    repeating-linear-gradient(90deg, rgba(0,0,0,0.16) 0px, transparent 5px, transparent 16px, rgba(255,255,255,0.07) 16px, transparent 24px),
-    repeating-linear-gradient(90deg, #8a1530 0px, #8a1530 16px, #650f22 16px, #650f22 30px);
-  box-shadow: inset 0 0 55px 16px rgba(0,0,0,0.45);
-  opacity: 0.85;
+  pointer-events: none;
+  filter: drop-shadow(4px 0 14px rgba(0,0,0,0.5));
   animation-name: festive-curtain-sway;
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
   animation-duration: 7s;
 }
-@keyframes festive-curtain-sway {
-  0%, 100% { filter: brightness(1); }
-  50% { filter: brightness(1.08); }
-}
-.festive-curtain::before {
-  content: '';
-  position: absolute;
-  top: 0; bottom: 0;
-  width: 6px;
-  background: linear-gradient(180deg, #ffe07a, #b8860b, #ffe07a, #b8860b, #ffe07a, #b8860b, #ffe07a);
-  box-shadow: 0 0 8px rgba(255, 224, 122, 0.5);
-}
-.festive-curtain::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
+.festive-curtain svg {
   width: 100%;
-  height: 90px;
-  background: radial-gradient(ellipse 70% 100% at 50% 100%, rgba(0,0,0,0.5), transparent 70%);
+  height: 100%;
+  display: block;
 }
-.festive-curtain--left {
-  left: 0;
-  clip-path: polygon(
-    0% 0%, 100% 0%,
-    100% 3%, 78% 7%, 100% 11%, 78% 15%, 100% 19%, 78% 23%, 100% 27%,
-    78% 31%, 100% 35%, 78% 39%, 100% 43%, 78% 47%, 100% 51%, 78% 55%,
-    100% 59%, 78% 63%, 100% 67%, 78% 71%, 100% 75%, 78% 79%, 100% 83%,
-    78% 87%, 100% 91%, 78% 95%, 100% 99%,
-    100% 100%, 0% 100%
-  );
-}
-.festive-curtain--left::before { right: 22%; }
-.festive-curtain--right {
-  right: 0;
-  clip-path: polygon(
-    100% 0%, 0% 0%,
-    0% 3%, 22% 7%, 0% 11%, 22% 15%, 0% 19%, 22% 23%, 0% 27%,
-    22% 31%, 0% 35%, 22% 39%, 0% 43%, 22% 47%, 0% 51%, 22% 55%,
-    0% 59%, 22% 63%, 0% 67%, 22% 71%, 0% 75%, 22% 79%, 0% 83%,
-    22% 87%, 0% 91%, 22% 95%, 0% 99%,
-    0% 100%, 100% 100%
-  );
-}
-.festive-curtain--right::before { left: 22%; }
-
-.festive-tassel {
-  position: absolute;
-  width: 3px;
-  height: 22px;
-  background: linear-gradient(180deg, #ffe07a, #b8860b);
-  transform-origin: top center;
-  opacity: 0.85;
-  animation-name: festive-tassel-swing;
-  animation-timing-function: ease-in-out;
-  animation-iteration-count: infinite;
-}
-.festive-tassel::after {
-  content: '';
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 35% 30%, #fff3c4, #b8860b 70%);
-  transform: translateX(-50%);
-}
-@keyframes festive-tassel-swing {
-  0%, 100% { transform: rotate(-8deg); }
-  50% { transform: rotate(8deg); }
+.festive-curtain--left { left: 0; transform-origin: top left; }
+.festive-curtain--right { right: 0; transform-origin: top right; }
+@keyframes festive-curtain-sway {
+  0%, 100% { transform: skewY(-0.6deg); }
+  50% { transform: skewY(0.6deg); }
 }
 
 .festive-bunting-line {
@@ -1277,31 +1214,19 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
   100% { transform: translate(var(--drift, 40px), 112vh) rotate(var(--spin, 520deg)); opacity: 0; }
 }
 
-.festive-balloon {
+.festive-spark {
   position: absolute;
-  bottom: -90px;
-  border-radius: 50% 50% 50% 50% / 58% 58% 42% 42%;
+  clip-path: polygon(50% 0%, 63% 37%, 100% 50%, 63% 63%, 50% 100%, 37% 63%, 0% 50%, 37% 37%);
   opacity: 0;
-  box-shadow: inset -6px -8px 14px rgba(0,0,0,0.18), inset 6px 6px 10px rgba(255,255,255,0.25);
-  animation-name: festive-balloon-float;
-  animation-timing-function: ease-in-out;
+  animation-name: festive-spark-pop;
+  animation-timing-function: ease-out;
   animation-iteration-count: infinite;
 }
-.festive-balloon::after {
-  content: '';
-  position: absolute;
-  left: 50%;
-  top: 100%;
-  width: 1px;
-  height: 44px;
-  background: rgba(255,255,255,0.4);
-  transform: translateX(-50%);
-}
-@keyframes festive-balloon-float {
-  0% { transform: translate(0, 0); opacity: 0; }
-  8% { opacity: 0.9; }
-  92% { opacity: 0.9; }
-  100% { transform: translate(var(--drift, 24px), -118vh); opacity: 0; }
+@keyframes festive-spark-pop {
+  0% { transform: scale(0) rotate(0deg); opacity: 0; }
+  35% { transform: scale(1.1) rotate(70deg); opacity: 1; }
+  60% { transform: scale(0.85) rotate(110deg); opacity: 0.85; }
+  100% { transform: scale(0) rotate(200deg); opacity: 0; }
 }
 
 .festive-sparkle {
