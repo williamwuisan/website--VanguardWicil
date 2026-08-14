@@ -341,6 +341,9 @@ function buildCircusFx() {
     html += `<span class="festive-sparkle" style="top:${top}%; left:${left}%; width:${size}px; height:${size}px; background:${color}; animation-duration:${duration}s; animation-delay:${delay}s;"></span>`;
   }
 
+  // Poster-style checkered border framing the whole screen
+  html += `<div class="festive-frame-checker"></div>`;
+
   return html;
 }
 
