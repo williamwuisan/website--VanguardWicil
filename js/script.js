@@ -246,6 +246,21 @@ function buildFestiveFx() {
 
   let html = '';
 
+  // Big-top curtains framing the stage
+  html += `<div class="festive-curtain festive-curtain--left"></div>`;
+  html += `<div class="festive-curtain festive-curtain--right"></div>`;
+
+  // Bunting flag garland strung across the top
+  html += `<div class="festive-bunting-line"></div>`;
+  const flagCount = 16;
+  for (let i = 0; i < flagCount; i++) {
+    const left = (6 + (i / (flagCount - 1)) * 88).toFixed(2);
+    const color = FESTIVE_COLORS[i % FESTIVE_COLORS.length];
+    const duration = (2.6 + Math.random() * 1.6).toFixed(2);
+    const delay = (Math.random() * -4).toFixed(2);
+    html += `<span class="festive-flag" style="left:${left}%; background:${color}; animation-duration:${duration}s; animation-delay:${delay}s;"></span>`;
+  }
+
   // Spotlight beams sweeping like a stage show
   const spotlightSpots = [12, 38, 64, 88];
   spotlightSpots.forEach((leftPct, i) => {
