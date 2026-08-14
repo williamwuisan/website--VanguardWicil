@@ -340,133 +340,129 @@ function buildCircusFx() {
 function buildGhostShipFx() {
   let html = '';
 
-  // Cave interior with a warm shaft of light falling from the opening above
+  // Purple moonlit cabin backdrop with a wooden floor
   html += `<div class="ghostship-bg"></div>`;
-  html += `<div class="ghostship-moon"></div>`;
-  html += `<div class="ghostship-moonbeam"></div>`;
 
-  // Dust motes drifting inside the light shaft
-  for (let i = 0; i < 20; i++) {
-    const top = (Math.random() * 55).toFixed(2);
-    const left = (38 + Math.random() * 24).toFixed(2);
-    const size = (1.2 + Math.random() * 1.6).toFixed(2);
+  // Sparse stars, only near the top (mostly seen through the window anyway)
+  for (let i = 0; i < 14; i++) {
+    const top = (Math.random() * 20).toFixed(2);
+    const left = (Math.random() * 100).toFixed(2);
+    const size = (1 + Math.random() * 1.4).toFixed(2);
     const duration = (2.6 + Math.random() * 3).toFixed(2);
     const delay = (Math.random() * -6).toFixed(2);
     html += `<span class="ghostship-star" style="top:${top}%; left:${left}%; width:${size}px; height:${size}px; animation-duration:${duration}s; animation-delay:${delay}s;"></span>`;
   }
 
-  // Cave rock walls framing the wreck
-  html += `<div class="ghostship-rock ghostship-rock--left"></div>`;
-  html += `<div class="ghostship-rock ghostship-rock--right"></div>`;
-
-  // Drifting mist/steam off the water
-  const mistBands = [
-    { top: 32, height: 80, duration: 30 },
-    { top: 46, height: 100, duration: 38 },
-    { top: 58, height: 70, duration: 34 },
-  ];
-  mistBands.forEach((m) => {
-    const delay = (Math.random() * -20).toFixed(2);
-    html += `<div class="ghostship-mist" style="top:${m.top}%; height:${m.height}px; animation-duration:${m.duration}s; animation-delay:${delay}s;"></div>`;
-  });
-
-  // The wrecked ship: a proper vector illustration (jagged broken hull, torn sails, snapped mast)
+  // The full cabin scene: huge arched window with a big moon, the captain at his desk, a chest, a curtain
   html += `
     <div class="ghostship-vessel">
-      <svg viewBox="0 0 560 340" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax meet">
+      <svg viewBox="0 0 800 420" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax meet">
         <defs>
-          <linearGradient id="gsHullGrad" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stop-color="#4a3620"/>
-            <stop offset="55%" stop-color="#2a1c10"/>
-            <stop offset="100%" stop-color="#120b06"/>
+          <linearGradient id="gsSkyGrad" cx="50%" cy="35%" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#7396e0"/>
+            <stop offset="45%" stop-color="#3e5dae"/>
+            <stop offset="100%" stop-color="#1b2d63"/>
           </linearGradient>
-          <linearGradient id="gsSailGrad" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stop-color="#413a35" stop-opacity="0.92"/>
-            <stop offset="100%" stop-color="#171411" stop-opacity="0.55"/>
-          </linearGradient>
-          <radialGradient id="gsGlow" cx="50%" cy="30%" r="70%">
-            <stop offset="0%" stop-color="#ffc65a" stop-opacity="0.35"/>
-            <stop offset="100%" stop-color="#ffc65a" stop-opacity="0"/>
+          <radialGradient id="gsMoonGlow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#fffbe8" stop-opacity="0.95"/>
+            <stop offset="55%" stop-color="#fffbe8" stop-opacity="0.3"/>
+            <stop offset="100%" stop-color="#fffbe8" stop-opacity="0"/>
           </radialGradient>
+          <linearGradient id="gsDeskGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#6a4527"/>
+            <stop offset="100%" stop-color="#301d10"/>
+          </linearGradient>
+          <clipPath id="gsWindowClip">
+            <path d="M280,60 C280,20 320,5 400,5 C480,5 520,20 520,60 L520,262 L280,262 Z"/>
+          </clipPath>
         </defs>
 
-        <ellipse class="gs-glow" cx="280" cy="255" rx="180" ry="45" fill="url(#gsGlow)"/>
+        <!-- arched window with a big glowing moon -->
+        <g clip-path="url(#gsWindowClip)">
+          <rect x="270" y="0" width="260" height="272" fill="url(#gsSkyGrad)"/>
+          <circle class="gs-moon" cx="400" cy="92" r="58" fill="url(#gsMoonGlow)"/>
+          <circle class="gs-moon" cx="400" cy="92" r="30" fill="#fffdf2"/>
+          <circle cx="320" cy="50" r="1.6" fill="#fff"/>
+          <circle cx="350" cy="35" r="1.2" fill="#fff"/>
+          <circle cx="460" cy="55" r="1.8" fill="#fff"/>
+          <circle cx="480" cy="90" r="1.3" fill="#fff"/>
+          <circle cx="310" cy="120" r="1.4" fill="#fff"/>
+          <circle cx="490" cy="140" r="1.5" fill="#fff"/>
+          <circle cx="340" cy="165" r="1.2" fill="#fff"/>
+          <circle cx="460" cy="185" r="1.6" fill="#fff"/>
+        </g>
+        <path d="M280,60 C280,20 320,5 400,5 C480,5 520,20 520,60 L520,262 L280,262 Z"
+              fill="none" stroke="#0d0818" stroke-width="10"/>
+        <path d="M400,8 L400,262 M285,122 L515,122 M285,192 L515,192 M332,20 L332,262 M468,20 L468,262"
+              stroke="#0d0818" stroke-width="5" opacity="0.85"/>
+        <path d="M285,65 C300,25 340,10 400,10 C460,10 500,25 515,65"
+              fill="none" stroke="#0d0818" stroke-width="8"/>
 
-        <path d="M 70,230 L 95,205 L 118,222 L 140,198 L 168,215 L 195,192
-                 L 225,208 L 255,190 L 288,206 L 322,188 L 355,204 L 385,196
-                 L 415,212 L 445,222 L 470,238 C 478,255 465,272 435,282
-                 L 400,290 C 350,296 260,296 200,290 L 130,282
-                 C 92,274 65,255 70,230 Z"
-              fill="url(#gsHullGrad)" stroke="#050301" stroke-width="2"/>
+        <!-- desk -->
+        <path d="M255,300 L545,300 L560,420 L240,420 Z" fill="url(#gsDeskGrad)" stroke="#160d05" stroke-width="2"/>
+        <rect x="255" y="292" width="290" height="14" rx="3" fill="#7a5230"/>
+        <path d="M270,340 L280,420 M330,320 L332,420 M400,314 L400,420 M470,320 L472,420 M530,340 L522,420"
+              stroke="#160d05" stroke-width="1.5" opacity="0.4"/>
 
-        <path d="M150,235 L165,280 M230,225 L235,288 M310,222 L308,292 M390,232 L385,284"
-              stroke="#000" stroke-width="2" opacity="0.4"/>
-        <path d="M100,240 L440,262" stroke="#5c4326" stroke-width="1.5" opacity="0.4"/>
+        <!-- captain silhouette, seated, mug raised -->
+        <g fill="#0a0612">
+          <path d="M410,300 C405,270 415,240 405,215 C420,205 445,205 455,220
+                   C468,215 480,225 476,240 L470,300 Z"/>
+          <circle cx="428" cy="195" r="20"/>
+          <path d="M403,190 C400,175 415,162 428,162 C444,162 458,174 456,190
+                   C448,182 410,182 403,190 Z"/>
+          <path d="M398,192 C412,186 446,186 460,193 C458,199 400,199 398,192 Z"/>
+          <path d="M452,222 C466,210 476,192 472,178 C480,180 486,196 480,212
+                   C476,224 464,232 456,232 Z"/>
+          <circle cx="478" cy="176" r="9"/>
+        </g>
 
-        <path d="M256,45 L262,205" stroke="#1c130a" stroke-width="6" stroke-linecap="round"/>
-        <path d="M256,45 L268,32 M256,45 L248,30" stroke="#1c130a" stroke-width="4" stroke-linecap="round"/>
-        <path d="M375,95 L368,210" stroke="#1c130a" stroke-width="5" stroke-linecap="round"/>
+        <!-- bottles and cup on the desk -->
+        <path d="M300,270 L300,300 L312,300 L312,258 C312,252 306,250 304,254 C300,258 300,264 300,270 Z" fill="#2a5a3a" opacity="0.9"/>
+        <path d="M330,280 L330,300 L340,300 L340,268 C340,263 335,261 333,265 C330,269 330,274 330,280 Z" fill="#5a2a4a" opacity="0.9"/>
+        <path d="M360,286 L358,300 L378,300 L376,286 C378,282 376,276 368,276 C360,276 358,282 360,286 Z" fill="#c9a24a" opacity="0.9"/>
 
-        <path d="M175,72 L340,66" stroke="#1c130a" stroke-width="5" stroke-linecap="round"/>
-        <path d="M320,108 L420,102" stroke="#1c130a" stroke-width="4" stroke-linecap="round"/>
+        <!-- treasure chest, left -->
+        <g>
+          <path d="M40,340 L160,340 L160,410 L40,410 Z" fill="#4a2c14" stroke="#1c0f06" stroke-width="2"/>
+          <path d="M35,320 C35,300 60,290 100,290 C140,290 165,300 165,320 L165,342 L35,342 Z" fill="#5a3a1c" stroke="#1c0f06" stroke-width="2"/>
+          <rect x="90" y="330" width="20" height="16" rx="3" fill="#c9a24a"/>
+          <path d="M35,320 L165,320" stroke="#c9a24a" stroke-width="4" opacity="0.7"/>
+          <path d="M40,340 L160,340" stroke="#c9a24a" stroke-width="4" opacity="0.7"/>
+        </g>
 
-        <path d="M256,45 L200,205 M256,45 L330,200 M375,95 L340,208 M375,95 L410,205 M262,205 L340,66 M262,205 L175,72"
-              stroke="#241a10" stroke-width="1" opacity="0.55" fill="none"/>
-
-        <path class="gs-sail gs-sail--main" fill="url(#gsSailGrad)"
-              d="M182,75 C 205,90 192,105 208,120 C 190,132 202,142 186,155
-                 C 205,168 195,182 210,195 C 235,200 265,198 288,193
-                 C 300,178 288,162 296,148 C 305,132 292,118 300,102
-                 C 310,86 296,76 288,68 C 250,60 210,64 182,75 Z"/>
-        <ellipse cx="228" cy="118" rx="8" ry="11" fill="#0b0906" opacity="0.75"/>
-        <ellipse cx="262" cy="160" rx="10" ry="7" fill="#0b0906" opacity="0.7"/>
-        <path d="M240,90 L236,108" stroke="#0b0906" stroke-width="2" opacity="0.5"/>
-
-        <path class="gs-sail gs-sail--fore" fill="url(#gsSailGrad)"
-              d="M330,112 C 345,122 336,134 346,146 C 333,155 342,164 331,175
-                 C 346,184 340,194 350,202 C 368,206 388,204 402,200
-                 C 410,190 402,178 408,168 C 415,156 405,146 411,134
-                 C 418,122 407,115 402,110 C 378,105 350,107 330,112 Z"/>
-        <ellipse cx="368" cy="150" rx="6" ry="8" fill="#0b0906" opacity="0.7"/>
-
-        <path class="gs-flag" fill="#0a0806" d="M262,30 L295,36 L280,45 L296,54 L262,48 Z"/>
+        <!-- curtain drape, right -->
+        <path class="gs-curtain" d="M700,0 C680,60 690,140 672,200 C688,260 678,340 696,420 L800,420 L800,0 Z"
+              fill="#3a1c4a" opacity="0.9"/>
+        <path d="M700,0 C680,60 690,140 672,200 C688,260 678,340 696,420"
+              fill="none" stroke="#6a3a7a" stroke-width="3" opacity="0.6"/>
       </svg>
     </div>`;
 
-  // Rusty lanterns swinging at the top corners
-  const lanternSpots = [
-    { left: 9, ropeHeight: 46 },
-    { left: 91, ropeHeight: 60 },
-  ];
-  lanternSpots.forEach((l, i) => {
-    const duration = (3 + Math.random() * 1.6).toFixed(2);
-    const delay = (Math.random() * -4).toFixed(2);
-    html += `<span class="ghostship-lantern" style="left:${l.left}%; height:${l.ropeHeight}px; animation-duration:${duration}s; animation-delay:${delay}s;"></span>`;
-  });
+  // Lantern hanging above the desk, in front of the window
+  html += `<span class="ghostship-lantern" style="left:50%; top:6%; height:38px; animation-duration:3.4s;"></span>`;
 
-  // Bats flitting across the cave in slow arcs
-  for (let i = 0; i < 3; i++) {
-    const top = (4 + Math.random() * 12).toFixed(2);
-    const left = (10 + Math.random() * 20).toFixed(2);
+  // Bats flitting past the window
+  for (let i = 0; i < 2; i++) {
+    const top = (10 + Math.random() * 10).toFixed(2);
+    const left = (28 + Math.random() * 12).toFixed(2);
     const duration = (13 + Math.random() * 7).toFixed(2);
     const delay = (Math.random() * -12).toFixed(2);
-    const flyX = Math.round(160 + Math.random() * 100);
-    const flyY = Math.round(-20 - Math.random() * 30);
+    const flyX = Math.round(120 + Math.random() * 80);
+    const flyY = Math.round(-16 - Math.random() * 20);
     const flyX2 = Math.round(flyX * 2);
     const flyY2 = Math.round(flyY * -0.4);
     html += `<span class="ghostship-bat" style="top:${top}%; left:${left}%; animation-duration:${duration}s; animation-delay:${delay}s; --fly-x:${flyX}px; --fly-y:${flyY}px; --fly-x2:${flyX2}px; --fly-y2:${flyY2}px;"></span>`;
   }
 
-  // Gold coin glints pooling around the wreck, teal shimmer further out on the water
-  for (let i = 0; i < 20; i++) {
-    const nearShip = Math.random() < 0.6;
-    const left = nearShip ? (32 + Math.random() * 36).toFixed(2) : (Math.random() * 96).toFixed(2);
-    const top = (70 + Math.random() * 26).toFixed(2);
-    const size = (nearShip ? 3 + Math.random() * 5 : 3 + Math.random() * 4).toFixed(1);
+  // Dust motes catching the moonlight
+  for (let i = 0; i < 16; i++) {
+    const left = (30 + Math.random() * 42).toFixed(2);
+    const top = (10 + Math.random() * 55).toFixed(2);
+    const size = (2 + Math.random() * 3).toFixed(1);
     const duration = (2 + Math.random() * 2.4).toFixed(2);
     const delay = (Math.random() * -5).toFixed(2);
-    const cls = nearShip ? 'ghostship-wisp ghostship-wisp--gold' : 'ghostship-wisp';
-    html += `<span class="${cls}" style="left:${left}%; top:${top}%; width:${size}px; height:${size}px; animation-duration:${duration}s; animation-delay:${delay}s;"></span>`;
+    html += `<span class="ghostship-wisp" style="left:${left}%; top:${top}%; width:${size}px; height:${size}px; animation-duration:${duration}s; animation-delay:${delay}s;"></span>`;
   }
 
   return html;
