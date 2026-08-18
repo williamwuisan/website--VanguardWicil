@@ -248,61 +248,11 @@ const THEME_TITLE_CLASS = {
 const CANDY_COLORS = ['#ff6fa5', '#7bdcd0', '#ffd66b', '#c084fc', '#ff9ecf', '#f9f4c9'];
 const FESTIVE_COLORS = ['#ff6fae', '#ffd23f', '#4fd8ff', '#b46eff', '#5eead4', '#ff8a3d'];
 
-// Real curtain artwork (traced from the owner's circus EPS, recolored), reused for both sides
-const CIRCUS_CURTAIN_PATHS = `
-  <path d="m 170.461,2328.02 c 0,0 918.909,1264.1 1045.169,3394.04 h -70.14 c 0,0 -21.05,-874.48 -259.541,-1662.39 -238.5,-787.9 -617.285,-1593.12 -771.605,-1584.46 -106.594,5.98 120.734,348.85 329.683,1108.26 126.266,458.89 252.528,1290.08 217.453,1290.08 -35.074,0 -140.292,-805.22 -273.57,-1246.79 -141.887,-470.1 -347.2225,-1021.68 -440.1639,-1039 -92.9451,-17.31 117.4922,1142.9 215.6989,1991.41 98.203,848.51 84.172,1220.82 84.172,1220.82 l -476.992,-51.95 63.133,-3290.15 336.703,-129.87" transform="matrix(0.13333333,0,0,-0.13333333,0,733.33333)" fill="#5c0d1e" />
-  <path d="m 4161.34,2328.02 c 0,0 -918.92,1264.1 -1045.18,3394.04 h 70.15 c 0,0 21.04,-874.48 259.54,-1662.39 238.49,-787.9 617.28,-1593.12 771.6,-1584.46 106.59,5.98 -120.74,348.85 -329.68,1108.26 -126.27,458.89 -252.53,1290.08 -217.46,1290.08 35.08,0 140.29,-805.22 273.57,-1246.79 141.89,-470.1 347.23,-1021.68 440.17,-1039 92.94,-17.31 -117.5,1142.9 -215.7,1991.41 -98.21,848.51 -84.18,1220.82 -84.18,1220.82 l 477,-51.95 -63.13,-3290.15 -336.7,-129.87" transform="matrix(0.13333333,0,0,-0.13333333,0,733.33333)" fill="#5c0d1e" />
-  <path d="m 1629.49,5704.75 c 0,0 -575.19,-2672.48 -1455.525,-3441.03 0,0 84.176,-235.81 199.918,-1139.73 C 489.621,220.059 521.188,10.4609 521.188,10.4609 c 0,0 -14.028,-104.8125 -192.903,-113.5389 0,0 -49.101,-100.442 -164.84,-122.27 -115.7419,-21.832 -143.8005,13.098 -143.8005,13.098 0,0 -21.04294,-91.699 -122.7535,-109.172 V 5696.01 l 1732.599,8.74" transform="matrix(0.13333333,0,0,-0.13333333,0,733.33333)" fill="#8a1530" />
-  <path d="m 2702.3,5704.75 c 0,0 575.2,-2672.48 1455.53,-3441.03 0,0 -84.18,-235.81 -199.92,-1139.73 C 3842.17,220.059 3810.6,10.4609 3810.6,10.4609 c 0,0 14.03,-104.8125 192.91,-113.5389 0,0 49.1,-100.442 164.84,-122.27 115.74,-21.832 143.8,13.098 143.8,13.098 0,0 21.04,-91.699 122.75,-109.172 V 5696.01 l -1732.6,8.74" transform="matrix(0.13333333,0,0,-0.13333333,0,733.33333)" fill="#8a1530" />
-  <path d="M 173.965,2263.72 C 1054.3,3032.27 1629.49,5704.75 1629.49,5704.75 l -69.47,-0.36 C 1469.06,5297.52 920.188,2969.66 117.848,2255.11 c 0,0 84.175,-240.55 199.918,-1162.66 C 433.508,170.352 465.07,-43.4688 465.07,-43.4688 c 0,0 -1.554,-11.8593 -10.23,-27.9921 59.894,33.75 66.348,81.9218 66.348,81.9218 0,0 -31.567,209.5981 -147.305,1113.5291 -115.742,903.92 -199.918,1139.73 -199.918,1139.73" transform="matrix(0.13333333,0,0,-0.13333333,0,733.33333)" fill="#ff8fa8" />
-  <path d="M 4157.83,2263.72 C 3277.5,3032.27 2702.3,5704.75 2702.3,5704.75 l 69.47,-0.36 c 90.96,-406.87 639.84,-2734.73 1442.17,-3449.28 0,0 -84.17,-240.55 -199.91,-1162.66 C 3898.29,170.352 3866.72,-43.4688 3866.72,-43.4688 c 0,0 1.56,-11.8593 10.23,-27.9921 -59.89,33.75 -66.35,81.9218 -66.35,81.9218 0,0 31.57,209.5981 147.31,1113.5291 115.74,903.92 199.92,1139.73 199.92,1139.73" transform="matrix(0.13333333,0,0,-0.13333333,0,733.33333)" fill="#ff8fa8" />
-  <path d="m 232.316,5659.07 c 0,0 98.207,-360.99 458.297,-524.03 360.097,-163.03 621.977,81.52 621.977,81.52 0,0 248.09,-402.88 872.95,-407.54 l 5.46,-0.03 c 1.81,0 3.63,-0.01 5.45,-0.01 624.86,4.65 872.95,407.58 872.95,407.58 0,0 261.89,-244.55 621.98,-81.52 360.09,163.04 458.3,524.03 458.3,524.03 H 232.316" transform="matrix(0.13333333,0,0,-0.13333333,0,733.33333)" fill="#5c0d1e" />
-  <path d="m 297.789,5659.07 c 0,0 94.922,-306.6 442.977,-445.06 348.054,-138.47 601.184,69.23 601.184,69.23 0,0 239.8,-342.18 843.77,-346.13 l 5.28,-0.02 c 1.75,-0.01 3.51,-0.01 5.27,-0.01 603.97,3.95 843.77,346.16 843.77,346.16 0,0 253.13,-207.7 601.19,-69.23 348.05,138.46 442.98,445.06 442.98,445.06 H 297.789" transform="matrix(0.13333333,0,0,-0.13333333,0,733.33333)" fill="#8a1530" />
-  <path d="m 905.215,5375.71 c 312.805,0 414.655,186.33 414.655,186.33 0,0 210.96,-473.58 872.95,-473.58 661.98,0 858.4,465.81 858.4,465.81 0,0 123.66,-271.72 538.31,-209.61 210.26,31.49 315.74,176.2 368.66,314.41 h -58.78 c -69.61,-111.18 -177.46,-216.48 -338.97,-229.02 -400.1,-31.05 -523.77,217.38 -523.77,217.38 0,0 -160.04,-458.04 -851.13,-458.04 -627.02,0 -816.89,396.23 -846.7,469.68 h -15.31 c -40.92,-41.88 -194.37,-182.43 -411.042,-182.43 -212.64,0 -324.433,111.21 -374.226,182.43 h -12.617 c 40.816,-97.53 148.851,-283.36 379.57,-283.36" transform="matrix(0.13333333,0,0,-0.13333333,0,733.33333)" fill="#5c0d1e" />
-  <path d="m 2203.41,5406.77 c 292.86,0 477.01,129.76 585.62,252.3 h -102.89 c -108.81,-83.5 -265.83,-197.96 -488.83,-197.96 -216.44,0 -370.73,113.78 -479.1,197.96 h -103.22 c 112.25,-123.33 298.86,-252.3 588.42,-252.3" transform="matrix(0.13333333,0,0,-0.13333333,0,733.33333)" fill="#5c0d1e" />
-`;
-
 function buildCircusFx() {
   let html = '';
 
-  // Big-top tent canopy background (replaces the starfield behind this deck)
-  html += `<div class="festive-bigtop-bg"></div>`;
-
-  // String lights following the canopy seams
-  const lightArcs = [
-    { top: 11, count: 11, amp: 5 },
-    { top: 16, count: 13, amp: 6 },
-    { top: 21, count: 15, amp: 7 },
-  ];
-  lightArcs.forEach((arc, arcIndex) => {
-    for (let i = 0; i < arc.count; i++) {
-      const t = i / (arc.count - 1);
-      const left = (2 + t * 96).toFixed(2);
-      const top = (arc.top + Math.sin(t * Math.PI) * arc.amp).toFixed(2);
-      const duration = (1.6 + Math.random() * 1.8).toFixed(2);
-      const delay = (Math.random() * -4).toFixed(2);
-      html += `<span class="festive-light" style="left:${left}%; top:${top}%; animation-duration:${duration}s; animation-delay:${delay}s;"></span>`;
-    }
-  });
-
-  // Big-top curtains: real traced artwork, cropped to each side
-  html += `<div class="festive-curtain festive-curtain--left">
-    <svg viewBox="-30.5833 -39.9987 319.3695 816.188" preserveAspectRatio="xMinYMin slice" xmlns="http://www.w3.org/2000/svg">${CIRCUS_CURTAIN_PATHS}</svg>
-  </div>`;
-  html += `<div class="festive-curtain festive-curtain--right">
-    <svg viewBox="288.7862 -39.9987 319.3695 816.188" preserveAspectRatio="xMaxYMin slice" xmlns="http://www.w3.org/2000/svg">${CIRCUS_CURTAIN_PATHS}</svg>
-  </div>`;
-
-  // Bunting flag garland strung across the top
-  html += `<div class="festive-bunting-line"></div>`;
-  const flagCount = 16;
-  for (let i = 0; i < flagCount; i++) {
-    const left = (6 + (i / (flagCount - 1)) * 88).toFixed(2);
-    const color = FESTIVE_COLORS[i % FESTIVE_COLORS.length];
-    const duration = (2.6 + Math.random() * 1.6).toFixed(2);
-    const delay = (Math.random() * -4).toFixed(2);
-    html += `<span class="festive-flag" style="left:${left}%; background:${color}; animation-duration:${duration}s; animation-delay:${delay}s;"></span>`;
-  }
+  // The real circus stage photo as the sole background
+  html += `<div class="festive-stage-bg"></div>`;
 
   // Spotlight beams sweeping like a stage show
   const spotlightSpots = [12, 38, 64, 88];
@@ -313,35 +263,11 @@ function buildCircusFx() {
     html += `<div class="festive-spotlight" style="left:${leftPct}%; background:linear-gradient(180deg, ${color}, transparent 75%); animation-duration:${duration}s; animation-delay:${delay}s;"></div>`;
   });
 
-  // Falling confetti
-  for (let i = 0; i < 55; i++) {
-    const left = (Math.random() * 100).toFixed(2);
-    const size = (5 + Math.random() * 6).toFixed(1);
-    const color = FESTIVE_COLORS[Math.floor(Math.random() * FESTIVE_COLORS.length)];
-    const duration = (4 + Math.random() * 5).toFixed(2);
-    const delay = (Math.random() * -9).toFixed(2);
-    const drift = Math.round(Math.random() * 160 - 80);
-    const spin = Math.round(360 + Math.random() * 540);
-    const shape = Math.random() < 0.5 ? '2px' : '50%';
-    html += `<span class="festive-confetti" style="left:${left}%; width:${size}px; height:${size}px; background:${color}; border-radius:${shape}; animation-duration:${duration}s; animation-delay:${delay}s; --drift:${drift}px; --spin:${spin}deg;"></span>`;
-  }
-
-  // Tiny firework-like sparks popping all over
-  for (let i = 0; i < 48; i++) {
-    const left = (Math.random() * 100).toFixed(2);
-    const top = (Math.random() * 100).toFixed(2);
-    const size = (5 + Math.random() * 7).toFixed(1);
-    const color = FESTIVE_COLORS[Math.floor(Math.random() * FESTIVE_COLORS.length)];
-    const duration = (1.4 + Math.random() * 1.6).toFixed(2);
-    const delay = (Math.random() * -4).toFixed(2);
-    html += `<span class="festive-spark" style="left:${left}%; top:${top}%; width:${size}px; height:${size}px; background:${color}; box-shadow:0 0 6px 1px ${color}; animation-duration:${duration}s; animation-delay:${delay}s;"></span>`;
-  }
-
   // Twinkling sparkles
-  for (let i = 0; i < 24; i++) {
+  for (let i = 0; i < 40; i++) {
     const top = (Math.random() * 100).toFixed(2);
     const left = (Math.random() * 100).toFixed(2);
-    const size = (6 + Math.random() * 8).toFixed(1);
+    const size = (5 + Math.random() * 7).toFixed(1);
     const color = FESTIVE_COLORS[Math.floor(Math.random() * FESTIVE_COLORS.length)];
     const duration = (2.4 + Math.random() * 2.6).toFixed(2);
     const delay = (Math.random() * -6).toFixed(2);

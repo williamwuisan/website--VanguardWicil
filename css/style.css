@@ -1083,77 +1083,15 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
 }
 .festive-fx.is-active { opacity: 1; }
 
-.festive-bigtop-bg {
+.festive-stage-bg {
   position: fixed;
   inset: 0;
-  background:
-    radial-gradient(ellipse 95% 65% at 50% 0%, transparent 0%, transparent 32%, #0d0710 78%),
-    conic-gradient(from 200deg at 50% -55%,
-      #8a1530 0deg 18deg, #150c1c 18deg 36deg,
-      #c9971a 36deg 54deg, #150c1c 54deg 72deg,
-      #1f5f6b 72deg 90deg, #150c1c 90deg 108deg,
-      #6b3fa0 108deg 126deg, #150c1c 126deg 144deg,
-      #8a1530 144deg 162deg, #150c1c 162deg 180deg,
-      #c9971a 180deg 198deg, #150c1c 198deg 216deg,
-      #1f5f6b 216deg 234deg, #150c1c 234deg 252deg,
-      #6b3fa0 252deg 270deg, #150c1c 270deg 288deg,
-      #8a1530 288deg 306deg, #150c1c 306deg 324deg,
-      #c9971a 324deg 342deg, #150c1c 342deg 360deg),
-    #0d0710;
-}
-.festive-bigtop-bg::after {
-  content: '';
-  position: absolute;
-  left: 0; right: 0; bottom: 0;
-  height: 38%;
-  background:
-    repeating-linear-gradient(90deg, rgba(0,0,0,0.26) 0px, transparent 3px, transparent 42px, rgba(255,208,120,0.12) 42px, transparent 45px),
-    repeating-linear-gradient(90deg, #8a5830 0px, #8a5830 44px, #744824 44px, #744824 88px),
-    linear-gradient(0deg, rgba(0,0,0,0.5) 0%, transparent 65%);
-  -webkit-mask-image: linear-gradient(0deg, #000 38%, transparent 100%);
-  mask-image: linear-gradient(0deg, #000 38%, transparent 100%);
-  box-shadow: 0 -60px 70px -20px rgba(0,0,0,0.6) inset;
-}
-
-.festive-light {
-  position: fixed;
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  background: radial-gradient(circle, #fff6d8 0%, #ffd23f 55%, transparent 80%);
-  box-shadow: 0 0 12px 3px rgba(255, 210, 90, 0.75);
-  opacity: 0.35;
-  animation-name: festive-light-twinkle;
-  animation-timing-function: ease-in-out;
-  animation-iteration-count: infinite;
-}
-@keyframes festive-light-twinkle {
-  0%, 100% { opacity: 0.3; transform: scale(0.85); }
-  50% { opacity: 1; transform: scale(1.15); }
-}
-
-.festive-curtain {
-  position: fixed;
-  top: 0;
-  width: clamp(100px, 39.13vh, 280px);
-  height: 100%;
-  pointer-events: none;
-  filter: drop-shadow(4px 0 14px rgba(0,0,0,0.5));
-  animation-name: festive-curtain-sway;
-  animation-timing-function: ease-in-out;
-  animation-iteration-count: infinite;
-  animation-duration: 7s;
-}
-.festive-curtain svg {
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-.festive-curtain--left { left: 0; transform-origin: top left; }
-.festive-curtain--right { right: 0; transform-origin: top right; }
-@keyframes festive-curtain-sway {
-  0%, 100% { transform: skewY(-0.6deg); }
-  50% { transform: skewY(0.6deg); }
+  background-image:
+    linear-gradient(180deg, rgba(10, 4, 8, 0.1) 0%, rgba(8, 3, 6, 0.3) 75%, rgba(6, 2, 4, 0.55) 100%),
+    url('../assets/harri-circus-stage.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
 }
 
 .festive-frame-checker {
@@ -1187,30 +1125,6 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
 .festive-frame-edge--left { left: 0; }
 .festive-frame-edge--right { right: 0; }
 
-.festive-bunting-line {
-  position: fixed;
-  top: 64px;
-  left: 0; right: 0;
-  height: 1px;
-  background: rgba(255, 224, 122, 0.3);
-}
-.festive-flag {
-  position: fixed;
-  top: 64px;
-  width: 20px;
-  height: 24px;
-  clip-path: polygon(0 0, 100% 0, 50% 100%);
-  transform-origin: top center;
-  opacity: 0.85;
-  animation-name: festive-flag-sway;
-  animation-timing-function: ease-in-out;
-  animation-iteration-count: infinite;
-}
-@keyframes festive-flag-sway {
-  0%, 100% { transform: rotate(-5deg); }
-  50% { transform: rotate(5deg); }
-}
-
 .festive-spotlight {
   position: absolute;
   top: -30%;
@@ -1228,36 +1142,6 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
 @keyframes festive-spotlight-sweep {
   0%, 100% { transform: rotate(-24deg); }
   50% { transform: rotate(24deg); }
-}
-
-.festive-confetti {
-  position: absolute;
-  top: -24px;
-  opacity: 0;
-  animation-name: festive-confetti-fall;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-}
-@keyframes festive-confetti-fall {
-  0% { transform: translate(0, -24px) rotate(0deg); opacity: 0; }
-  6% { opacity: 0.95; }
-  92% { opacity: 0.95; }
-  100% { transform: translate(var(--drift, 40px), 112vh) rotate(var(--spin, 520deg)); opacity: 0; }
-}
-
-.festive-spark {
-  position: absolute;
-  clip-path: polygon(50% 0%, 63% 37%, 100% 50%, 63% 63%, 50% 100%, 37% 63%, 0% 50%, 37% 37%);
-  opacity: 0;
-  animation-name: festive-spark-pop;
-  animation-timing-function: ease-out;
-  animation-iteration-count: infinite;
-}
-@keyframes festive-spark-pop {
-  0% { transform: scale(0) rotate(0deg); opacity: 0; }
-  35% { transform: scale(1.1) rotate(70deg); opacity: 1; }
-  60% { transform: scale(0.85) rotate(110deg); opacity: 0.85; }
-  100% { transform: scale(0) rotate(200deg); opacity: 0; }
 }
 
 .festive-sparkle {
