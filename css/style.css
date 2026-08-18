@@ -480,6 +480,34 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
   .cosmic-star, .cosmic-nebula, .cosmic-portal, .cosmic-comet, .cosmic-sparkle, .cosmic-portal__diamonds, .hero__accent-square, .cosmic-constellation-star, .cosmic-constellation { animation: none !important; transition: none !important; }
 }
 
+/* Deck-matched background that crossfades as the hero carousel slides */
+.home-theme-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.home-theme-bg__layer {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transition: opacity 1.2s ease;
+}
+.home-theme-bg__layer.is-active { opacity: 1; }
+.home-theme-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(11, 14, 19, 0.35) 0%, rgba(11, 14, 19, 0.7) 55%, var(--black) 100%);
+}
+@media (prefers-reduced-motion: reduce) {
+  .home-theme-bg__layer { transition: none; }
+}
+
 .particles {
   position: fixed;
   inset: 0;

@@ -147,6 +147,10 @@
 
   <!-- ===== HOME VIEW ===== -->
   <section id="view-home" class="view view--flush">
+    <div class="home-theme-bg" id="homeThemeBg" aria-hidden="true">
+      <div class="home-theme-bg__layer" id="homeThemeBgA"></div>
+      <div class="home-theme-bg__layer" id="homeThemeBgB"></div>
+    </div>
     <div class="particles" id="homeParticles" aria-hidden="true"></div>
     <div class="home-band home-band--hero">
       <svg class="cosmic-portal" viewBox="0 0 300 300" aria-hidden="true">
@@ -242,6 +246,20 @@
           <div class="hero-carousel__track" id="heroTrack">
 
             <div class="hero-carousel__slide">
+              <button class="flip-card" data-flip-card aria-label="Click to reveal a short story about this sleeve">
+                <div class="flip-card__inner">
+                  <div class="flip-card__face flip-card__face--front">
+                    <img src="assets/hero-sleeve133.webp" alt="Cardfight!! Vanguard sleeve" class="hero-art__image">
+                  </div>
+                  <div class="flip-card__face flip-card__face--back">
+                    <p class="flip-card__eyebrow">Lore</p>
+                    <p class="flip-card__story">Before any of the decks below, there's just this: the plain sleeve every fight starts behind. No clan, no lore, no name printed on the back — just the circuitry pattern every unit in Wicil's collection has ridden into battle at least once.<br><br>Flip through and you'll meet who's actually inside. Stand it up alone, and it's still just a sleeve, waiting for a deck.</p>
+                  </div>
+                </div>
+              </button>
+            </div>
+
+            <div class="hero-carousel__slide" data-bg="assets/chronojet-timerift.jpg">
               <button class="flip-card" data-flip-card aria-label="Click to reveal a short story about Chronojet Dragon">
                 <div class="flip-card__inner">
                   <div class="flip-card__face flip-card__face--front">
@@ -255,7 +273,7 @@
               </button>
             </div>
 
-            <div class="hero-carousel__slide">
+            <div class="hero-carousel__slide" data-bg="assets/harri-magic-circus-stage.jpg">
               <button class="flip-card" data-flip-card aria-label="Click to reveal a short story about Harri">
                 <div class="flip-card__inner">
                   <div class="flip-card__face flip-card__face--front">
@@ -269,7 +287,7 @@
               </button>
             </div>
 
-            <div class="hero-carousel__slide">
+            <div class="hero-carousel__slide" data-bg="assets/nightrose-ghost-ship-cabin.jpg">
               <button class="flip-card" data-flip-card aria-label="Click to reveal a short story about Nightrose">
                 <div class="flip-card__inner">
                   <div class="flip-card__face flip-card__face--front">
@@ -283,7 +301,7 @@
               </button>
             </div>
 
-            <div class="hero-carousel__slide">
+            <div class="hero-carousel__slide" data-bg="assets/heartluru-candy-witch.jpg">
               <button class="flip-card" data-flip-card aria-label="Click to reveal a short story about Heartluru">
                 <div class="flip-card__inner">
                   <div class="flip-card__face flip-card__face--front">
@@ -297,7 +315,7 @@
               </button>
             </div>
 
-            <div class="hero-carousel__slide">
+            <div class="hero-carousel__slide" data-bg="assets/jewel-knight-treasury.jpg">
               <button class="flip-card" data-flip-card aria-label="Click to reveal a short story about Ashlei Reverse">
                 <div class="flip-card__inner">
                   <div class="flip-card__face flip-card__face--front">
@@ -311,7 +329,7 @@
               </button>
             </div>
 
-            <div class="hero-carousel__slide">
+            <div class="hero-carousel__slide" data-bg="assets/silver-thorn-moonlit-grove.jpg">
               <button class="flip-card" data-flip-card aria-label="Click to reveal a short story about Silver Thorn Dragon Tamer, Luquier">
                 <div class="flip-card__inner">
                   <div class="flip-card__face flip-card__face--front">

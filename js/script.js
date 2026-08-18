@@ -1603,6 +1603,26 @@ if (heroCarousel) {
   let heroIsDragging = false;
   let heroWasDragged = false;
 
+  // Deck-matched homepage background that crossfades with the carousel
+  let heroBgActive = document.getElementById('homeThemeBgA');
+  let heroBgInactive = document.getElementById('homeThemeBgB');
+  let heroBgCurrentUrl = null;
+  function setHeroThemeBg(url) {
+    if (!heroBgActive || url === heroBgCurrentUrl) return;
+    heroBgCurrentUrl = url;
+    if (!url) {
+      heroBgActive.classList.remove('is-active');
+      heroBgInactive.classList.remove('is-active');
+      return;
+    }
+    heroBgInactive.style.backgroundImage = `url('${url}')`;
+    heroBgInactive.classList.add('is-active');
+    heroBgActive.classList.remove('is-active');
+    const swap = heroBgActive;
+    heroBgActive = heroBgInactive;
+    heroBgInactive = swap;
+  }
+
   function resetHeroCardScroll(card) {
     const back = card.querySelector('.flip-card__face--back');
     if (back) back.scrollTop = 0;
@@ -1620,6 +1640,7 @@ if (heroCarousel) {
     const activeSlide = heroSlides[heroIndex];
     const offset = activeSlide.offsetLeft - (viewport.clientWidth - activeSlide.offsetWidth) / 2;
     heroTrack.style.transform = `translateX(${-offset}px)`;
+    setHeroThemeBg(activeSlide.dataset.bg || null);
 
     heroSlides.forEach((slide, i) => slide.classList.toggle('is-active', i === heroIndex));
     heroDotsContainer.querySelectorAll('.hero-carousel__dot').forEach((dot, i) => {
