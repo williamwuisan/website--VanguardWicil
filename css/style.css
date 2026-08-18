@@ -1088,7 +1088,7 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
   inset: 0;
   background-image:
     linear-gradient(180deg, rgba(10, 4, 8, 0.1) 0%, rgba(8, 3, 6, 0.3) 75%, rgba(6, 2, 4, 0.55) 100%),
-    url('../assets/harri-circus-stage.jpg');
+    url('../assets/harri-magic-circus-stage.jpg');
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
@@ -1181,9 +1181,9 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
   inset: 0;
   background-image:
     linear-gradient(180deg, rgba(10, 4, 20, 0.15) 0%, rgba(6, 2, 12, 0.55) 78%, rgba(4, 1, 8, 0.8) 100%),
-    url('../assets/nightrose-cabin-bg.jpg');
+    url('../assets/nightrose-ghost-ship-cabin.jpg');
   background-size: cover;
-  background-position: center bottom;
+  background-position: center center;
   background-repeat: no-repeat;
 }
 /* Soft vignette so card panels stay readable over busy art */
@@ -1238,10 +1238,10 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
 /* Soft glow ring behind the moon in the real artwork, for a bit of life */
 .ghostship-vessel {
   position: fixed;
-  top: 4%;
-  left: 50%;
-  width: min(30vw, 260px);
-  height: min(30vw, 260px);
+  top: 16%;
+  left: 65%;
+  width: min(30vw, 300px);
+  height: min(30vw, 300px);
   transform: translateX(-50%);
   border-radius: 50%;
   background: radial-gradient(circle, rgba(255, 251, 232, 0.28) 0%, rgba(255, 251, 232, 0.08) 45%, transparent 72%);
@@ -1439,7 +1439,7 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
   inset: 0;
   background-image:
     linear-gradient(180deg, rgba(20, 16, 40, 0.08) 0%, rgba(14, 10, 30, 0.3) 70%, rgba(10, 7, 22, 0.58) 100%),
-    url('../assets/jewel-knight-sanctuary.jpg');
+    url('../assets/jewel-knight-treasury.jpg');
   background-size: cover;
   background-position: center 30%;
   background-repeat: no-repeat;

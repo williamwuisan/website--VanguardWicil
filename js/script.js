@@ -323,23 +323,23 @@ function buildGhostShipFx() {
     html += `<div class="ghostship-mist" style="top:${m.top}%; height:${m.height}px; animation-duration:${m.duration}s; animation-delay:${delay}s;"></div>`;
   });
 
-  // Stars glimpsed through the window (positioned over the window area of the artwork)
+  // Stars glimpsed through the windows (positioned over the sky area of the artwork)
   for (let i = 0; i < 14; i++) {
-    const top = (4 + Math.random() * 26).toFixed(2);
-    const left = (16 + Math.random() * 50).toFixed(2);
+    const top = (3 + Math.random() * 20).toFixed(2);
+    const left = (8 + Math.random() * 84).toFixed(2);
     const size = (1 + Math.random() * 1.4).toFixed(2);
     const duration = (2.6 + Math.random() * 3).toFixed(2);
     const delay = (Math.random() * -6).toFixed(2);
     html += `<span class="ghostship-star" style="top:${top}%; left:${left}%; width:${size}px; height:${size}px; animation-duration:${duration}s; animation-delay:${delay}s;"></span>`;
   }
 
-  // Lantern glow, positioned over the lantern already painted above the desk
-  html += `<span class="ghostship-lantern" style="left:49%; top:5%; height:34px; animation-duration:3.4s;"></span>`;
+  // Lantern glow, positioned over the lantern already painted on the desk
+  html += `<span class="ghostship-lantern" style="left:51%; top:60%; height:26px; animation-duration:3.4s;"></span>`;
 
   // Bats flitting past the window
   for (let i = 0; i < 2; i++) {
     const top = (8 + Math.random() * 10).toFixed(2);
-    const left = (24 + Math.random() * 14).toFixed(2);
+    const left = (55 + Math.random() * 20).toFixed(2);
     const duration = (13 + Math.random() * 7).toFixed(2);
     const delay = (Math.random() * -12).toFixed(2);
     const flyX = Math.round(120 + Math.random() * 80);
