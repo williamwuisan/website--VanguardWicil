@@ -242,6 +242,7 @@ const THEMED_DECKS = {
   'jewel-knight-deck': 'royal',
   'chronojet-deck': 'chrono',
   'silver-thorn-deck': 'thorngrove',
+  'og-knight-deck': 'ogknight',
 };
 const THEME_TITLE_CLASS = {
   circus: 'is-festive',
@@ -250,9 +251,11 @@ const THEME_TITLE_CLASS = {
   royal: 'is-royal',
   chrono: 'is-chrono',
   thorngrove: 'is-thorngrove',
+  ogknight: 'is-ogknight',
 };
 const THORN_COLORS = ['#e6d6ff', '#c9a6ff', '#9f7fe0', '#f0e6ff'];
 const CHRONO_COLORS = ['#5eead4', '#a78bfa', '#ffd76a', '#7dd3fc'];
+const OGKNIGHT_COLORS = ['#f5c46b', '#c9a227', '#8a1f1f', '#fff3d0'];
 const CANDY_COLORS = ['#ff6fa5', '#7bdcd0', '#ffd66b', '#c084fc', '#ff9ecf', '#f9f4c9'];
 const JEWEL_COLORS = ['#ffd76a', '#7fb8ff', '#ff6f8f', '#7ee6c0', '#c9a6ff', '#fff3d0'];
 const FESTIVE_COLORS = ['#ff6fae', '#ffd23f', '#4fd8ff', '#b46eff', '#5eead4', '#ff8a3d'];
@@ -291,14 +294,6 @@ function buildCircusFx() {
     const delay = (Math.random() * -6).toFixed(2);
     html += `<span class="festive-sparkle festive-sparkle--big" style="top:${top}%; left:${left}%; width:${size}px; height:${size}px; background:${color}; box-shadow:0 0 ${(size * 1.6).toFixed(1)}px ${color}; animation-duration:${duration}s; animation-delay:${delay}s;"></span>`;
   }
-
-  // Poster-style checkered border framing the whole screen
-  html += `<div class="festive-frame-checker">
-    <span class="festive-frame-edge festive-frame-edge--top"></span>
-    <span class="festive-frame-edge festive-frame-edge--bottom"></span>
-    <span class="festive-frame-edge festive-frame-edge--left"></span>
-    <span class="festive-frame-edge festive-frame-edge--right"></span>
-  </div>`;
 
   return html;
 }
@@ -547,6 +542,45 @@ function buildThornGroveFx() {
   return html;
 }
 
+function buildOgKnightFx() {
+  let html = '';
+
+  // The AI-generated (Magnific-enhanced) round-table hall as the sole background
+  html += `<div class="ogknight-bg"></div>`;
+
+  // Shafts of light through the tall windows (reuses the Jewel Knight sanctuary's ray effect)
+  [22, 50, 78].forEach((leftPct) => {
+    const duration = (10 + Math.random() * 6).toFixed(2);
+    const delay = (Math.random() * -10).toFixed(2);
+    html += `<div class="royal-raylight" style="left:${leftPct}%; animation-duration:${duration}s; animation-delay:${delay}s;"></div>`;
+  });
+
+  // Golden dust motes drifting through the light
+  for (let i = 0; i < 40; i++) {
+    const left = (2 + Math.random() * 96).toFixed(2);
+    const top = (10 + Math.random() * 85).toFixed(2);
+    const size = (2 + Math.random() * 3).toFixed(1);
+    const duration = (6 + Math.random() * 6).toFixed(2);
+    const delay = (Math.random() * -10).toFixed(2);
+    const wx = Math.round(Math.random() * 40 - 20);
+    const wy = Math.round(-30 - Math.random() * 40);
+    html += `<span class="royal-mote" style="left:${left}%; top:${top}%; width:${size}px; height:${size}px; animation-duration:${duration}s; animation-delay:${delay}s; --wx:${wx}px; --wy:${wy}px;"></span>`;
+  }
+
+  // Heraldic gold and burgundy glints
+  for (let i = 0; i < 28; i++) {
+    const top = (Math.random() * 100).toFixed(2);
+    const left = (Math.random() * 100).toFixed(2);
+    const size = (5 + Math.random() * 7).toFixed(1);
+    const color = OGKNIGHT_COLORS[Math.floor(Math.random() * OGKNIGHT_COLORS.length)];
+    const duration = (2.4 + Math.random() * 2.8).toFixed(2);
+    const delay = (Math.random() * -6).toFixed(2);
+    html += `<span class="festive-sparkle" style="top:${top}%; left:${left}%; width:${size}px; height:${size}px; background:${color}; box-shadow:0 0 ${(size * 1.4).toFixed(1)}px ${color}; animation-duration:${duration}s; animation-delay:${delay}s;"></span>`;
+  }
+
+  return html;
+}
+
 function buildThemedFx(theme) {
   const container = document.getElementById('festiveFx');
   if (!container || container.dataset.builtTheme === theme) return;
@@ -559,6 +593,7 @@ function buildThemedFx(theme) {
   else if (theme === 'royal') container.innerHTML = buildRoyalFx();
   else if (theme === 'chrono') container.innerHTML = buildChronoFx();
   else if (theme === 'thorngrove') container.innerHTML = buildThornGroveFx();
+  else if (theme === 'ogknight') container.innerHTML = buildOgKnightFx();
 }
 
 function applyThemedFx(deckId) {
