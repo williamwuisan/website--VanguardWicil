@@ -239,13 +239,16 @@ const THEMED_DECKS = {
   'harri-premium-deck': 'circus',
   'nightrose-deck': 'ghostship',
   'heartluru-deck': 'candyland',
+  'jewel-knight-deck': 'royal',
 };
 const THEME_TITLE_CLASS = {
   circus: 'is-festive',
   ghostship: 'is-ghostship',
   candyland: 'is-candyland',
+  royal: 'is-royal',
 };
 const CANDY_COLORS = ['#ff6fa5', '#7bdcd0', '#ffd66b', '#c084fc', '#ff9ecf', '#f9f4c9'];
+const JEWEL_COLORS = ['#ffd76a', '#7fb8ff', '#ff6f8f', '#7ee6c0', '#c9a6ff', '#fff3d0'];
 const FESTIVE_COLORS = ['#ff6fae', '#ffd23f', '#4fd8ff', '#b46eff', '#5eead4', '#ff8a3d'];
 
 function buildCircusFx() {
@@ -410,6 +413,49 @@ function buildCandylandFx() {
   return html;
 }
 
+function buildRoyalFx() {
+  let html = '';
+
+  // The real sanctuary hallway art as the sole background
+  html += `<div class="royal-bg"></div>`;
+
+  // A soft radiant halo glowing behind the far stained-glass window
+  html += `<div class="royal-halo"></div>`;
+
+  // Slow-moving shafts of holy light, echoing the window light already in the photo
+  const rayPositions = [18, 50, 82];
+  rayPositions.forEach((leftPct, i) => {
+    const duration = (10 + Math.random() * 6).toFixed(2);
+    const delay = (Math.random() * -10).toFixed(2);
+    html += `<div class="royal-raylight" style="left:${leftPct}%; animation-duration:${duration}s; animation-delay:${delay}s;"></div>`;
+  });
+
+  // Golden dust motes drifting up through the light
+  for (let i = 0; i < 44; i++) {
+    const left = (2 + Math.random() * 96).toFixed(2);
+    const top = (10 + Math.random() * 85).toFixed(2);
+    const size = (2 + Math.random() * 3).toFixed(1);
+    const duration = (6 + Math.random() * 6).toFixed(2);
+    const delay = (Math.random() * -10).toFixed(2);
+    const wx = Math.round(Math.random() * 40 - 20);
+    const wy = Math.round(-30 - Math.random() * 40);
+    html += `<span class="royal-mote" style="left:${left}%; top:${top}%; width:${size}px; height:${size}px; animation-duration:${duration}s; animation-delay:${delay}s; --wx:${wx}px; --wy:${wy}px;"></span>`;
+  }
+
+  // Faceted jewel glints twinkling in heraldic colors, nodding to "Jewel Knight"
+  for (let i = 0; i < 34; i++) {
+    const top = (Math.random() * 100).toFixed(2);
+    const left = (Math.random() * 100).toFixed(2);
+    const size = (5 + Math.random() * 8).toFixed(1);
+    const color = JEWEL_COLORS[Math.floor(Math.random() * JEWEL_COLORS.length)];
+    const duration = (2.6 + Math.random() * 3).toFixed(2);
+    const delay = (Math.random() * -6).toFixed(2);
+    html += `<span class="royal-gem" style="top:${top}%; left:${left}%; width:${size}px; height:${size}px; background:${color}; box-shadow:0 0 ${(size * 1.5).toFixed(1)}px ${color};animation-duration:${duration}s; animation-delay:${delay}s;"></span>`;
+  }
+
+  return html;
+}
+
 function buildThemedFx(theme) {
   const container = document.getElementById('festiveFx');
   if (!container || container.dataset.builtTheme === theme) return;
@@ -419,6 +465,7 @@ function buildThemedFx(theme) {
   if (theme === 'circus') container.innerHTML = buildCircusFx();
   else if (theme === 'ghostship') container.innerHTML = buildGhostShipFx();
   else if (theme === 'candyland') container.innerHTML = buildCandylandFx();
+  else if (theme === 'royal') container.innerHTML = buildRoyalFx();
 }
 
 function applyThemedFx(deckId) {
