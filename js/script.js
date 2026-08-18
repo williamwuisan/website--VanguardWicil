@@ -263,15 +263,24 @@ function buildCircusFx() {
     html += `<div class="festive-spotlight" style="left:${leftPct}%; background:linear-gradient(180deg, ${color}, transparent 75%); animation-duration:${duration}s; animation-delay:${delay}s;"></div>`;
   });
 
-  // Twinkling sparkles
-  for (let i = 0; i < 40; i++) {
+  // Twinkling sparkles: a dense layer of small dust plus bigger glinting bursts
+  for (let i = 0; i < 90; i++) {
     const top = (Math.random() * 100).toFixed(2);
     const left = (Math.random() * 100).toFixed(2);
-    const size = (5 + Math.random() * 7).toFixed(1);
+    const size = (3 + Math.random() * 6).toFixed(1);
     const color = FESTIVE_COLORS[Math.floor(Math.random() * FESTIVE_COLORS.length)];
-    const duration = (2.4 + Math.random() * 2.6).toFixed(2);
+    const duration = (1.6 + Math.random() * 2.4).toFixed(2);
     const delay = (Math.random() * -6).toFixed(2);
-    html += `<span class="festive-sparkle" style="top:${top}%; left:${left}%; width:${size}px; height:${size}px; background:${color}; animation-duration:${duration}s; animation-delay:${delay}s;"></span>`;
+    html += `<span class="festive-sparkle" style="top:${top}%; left:${left}%; width:${size}px; height:${size}px; background:${color}; box-shadow:0 0 ${(size * 1.4).toFixed(1)}px ${color}; animation-duration:${duration}s; animation-delay:${delay}s;"></span>`;
+  }
+  for (let i = 0; i < 26; i++) {
+    const top = (Math.random() * 100).toFixed(2);
+    const left = (Math.random() * 100).toFixed(2);
+    const size = (10 + Math.random() * 10).toFixed(1);
+    const color = FESTIVE_COLORS[Math.floor(Math.random() * FESTIVE_COLORS.length)];
+    const duration = (2 + Math.random() * 2.2).toFixed(2);
+    const delay = (Math.random() * -6).toFixed(2);
+    html += `<span class="festive-sparkle festive-sparkle--big" style="top:${top}%; left:${left}%; width:${size}px; height:${size}px; background:${color}; box-shadow:0 0 ${(size * 1.6).toFixed(1)}px ${color}; animation-duration:${duration}s; animation-delay:${delay}s;"></span>`;
   }
 
   // Poster-style checkered border framing the whole screen
