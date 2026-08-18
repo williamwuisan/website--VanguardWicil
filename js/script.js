@@ -59,6 +59,7 @@ function showView(name) {
     nextView.classList.add('view--enter');
 
     if (name === 'og-story') applyOgStoryFx();
+    if (name === 'home' && typeof window.resetHeroCarousel === 'function') window.resetHeroCarousel();
     if (name === 'search') {
       renderSearch();
       const input = document.getElementById('searchInput');
@@ -1737,6 +1738,13 @@ if (heroCarousel) {
   });
 
   updateHeroCarousel();
+
+  window.resetHeroCarousel = function() {
+    if (heroIndex === 0) return;
+    heroIndex = 0;
+    unflipAllHeroCards();
+    updateHeroCarousel();
+  };
 }
 
 /* ===== Idle wallpaper ===== */
