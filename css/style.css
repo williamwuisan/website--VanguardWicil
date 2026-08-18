@@ -307,9 +307,18 @@ img { max-width: 100%; display: block; }
 
 /* ===== Layout ===== */
 main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
-.view { padding: 56px 0 80px; }
+.view { padding: 56px 0 80px; transition: opacity 0.18s ease, transform 0.18s ease; }
 .view--hidden { display: none; }
 .view--flush { padding: 0; }
+.view--leaving { opacity: 0; transform: translateY(-10px); pointer-events: none; }
+.view--enter { animation: view-fade-in 0.32s ease; }
+@keyframes view-fade-in {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .view, .view--leaving, .view--enter { transition: none !important; animation: none !important; }
+}
 
 #view-home {
   position: relative;
@@ -1051,8 +1060,20 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
 .empty-state p { color: var(--text-muted); }
 
 /* ===== OG Deck Story View ===== */
-.og-story { max-width: 520px; margin: 0 auto; text-align: center; }
-.og-story__title { font-size: clamp(1.7rem, 3.4vw, 2.3rem); font-weight: 400; margin: 4px 0 32px; }
+.og-story {
+  position: relative;
+  max-width: 520px;
+  margin: 40px auto;
+  text-align: center;
+  background: var(--station-panel);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--station-border-cyan);
+  border-radius: 20px;
+  padding: 40px 32px;
+}
+.og-story .eyebrow { text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6); }
+.og-story__title { font-size: clamp(1.7rem, 3.4vw, 2.3rem); font-weight: 400; margin: 4px 0 32px; text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6); }
 .og-story__card-wrap {
   position: relative;
   width: min(60vw, 260px);

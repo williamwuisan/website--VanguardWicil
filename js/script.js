@@ -27,24 +27,60 @@ function observeRevealAll(root = document) {
 
 let selectedClan = null;
 
+function applyOgStoryFx() {
+  const container = document.getElementById('ogStoryFx');
+  if (!container) return;
+  if (!container.dataset.built) {
+    container.dataset.built = '1';
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      container.innerHTML = buildOgKnightFx();
+    }
+  }
+  container.className = 'festive-fx is-active theme-ogknight';
+}
+
 function showView(name) {
   if (typeof stopSpeaking === 'function') stopSpeaking();
-  Object.values(views).forEach(v => v.classList.add('view--hidden'));
-  views[name].classList.remove('view--hidden');
+  const nextView = views[name];
+  if (!nextView) return;
+  const currentView = Object.values(views).find(v => v !== nextView && !v.classList.contains('view--hidden'));
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
   document.querySelectorAll('.drawer__item').forEach(link => {
     link.classList.toggle('is-active', link.dataset.nav === name);
   });
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-  if (name === 'search') {
-    renderSearch();
-    const input = document.getElementById('searchInput');
-    if (input) setTimeout(() => input.focus(), 300);
+  window.scrollTo(0, 0);
+
+  function activate() {
+    Object.values(views).forEach(v => { if (v !== nextView) v.classList.add('view--hidden'); });
+    nextView.classList.remove('view--hidden');
+    nextView.classList.remove('view--enter');
+    void nextView.offsetWidth;
+    nextView.classList.add('view--enter');
+
+    if (name === 'og-story') applyOgStoryFx();
+    if (name === 'search') {
+      renderSearch();
+      const input = document.getElementById('searchInput');
+      if (input) setTimeout(() => input.focus(), 300);
+    }
+    if (name === 'game' && typeof startMemoryGame === 'function') {
+      startMemoryGame();
+    }
+    if (name === 'compare' && typeof renderComparison === 'function') {
+      renderComparison();
+    }
   }
-  if (name === 'game' && typeof startMemoryGame === 'function') {
-    startMemoryGame();
-  }
-  if (name === 'compare' && typeof renderComparison === 'function') {
-    renderComparison();
+
+  if (currentView && !reduceMotion) {
+    currentView.classList.add('view--leaving');
+    setTimeout(() => {
+      currentView.classList.remove('view--leaving');
+      activate();
+    }, 180);
+  } else {
+    if (currentView) currentView.classList.remove('view--leaving');
+    activate();
   }
 }
 
