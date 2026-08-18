@@ -241,6 +241,7 @@ const THEMED_DECKS = {
   'heartluru-deck': 'candyland',
   'jewel-knight-deck': 'royal',
   'chronojet-deck': 'chrono',
+  'silver-thorn-deck': 'thorngrove',
 };
 const THEME_TITLE_CLASS = {
   circus: 'is-festive',
@@ -248,7 +249,9 @@ const THEME_TITLE_CLASS = {
   candyland: 'is-candyland',
   royal: 'is-royal',
   chrono: 'is-chrono',
+  thorngrove: 'is-thorngrove',
 };
+const THORN_COLORS = ['#e6d6ff', '#c9a6ff', '#9f7fe0', '#f0e6ff'];
 const CHRONO_COLORS = ['#5eead4', '#a78bfa', '#ffd76a', '#7dd3fc'];
 const CANDY_COLORS = ['#ff6fa5', '#7bdcd0', '#ffd66b', '#c084fc', '#ff9ecf', '#f9f4c9'];
 const JEWEL_COLORS = ['#ffd76a', '#7fb8ff', '#ff6f8f', '#7ee6c0', '#c9a6ff', '#fff3d0'];
@@ -506,6 +509,44 @@ function buildChronoFx() {
   return html;
 }
 
+function buildThornGroveFx() {
+  let html = '';
+
+  // The AI-generated (Magnific-enhanced) moonlit thorn grove as the sole background
+  html += `<div class="thorn-bg"></div>`;
+
+  // A soft glow behind the crescent moon already painted into the artwork
+  html += `<div class="thorn-moonglow"></div>`;
+
+  // Rose petals drifting down through the grove
+  for (let i = 0; i < 30; i++) {
+    const left = (Math.random() * 100).toFixed(2);
+    const size = (6 + Math.random() * 7).toFixed(1);
+    const duration = (8 + Math.random() * 7).toFixed(2);
+    const delay = (Math.random() * -14).toFixed(2);
+    const drift = Math.round(Math.random() * 120 - 60);
+    const spin = Math.round(180 + Math.random() * 360);
+    html += `<span class="thorn-petal" style="left:${left}%; width:${size}px; height:${(size * 0.8).toFixed(1)}px; animation-duration:${duration}s; animation-delay:${delay}s; --drift:${drift}px; --spin:${spin}deg;"></span>`;
+  }
+
+  // Silver and violet magic wisps drifting through the trees
+  for (let i = 0; i < 40; i++) {
+    const left = (2 + Math.random() * 96).toFixed(2);
+    const top = (5 + Math.random() * 88).toFixed(2);
+    const size = (2 + Math.random() * 3.2).toFixed(1);
+    const color = THORN_COLORS[Math.floor(Math.random() * THORN_COLORS.length)];
+    const duration = (2.6 + Math.random() * 3.2).toFixed(2);
+    const delay = (Math.random() * -6).toFixed(2);
+    const wx = Math.round(Math.random() * 40 - 20);
+    const wy = Math.round(-10 - Math.random() * 20);
+    const wx2 = Math.round(Math.random() * 40 - 20);
+    const wy2 = Math.round(-24 - Math.random() * 26);
+    html += `<span class="thorn-wisp" style="left:${left}%; top:${top}%; width:${size}px; height:${size}px; background:${color}; box-shadow:0 0 6px 2px ${color}; animation-duration:${duration}s; animation-delay:${delay}s; --wx:${wx}px; --wy:${wy}px; --wx2:${wx2}px; --wy2:${wy2}px;"></span>`;
+  }
+
+  return html;
+}
+
 function buildThemedFx(theme) {
   const container = document.getElementById('festiveFx');
   if (!container || container.dataset.builtTheme === theme) return;
@@ -517,6 +558,7 @@ function buildThemedFx(theme) {
   else if (theme === 'candyland') container.innerHTML = buildCandylandFx();
   else if (theme === 'royal') container.innerHTML = buildRoyalFx();
   else if (theme === 'chrono') container.innerHTML = buildChronoFx();
+  else if (theme === 'thorngrove') container.innerHTML = buildThornGroveFx();
 }
 
 function applyThemedFx(deckId) {

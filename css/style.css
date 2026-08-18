@@ -1348,10 +1348,10 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
   position: fixed;
   inset: 0;
   background-image:
-    linear-gradient(180deg, rgba(60, 10, 40, 0.05) 0%, rgba(40, 6, 30, 0.35) 78%, rgba(30, 4, 22, 0.6) 100%),
-    url('../assets/heartluru-candyland.svg');
+    linear-gradient(180deg, rgba(40, 8, 20, 0.08) 0%, rgba(30, 5, 16, 0.3) 75%, rgba(20, 3, 12, 0.55) 100%),
+    url('../assets/heartluru-candy-witch.jpg');
   background-size: cover;
-  background-position: center bottom;
+  background-position: center center;
   background-repeat: no-repeat;
   animation: candyland-bob 9s ease-in-out infinite;
 }
@@ -1613,13 +1613,76 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
   animation-iteration-count: infinite;
 }
 
+/* ===== Thorngrove FX (Silver Thorn): AI-painted moonlit night-circus grove ===== */
+.deck-detail__head h2.is-thorngrove {
+  background: linear-gradient(90deg, #f0e6ff, #c9a6ff, #9f7fe0, #eafaff, #f0e6ff);
+  background-size: 300% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 2px 4px rgba(5, 5, 20, 0.6));
+  animation: festive-title-shimmer 7s linear infinite;
+}
+
+.thorn-bg {
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(180deg, rgba(6, 6, 18, 0.12) 0%, rgba(4, 4, 14, 0.32) 70%, rgba(2, 2, 10, 0.58) 100%),
+    url('../assets/silver-thorn-moonlit-grove.jpg');
+  background-size: cover;
+  background-position: center 35%;
+  background-repeat: no-repeat;
+}
+
+.thorn-moonglow {
+  position: fixed;
+  top: -4%;
+  left: 53%;
+  width: min(34vw, 380px);
+  height: min(34vw, 380px);
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(230, 240, 255, 0.5) 0%, rgba(190, 210, 255, 0.2) 40%, transparent 72%);
+  mix-blend-mode: screen;
+  animation: royal-halo-pulse 7s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.thorn-petal {
+  position: fixed;
+  top: -5%;
+  border-radius: 60% 10% 60% 10%;
+  background: linear-gradient(135deg, #fbeaff, #e6c9f0);
+  opacity: 0;
+  animation-name: thorn-petal-fall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+@keyframes thorn-petal-fall {
+  0% { transform: translate(0, 0) rotate(0deg); opacity: 0; }
+  8% { opacity: 0.85; }
+  92% { opacity: 0.75; }
+  100% { transform: translate(var(--drift, 40px), 112vh) rotate(var(--spin, 320deg)); opacity: 0; }
+}
+
+.thorn-wisp {
+  position: fixed;
+  border-radius: 50%;
+  opacity: 0;
+  animation-name: ghostship-wisp-glint;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .festive-fx { display: none; }
   .deck-detail__head h2.is-festive,
   .deck-detail__head h2.is-ghostship,
   .deck-detail__head h2.is-candyland,
   .deck-detail__head h2.is-royal,
-  .deck-detail__head h2.is-chrono { animation: none; background-position: 0 center; }
+  .deck-detail__head h2.is-chrono,
+  .deck-detail__head h2.is-thorngrove { animation: none; background-position: 0 center; }
 }
 
 .deck-stats { position: relative; margin-bottom: 28px; }
