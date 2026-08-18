@@ -240,13 +240,16 @@ const THEMED_DECKS = {
   'nightrose-deck': 'ghostship',
   'heartluru-deck': 'candyland',
   'jewel-knight-deck': 'royal',
+  'chronojet-deck': 'chrono',
 };
 const THEME_TITLE_CLASS = {
   circus: 'is-festive',
   ghostship: 'is-ghostship',
   candyland: 'is-candyland',
   royal: 'is-royal',
+  chrono: 'is-chrono',
 };
+const CHRONO_COLORS = ['#5eead4', '#a78bfa', '#ffd76a', '#7dd3fc'];
 const CANDY_COLORS = ['#ff6fa5', '#7bdcd0', '#ffd66b', '#c084fc', '#ff9ecf', '#f9f4c9'];
 const JEWEL_COLORS = ['#ffd76a', '#7fb8ff', '#ff6f8f', '#7ee6c0', '#c9a6ff', '#fff3d0'];
 const FESTIVE_COLORS = ['#ff6fae', '#ffd23f', '#4fd8ff', '#b46eff', '#5eead4', '#ff8a3d'];
@@ -456,6 +459,53 @@ function buildRoyalFx() {
   return html;
 }
 
+function buildChronoFx() {
+  let html = '';
+
+  // The AI-generated (Magnific-enhanced) Gear Chronicle time-rift as the sole background
+  html += `<div class="chrono-bg"></div>`;
+
+  // A slowly turning faint ring at the vortex's core, like the rift's great clock face
+  html += `<div class="chrono-ring"></div>`;
+
+  // A pulsing warm glow at the heart of the vortex
+  html += `<div class="chrono-core-glow"></div>`;
+
+  // Streaks of temporal energy sweeping around the vortex
+  for (let i = 0; i < 5; i++) {
+    const rot = Math.round(Math.random() * 360);
+    const color = CHRONO_COLORS[i % CHRONO_COLORS.length];
+    const duration = (16 + Math.random() * 10).toFixed(2);
+    const delay = (Math.random() * -14).toFixed(2);
+    html += `<div class="chrono-wisp" style="--rot:${rot}deg; background:linear-gradient(90deg, transparent, ${color}, transparent); animation-duration:${duration}s; animation-delay:${delay}s;"></div>`;
+  }
+
+  // Bronze embers drifting up off the turning gears
+  for (let i = 0; i < 40; i++) {
+    const left = (Math.random() * 100).toFixed(2);
+    const top = (10 + Math.random() * 85).toFixed(2);
+    const size = (2 + Math.random() * 3).toFixed(1);
+    const duration = (6 + Math.random() * 6).toFixed(2);
+    const delay = (Math.random() * -10).toFixed(2);
+    const wx = Math.round(Math.random() * 30 - 15);
+    const wy = Math.round(-30 - Math.random() * 40);
+    html += `<span class="chrono-ember" style="left:${left}%; top:${top}%; width:${size}px; height:${size}px; animation-duration:${duration}s; animation-delay:${delay}s; --wx:${wx}px; --wy:${wy}px;"></span>`;
+  }
+
+  // Small metallic glints, like gear teeth and clock hands catching the light
+  for (let i = 0; i < 32; i++) {
+    const top = (Math.random() * 100).toFixed(2);
+    const left = (Math.random() * 100).toFixed(2);
+    const size = (4 + Math.random() * 6).toFixed(1);
+    const color = CHRONO_COLORS[Math.floor(Math.random() * CHRONO_COLORS.length)];
+    const duration = (2.4 + Math.random() * 2.8).toFixed(2);
+    const delay = (Math.random() * -6).toFixed(2);
+    html += `<span class="chrono-glint" style="top:${top}%; left:${left}%; width:${size}px; height:${size}px; background:${color}; box-shadow:0 0 ${(size * 1.4).toFixed(1)}px ${color}; animation-duration:${duration}s; animation-delay:${delay}s;"></span>`;
+  }
+
+  return html;
+}
+
 function buildThemedFx(theme) {
   const container = document.getElementById('festiveFx');
   if (!container || container.dataset.builtTheme === theme) return;
@@ -466,6 +516,7 @@ function buildThemedFx(theme) {
   else if (theme === 'ghostship') container.innerHTML = buildGhostShipFx();
   else if (theme === 'candyland') container.innerHTML = buildCandylandFx();
   else if (theme === 'royal') container.innerHTML = buildRoyalFx();
+  else if (theme === 'chrono') container.innerHTML = buildChronoFx();
 }
 
 function applyThemedFx(deckId) {

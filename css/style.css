@@ -1519,12 +1519,107 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
   100% { opacity: 0; transform: scale(0.3) rotate(10deg); }
 }
 
+/* ===== Chrono FX (Chronojet): AI-painted Gear Chronicle time-rift ===== */
+.deck-detail__head h2.is-chrono {
+  background: linear-gradient(90deg, #fff3d0, #ffd76a, #5eead4, #a78bfa, #fff3d0);
+  background-size: 300% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 2px 4px rgba(5, 5, 15, 0.6));
+  animation: festive-title-shimmer 7s linear infinite;
+}
+
+.chrono-bg {
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(180deg, rgba(8, 8, 20, 0.15) 0%, rgba(6, 6, 16, 0.35) 70%, rgba(4, 4, 10, 0.6) 100%),
+    url('../assets/chronojet-timerift.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.chrono-ring {
+  position: fixed;
+  top: 30%;
+  left: 51%;
+  width: min(46vw, 520px);
+  height: min(46vw, 520px);
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 1px solid rgba(255, 224, 160, 0.22);
+  box-shadow: 0 0 40px rgba(255, 200, 120, 0.08) inset;
+  animation: chrono-ring-spin 50s linear infinite;
+  pointer-events: none;
+}
+@keyframes chrono-ring-spin {
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+.chrono-core-glow {
+  position: fixed;
+  top: 30%;
+  left: 51%;
+  width: min(30vw, 340px);
+  height: min(30vw, 340px);
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 210, 130, 0.55) 0%, rgba(255, 170, 90, 0.2) 40%, transparent 72%);
+  mix-blend-mode: screen;
+  animation: royal-halo-pulse 5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.chrono-wisp {
+  position: fixed;
+  top: 30%;
+  left: 51%;
+  width: min(50vw, 560px);
+  height: 4px;
+  transform-origin: left center;
+  opacity: 0;
+  filter: blur(1.5px);
+  mix-blend-mode: screen;
+  animation-name: chrono-wisp-orbit;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+@keyframes chrono-wisp-orbit {
+  0% { opacity: 0; transform: translate(0, -50%) rotate(var(--rot, 0deg)); }
+  10% { opacity: 0.5; }
+  90% { opacity: 0.5; }
+  100% { opacity: 0; transform: translate(0, -50%) rotate(calc(var(--rot, 0deg) + 360deg)); }
+}
+
+.chrono-ember {
+  position: fixed;
+  border-radius: 50%;
+  background: radial-gradient(circle, #ffe6b0 0%, #e8a33d 55%, transparent 75%);
+  box-shadow: 0 0 6px 2px rgba(232, 163, 61, 0.5);
+  opacity: 0;
+  animation-name: royal-mote-drift;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+.chrono-glint {
+  position: fixed;
+  clip-path: polygon(50% 0%, 61% 39%, 100% 50%, 61% 61%, 50% 100%, 39% 61%, 0% 50%, 39% 39%);
+  opacity: 0;
+  animation-name: cosmic-sparkle-twinkle;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .festive-fx { display: none; }
   .deck-detail__head h2.is-festive,
   .deck-detail__head h2.is-ghostship,
   .deck-detail__head h2.is-candyland,
-  .deck-detail__head h2.is-royal { animation: none; background-position: 0 center; }
+  .deck-detail__head h2.is-royal,
+  .deck-detail__head h2.is-chrono { animation: none; background-position: 0 center; }
 }
 
 .deck-stats { position: relative; margin-bottom: 28px; }
