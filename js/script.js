@@ -39,7 +39,7 @@ function applyOgStoryFx() {
   container.className = 'festive-fx is-active theme-ogknight';
 }
 
-function showView(name) {
+function showView(name, onActivate) {
   if (typeof stopSpeaking === 'function') stopSpeaking();
   const nextView = views[name];
   if (!nextView) return;
@@ -58,6 +58,10 @@ function showView(name) {
     void nextView.offsetWidth;
     nextView.classList.add('view--enter');
 
+    // Run view-specific setup only once the view is actually visible, so any
+    // opacity/fade transitions it triggers (themed backgrounds, etc.) can be
+    // seen instead of resolving instantly while still display:none.
+    if (typeof onActivate === 'function') onActivate();
     if (name === 'og-story') applyOgStoryFx();
     if (name === 'home' && typeof window.resetHeroCarousel === 'function') window.resetHeroCarousel();
     if (name === 'search') {
@@ -665,7 +669,6 @@ function showDeckDetail(deckId, opts = {}) {
   document.getElementById('detailDeckName').textContent = deck.name;
   document.getElementById('detailDeckMeta').textContent = `${deck.clan ? deck.clan + ' · ' : ''}${deck.cards.length} cards`;
   renderDeckStats(deck);
-  applyThemedFx(deck.id);
 
   const backBtn = document.getElementById('detailBackBtn');
   if (HIDDEN_DECK_IDS.includes(deck.id)) {
@@ -692,7 +695,7 @@ function showDeckDetail(deckId, opts = {}) {
     renderCardListForSection();
   }
 
-  showView('detail');
+  showView('detail', () => applyThemedFx(deck.id));
   if (opts.highlightName) highlightCardByName(opts.highlightName);
 }
 
