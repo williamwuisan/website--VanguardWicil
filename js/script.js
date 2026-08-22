@@ -273,6 +273,7 @@ const DECK_ACCENTS = {
   'silver-thorn-deck': '#7c3aed',
   'og-knight-deck': '#06b6d4',
   'harri-premium-deck': '#ec4899',
+  'thavas-deck': '#0ea5e9',
 };
 
 /* ===== Themed FX: per-deck atmosphere on the detail page ===== */
@@ -284,6 +285,7 @@ const THEMED_DECKS = {
   'chronojet-deck': 'chrono',
   'silver-thorn-deck': 'thorngrove',
   'og-knight-deck': 'ogknight',
+  'thavas-deck': 'armada',
 };
 const THEME_TITLE_CLASS = {
   circus: 'is-festive',
@@ -293,10 +295,12 @@ const THEME_TITLE_CLASS = {
   chrono: 'is-chrono',
   thorngrove: 'is-thorngrove',
   ogknight: 'is-ogknight',
+  armada: 'is-armada',
 };
 const THORN_COLORS = ['#e6d6ff', '#c9a6ff', '#9f7fe0', '#f0e6ff'];
 const CHRONO_COLORS = ['#5eead4', '#a78bfa', '#ffd76a', '#7dd3fc'];
 const OGKNIGHT_COLORS = ['#f5c46b', '#c9a227', '#8a1f1f', '#fff3d0'];
+const ARMADA_COLORS = ['#5eead4', '#7dd3fc', '#a5f3fc', '#e0f7ff'];
 const CANDY_COLORS = ['#ff6fa5', '#7bdcd0', '#ffd66b', '#c084fc', '#ff9ecf', '#f9f4c9'];
 const JEWEL_COLORS = ['#ffd76a', '#7fb8ff', '#ff6f8f', '#7ee6c0', '#c9a6ff', '#fff3d0'];
 const FESTIVE_COLORS = ['#ff6fae', '#ffd23f', '#4fd8ff', '#b46eff', '#5eead4', '#ff8a3d'];
@@ -622,6 +626,47 @@ function buildOgKnightFx() {
   return html;
 }
 
+function buildArmadaFx() {
+  let html = '';
+
+  // The AI-generated Aqua Force storm-fleet artwork as the sole background
+  html += `<div class="armada-bg"></div>`;
+
+  // Flashes of lightning strobing across the storm
+  for (let i = 0; i < 3; i++) {
+    const duration = (7 + Math.random() * 5).toFixed(2);
+    const delay = (Math.random() * -10).toFixed(2);
+    html += `<div class="armada-lightning" style="animation-duration:${duration}s; animation-delay:${delay}s;"></div>`;
+  }
+
+  // Ghostly teal sea-spirits drifting through the waves
+  for (let i = 0; i < 40; i++) {
+    const left = (2 + Math.random() * 96).toFixed(2);
+    const top = (30 + Math.random() * 65).toFixed(2);
+    const size = (2 + Math.random() * 3.4).toFixed(1);
+    const duration = (3 + Math.random() * 3.4).toFixed(2);
+    const delay = (Math.random() * -6).toFixed(2);
+    const wx = Math.round(Math.random() * 50 - 25);
+    const wy = Math.round(-14 - Math.random() * 22);
+    const wx2 = Math.round(Math.random() * 50 - 25);
+    const wy2 = Math.round(-28 - Math.random() * 26);
+    html += `<span class="armada-wisp" style="left:${left}%; top:${top}%; width:${size}px; height:${size}px; animation-duration:${duration}s; animation-delay:${delay}s; --wx:${wx}px; --wy:${wy}px; --wx2:${wx2}px; --wy2:${wy2}px;"></span>`;
+  }
+
+  // Sea-spray glints catching the lightning
+  for (let i = 0; i < 30; i++) {
+    const top = (Math.random() * 100).toFixed(2);
+    const left = (Math.random() * 100).toFixed(2);
+    const size = (4 + Math.random() * 6).toFixed(1);
+    const color = ARMADA_COLORS[Math.floor(Math.random() * ARMADA_COLORS.length)];
+    const duration = (2.2 + Math.random() * 2.6).toFixed(2);
+    const delay = (Math.random() * -6).toFixed(2);
+    html += `<span class="festive-sparkle" style="top:${top}%; left:${left}%; width:${size}px; height:${size}px; background:${color}; box-shadow:0 0 ${(size * 1.4).toFixed(1)}px ${color}; animation-duration:${duration}s; animation-delay:${delay}s;"></span>`;
+  }
+
+  return html;
+}
+
 function buildThemedFx(theme) {
   const container = document.getElementById('festiveFx');
   if (!container || container.dataset.builtTheme === theme) return;
@@ -635,6 +680,7 @@ function buildThemedFx(theme) {
   else if (theme === 'chrono') container.innerHTML = buildChronoFx();
   else if (theme === 'thorngrove') container.innerHTML = buildThornGroveFx();
   else if (theme === 'ogknight') container.innerHTML = buildOgKnightFx();
+  else if (theme === 'armada') container.innerHTML = buildArmadaFx();
 }
 
 function applyThemedFx(deckId) {

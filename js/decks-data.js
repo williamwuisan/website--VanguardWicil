@@ -1398,5 +1398,209 @@ const DECKS = [
         effect: "(This card cannot be in your main deck)\n[G GUARDIAN]-Opponent Turn's Guard Step-[COST][Discard a card with \"Heal\" in its card name from your hand], call this card to your (GC) from face down.\n[AUTO]1/Turn: When placed on (GC), if there are cards of four or more different grades in your soul, [COST][choose a face down G Guardian from your G zone, and turn it face up], and this unit gets [Shield]+15000 until end of that battle."
       }
     ]
+  },
+  {
+    id: "thavas-deck",
+    name: "Thavas",
+    clan: "Stoicheia",
+    image: "assets/cards/one-who-surpasses-the-storm-thavas.webp",
+    cards: [
+      {
+        name: "Marine General of Heavenly Silk, Lambros",
+        image: "assets/cards/marine-general-of-heavenly-silk-lambros-vr.webp",
+        grade: "G4",
+        section: "Main Deck",
+        effect: "[CONT][Hand]: If you have a vanguard with \"Thavas\" in its card name, this card gets grade -1.\n[AUTO][Stand]: When placed, choose any number of your rear-guards, and [Stand] them.\n[AUTO][Stand]: When it attacks, [COST][Counter Blast 1 & Soul Blast 1], choose a column, [Stand] all of your rear-guards in that column, and if your opponent's vanguard is grade 3 or greater, those rear-guards get [Power]+5000 until end of turn."
+      },
+      {
+        name: "One Who Surpasses the Storm, Thavas",
+        image: "assets/cards/one-who-surpasses-the-storm-thavas.webp",
+        grade: "G3",
+        section: "Main Deck",
+        effect: "[ACT][Stand/Rest] 1/Turn: [COST][Rest a rear-guard], choose up to one of your opponent's rear-guards, and retire it.\n[AUTO][Stand]: At the beginning of your battle phase, if three or more of your rear-guards are [Rest], [COST][discard a card from your hand], search your deck for up to one grade 4 card, ride it as [Stand], shuffle your deck, and that unit gets [Power]+10000/drive+1 until end of turn. At the end of this turn, retire that unit, and ride a grade 3 card from your soul as [Stand]."
+      },
+      {
+        name: "Supreme Ruler of the Storm, Thavas",
+        image: "assets/cards/supreme-ruler-of-the-storm-thavas.webp",
+        grade: "G3",
+        section: "Main Deck",
+        effect: "[AUTO][Stand]: When your G unit Stride, choose up to one card from your hand, call it to [Rest], choose one of your rear-guards, until end of turn, it gets \"[CONT][Rest]: Resist\", and if that rear-guard has the wave ability, it gets \"[CONT][Rest]: This unit can attack from the back row.\"\n[AUTO][Rest] 1/Turn (GB2) Wave-1st or 4th time (Active during the specified battles of each turn): [COST][Soul Blast 1] At the end of the battle that this unit attacked, you may pay the cost. If you do, [Stand] this unit."
+      },
+      {
+        name: "Kelpie Rider, Denis",
+        image: "assets/cards/kelpie-rider-denis.webp",
+        grade: "G2",
+        section: "Main Deck",
+        effect: "[ACT][Stand/Rest]: [COST][Rest another rear-guard], look at the top card of your deck, and call it to [Rest]. This ability may only be used by a card with the same card name once a turn."
+      },
+      {
+        name: "Terrific Coil Dragon",
+        image: "assets/cards/terrific-coil-dragon.webp",
+        grade: "G2",
+        section: "Main Deck",
+        effect: "[AUTO][Rest] 1/Turn: When [Stand] by a card's ability, you may have this unit get [Power]+5000 until end of turn.\n[AUTO][Rest]: When it attacks, if it is the first battle of this turn, [COST][Soul Blast 1], and [Stand] this unit."
+      },
+      {
+        name: "Marine General of Courageous Battles, Agias",
+        image: "assets/cards/marine-general-of-courageous-battles-agias.webp",
+        grade: "G2",
+        section: "Main Deck",
+        effect: "[ACT][Rest] 1/Turn: [COST][Counter Blast 1 & Rest two rear-guards], and this unit gets [Power]+10000 until end of turn."
+      },
+      {
+        name: "Coral Assault",
+        image: "assets/cards/coral-assault.webp",
+        grade: "G2",
+        section: "Main Deck",
+        effect: "[CONT][Rest]: During the battle it attacked, if four or more of your other units are [Rest], this unit gets [Power]+15000.\n[AUTO][Rest]: At the end of your turn, if the total number of attacks this turn is four or more, [COST][put this unit into your soul], and draw a card."
+      },
+      {
+        name: "Kelpie Rider, Nikki",
+        image: "assets/cards/kelpie-rider-nikki.webp",
+        grade: "G1",
+        section: "Main Deck",
+        effect: "[AUTO][Stand]: When placed, look at seven cards from the top of your deck, reveal up to one \"One Who Surpasses the Storm, Thavas\" or \"Kelpie Rider, Denis\" from among them and put it into your hand, and shuffle your deck.\n[ACT][Rest]: [COST][Rest this unit & put a normal unit from your drop zone on the bottom of your deck], and Soul Charge 1."
+      },
+      {
+        name: "Battle Siren, Orthia",
+        image: "assets/cards/battle-siren-orthia.webp",
+        grade: "G1",
+        section: "Main Deck",
+        effect: "[AUTO][Rest] 1/Turn (GB1) (This ability is active if you have one or more face up G units in total on your (VC) or G zone): [COST][Rest & Counter Blast 1] At the end of the battle that this unit boosted [Stand] a rear-guard, you may pay the cost. If you do, choose one of the boosted [Stand] units, [Rest] it, and that unit gets [Power]-5000 until end of that turn. (Even if you do not pay the cost, this ability cannot be used for the rest of that turn)\n[CONT][Stand/Rest/G]: Resist (This unit cannot be chosen by the effects of your opponent's cards)"
+      },
+      {
+        name: "Light Signals Penguin Soldier",
+        image: "assets/cards/light-signals-penguin-soldier.webp",
+        grade: "G1",
+        section: "Main Deck",
+        effect: "[ACT][Rest]: [COST][Rest this unit], and one of your units in the same column as this unit gets [Power]+5000 until end of turn.\n[AUTO][Rest]: When your other unit attacks, if it is the fourth battle of that turn, [COST][retire this unit], and Soul Charge 1."
+      },
+      {
+        name: "Wheel Assault",
+        image: "assets/cards/wheel-assault.webp",
+        grade: "G1",
+        section: "Main Deck",
+        effect: "[AUTO][Stand]: At the end of the battle it boosted, choose two of your rear-guards, and you may exchange their positions.\n[AUTO]: When rode upon, [COST][Counter Blast 1], draw a card, and call a card from your hand to [Rest]."
+      },
+      {
+        name: "Blue Wave Soldier Senior, Beragios",
+        image: "assets/cards/blue-wave-soldier-senior-beragios.webp",
+        grade: "G1",
+        section: "Main Deck",
+        effect: "[CONT][Stand/Rest]: During your turn, if you have four or more [Rest] rear-guards, this unit gets [Power]+5000.\n[AUTO][Stand/Rest]: When placed from hand, look at five cards from the top of your deck, reveal up to one grade 3 from among them and put it into your hand, shuffle your deck, and if you put a card, discard a card from your hand."
+      },
+      {
+        name: "Battle Siren, Nerissa",
+        image: "assets/cards/battle-siren-nerissa.webp",
+        grade: "G1",
+        section: "Main Deck",
+        effect: "[AUTO][Rest]: When [Rest] by another card's ability, [COST][Soul Blast 1], [Stand] this unit, and this unit gets [Power]+10000 until end of turn.\n[AUTO][Rest]: At the end of your turn, if you have four or more [Rest] rear-guards, [COST][put this unit into your soul], and draw a card."
+      },
+      {
+        name: "Activate Dracokid",
+        image: "assets/cards/activate-dracokid.webp",
+        grade: "G0",
+        section: "Main Deck",
+        effect: "Heal Trigger +10000.\n(You may only have up to four cards with \"Heal\" in a deck.)"
+      },
+      {
+        name: "Spiritual King of Tempestorm, Violeurm",
+        image: "assets/cards/spiritual-king-of-tempestorm-violeurm.webp",
+        grade: "G0",
+        section: "Main Deck",
+        effect: "OVER Trigger. (You may only have one OVER Trigger in a deck. When revealed as a trigger, remove that card, draw a card, choose one of your units, and it gets [Power]+100 Million until end of turn! If revealed during drive check, activate its additional effect!)\nAdditional Effect - Choose one of your attacking units, and it gets [Critical]+1/drive+1 until end of that battle."
+      },
+      {
+        name: "Emerald Shield, Paschal",
+        image: "assets/cards/emerald-shield-paschal.webp",
+        grade: "G0",
+        section: "Main Deck",
+        effect: "Draw Trigger +10000.\n[CONT]: Sentinel (You may only have up to four cards with \"CONT: Sentinel\" in a deck.)\n[AUTO][Stand]: When placed, [COST][discard a card from your hand], and one of your units cannot be hit until end of that battle."
+      },
+      {
+        name: "Direct Strike Brave Shooter",
+        image: "assets/cards/direct-strike-brave-shooter.webp",
+        grade: "G0",
+        section: "Main Deck",
+        effect: "Critical Trigger +10000.\n[AUTO][Rest] (GB1): When your vanguard attacks, [COST][put this unit into your soul], draw a card, and one of your vanguards gets [Power]+10000 until end of that battle."
+      },
+      {
+        name: "Bumper Shooter",
+        image: "assets/cards/bumper-shooter.webp",
+        grade: "G0",
+        section: "Main Deck",
+        effect: "Critical Trigger +10000.\n[CONT][Hand]: While paying the cost for Stride, this card may be discarded as a grade 3."
+      },
+      {
+        name: "Kelpie Rider, Mitros",
+        image: "assets/cards/kelpie-rider-mitros.webp",
+        grade: "G0",
+        section: "Main Deck",
+        effect: "[AUTO]: When rode upon, draw a card. Then, if your opponent's vanguard is grade 1 or greater, put a Quick Shield ticket into your hand."
+      },
+      {
+        name: "Torrent of Determination, Valeos Revive",
+        image: "assets/cards/torrent-of-determination-valeos-revive.webp",
+        grade: "G (Stride/G unit)",
+        section: "Stride",
+        effect: "(This card cannot be in your main deck)\n[STRIDE]-Stride Step-[COST][Choose one or more cards with the sum of their grades being 3 or greater from your hand, and discard them], and Stride this card on your (VC) from face down.\n[AUTO][Stand]: When it attacks, [COST][Counter Blast 1 & turn a card from your G zone face up], call up to two cards from your hand to [Rest] for each face up card in your G zone. Draw cards equal to the number of cards called. If your G zone has two or more face up cards, choose one of your opponent's vanguards, and until end of turn, increase or decrease its power to 11000, and its [Power] cannot increase or decrease other than by this effect and guardians'."
+      },
+      {
+        name: "Blue Storm Steel Dragon, Genbold Dragon",
+        image: "assets/cards/blue-storm-steel-dragon-genbold-dragon.webp",
+        grade: "G (Stride/G unit)",
+        section: "Stride",
+        effect: "(This card cannot be in your main deck)\n[STRIDE]-Stride Step-[COST][Choose one or more cards with the sum of their grades being 3 or greater from your hand, and discard them], and Stride this card on your (VC) from face down.\n[AUTO][Stand]: When placed, look at seven cards from the top of your deck, call up to two cards from among them to [Rest] as [Stand], and shuffle your deck.\n[AUTO][Stand]: When it attacks, [COST][Soul Blast 1 & turn a card from your G zone face up], for every two of your [Stand] rear-guards, draw a card, choose one of your opponent's rear-guards, and retire it. If you drew three or more cards, [Stand] two of your rear-guards."
+      },
+      {
+        name: "Marine General of Heavenly Silk, Lambros",
+        image: "assets/cards/marine-general-of-heavenly-silk-lambros-stride.webp",
+        grade: "G (Stride/G unit)",
+        section: "Stride",
+        effect: "(This card cannot be in your main deck)\n[STRIDE]-Stride Step-[COST][Choose a face down card named \"Marine General of Heavenly Silk, Lambros\" from your G zone, and turn it face up], and Stride this card on your (VC) from face down.\n[AUTO][Stand]: When this unit attacks a vanguard, if it is the fourth battle of that turn or more, you may pay the cost. If you do, choose up to two of your rear-guards, and [Stand] them. Then, if the number of face up cards in your G zone is two or more, the units that [Stand] by this effect get [Power]+10000 until end of turn."
+      },
+      {
+        name: "Marshal General of Surging Seas, Alexandros",
+        image: "assets/cards/marshal-general-of-surging-seas-alexandros.webp",
+        grade: "G (Stride/G unit)",
+        section: "Stride",
+        effect: "(This card cannot be in your main deck)\n[STRIDE]-Stride Step-[COST][Choose one or more cards with the sum of their grades being 3 or greater from your hand, and discard them], and Stride this card on your (VC) from face down.\n[AUTO][Rest] Wave-2nd or 3rd time: At the end of the battle that this unit attacked, [COST][Counter Blast 1 & choose a face down card from your G zone, and turn it face up], choose two of your rear-guards, [Stand] them, and they get [Power]+5000 until end of turn for each face up card in your G zone."
+      },
+      {
+        name: "Zeroth Dragon of Distant Sea, Megiddo",
+        image: "assets/cards/zeroth-dragon-of-distant-sea-megiddo.webp",
+        grade: "G (Stride/G unit)",
+        section: "Stride",
+        effect: "(This card cannot be in your main deck)\n[ULTIMATE STRIDE]-Stride Step-[COST][Choose a card with the same card name as your vanguard from your hand, and discard it], and Stride this card on your (VC) from face down.\n[AUTO]: When placed on (VC), [COST][Counter Blast 2], choose up to five cards in total from your hand or drop zone, call them to separate [Rest], and until end of turn, they get [Power]+5000, and \"[AUTO][Rest]: At the end of the battle that this unit attacked, choose one of your other rear-guards, and you may exchange positions with this unit.\"\n(This unit's clan is Magallanica, Zeroth Dragon — included as off-clan Stride fodder.)"
+      },
+      {
+        name: "Blue Storm Deterrence Dragon, Ice Barrier Dragon",
+        image: "assets/cards/blue-storm-deterrence-dragon-ice-barrier-dragon.webp",
+        grade: "G (Guardian)",
+        section: "Stride",
+        effect: "(This card cannot be in your main deck)\n[G GUARDIAN] (Usable when both fighters' vanguards are grade 3 or greater, and the number of face up G guardians in your G zone is three or less)-Opponent Turn's Guard Step-[COST][Discard a card with \"Heal\" in its card name from your hand], call this card to your (GC) from face down.\n[AUTO] Wave-1st time or 4th time or more (Active during the specified battles of each turn): When this unit is placed on (GC), this unit gets [Shield]+10000 until end of that battle."
+      },
+      {
+        name: "Guard Leader of Sky and Water, Ihoannes",
+        image: "assets/cards/guard-leader-of-sky-and-water-ihoannes.webp",
+        grade: "G (Guardian)",
+        section: "Stride",
+        effect: "(This card cannot be in your main deck)\n[G GUARDIAN]-Opponent Turn's Guard Step-[COST][Discard a card with \"Heal\" in its card name from your hand], call this card to your (GC) from face down.\n[AUTO][Rest]: When placed on (GC), [COST][Counter Blast 1 & choose a face down [G GUARDIAN] from your G zone, and turn it face up], choose up to five of your rear-guards, until end of turn, they get \"[CONT][Stand]: Resist\" & \"[CONT][Stand]: This unit cannot be hit\", and this unit gets [Shield]+5000 for each chosen unit."
+      },
+      {
+        name: "Dark Element, Dizmel",
+        image: "assets/cards/dark-element-dizmel.webp",
+        grade: "G (Guardian)",
+        section: "Stride",
+        effect: "(This card cannot be in your main deck)\n[G GUARDIAN] (Usable when both fighters' vanguards are grade 3 or greater, and the number of face up G guardians in your G zone is three or less)-Opponent Turn's Guard Step-[COST][Discard a card with \"Heal\" in its card name from your hand], call this card to your (GC) from face down.\n[CONT][Rest]: Resist (This unit cannot be chosen by the effects of your opponent's cards)\n[AUTO]: When this unit is placed on (GC), choose one of your rear-guards, and until end of turn, it gets \"[CONT][Rest]: This unit cannot be hit, and cannot be chosen by the effects of your opponent's cards.\"\n[CONT]: This card is from all clans and nations."
+      },
+      {
+        name: "Blue Wave Armor General, Galfilia",
+        image: "assets/cards/blue-wave-armor-general-galfilia.webp",
+        grade: "G (Guardian)",
+        section: "Stride",
+        effect: "(This card cannot be in your main deck)\n[G GUARDIAN]-Opponent Turn's Guard Step-[COST][Discard a card with \"Heal\" in its card name from your hand], call this card to your (GC) from face down.\n[CONT][Rest] Wave-2nd or 3rd time: This unit gets [Shield]+5000.\n[ACT][G zone]: [COST][Counter Blast 1 & turn this card face down], choose a card on your circle or in your damage zone, and turn it face up."
+      }
+    ]
   }
 ];

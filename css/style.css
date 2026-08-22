@@ -1717,6 +1717,58 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
   background-repeat: no-repeat;
 }
 
+/* ===== Armada FX (Thavas): AI-painted Aqua Force storm fleet ===== */
+.deck-detail__head h2.is-armada {
+  background: linear-gradient(90deg, #e0f7ff, #7dd3fc, #ffd76a, #5eead4, #e0f7ff);
+  background-size: 300% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 2px 4px rgba(2, 8, 16, 0.65));
+  animation: festive-title-shimmer 7s linear infinite;
+}
+
+.armada-bg {
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(180deg, rgba(4, 10, 20, 0.12) 0%, rgba(3, 8, 16, 0.32) 65%, rgba(2, 5, 12, 0.6) 100%),
+    url('../assets/thavas-storm-armada.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.armada-lightning {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(220, 240, 255, 0.5), rgba(180, 220, 255, 0.1) 40%, transparent 70%);
+  mix-blend-mode: screen;
+  opacity: 0;
+  pointer-events: none;
+  animation-name: armada-lightning-flash;
+  animation-timing-function: ease-out;
+  animation-iteration-count: infinite;
+}
+@keyframes armada-lightning-flash {
+  0%, 91%, 100% { opacity: 0; }
+  92% { opacity: 0.9; }
+  93% { opacity: 0.1; }
+  94% { opacity: 0.7; }
+  96% { opacity: 0; }
+}
+
+.armada-wisp {
+  position: fixed;
+  border-radius: 50%;
+  background: radial-gradient(circle, #eafffa 0%, #5eead4 45%, transparent 75%);
+  box-shadow: 0 0 8px 2px rgba(94, 234, 212, 0.55);
+  opacity: 0;
+  animation-name: ghostship-wisp-glint;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .festive-fx { display: none; }
   .deck-detail__head h2.is-festive,
@@ -1725,7 +1777,8 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
   .deck-detail__head h2.is-royal,
   .deck-detail__head h2.is-chrono,
   .deck-detail__head h2.is-thorngrove,
-  .deck-detail__head h2.is-ogknight { animation: none; background-position: 0 center; }
+  .deck-detail__head h2.is-ogknight,
+  .deck-detail__head h2.is-armada { animation: none; background-position: 0 center; }
 }
 
 .deck-stats { position: relative; margin-bottom: 28px; }
