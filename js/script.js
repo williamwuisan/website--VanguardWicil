@@ -633,10 +633,30 @@ function buildArmadaFx() {
   html += `<div class="armada-bg"></div>`;
 
   // Flashes of lightning strobing across the storm
-  for (let i = 0; i < 3; i++) {
-    const duration = (7 + Math.random() * 5).toFixed(2);
-    const delay = (Math.random() * -10).toFixed(2);
+  for (let i = 0; i < 4; i++) {
+    const duration = (4.5 + Math.random() * 3.5).toFixed(2);
+    const delay = (Math.random() * -8).toFixed(2);
     html += `<div class="armada-lightning" style="animation-duration:${duration}s; animation-delay:${delay}s;"></div>`;
+  }
+
+  // Jagged bolt streaks cracking across the sky, synced to the flashes above
+  const boltShapes = [
+    "M28,0 18,70 32,76 8,170 24,176 4,300",
+    "M20,0 34,60 16,66 40,150 20,156 32,300",
+    "M32,0 14,80 30,86 6,190 22,196 10,300",
+    "M16,0 30,66 12,72 36,160 18,166 28,300",
+  ];
+  for (let i = 0; i < 4; i++) {
+    const left = (10 + Math.random() * 78).toFixed(2);
+    const height = (34 + Math.random() * 16).toFixed(1);
+    const duration = (4.5 + Math.random() * 3.5).toFixed(2);
+    const delay = (Math.random() * -8).toFixed(2);
+    const shape = boltShapes[i % boltShapes.length];
+    html += `<div class="armada-bolt" style="left:${left}%; height:${height}%; animation-duration:${duration}s; animation-delay:${delay}s;">
+      <svg viewBox="0 0 44 300" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="${shape}" fill="none" stroke="#eafcff" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+      </svg>
+    </div>`;
   }
 
   // Ghostly teal sea-spirits drifting through the waves
